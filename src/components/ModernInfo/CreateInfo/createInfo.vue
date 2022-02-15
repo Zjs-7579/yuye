@@ -1,6 +1,5 @@
 <template>
   <div class="MoVessel">
-    
     <el-tabs
       type="border-card"
       class="box"
@@ -11,7 +10,11 @@
         <UnitInfo ref="ModernUnitInfoValidate"></UnitInfo>
       </el-tab-pane>
 
-      <el-tab-pane label="近三年财务状况" :disabled="isDataShow" name="InancialInfo">
+      <el-tab-pane
+        label="近三年财务状况"
+        :disabled="isDataShow"
+        name="InancialInfo"
+      >
         <InancialInfo></InancialInfo>
       </el-tab-pane>
 
@@ -23,7 +26,11 @@
         <HoldInfo ref="ModernHoldInfoValidate"></HoldInfo>
       </el-tab-pane>
 
-      <el-tab-pane label="项目承担单位基本情况" :disabled="isDataShow" name="ProjectUnitInfo">
+      <el-tab-pane
+        label="项目承担单位基本情况"
+        :disabled="isDataShow"
+        name="ProjectUnitInfo"
+      >
         <ProjectUnitInfo></ProjectUnitInfo>
       </el-tab-pane>
 
@@ -35,7 +42,11 @@
         <ProjectContent ref="ModernProjectContentValidate"></ProjectContent>
       </el-tab-pane>
 
-      <el-tab-pane label="项目投资情况" :disabled="isDataShow" name="ProjectInvest">
+      <el-tab-pane
+        label="项目投资情况"
+        :disabled="isDataShow"
+        name="ProjectInvest"
+      >
         <ProjectInvest></ProjectInvest>
       </el-tab-pane>
 
@@ -47,7 +58,6 @@
         <UploadFiles></UploadFiles>
       </el-tab-pane>
     </el-tabs>
-
 
     <SubmitButton
       @handleActionNameText="handleActiveName"
@@ -66,20 +76,24 @@ import ProjectInvest from "./projectInvest.vue";
 import SummarizeInfo from "./summarizeInfo.vue";
 import UploadFiles from "./uploadFiles.vue";
 import SubmitButton from "./submitButton.vue";
-import {MOdetailsInspectData} from "../../../api/searchDetailsInspect"
-import {userTaskid} from "../../../api/Modern/userInfo"
-import { modernData,  modernClearData, modernFilesData } from "../../../utils/modernUpData"
-import {mapState} from "vuex"
+import { MOdetailsInspectData } from "../../../api/searchDetailsInspect";
+import { userTaskid } from "../../../api/Modern/userInfo";
+import {
+  modernData,
+  modernClearData,
+  modernFilesData,
+} from "../../../utils/modernUpData";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
       isDataShow: true,
-      activeName: "UnitInfo",
+      activeName: "UploadFiles",
     };
   },
   computed: {
-		...mapState(['Modern'])
-	},
+    ...mapState(["Modern"]),
+  },
   methods: {
     handleActiveName(name) {
       //console.log(name)
@@ -108,30 +122,31 @@ export default {
   },
   mounted() {
     this.$store.commit("Modern_IsDisabledDataClose");
-		modernClearData(this.Modern)
-    if(this.$route.query.id != undefined){
-			MOdetailsInspectData(this.$route.query.id).then(res=>{
-				//console.log('data', res)
-				this.$store.commit('Modern_UserTaskId', this.$route.query.id)
-        let result = modernData(res.data.data)
-        let uploadUrlData
-        res.data.data.images?uploadUrlData = modernFilesData(res.data.data.images):uploadUrlData = []
+    modernClearData(this.Modern);
+    if (this.$route.query.id != undefined) {
+      MOdetailsInspectData(this.$route.query.id).then((res) => {
+        //console.log('data', res)
+        this.$store.commit("Modern_UserTaskId", this.$route.query.id);
+        let result = modernData(res.data.data);
+        let uploadUrlData;
+        res.data.data.images
+          ? (uploadUrlData = modernFilesData(res.data.data.images))
+          : (uploadUrlData = []);
         //console.log('result', result)
-				//this.Modern.ModernData = result
-        this.$store.commit('Modern_AllClearData', {result, uploadUrlData})
-			})
-		}else{
-			userTaskid().then(res=>{
-        //console.log(res)
-        this.$store.commit('Modern_UserTaskId', res.data.data)
+        //this.Modern.ModernData = result
+        this.$store.commit("Modern_AllClearData", { result, uploadUrlData });
       });
-		}
+    } else {
+      userTaskid().then((res) => {
+        //console.log(res)
+        this.$store.commit("Modern_UserTaskId", res.data.data);
+      });
+    }
   },
 };
 </script>
 
 <style>
-
 .MoVessel .downText {
   outline: none;
 }

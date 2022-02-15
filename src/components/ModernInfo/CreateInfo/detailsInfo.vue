@@ -52,19 +52,20 @@
         :class="colorText == 'UploadFiles' ? 'colorText' : ''"
         >上传附件</a
       >
-      
     </div>
 
     <div class="AllDataTable">
-        <div id="UnitInfo"><UnitInfo></UnitInfo> </div>
-      <div id="InancialInfo"><InancialInfo></InancialInfo> </div>
+      <div id="UnitInfo"><UnitInfo></UnitInfo></div>
+      <div id="InancialInfo"><InancialInfo></InancialInfo></div>
       <div id="HoldInfo"><HoldInfo></HoldInfo></div>
-      <div id="ProjectUnitInfo"><ProjectUnitInfo></ProjectUnitInfo> </div>
-      <div id="ProjectContent"><ProjectContent></ProjectContent> </div>
-      <div id="ProjectInvest"><ProjectInvest></ProjectInvest> </div>
-      <div id="SummarizeInfo"><SummarizeInfo></SummarizeInfo> </div>
-      <div id="UploadFiles"><UploadFiles></UploadFiles> </div>
-      <div id="AuditInfo" v-if="this.$route.name == 'UserDetail'"><AuditInfo></AuditInfo></div>
+      <div id="ProjectUnitInfo"><ProjectUnitInfo></ProjectUnitInfo></div>
+      <div id="ProjectContent"><ProjectContent></ProjectContent></div>
+      <div id="ProjectInvest"><ProjectInvest></ProjectInvest></div>
+      <div id="SummarizeInfo"><SummarizeInfo></SummarizeInfo></div>
+      <div id="UploadFiles"><UploadFiles></UploadFiles></div>
+      <div id="AuditInfo" v-if="this.$route.name == 'UserDetail'">
+        <AuditInfo></AuditInfo>
+      </div>
     </div>
     <div class="allBtn" :style="{ display: !isDetailsContent }">
       <el-button type="primary" @click="SubmitData">提交</el-button>
@@ -83,9 +84,14 @@ import SummarizeInfo from "./summarizeInfo.vue";
 import UploadFiles from "./uploadFiles.vue";
 import AuditInfo from "../../User/auditInfo.vue";
 import { createSubmit } from "../../../api/Modern/createInfo";
-import { modernClearData} from "../../../utils/modernUpData"
-import {mapState} from 'vuex'
+import { modernClearData } from "../../../utils/modernUpData";
+import { mapState } from "vuex";
 export default {
+  data() {
+    return {
+      colorText: "",
+    };
+  },
   components: {
     UnitInfo,
     InancialInfo,
@@ -95,64 +101,65 @@ export default {
     ProjectInvest,
     SummarizeInfo,
     UploadFiles,
-    AuditInfo
+    AuditInfo,
   },
   computed: {
-      ...mapState(['Modern']),
-      isDetailsContent: {
-            get(){
-                if(this.Modern.isDetailsContent){
-                    return 'block'
-                }else{
-                     return 'none'
-                }
-            },
-            set(val){
-                this.isDetailsContent = val
-            }
-        },
+    ...mapState(["Modern"]),
+    isDetailsContent: {
+      get() {
+        if (this.Modern.isDetailsContent) {
+          return "block";
+        } else {
+          return "none";
+        }
+      },
+      set(val) {
+        this.isDetailsContent = val;
+      },
+    },
   },
   methods: {
-      handleColorText(text){
-          console.log(this)
-          this.colorText = text
-      },
-      SubmitData(){
-        this.$confirm('数据是否确认无误，是否上传提交？', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-         createSubmit(this.Modern).then(
+    handleColorText(text) {
+      console.log(this);
+      this.colorText = text;
+    },
+    SubmitData() {
+      this.$confirm("数据是否确认无误，是否上传提交？", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          createSubmit(this.Modern).then(
             this.$message({
               type: "success",
               message: "表单提交成功!",
             }),
             this.$store.commit("Modern_IsDisabledDataClose"),
-            
-           setTimeout(this.$router.push({
-              path: "/home",
-            }),1000)
-            
-            
+
+            setTimeout(
+              this.$router.push({
+                path: "/home",
+              }),
+              1000
+            )
           );
-        }).catch(() => {
+        })
+        .catch(() => {
           this.$message({
-            type: 'info',
-            message: '已取消提交'
-          });          
+            type: "info",
+            message: "已取消提交",
+          });
         });
-      }
-      
+    },
   },
   mounted() {
-    
     //console.log(this.Agricul)
-    console.log(this.$router.query.id)
-    if(!this.$router.query.id){
-      modernClearData(this.Modern)
+    // console.log(this.$router.query.id);
+    if (!this.$router.query.id) {
+      modernClearData(this.Modern);
     }
-  }
+  },
 };
 </script>
 

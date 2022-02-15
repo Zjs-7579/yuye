@@ -1,0 +1,77 @@
+<template>
+  <div class="MoboxTitle">
+    <el-row class="title">
+            项目效益
+        </el-row>
+    <p>
+      1、项目预期技术指标、经济和社会效益：
+    </p>
+    <p>
+     2、技术指标：项目预期达到的技术标准、技术水平、填补空白、知识产权成果（专利、著作、软件、标准等）；
+    </p>
+    <p>
+      3、经济效益：项目实施、推广、应用实现的业务量增长，年产量、销售收入、利润、纳税额、行业引领、产业化前景、示范带动等方面作用）；
+    </p>
+     <p>
+      3、社会效益（增加就业、节约能源、促进民生等）。
+    </p>
+    <el-input
+      type="textarea"
+      resize="none"
+      rows="25"
+      :disabled="isDisabledData"
+      v-model="basic_info.basic_info"
+    ></el-input>
+  </div>
+</template>
+
+<script>
+import { mapState } from "vuex";
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState(["Modern"]),
+    basic_info: {
+      get() {
+        this.Modern.ModernData.basic_info['task_id'] = this.Modern.userTaskId
+        //this.Modern.ModernData.basic_info.creator = this.Modern.userName
+        return this.Modern.ModernData.basic_info;
+      },
+      set(val) {
+        this.basic_info = val;
+      },
+    },
+    isDisabledData: {
+      get() {
+        return this.Modern.isDisabledData;
+      },
+      set(val) {
+        this.isDisabledData = val;
+      },
+    },
+  },
+};
+</script>
+
+<style>
+.MoboxTitle {
+  width: 100%;
+  height: 75vh;
+}
+.MoboxTitle .title{
+        background-color: #ece8e8;
+        height: 60px;
+        line-height: 60px;
+        font-size: 25px;
+        padding: 0 15px;
+        font-weight: bold;
+        border: 1px solid #ccc;
+    }
+.MoboxTitle p {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 35px 0;
+}
+</style>
