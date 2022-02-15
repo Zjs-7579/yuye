@@ -66,10 +66,10 @@
       prop="note">
     </el-table-column> -->
 
-      <el-table-column width="150" label="申请时间" prop="update_time">
+      <el-table-column width="250" label="申请时间" prop="update_time">
       </el-table-column>
 
-      <el-table-column label="操作" width="350">
+      <el-table-column label="操作" width="250">
         <template slot-scope="scope">
           <el-button
             size="mini"

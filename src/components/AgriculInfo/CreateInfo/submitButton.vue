@@ -97,7 +97,7 @@ export default {
   },
   methods: {
     handleActionNext() {
-      console.log(this.Agricul.AgriculData)
+      //console.log(this.Agricul.AgriculData)
       this.validationDataTab(this.activeName);
       this.promptMessage(
         this[this.activeName + "Bool"],
@@ -131,7 +131,7 @@ export default {
     visibleSubmit() {
       this.visibleSubmitContent = true;
       this.$store.commit("Agricul_IsDisabledDataOpen");
-      this.$store.commit("Agricul_IsCountableUploadClose");
+      //this.$store.commit("Agricul_IsCountableUploadClose");
       this.$store.commit("Agricul_IsDetailsContentClose");
     },
     handleClose(done) {
@@ -139,7 +139,7 @@ export default {
         .then(() => {
           done();
           this.$store.commit("Agricul_IsDisabledDataClose");
-          this.$store.commit("Agricul_IsCountableUploadOpen");
+          //this.$store.commit("Agricul_IsCountableUploadOpen");
         })
         .catch(() => {});
     },

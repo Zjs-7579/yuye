@@ -96,6 +96,7 @@
           ><div class="grid-content bg-purple">
             <el-input
               type="number"
+              disabled
               v-model="totalExpends2"
             ></el-input></div
         ></el-col>
@@ -103,6 +104,7 @@
           ><div class="grid-content bg-purple">
             <el-input
               type="number"
+              disabled
               v-model="totalExpends3"
             ></el-input></div
         ></el-col>
@@ -111,79 +113,13 @@
    </div>
 
 
-   <div class="foot">
-     <el-row class="title">
-       拟购或租赁主要设备清单
-      </el-row>
-    <el-row class="titleRow">
-      <el-col :span="4"><div class="grid-content bg-purple">序号</div></el-col>
-      <el-col :span="4"
-        ><div class="grid-content bg-purple">仪器设备名称</div></el-col
-      >
-      <el-col :span="4"
-        ><div class="grid-content bg-purple">数量/单位</div></el-col
-      >
-      <el-col :span="4"
-        ><div class="grid-content bg-purple">单价</div></el-col
-      >
-      <el-col :span="4"
-        ><div class="grid-content bg-purple">金额合计</div></el-col
-      >
-      <el-col :span="4"
-        ><div class="grid-content bg-purple">用途/功能描述</div></el-col
-      >
-    </el-row>
-    <el-row
-      v-for="(item, index) in techLease"
-      :key="index"
-      class="dataRow"
-    >
-      <el-col :span="6"
-        ><div class="grid-content bg-purple">
-          <el-input
-            type="text"
-            :disabled="isDisabledData"
-            v-model="item.shareholder"
-          ></el-input></div
-      ></el-col>
-      <el-col :span="6"
-        ><div class="grid-content bg-purple">
-          <el-input
-            type="text"
-            :disabled="isDisabledData"
-            v-model="item.amount"
-          ></el-input></div
-      ></el-col>
-      <el-col :span="6"
-        ><div class="grid-content bg-purple">
-          <el-input
-            type="text"
-            :disabled="isDisabledData"
-            v-model="item.payer_type"
-          ></el-input></div
-      ></el-col>
-      <el-col :span="6"
-        ><div class="grid-content bg-purple">
-          <el-input
-            type="text"
-            :disabled="isDisabledData"
-            v-model="item.share_proportion"
-          ></el-input></div
-      ></el-col>
-    </el-row>
-
-    <div class="handle" :style="{ display: isDisabledData ? 'none' : 'block' }">
-      <el-button type="primary" class="add" @click="handleAddHtml"
-        >添加一条</el-button
-      >
-      <el-button class="delete" @click="handleDeleteHtml">删除一条</el-button>
-    </div>
-   </div>
+  <ProjectFundListing></ProjectFundListing>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
+import ProjectFundListing from "./projectFundListing.vue"
 import fundData from "../../static/HighTechData/fundData.js"
 export default {
   data() {
@@ -195,6 +131,7 @@ export default {
       boldFrom: [0, 5, 16, 17],
     };
   },
+  components:{ProjectFundListing},
   computed: {
     ...mapState(["HighTech"]),
     techFunds: {
@@ -209,17 +146,6 @@ export default {
       set(val) {
         //console.log(val)
         this.techFunds = val;
-      },
-    },
-    techLease: {
-      get() {
-        //this.HighTech.HighTechData.techFunds['task_id'] = this.HighTech.userTaskId
-        //this.Modern.ModernData.basic_info.creator = this.Modern.userName
-        return this.HighTech.HighTechData.techLease;
-      },
-      set(val) {
-        //console.log(val)
-        this.techLease = val;
       },
     },
     isDisabledData: {

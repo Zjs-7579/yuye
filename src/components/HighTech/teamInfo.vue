@@ -1,7 +1,7 @@
 <template>
   <div class="Mounit">
      <el-form
-      :model="modernCompany"
+      :model="techTeamUser"
       ref="unitForm"
       :rules="rules"
       label-width="310px"
@@ -16,13 +16,13 @@
 
       <el-row>
       <el-col :span="12">
-        <el-form-item label="项目名称:" prop="task_name">
-        <el-input v-model="modernCompany.task_name"></el-input>
+        <el-form-item label="项目名称:" prop="prj_name">
+        <el-input v-model="techTeamUser.prj_name"></el-input>
       </el-form-item>
       </el-col>
       <el-col :span="12">
-           <el-form-item label="起始时间:" prop="unit_name">
-        <el-input v-model="modernCompany.unit_name"></el-input>
+           <el-form-item label="起始时间:" prop="prj_time">
+        <el-input v-model="techTeamUser.prj_time"></el-input>
       </el-form-item>
       </el-col>
       </el-row>
@@ -31,38 +31,38 @@
 
       <el-row>
       <el-col :span="12">
-        <el-form-item label="所属产业:" prop="task_name">
-        <el-input v-model="modernCompany.task_name"></el-input>
+        <el-form-item label="所属产业:" prop="industry">
+        <el-input v-model="techTeamUser.industry"></el-input>
       </el-form-item>
       </el-col>
       <el-col :span="12">
-           <el-form-item label="所属产业子领域:" prop="unit_name">
-        <el-input v-model="modernCompany.unit_name"></el-input>
+           <el-form-item label="所属产业子领域:" prop="subfield">
+        <el-input v-model="techTeamUser.subfield"></el-input>
       </el-form-item>
       </el-col>
       </el-row>
 
 
-      <el-form-item label="项目组总参与人数：" prop="project_address">
-           <el-input v-model="modernCompany.project_address"></el-input>
+      <el-form-item label="项目组总参与人数：" prop="partici_num">
+           <el-input v-model="techTeamUser.partici_num"></el-input>
         </el-form-item>
 
 
       <el-row>
       <el-col :span="8">
-        <el-form-item label="博士：" prop="project_address">
-           <el-input v-model="modernCompany.project_address"></el-input>
+        <el-form-item label="博士：" prop="doctor_num">
+           <el-input v-model="techTeamUser.doctor_num"></el-input>
         </el-form-item>
       </el-col>
       <el-col :span="8">
-         <el-form-item label="硕士：" prop="project_address">
-           <el-input v-model="modernCompany.project_address"></el-input>
+         <el-form-item label="硕士：" prop="master_num">
+           <el-input v-model="techTeamUser.master_num"></el-input>
         </el-form-item>
         
       </el-col>
       <el-col :span="8">
-        <el-form-item label="本科：" prop="project_address">
-           <el-input v-model="modernCompany.project_address"></el-input>
+        <el-form-item label="本科：" prop="graduate_num">
+           <el-input v-model="techTeamUser.graduate_num"></el-input>
         </el-form-item>
       </el-col>
         </el-row>
@@ -71,19 +71,19 @@
 
         <el-row>
           <el-col :span="8">
-            <el-form-item label="本科以下：" prop="project_address">
-           <el-input v-model="modernCompany.project_address"></el-input>
+            <el-form-item label="本科以下：" prop="other_num">
+           <el-input v-model="techTeamUser.other_num"></el-input>
         </el-form-item>
       </el-col>
       <el-col :span="8">
-         <el-form-item label="研发人员：" prop="project_address">
-           <el-input v-model="modernCompany.project_address"></el-input>
+         <el-form-item label="研发人员：" prop="research_num">
+           <el-input v-model="techTeamUser.research_num"></el-input>
         </el-form-item>
       </el-col>
        
           <el-col :span="8">
-       <el-form-item label="管理人员：" prop="project_address">
-           <el-input v-model="modernCompany.project_address"></el-input>
+       <el-form-item label="管理人员：" prop="admin_num">
+           <el-input v-model="techTeamUser.admin_num"></el-input>
         </el-form-item>
       </el-col>
      
@@ -93,31 +93,31 @@
 
     <el-row>
       <el-col :span="8">
-       <el-form-item label="项目总工作量（月）：" prop="director">
-          <el-input v-model="modernCompany.director"></el-input>
+       <el-form-item label="项目总工作量（月）：" prop="prj_work">
+          <el-input v-model="techTeamUser.prj_work"></el-input>
         </el-form-item>
       </el-col>
       <el-col :span="8">
-        <el-form-item label="企业是否由海外留学归来人员创办：" prop="director_phone">
-          <el-input v-model="modernCompany.director_phone"></el-input>
+        <el-form-item label="企业是否由海外留学归来人员创办：" prop="overseas_sponsor">
+          <el-input v-model="techTeamUser.overseas_sponsor"></el-input>
         </el-form-item>
       </el-col>
       <el-col :span="8">
-        <el-form-item label="海外留学归来人数（人）：" prop="director_phone">
-          <el-input v-model="modernCompany.director_phone"></el-input>
+        <el-form-item label="海外留学归来人数（人）：" prop="study_abroad">
+          <el-input v-model="techTeamUser.study_abroad"></el-input>
         </el-form-item>
       </el-col>
     </el-row>
 
     <el-row>
       <el-col :span="12">
-       <el-form-item label="项目联系人：" prop="director">
-          <el-input v-model="modernCompany.director"></el-input>
+       <el-form-item label="项目联系人：" prop="project_contact">
+          <el-input v-model="techTeamUser.project_contact"></el-input>
         </el-form-item>
       </el-col>
       <el-col :span="12">
-        <el-form-item label="移动电话：" prop="director_phone">
-          <el-input v-model="modernCompany.director_phone"></el-input>
+        <el-form-item label="移动电话：" prop="mobile_phone">
+          <el-input v-model="techTeamUser.mobile_phone"></el-input>
         </el-form-item>
       </el-col>
       
@@ -125,13 +125,13 @@
 
      <el-row>
       <el-col :span="12">
-       <el-form-item label="电子邮箱：" prop="director_phone">
-          <el-input v-model="modernCompany.director_phone"></el-input>
+       <el-form-item label="电子邮箱：" prop="e_mail">
+          <el-input v-model="techTeamUser.e_mail"></el-input>
         </el-form-item>
       </el-col>
       <el-col :span="12">
-        <el-form-item label="传真:" prop="unit_professional">
-    <el-input v-model="modernCompany.unit_professional"></el-input>
+        <el-form-item label="传真:" prop="fax">
+    <el-input v-model="techTeamUser.fax"></el-input>
   </el-form-item>
       </el-col>
       
@@ -145,78 +145,78 @@
 
 
      <el-form
-      v-for="(item, index) in modernSupport"
+      v-for="(item, index) in techTeamList"
       ref="holdForm"
       :rules="rules"
       :key="index"
-      :model="modernSupport[index]"
+      :model="techTeamList[index]"
       :disabled="isDisabledData"
       label-width="210px"
       class="demo-ruleForm"
       
 
     >
-      <el-row class="title"> 项目组主要成员（含项目负责人） </el-row>
+      <el-row class="title"> {{index == 0 ? '项目负责人': '项目组主要成员'+ index}}</el-row>
       <el-form-item
-        label="项目负责人"
-        prop="project_name"
+        :label="index==0?'项目负责人:':'项目成员:'"
+        prop="member"
       >
-        <el-input v-model="item.project_name"></el-input>
+        <el-input v-model="item.member"></el-input>
       </el-form-item>
 
       <el-row>
         <el-col :span="8">
-          <el-form-item label="出生年月：" prop="funding_year">
+          <el-form-item label="出生年月：" prop="birth">
             <el-date-picker
               type="date"
               value-format="yyyy-MM-DD"
               placeholder="选择受资助年份"
-              v-model="item.funding_year"
+              v-model="item.birth"
               style="width: 100%"
             ></el-date-picker>
           </el-form-item>
         </el-col>
         <el-col :span="8">
           
-          <el-form-item label="职称：" prop="funding_year">
-                    <el-input v-model="item.funding_year"></el-input>
+          <el-form-item label="职称：" prop="title">
+                    <el-input v-model="item.title"></el-input>
                 </el-form-item>
         </el-col>
         <el-col :span="8">
-          <el-form-item label="移动电话：" prop="release_no">
-            <el-input v-model="item.release_no"></el-input>
+          <el-form-item label="移动电话：" prop="mobile">
+            <el-input v-model="item.mobile"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
 
       <el-row>
         <el-col :span="8">
-          <el-form-item label="最高学历：" prop="subsidy_amount">
-            <el-input v-model="item.subsidy_amount"></el-input>
+          <el-form-item label="最高学历：" prop="education">
+            <el-input v-model="item.education"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="8">
-          <el-form-item label="专业：" prop="project_leader">
-            <el-input v-model="item.project_leader"></el-input>
+          <el-form-item label="专业：" prop="major">
+            <el-input v-model="item.major"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="8">
-          <el-form-item label="身份证号：" prop="phone">
-            <el-input v-model="item.phone"></el-input>
+          <el-form-item label="身份证号：" prop="identity">
+            <el-input v-model="item.identity"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
 
-      <el-form-item label="单位及职务：" prop="project_content">
+      <el-form-item label="单位及职务：" prop="position">
         <el-input
-          v-model="item.project_content"
+          v-model="item.position"
         ></el-input>
       </el-form-item>
 
 
-      <el-form-item label="承担任务：" prop="project_years">
+      <el-form-item label="承担任务：" prop="undertake">
             
-            <el-input type="text" v-model="item.project_years"></el-input>
+            <el-input type="text" v-model="item.undertake"></el-input>
           </el-form-item>
 
 
@@ -224,7 +224,7 @@
             
             <el-input  type="textarea"
           resize="none"
-          rows="8" v-model="item.project_years"></el-input>
+          rows="8" v-model="item.resume"></el-input>
           </el-form-item>
      
     </el-form>
@@ -232,8 +232,9 @@
       class="handle"
       
     >
-    <!-- :style="{ display: isDisabledData || !isHold ? 'none' : 'block' }" -->
-      <el-button type="primary" @click="handleAddHtml">添加一条</el-button>
+
+    <!-- :style="{ display: isDisabledData || !isHold ? 'none' : 'block' }"  -->
+      <el-button type="primary" @click="handleAddHtml" >添加一条</el-button>
       <el-button @click="handleDeleteHtml">删除一条</el-button>
     </div>
   </div>
@@ -249,30 +250,30 @@ export default {
     };
   },
   computed:{
-    ...mapState(['Modern']),
-    modernCompany:{
+    ...mapState(['HighTech']),
+    techTeamUser:{
       get(){
-        this.Modern.ModernData.modernCompany['task_id'] = this.Modern.userTaskId
-        //this.Modern.ModernData.modernCompany.creator = this.Modern.userName
-        return this.Modern.ModernData.modernCompany
+        this.HighTech.HighTechData.techTeamUser['task_id'] = this.HighTech.userTaskId
+        //this.Modern.ModernData.techTeamUser.creator = this.Modern.userName
+        return this.HighTech.HighTechData.techTeamUser
       },
       set(val){
-        this.modernCompany = val
+        this.techTeamUser = val
       }
     },
-    modernSupport: {
+    techTeamList: {
       get() {
-        this.Modern.ModernData.modernSupport[0]['task_id'] = this.Modern.userTaskId;
-        return this.Modern.ModernData.modernSupport;
+        this.HighTech.HighTechData.techTeamList[0]['task_id'] = this.HighTech.userTaskId;
+        return this.HighTech.HighTechData.techTeamList
       },
       set(val) {
         // console.log(val)
-        this.modernSupport = val;
+        this.techTeamList = val;
       },
     },
     isDisabledData:{
       get(){
-        return this.Modern.isDisabledData
+        return this.HighTech.isDisabledData
       },
       set(val){
         this.isDisabledData = val
@@ -282,7 +283,7 @@ export default {
   methods: {
     handleAddHtml() {
       let str = {
-        task_id: this.Modern.userTaskId,
+        task_id: this.HighTech.userTaskId,
         project_name: "", //项目名称
         funding_unit: "", //资助单位
         funding_year: "", //受资助年份
@@ -298,17 +299,17 @@ export default {
         // modifier: '',
         // update_time: ''
       };
-      this.modernSupport.push(str);
+      this.techTeamList.push(str);
     },
     handleDeleteHtml() {
-      let len = this.modernSupport.length;
+      let len = this.techTeamList.length;
       if (len == 1) {
         this.$message({
           message: "就剩最后一条信息了！！！",
           type: "warning",
         });
       } else {
-        this.modernSupport.splice(len - 1, 1);
+        this.techTeamList.splice(len - 1, 1);
       }
     },
   },

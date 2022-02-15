@@ -818,6 +818,47 @@ export default{
 				// update_time: ''
 			},
 		],
+
+		//团队基本情况
+		techTeamUser: {
+			
+			prj_name: "",//项目名称
+			prj_time: "",//起始时间
+			industry: "",//所属产业
+			subfield: "",//所属产业子领域
+			partici_num: "",//项目组总参与人数
+			doctor_num: "",//博士（人）
+			master_num: "",//硕士（人）
+			research_num: "",//研发人员（人）
+			graduate_num: "",//本科（人）
+			other_num: "",//本科以下（人）
+			admin_num: "",//管理人员（人）
+			prj_work: "",//项目总工作量（月）
+			overseas_sponsor: "",//企业是否由海外留学归来人员创办
+			study_abroad: "",//海外留学归来人数（人）
+			project_contact: "",//项目联系人
+			mobile_phone: "",//移动电话
+			e_mail: "",//电子邮箱
+			fax: "",//传真
+		},
+
+		//团队负责人
+		techTeamList: [
+			{
+				birth: "",//出生年月
+				title: "",//职称
+				mobile: "",//移动电话
+				education: "",//最高学历
+				major: "",//专业
+				identity: "",//身份证号
+				member: "",//姓名
+				position: "",//单位及职务
+				autograph: "",//签名
+				undertake: "",//承担任务
+				workload: "",//承担工作量
+				resume: "",//工作简历、主要论文、项目、获奖及专利等
+			}
+		],
 		//项目承担单位基本情况
 		basic_info: {
 			//creator: "",
@@ -951,7 +992,7 @@ export default{
 			other_cost: "",//'(6)其他',
 		}
 	],
-
+	//项目经费
 	techLease: [
 		{  
 		//task_id: "",//'任务id',
