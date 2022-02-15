@@ -84,7 +84,7 @@ export default {
     upLoadFiles() {
       //console.log(this.fileList)
       
-      //let len = this.fileList.length - 1;
+      let len = this.fileList.length - 1;
       UploadFiles(this.formData).then((res) => {
         console.log(res)
         // this.fileList[len]["id"] = res.data.data;
@@ -93,7 +93,7 @@ export default {
         //this.urlFiles.push(res.data.data)
         //this.imageIds.push(res.data.data);
 
-        //this.uploadUrlData.push(this.fileList[len])
+        this.dataFiles.push(this.fileList[len])
         
 
           //uploadTitle.data.push(this.fileList[len]);
@@ -117,13 +117,13 @@ export default {
         
 
         //this.$emit('myUrlFiles', {'delete':file.id})
-        // let idx = this.uploadUrlData.filter((item, index)=>{
-        //   if(item.id == file.id){
-        //     return index
-        //   }
-        // })
+        let idx = this.dataFiles.filter((item, index)=>{
+          if(item.id == file.id){
+            return index
+          }
+        })
         //this.imageIds.splice(r, 1);
-        //this.uploadUrlData.splice(idx, 1);
+        this.dataFiles.splice(idx, 1);
         this.$message.success("删除成功");
         //console.log(res)
       });

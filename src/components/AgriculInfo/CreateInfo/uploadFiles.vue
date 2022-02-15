@@ -81,6 +81,9 @@ export default {
       }
     }
   },
+  mounted() {
+     console.log(this.Agricul.uploadUrlData)
+  },
   methods: {
     DownPromise(index) {
       if (index == 1) {

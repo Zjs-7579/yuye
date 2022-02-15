@@ -29,7 +29,7 @@ import {mapState} from "vuex"
 export default {
   data(){
     return {
-      activeName: 'ApplyInfo'
+      activeName: 'UploadFiles'
     }
   },
   computed: {

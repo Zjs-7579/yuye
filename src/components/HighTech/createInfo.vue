@@ -145,7 +145,7 @@ export default {
   data() {
     return {
       isDataShow: false,
-      activeName: "ProjectFund",
+      activeName: "TeamInfo",
     };
   },
   computed: {

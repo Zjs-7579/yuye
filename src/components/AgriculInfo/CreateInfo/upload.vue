@@ -14,7 +14,7 @@
       :limit="5"
       :on-exceed="handleExceed"
       :auto-upload="true"
-      :http-request="upLoadFiles"
+      :http-request="upLoad"
       :file-list="fileList"
       accept=".png, .jpg, .jpeg, .pdf"
     >
@@ -49,10 +49,10 @@ export default {
         this.imageIds = val;
       },
     },
-    // filesData:{
+    // fileList:{
     //   get(){
-    //     console.log(this.filesData)
-    //     return this.filesData
+    //     console.log(this.dataFiles)
+    //     return this.dataFiles
     //   },
     //   set(val){
     //     this.fileList = val
@@ -61,11 +61,11 @@ export default {
     // uploadUrlData: {
     //   get() {
     //     console.log("0000000000000000000000000000000000000",this.Agricul.uploadUrlData)
-    //     // let uploadUrlData = this.Agricul.uploadUrlData
-    //     //   .filter((item) => {
-    //     //     return item.title == this.isFile;
-    //     //   })[0].data;
-    //       //console.log(uploadTitle)
+    //     let uploadUrlData = this.Agricul.uploadUrlData
+    //       .filter((item) => {
+    //         return item.title == this.isFile;
+    //       })[0].data;
+    //       console.log('11111111',uploadUrlData)
     //     return this.Agricul.uploadUrlData
     //   },
     //   set(val) {
@@ -82,17 +82,17 @@ export default {
       }
     }
   },
-  // mounted() {
-  //   // let uploadUrlData = this.Agricul.uploadUrlData
-  //   //       .filter((item) => {
-  //   //         return item.title == this.isFile;
-  //   //       })[0].data;
-  //         //console.log(uploadUrlData)
-  //         this.fileList = this.uploadUrlData
-  // },
+  mounted() {
+    // let uploadUrlData = this.Agricul.uploadUrlData
+    //       .filter((item) => {
+    //         return item.title == this.isFile;
+    //       })[0].data;
+          //console.log(this.isFile,'-------', this.dataFiles)
+    
+  },
   methods: {
-    upLoadFiles() {
-      //console.log(this.fileList)
+    upLoad() {
+      //console.log(this.formData)
       
       let len = this.fileList.length - 1;
       UploadFiles(this.formData).then((res) => {
@@ -103,7 +103,7 @@ export default {
         //this.urlFiles.push(res.data.data)
         this.imageIds.push(res.data.data);
 
-        this.uploadUrlData.push(this.fileList[len])
+        this.dataFiles.push(this.fileList[len])
         
 
           //uploadTitle.data.push(this.fileList[len]);
@@ -112,7 +112,7 @@ export default {
         //this.$emit('myUrlFiles', {'add':res.data.data})
         this.$message.success("上传成功");
       });
-      console.log(this.uploadUrlData)
+      //console.log(this.uploadUrlData)
     },
     //文件数量改变
     handleChange(file, fileList) {
@@ -127,13 +127,13 @@ export default {
         
 
         //this.$emit('myUrlFiles', {'delete':file.id})
-        let idx = this.uploadUrlData.filter((item, index)=>{
+        let idx = this.dataFiles.filter((item, index)=>{
           if(item.id == file.id){
             return index
           }
         })
         this.imageIds.splice(r, 1);
-        this.uploadUrlData.splice(idx, 1);
+        this.dataFiles.splice(idx, 1);
         this.$message.success("删除成功");
         //console.log(res)
       });
@@ -141,7 +141,7 @@ export default {
 
     handlePreview(file) {
       //console.log(file);
-      //window.open('http://rent.greatbayit.com/yuye/publicrs/image/'+file.id+'.pdf')
+      window.open('http://rent.greatbayit.com/yuye/publicrs/image/'+file.id+'.pdf')
     },
     handleExceed(files, fileList) {
       this.$message.warning(
@@ -164,6 +164,7 @@ export default {
       formData.append("name", file.name);
       formData.append("file", file);
       this.formData = formData;
+      console.log(this.formData)
     },
   }
 };
