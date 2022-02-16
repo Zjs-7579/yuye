@@ -1,34 +1,33 @@
 <template>
   <div class="AgDetails">
-      <DetailsInfo></DetailsInfo>
+    <DetailsInfo></DetailsInfo>
   </div>
 </template>
 
 <script>
-import {detailsInspectData} from "../../api/searchDetailsInspect"
-import DetailsInfo from "../../components/AgriculInfo/CreateInfo/detailsInfo.vue"
-import {mapState} from 'vuex'
+import { detailsInspectData } from "../../api/searchDetailsInspect";
+import DetailsInfo from "../../components/AgriculInfo/CreateInfo/detailsInfo.vue";
+import { mapState } from "vuex";
 export default {
-  data(){
-    return{
-      data: ''
-    }
+  data() {
+    return {
+      data: "",
+    };
   },
   computed: {
-    ...mapState(['Agricul']),
-    
+    ...mapState(["Agricul"]),
   },
   mounted() {
     //console.log(this.$route.query.id);
-    detailsInspectData(this.$route.query.id).then(res=>{
-      console.log(res)
-      this.Agricul.AgriculData = res.data.data
-    })
+    detailsInspectData(this.$route.query.id).then((res) => {
+      console.log(res);
+      this.Agricul.AgriculData = res.data.data;
+    });
   },
   components: {
-    DetailsInfo
-  }
-}
+    DetailsInfo,
+  },
+};
 </script>
 
 <style>
@@ -48,7 +47,7 @@ export default {
 }
 
 .AgDetails .DataContent .Aginancial .dataRow,
-.AgDetails .DataContent .AgUpload .dataRow{
+.AgDetails .DataContent .AgUpload .dataRow {
   overflow: visible;
   overflow-y: visible;
   margin-bottom: 20px;

@@ -1,4 +1,5 @@
 export default {
+  task_name: "", //项目名称
   userName: "", //姓名
   userTaskId: "", //task_id
   isDisabledData: false,
@@ -282,7 +283,7 @@ export default {
   ],
   safetyShareholders: [
     {
-      //task_id: "",
+      // task_id: "",
       shareholder: "", //主要股东名称
       amount: "", //出资金额
       payer_type: "", //出资方式

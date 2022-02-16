@@ -16,10 +16,11 @@
 import {
   AGdetailsInspectData,
   MOdetailsInspectData,
+  SadetailsInspectData,
 } from "../../api/searchDetailsInspect";
 import AgDetailsInfo from "../AgriculInfo/CreateInfo/detailsInfo.vue";
 import MoDetailsInfo from "../ModernInfo/CreateInfo/detailsInfo.vue";
-import SafetyDetailsInfo from "../Safety/createInfo.vue";
+import SafetyDetailsInfo from "../Safety/detailsInfo.vue";
 import { agriculFilesData } from "../../utils/agriculUpData";
 import { modernFilesData } from "../../utils/modernUpData";
 import { mapState } from "vuex";
@@ -55,7 +56,7 @@ export default {
       });
     }
     if (this.$route.query.type == "农产品质量安全检测能力建设项目") {
-      MOdetailsInspectData(this.$route.query.id).then((res) => {
+      SadetailsInspectData(this.$route.query.id).then((res) => {
         modernFilesData(this.Safety, res.data.data);
         // let result = modernFilesData(this.Modern ,res.data.data)
         // console.log(result)

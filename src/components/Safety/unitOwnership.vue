@@ -93,18 +93,19 @@ export default {
   },
   methods: {
     handleAddHtml() {
+      console.log(this.Safety);
       let str = {
         task_id: this.Safety.userTaskId,
         shareholder: "",
         amount: "",
         payer_type: "",
         share_proportion: "",
-        creator: this.Safety.userName,
+        // creator: this.Safety.userName,
       };
-      this.Safety.SafetyShareholders.push(str);
+      this.SafetyShareholders.push(str);
     },
     handleDeleteHtml() {
-      let len = this.Safety.SafetyShareholders.length;
+      let len = this.SafetyShareholders.length;
       if (len == 1) {
         this.$message({
           message: "就剩最后一条信息了！！！",
@@ -112,7 +113,7 @@ export default {
         });
       } else {
         //this.$store.commit('PersonShareholder_deleteHtml', len)
-        this.Safety.SafetyShareholders.splice(len - 1, 1);
+        this.SafetyShareholders.splice(len - 1, 1);
       }
     },
   },

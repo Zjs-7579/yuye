@@ -18,7 +18,7 @@
         <el-radio :label="false">否</el-radio>
       </el-radio-group>
     </p>
-    <div v-if="isHold" >
+    <div v-if="isHold">
       <el-form
         :style="{ display: isHold ? 'block' : 'none' }"
         v-for="(item, index) in agriculturalSupport"
@@ -56,7 +56,6 @@
             </el-form-item>
 
             <!-- <el-form-item label="受资助年份：" prop="funding_year">
-              
               <el-input v-model="item.funding_year"></el-input>
             </el-form-item> -->
           </el-col>
@@ -107,26 +106,29 @@
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="是否完成验收及时间：" :prop="isAccept?'accept':''" class="isAccept">
-              
-                <el-radio-group v-model="isAccept">
+            <el-form-item
+              label="是否完成验收及时间："
+              :prop="isAccept[index] ? 'accept' : ''"
+              class="isAccept"
+            >
+              <el-radio-group v-model="isAccept[index]">
                 <el-radio :label="true">是</el-radio>
                 <el-radio :label="false">否</el-radio>
               </el-radio-group>
-              
-              <el-date-picker 
-              v-if="isAccept"
-              value-format="yyyy-MM-DD"
-              type="date" 
-              placeholder="选择验收时间" 
-              v-model="item.accept" 
-              style="width: 60%"
+
+              <el-date-picker
+                v-if="isAccept[index]"
+                value-format="yyyy-MM-DD"
+                type="date"
+                placeholder="选择验收时间"
+                v-model="item.accept"
+                style="width: 60%"
               ></el-date-picker>
-              <!-- <el-date-picker 
+              <!-- <el-date-picker
               value-format="yyyy-MM"
-              type="month" 
-              placeholder="选择验收时间" 
-              v-model="item.accept" 
+              type="month"
+              placeholder="选择验收时间"
+              v-model="item.accept"
               style="width: 100%;"></el-date-picker> -->
               <!-- <el-input
                 type="textarea"
@@ -142,7 +144,6 @@
                 title="这是一段内容确定删除吗？"
               >
               <el-date-picker slot="reference" type="date" placeholder="选择日期" v-model="item.accept" style="width: 100%;"></el-date-picker>
-                
               </el-popconfirm> -->
             </el-form-item>
 
@@ -151,9 +152,6 @@
               <el-input type="text" v-model="item.accept"></el-input>
             </el-form-item>
           </el-col> -->
-
-
-
           </el-col>
           <el-col :span="8">
             <el-form-item label="未完成验收原因(已完成不填)：" prop="reasons">
@@ -182,9 +180,12 @@ export default {
   data() {
     return {
       isHold: true,
-      isAccept: false,
+      isAccept: [],
       rules: HoldInfoValidator,
     };
+  },
+  mounted() {
+    console.log(this.isAccept, "👻");
   },
   computed: {
     ...mapState(["Agricul"]),
@@ -192,6 +193,9 @@ export default {
       get() {
         this.Agricul.AgriculData.agriculturalSupport[0]["task_id"] =
           this.Agricul.userTaskId;
+        this.isAccept = this.Agricul.AgriculData.agriculturalSupport.map(
+          (item) => !item.accept
+        );
         // this.Agricul.AgriculData.agriculturalSupport[0].creator =
         //   this.Total.userName;
         return this.Agricul.AgriculData.agriculturalSupport;
@@ -243,24 +247,22 @@ export default {
       }
     },
   },
-  watch:{
-    isHold(per){
-      console.log(per)
+  watch: {
+    isHold(per) {
+      console.log(per);
       //console.log(this.agriculturalSupport)
-        if(per){
+      if (per) {
         //console.log(per)
-      //console.log(this.modernSupport)
-      this.handleAddHtml()
-      let len = this.agriculturalSupport.length;
-      this.agriculturalSupport.splice(0, len-1)
-      
-      //console.log(this.modernSupport)
+        //console.log(this.modernSupport)
+        this.handleAddHtml();
+        let len = this.agriculturalSupport.length;
+        this.agriculturalSupport.splice(0, len - 1);
+
+        //console.log(this.modernSupport)
       }
-        //this.$refs.holdForm.resetFields();
-       
-      
-    }
-  }
+      //this.$refs.holdForm.resetFields();
+    },
+  },
 };
 </script>
 
@@ -326,22 +328,20 @@ export default {
 .AgHold .el-textarea__inner {
   border: none;
 }
-.AgHold .isAccept .el-form-item__content{
+.AgHold .isAccept .el-form-item__content {
   display: flex;
 }
-.AgHold .isAccept .el-radio-group{
+.AgHold .isAccept .el-radio-group {
   padding: 0;
   margin: 0;
-  display: block; 
+  display: block;
   flex: 1;
 }
 .AgHold .isAccept .el-radio {
- line-height: 60px;
- margin: 0 15px;
- 
+  line-height: 60px;
+  margin: 0 15px;
 }
-.AgHold .isAccept .el-input__inner{
- 
+.AgHold .isAccept .el-input__inner {
   line-height: 40px;
   flex: 2;
 }

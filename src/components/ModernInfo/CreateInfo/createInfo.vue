@@ -88,7 +88,7 @@ export default {
   data() {
     return {
       isDataShow: true,
-      activeName: "UploadFiles",
+      activeName: "UnitInfo",
     };
   },
   computed: {
@@ -121,8 +121,8 @@ export default {
     SubmitButton,
   },
   mounted() {
-    this.$store.commit("Modern_IsDisabledDataClose");
-    modernClearData(this.Modern);
+    this.$store.commit("Modern_IsDisabledDataClose"); // 打开禁用
+    modernClearData(this.Modern); // 清除数据
     if (this.$route.query.id != undefined) {
       MOdetailsInspectData(this.$route.query.id).then((res) => {
         //console.log('data', res)

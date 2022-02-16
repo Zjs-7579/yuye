@@ -259,7 +259,7 @@ const routes = [
     path: "/safety",
     name: "Safety",
     component: Safety,
-    meta: { title: "安全" },
+    meta: { title: "农产品质量安全" },
     children: [
       {
         path: "/safety",

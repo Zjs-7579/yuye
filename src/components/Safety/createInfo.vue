@@ -90,6 +90,7 @@ import UploadFiles from "./uploadFiles.vue";
 // import MaterialList from "./MaterialList.vue";
 import InancialInfo from "./inancialInfo.vue";
 import { userTaskid } from "../../api/Safety/userInfo";
+// import { safetyClearData } from "../../../utils/safetyUpData";
 export default {
   data() {
     return {
@@ -127,6 +128,8 @@ export default {
     },
   },
   mounted() {
+    // this.$store.commit("");
+    // safetyClearData(this.Safety);
     userTaskid().then((res) => {
       this.$store.commit("Safety_UserTaskId", res.data.data);
     });
