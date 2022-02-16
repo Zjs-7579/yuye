@@ -184,9 +184,6 @@ export default {
       rules: HoldInfoValidator,
     };
   },
-  mounted() {
-    console.log(this.isAccept, "👻");
-  },
   computed: {
     ...mapState(["Agricul"]),
     agriculturalSupport: {
