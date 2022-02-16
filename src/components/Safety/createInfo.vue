@@ -128,11 +128,11 @@ export default {
     },
   },
   mounted() {
-    // this.$store.commit("");
-    // safetyClearData(this.Safety);
-    userTaskid().then((res) => {
-      this.$store.commit("Safety_UserTaskId", res.data.data);
-    });
+    {
+      userTaskid().then((res) => {
+        this.$store.commit("Safety_UserTaskId", res.data.data);
+      });
+    }
   },
 };
 </script>

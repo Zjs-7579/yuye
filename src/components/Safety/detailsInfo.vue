@@ -153,13 +153,13 @@ export default {
         });
     },
   },
-  // mounted() {
-  //   //console.log(this.Agricul)
-  //   console.log(this.$router.query.id);
-  //   if (!this.$router.query.id) {
-  //     modernClearData(this.Safety);
-  //   }
-  // },
+  mounted() {
+    //console.log(this.Agricul)
+    console.log(this.$router.query.id);
+    if (!this.$router.query.id) {
+      safetyClearData(this.Safety);
+    }
+  },
 };
 </script>
 

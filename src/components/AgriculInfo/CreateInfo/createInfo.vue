@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="isData"></div>
+    <div v-if="isData">loading...</div>
     <div class="AgVessel" v-else>
       <el-tabs
         type="border-card"
@@ -93,34 +93,61 @@ export default {
     },
   },
   created() {
+    // this.$store.commit("Agricul_IsDisabledDataClose");
+    // agriculClearData(this.Agricul);
+    // if (this.$route.query.id != undefined) {
+    //   AGdetailsInspectData(this.$route.query.id).then((res) => {
+    //     //console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',res)
+    //     let result = agriculData(res.data.data);
+    //     let uploadUrlData = agriculFilesData(res.data.data.images);
+    //     this.$store.commit("Agricul_AllClearData", { result, uploadUrlData });
+    //     this.$store.commit("Agricul_UserTaskId", this.$route.query.id);
+    //     //this.Agricul.AgriculData = result
+    //     //this.Agricul.uploadUrlData = uploadUrlData
+    //     //console.log("1111111111111111111111111111111111111111111111111111111",this.Agricul)
+    //     //console.log(this.Agricul.userTaskId)
+    //   });
+    //   this.isShow = true;
+    //   //this.isData = false
+    // } else {
+    //   userTaskid().then((res) => {
+    //     //console.log(res)
+    //     this.$store.commit("Agricul_UserTaskId", res.data.data);
+    //   });
+    // }
+  },
+  mounted() {
     this.$store.commit("Agricul_IsDisabledDataClose");
     agriculClearData(this.Agricul);
     if (this.$route.query.id != undefined) {
       AGdetailsInspectData(this.$route.query.id).then((res) => {
         //console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',res)
-        let result = agriculData(res.data.data);
-        let uploadUrlData = agriculFilesData(res.data.data.images);
-
-        this.$store.commit("Agricul_AllClearData", { result, uploadUrlData });
-        this.$store.commit("Agricul_UserTaskId", this.$route.query.id);
-
+        if (res.data.code == 200) {
+          let result = agriculData(res.data.data);
+          let uploadUrlData = agriculFilesData(res.data.data.images);
+          this.$store.commit("Agricul_AllClearData", { result, uploadUrlData });
+          this.$store.commit("Agricul_UserTaskId", this.$route.query.id);
+          this.isData = false;
+        }
         //this.Agricul.AgriculData = result
         //this.Agricul.uploadUrlData = uploadUrlData
         //console.log("1111111111111111111111111111111111111111111111111111111",this.Agricul)
         //console.log(this.Agricul.userTaskId)
       });
-      //this.isData = false
     } else {
       userTaskid().then((res) => {
         //console.log(res)
         this.$store.commit("Agricul_UserTaskId", res.data.data);
       });
     }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.isData = false;
-    }, 2000);
+    // if (this.$route.query.id == undefined) {
+    //   agriculClearData(this.Agricul);
+    //   userTaskid().then((res) => {
+    //     //console.log(res)
+    //     this.$store.commit("Agricul_UserTaskId", res.data.data);
+    //   });
+    // }
+    // this.isData = false;
     // if(this.Agricul.userTaskId > -1){
     // 	this.isData = false
     // }

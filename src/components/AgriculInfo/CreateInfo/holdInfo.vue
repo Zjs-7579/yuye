@@ -111,7 +111,10 @@
               :prop="isAccept[index] ? 'accept' : ''"
               class="isAccept"
             >
-              <el-radio-group v-model="isAccept[index]">
+              <el-radio-group
+                v-model="isAccept[index]"
+                @change="(value) => changeIndex(value, index)"
+              >
                 <el-radio :label="true">是</el-radio>
                 <el-radio :label="false">否</el-radio>
               </el-radio-group>
@@ -180,7 +183,6 @@ export default {
   data() {
     return {
       isHold: true,
-      isAccept: [],
       rules: HoldInfoValidator,
     };
   },
@@ -190,9 +192,6 @@ export default {
       get() {
         this.Agricul.AgriculData.agriculturalSupport[0]["task_id"] =
           this.Agricul.userTaskId;
-        this.isAccept = this.Agricul.AgriculData.agriculturalSupport.map(
-          (item) => !item.accept
-        );
         // this.Agricul.AgriculData.agriculturalSupport[0].creator =
         //   this.Total.userName;
         return this.Agricul.AgriculData.agriculturalSupport;
@@ -268,6 +267,10 @@ export default {
       } else {
         this.agriculturalSupport.splice(len - 1, 1);
       }
+    },
+    changeIndex(value, index) {
+      this.isAccept[index] = !value;
+      this.$forceUpdate();
     },
   },
   watch: {

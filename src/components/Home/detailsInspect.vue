@@ -34,38 +34,43 @@ export default {
     ...mapState(["Agricul", "Modern", "Safety"]),
   },
   mounted() {
-    console.log(this.$route.query.type);
     if (this.$route.query.type == "农业产业化贴息项目") {
       AGdetailsInspectData(this.$route.query.id).then((res) => {
         console.log(res);
-        agriculFilesData(this.Agricul.uploadUrlData, res.data.data);
-        // let result = agriculFilesData(this.Agricul ,res.data.data)
-        // console.log(result)
-        this.$store.commit("Agricul_IsDisabledDataOpen");
-        this.Agricul.AgriculData = res.data.data;
+        if (res.data.code == 200) {
+          agriculFilesData(this.Agricul.uploadUrlData, res.data.data);
+          // let result = agriculFilesData(this.Agricul ,res.data.data)
+          // console.log(result)
+          this.$store.commit("Agricul_IsDisabledDataOpen");
+          this.Agricul.AgriculData = res.data.data;
+        }
       });
     }
     if (this.$route.query.type == "现代农业项目") {
       MOdetailsInspectData(this.$route.query.id).then((res) => {
-        modernFilesData(this.Modern, res.data.data);
-        // let result = modernFilesData(this.Modern ,res.data.data)
-        // console.log(result)
-        this.$store.commit("Modern_IsDisabledDataOpen");
-        this.Modern.ModernData = res.data.data;
-        //console.log(this.Modern.ModernData)
+        if (res.data.code == 200) {
+          modernFilesData(this.Modern, res.data.data);
+          // let result = modernFilesData(this.Modern ,res.data.data)
+          // console.log(result)
+          this.$store.commit("Modern_IsDisabledDataOpen");
+          this.Modern.ModernData = res.data.data;
+          //console.log(this.Modern.ModernData)
+        }
       });
     }
     if (this.$route.query.type == "农产品质量安全检测能力建设项目") {
       SadetailsInspectData(this.$route.query.id).then((res) => {
-        modernFilesData(this.Safety, res.data.data);
-        // let result = modernFilesData(this.Modern ,res.data.data)
-        // console.log(result)
-        this.$store.commit("Safety_IsDisabledDataOpen");
-        for (const [key, value] of Object.entries(res.data.data)) {
-          if (!value) continue;
-          this.Safety[key] = value;
+        if (res.data.code == 200) {
+          modernFilesData(this.Safety, res.data.data);
+          // let result = modernFilesData(this.Modern ,res.data.data)
+          // console.log(result)
+          this.$store.commit("Safety_IsDisabledDataOpen");
+          for (const [key, value] of Object.entries(res.data.data)) {
+            if (!value) continue;
+            this.Safety[key] = value;
+          }
+          //console.log(this.Modern.ModernData)
         }
-        //console.log(this.Modern.ModernData)
       });
     }
   },

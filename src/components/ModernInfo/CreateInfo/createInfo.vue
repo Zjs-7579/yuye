@@ -126,6 +126,7 @@ export default {
     if (this.$route.query.id != undefined) {
       MOdetailsInspectData(this.$route.query.id).then((res) => {
         //console.log('data', res)
+        // if (res.data.code == 200) {}
         this.$store.commit("Modern_UserTaskId", this.$route.query.id);
         let result = modernData(res.data.data);
         let uploadUrlData;
