@@ -124,16 +124,26 @@ export default {
           type: 'warning'
         }).then(() => {
          createSubmit(this.Modern).then(
-            this.$message({
-              type: "success",
-              message: "表单提交成功!",
-            }),
-            this.$store.commit("Modern_IsDisabledDataClose"),
-            
-           setTimeout(this.$router.push({
-              path: "/home",
-            }),1000)
-            
+
+           res=>{
+              if(res.data.code == 400){
+                this.$message({
+                  type: "warning",
+                  message: res.data.msg,
+                })
+              }
+
+              if(res.data.code == 200){
+                this.$message({
+                type: "success",
+                message: "表单提交成功!",
+              }),
+              this.$store.commit("Modern_IsDisabledDataClose"),
+               setTimeout(this.$router.push({
+                  path: "/home",
+                }),1000)
+              }
+            }
             
           );
         }).catch(() => {

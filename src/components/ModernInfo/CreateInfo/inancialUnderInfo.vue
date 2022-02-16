@@ -32,7 +32,7 @@
             <el-input
               type="number"
               :disabled="isDisabledData"
-              v-model="modernCauses[2][item.Model]"
+              v-model="modernCauses[0][item.Model]"
             ></el-input></div
         ></el-col>
         <el-col :span="5"
@@ -48,7 +48,7 @@
             <el-input
               type="number"
               :disabled="isDisabledData"
-              v-model="modernCauses[0][item.Model]"
+              v-model="modernCauses[2][item.Model]"
             ></el-input></div
         ></el-col>
       </el-row>

@@ -85,7 +85,7 @@ const inancialPanyList = [
     ,{
         id: '18',
         type: ' 3. 其他固定资产原值',
-        Model: 'othert_assets'
+        Model: 'other_assets'
     },
     {
         id: '19',
@@ -105,7 +105,7 @@ const inancialPanyList = [
     {
         id: '22',
         type: '九、 年末货币资金金额',
-        Model: 'monetary_Fund'
+        Model: 'monetary_fund'
     },
     {
         id: '23',

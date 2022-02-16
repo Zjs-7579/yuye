@@ -34,7 +34,7 @@
                 index == 6 || index == 12 || index == 18 ? true : isDisabledData
               "
               type="number"
-              v-model="modernFinances[2][item.Model]"
+              v-model="modernFinances[0][item.Model]"
             ></el-input></div
         ></el-col>
         <el-col :span="5"
@@ -54,7 +54,7 @@
                 index == 6 || index == 12 || index == 18 ? true : isDisabledData
               "
               type="number"
-              v-model="modernFinances[0][item.Model]"
+              v-model="modernFinances[2][item.Model]"
             ></el-input></div
         ></el-col>
       </el-row>

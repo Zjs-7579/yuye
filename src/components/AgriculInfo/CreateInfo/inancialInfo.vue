@@ -14,9 +14,9 @@
       <el-row v-for="(item,index) in inancialList" :key="item.id" >
         <el-col :span="4"><div class="grid-content bg-purple" style="text-align: center;">{{item.id}}</div></el-col>
         <el-col :span="5" ><div class="grid-content bg-purple"  style=" text-align: left; padding-left: 1em; " :class="(boldFrom.includes(index)?'boldText':'')">{{item.type}}</div></el-col>
-        <el-col :span="5" ><div class="grid-content bg-purple"><el-input :disabled="(index==6||index==12||index==18)?true:isDisabledData" type="number" v-model="agriculturalFinance[2][item.Model]" :class="(inancialType == item.Model&&inancialTypeSum==1)?'tttt':''"></el-input></div></el-col>
+        <el-col :span="5" ><div class="grid-content bg-purple"><el-input :disabled="(index==6||index==12||index==18)?true:isDisabledData" type="number" v-model="agriculturalFinance[0][item.Model]" :class="(inancialType == item.Model&&inancialTypeSum==1)?'tttt':''"></el-input></div></el-col>
         <el-col :span="5" ><div class="grid-content bg-purple"><el-input :disabled="(index==6||index==12||index==18)?true:isDisabledData" type="number" v-model="agriculturalFinance[1][item.Model]" :class="(inancialType == item.Model&&inancialTypeSum==2)?'tttt':''"></el-input></div></el-col>
-        <el-col :span="5" ><div class="grid-content bg-purple"><el-input :disabled="(index==6||index==12||index==18)?true:isDisabledData" type="number" v-model="agriculturalFinance[0][item.Model]" :class="(inancialType == item.Model&&inancialTypeSum==3)?'tttt':''"></el-input></div></el-col>
+        <el-col :span="5" ><div class="grid-content bg-purple"><el-input :disabled="(index==6||index==12||index==18)?true:isDisabledData" type="number" v-model="agriculturalFinance[2][item.Model]" :class="(inancialType == item.Model&&inancialTypeSum==3)?'tttt':''"></el-input></div></el-col>
       </el-row>
     </div>
 

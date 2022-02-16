@@ -16,11 +16,16 @@ export async function DeleteFiles(id){
     return res
 }
 
-
-
 //下载附件
+export async function DownContentFiles(id){
+    //console.log(parmse)
+    const res = await http.get(`common/ty/download/${id}`)
+    return res
+}
+
+//下载申请书
 export async function DownContentText(id){
     //console.log(parmse)
-    const res = await http.get(`modern/ty/apply/file/${id}`)
+    const res = await http.get(`modern/ty/apply/report/${id}`)
     return res
 }

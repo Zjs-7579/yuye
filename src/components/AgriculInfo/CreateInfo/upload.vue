@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { UploadFiles, DeleteFiles } from "../../../api/Agricul/upLoad";
+import { UploadFiles, DeleteFiles, DownContentFiles } from "../../../api/Agricul/upLoad";
 import { mapState } from "vuex";
 export default {
   props: ["isFile", "dataFiles"],
@@ -141,7 +141,9 @@ export default {
 
     handlePreview(file) {
       //console.log(file);
-      window.open('http://rent.greatbayit.com/yuye/publicrs/image/'+file.id+'.pdf')
+      DownContentFiles(file.id).then(res=>{
+        window.open(res.data.data)
+      })
     },
     handleExceed(files, fileList) {
       this.$message.warning(

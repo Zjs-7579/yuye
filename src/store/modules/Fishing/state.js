@@ -88,7 +88,7 @@ export default {
         //project_endtime: "",//项目结束时间
         //edit_time: "",//填表时间
         //situation: "",//情况：1.建造 2.购买
-        saon_number: "",//序号
+        //saon_number: "",//序号
         ship_number: "",//船名号
         type: "",//作业类型
         gross_tonnage: "",//总吨位(吨)

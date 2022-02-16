@@ -110,16 +110,16 @@
         <el-col :span="8">
           <el-form-item
             label="是否完成验收及时间："
-            :prop="isAccept ? 'accept' : ''"
+            :prop="isAccept[index] ? 'accept' : ''"
             class="isAccept"
           >
-            <el-radio-group v-model="isAccept">
+            <el-radio-group v-model="isAccept[index]">
               <el-radio :label="true">是</el-radio>
               <el-radio :label="false">否</el-radio>
             </el-radio-group>
 
             <el-date-picker
-              v-if="isAccept"
+              v-if="isAccept[index]"
               value-format="yyyy-MM-DD"
               type="date"
               placeholder="选择验收时间"
@@ -163,7 +163,7 @@ export default {
   data() {
     return {
       isHold: true,
-      isAccept: false,
+      //isAccept: false,
       rules: HoldInfoValidator,
     };
   },
@@ -177,6 +177,33 @@ export default {
       set(val) {
         // console.log(val)
         this.modernSupport = val;
+      },
+    },
+    isAccept:{
+      get() {
+        let list = []
+        //console.log(this.Agricul.AgriculData.agriculturalSupport[0].accept)
+        // this.Agricul.AgriculData.agriculturalSupport[0].creator =
+        //   this.Total.userName;
+        for(let item of this.Modern.ModernData.modernSupport){
+          if(item.accept == ''){
+            list.push(false)
+          }else{
+            list.push(true)
+          }
+          
+        }
+        console.log(list)
+        // if(this.Agricul.AgriculData.agriculturalSupport.accept){
+        //   return true
+        // }else{
+        //   return false
+        // }
+        //return this.Agricul.AgriculData.agriculturalSupport.accept;
+        return list
+      },
+      set(val) {
+        this.isAccept = val;
       },
     },
     isDisabledData: {

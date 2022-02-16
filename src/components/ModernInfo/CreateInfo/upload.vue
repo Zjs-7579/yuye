@@ -30,7 +30,7 @@
 
 <script>
 
-import {UploadFiles, DeleteFiles} from '../../../api/Modern/upLoad'
+import {UploadFiles, DeleteFiles, DownContentFiles} from '../../../api/Modern/upLoad'
 import {mapState} from 'vuex'
 export default {
     props:["isFile"],
@@ -129,8 +129,9 @@ export default {
       },
 
       handlePreview(file) {
-        //console.log(file);
-        //window.open('http://rent.greatbayit.com/yuye/publicrs/image/'+file.id+'.pdf')
+         DownContentFiles(file.id).then(res=>{
+        window.open(res.data.data)
+      })
       },
       handleExceed(files, fileList) {
         this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);

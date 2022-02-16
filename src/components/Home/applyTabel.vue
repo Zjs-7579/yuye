@@ -54,7 +54,7 @@
       prop="note">
     </el-table-column> -->
 
-      <el-table-column width="250" label="申请时间" prop="update_time">
+      <el-table-column width="250" label="申请时间" prop="create_time">
       </el-table-column>
 
       <el-table-column label="操作" width="250">

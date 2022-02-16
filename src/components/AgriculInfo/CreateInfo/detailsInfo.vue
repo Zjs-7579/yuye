@@ -48,10 +48,15 @@
       <div id="UploadFiles"><UploadFiles></UploadFiles></div>
       <!-- <UploadFilesList></UploadFilesList> -->
 
-      <div id="AuditInfo" v-if="this.$route.name == 'UserDetail'"><AuditInfo></AuditInfo></div>
+      <div id="AuditInfo" v-if="this.$route.name == 'UserDetail'">
+        <AuditInfo></AuditInfo>
+      </div>
     </div>
-      
-    <div class="allBtn" :style="{ display: this.Agricul.isDetailsContent?'none':'block' }">
+
+    <div
+      class="allBtn"
+      :style="{ display: this.Agricul.isDetailsContent ? 'none' : 'block' }"
+    >
       <el-button type="primary" @click="SubmitData">提交</el-button>
     </div>
   </div>
@@ -114,18 +119,30 @@ export default {
       })
         .then(() => {
           createSubmit(this.Agricul).then(
-            this.$message({
-              type: "success",
-              message: "表单提交成功!",
-            }),
+             res=>{
+              if(res.data.code == 400){
+                this.$message({
+                  type: "warning",
+                  message: res.data.msg,
+                })
+              }
 
+              if(res.data.code == 200){
+                this.$message({
+                type: "success",
+                message: "表单提交成功!",
+              }),
+               setTimeout(this.$router.push({
+                  path: "/home",
+                }),1000)
+              }
+            }
+          )
+           
             
-            setTimeout(this.$router.push({
-              path: "/home",
-            }),1000),
+           
             
             
-          );
         })
         .catch(() => {
           this.$message({
@@ -147,9 +164,9 @@ export default {
 </script>
 
 <style>
-.DataContent{
- width: 100%;
- /* position: static;
+.DataContent {
+  width: 100%;
+  /* position: static;
  margin-top: 55px; */
 }
 .DataContent .allBtn {
@@ -158,7 +175,6 @@ export default {
   height: 50px;
   text-align: center;
   margin-top: 30px;
-  
 }
 .DataContent .nav-tabs {
   box-sizing: border-box;

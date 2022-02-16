@@ -71,7 +71,9 @@ export default {
   props: ["activeName"],
   data() {
     return {
+      UnitInfoBool: false,
       ApplyInfoBool: false,
+      StatisticalInfoBool: false,
       TableBool: false,
       visibleSubmitContent: false,
       activeList: [
@@ -155,7 +157,42 @@ export default {
       }
 
       if(activeName == 'StatisticalInfo'){
-        console.log("StatisticalInfo ")
+        this.StatisticalInfoBool = true;
+        if(this.declare_name == "建造远洋渔船" || this.declare_name == "购买远洋渔船"){
+          //console.log(this.$parent.$refs.ApplyInfo.$refs.BuildFishing)
+          for(let item of this.Fishing.OceanParam.oceanSituationList){
+            //console.log(item)
+            for(let res in item){
+              //console.log(res)
+              if(item[res] == ""){
+                console.log(item[res])
+                this.StatisticalInfoBool = false;
+                break
+              }
+            }
+          }
+        }
+       
+        if(this.declare_name == "境外渔业资源使用费"){
+          for(let item of this.Fishing.OceanParam.oceanCostList){
+            for(let res in item){
+              if(item[res] == ""){
+                this.StatisticalInfoBool = false;
+                break
+              }
+            }
+          }
+        }
+        if(this.declare_name == "自捕远洋海产品回运费"){
+          for(let item of this.Fishing.OceanParam.oceanVolumes){
+            for(let res in item){
+              if(item[res] == ""){
+                this.StatisticalInfoBool = false;
+                break
+              }
+            }
+          }
+        }
       }
 
       if(activeName == 'UploadFiles'){
@@ -173,7 +210,7 @@ export default {
     },
     //保存
     handlePreserveInfo() {
-      console.log(this.activeName)
+      //console.log(this.activeName)
       if(this.activeName == 'ApplyInfo'){
         createInfoApplyData(this.Fishing.OceanDeclaration).then(() => {
         this.$message({
