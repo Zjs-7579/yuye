@@ -512,6 +512,12 @@ export function modernData(newData) {
             newData[item] = ModernData[item]
             //console.log(newData[item] )
         }
+
+        if(item == 'modernSupport' && newData[item].length == 0){
+            //console.log('4444')
+            newData[item] = ModernData[item]
+            //console.log(newData[item] )
+        }
   
         if(item == 'modernEquipment'){
             //console.log('dsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', newData[item])

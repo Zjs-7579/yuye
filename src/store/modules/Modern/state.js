@@ -119,7 +119,7 @@ export default {
 				//creator: ""
 			},
 		],
-		//2020 2019 2018
+		//2018 2019 2020
 		modernFinances: [
 			{
 				//task_id: "",
@@ -233,7 +233,7 @@ export default {
 				//creator: ""
 			},
 		],
-		//2020 20219 2018
+		//2018 2019 2020
 		modernCauses: [
 			{
 				//task_id: "",
@@ -254,11 +254,11 @@ export default {
 				fixed_assets: "", //年末固定资产原值
 				sci_room_assets: "", //年末科研用房原值
 				sci_equipment_assets: "", //年末科研设备原值
-				othert_assets: "", //其他固定资产原值
+				other_assets: "", //其他固定资产原值
 				fixed_growth_rate: "", //固定资产增长率
 				equipment_growth_rate: "", //科研设备资产增长率
 				total_liabilities: "", //年末负债总额
-				monetary_Fund: "", //年末货币资金金额
+				monetary_fund: "", //年末货币资金金额
 				borrowed_money: "", //年末借入款项金额
 				//creator: "",//创建人
 			},
@@ -281,11 +281,11 @@ export default {
 				fixed_assets: "", //年末固定资产原值
 				sci_room_assets: "", //年末科研用房原值
 				sci_equipment_assets: "", //年末科研设备原值
-				othert_assets: "", //其他固定资产原值
+				other_assets: "", //其他固定资产原值
 				fixed_growth_rate: "", //固定资产增长率
 				equipment_growth_rate: "", //科研设备资产增长率
 				total_liabilities: "", //年末负债总额
-				monetary_Fund: "", //年末货币资金金额
+				monetary_fund: "", //年末货币资金金额
 				borrowed_money: "", //年末借入款项金额
 				//creator: "",//创建人
 			},
@@ -308,11 +308,11 @@ export default {
 				fixed_assets: "", //年末固定资产原值
 				sci_room_assets: "", //年末科研用房原值
 				sci_equipment_assets: "", //年末科研设备原值
-				othert_assets: "", //其他固定资产原值
+				other_assets: "", //其他固定资产原值
 				fixed_growth_rate: "", //固定资产增长率
 				equipment_growth_rate: "", //科研设备资产增长率
 				total_liabilities: "", //年末负债总额
-				monetary_Fund: "", //年末货币资金金额
+				monetary_fund: "", //年末货币资金金额
 				borrowed_money: "", //年末借入款项金额
 				//creator: "",//创建人
 			},

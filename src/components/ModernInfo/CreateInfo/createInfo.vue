@@ -111,9 +111,10 @@ export default {
 		modernClearData(this.Modern)
     if(this.$route.query.id != undefined){
 			MOdetailsInspectData(this.$route.query.id).then(res=>{
-				//console.log('data', res)
+				console.log('-------------------------------', res)
 				this.$store.commit('Modern_UserTaskId', this.$route.query.id)
         let result = modernData(res.data.data)
+        console.log('000000', result)
         let uploadUrlData
         res.data.data.images?uploadUrlData = modernFilesData(res.data.data.images):uploadUrlData = []
         //console.log('result', result)

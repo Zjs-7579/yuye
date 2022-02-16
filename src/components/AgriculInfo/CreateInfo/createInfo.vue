@@ -84,7 +84,7 @@ export default {
 		agriculClearData(this.Agricul)
 		if(this.$route.query.id != undefined){
 			AGdetailsInspectData(this.$route.query.id).then(res=>{
-				//console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',res)
+				console.log('----------------------------',res)
 				let result = agriculData(res.data.data)
 				let uploadUrlData = agriculFilesData(res.data.data.images)
 

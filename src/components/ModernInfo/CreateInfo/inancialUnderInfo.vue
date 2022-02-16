@@ -90,6 +90,7 @@ export default {
     modernCauses:{
       handler(val) {
         let year = 1
+        console.log(val)
         for(let item of val){
           item['task_id'] = this.Modern.userTaskId
           //item.creator = this.Modern.userName
