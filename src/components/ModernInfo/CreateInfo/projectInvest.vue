@@ -1,41 +1,38 @@
 <template>
   <div class="MoInvest">
-    <el-row class="title"> 项目投资情况 </el-row>
+<el-row class="title">
+            项目投资情况
+        </el-row>
     <el-form
       :model="modernInvestTotal"
       ref="InvestTotal"
+      :rules="rules"
       :disabled="isDisabledData"
       label-width="250px"
       class="demo-ruleForm"
     >
       <el-row>
         <el-col :span="12">
-          <el-form-item label="项目总投资:">
+          <el-form-item label="项目总投资:" prop="project_invest">
             <el-input v-model="modernInvestTotal.project_invest"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="申请市财政资助额:">
+          <el-form-item label="申请市财政资助额:" prop="support">
             <el-input v-model="modernInvestTotal.support"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
     </el-form>
 
-    <ProjectInvestDetailed
-      title="建筑工程类投资明细"
-      :data="modernInvestMent.jz"
-    ></ProjectInvestDetailed>
+    <ProjectInvestDetailed title="建筑工程类投资明细" :data="modernInvestMent.jz"></ProjectInvestDetailed>
 
     <ProjectInvestDetailed
       title="生产设施建设类投资明细"
       :data="modernInvestMent.sc"
     ></ProjectInvestDetailed>
 
-    <ProjectInvestDetailed
-      title="仪器、设备类投资明细"
-      :data="modernInvestMent.yq"
-    ></ProjectInvestDetailed>
+    <ProjectInvestDetailed title="仪器、设备类投资明细" :data="modernInvestMent.yq"></ProjectInvestDetailed>
 
     <ProjectInvestEquip></ProjectInvestEquip>
   </div>
@@ -44,6 +41,7 @@
 <script>
 import ProjectInvestDetailed from "./projectInvestDetailed.vue";
 import ProjectInvestEquip from "./projectInvestEquip.vue";
+import { ModernOther } from "../../../utils/validator"
 import { mapState } from "vuex";
 export default {
   data() {
@@ -51,37 +49,37 @@ export default {
       // InvestTotal: {
       //   project_invest: "",
       //   support: "",
-      // },
+      // }
+      rules: ModernOther,
     };
   },
   computed: {
     ...mapState(["Modern"]),
     modernInvestTotal: {
       get() {
-        this.Modern.ModernData.modernInvestTotal["task_id"] =
-          this.Modern.userTaskId;
+        this.Modern.ModernData.modernInvestTotal['task_id'] = this.Modern.userTaskId
         return this.Modern.ModernData.modernInvestTotal;
       },
       set(val) {
         this.modernInvestTotal = val;
       },
     },
-    modernInvestMent: {
-      get() {
-        let jz = this.Modern.ModernData.modernInvestMent.filter((res) => {
-          return res.inv_type == "建筑工程类投资明细";
-        });
-        let sc = this.Modern.ModernData.modernInvestMent.filter((res) => {
-          return res.inv_type == "生产设施建设类投资明细";
-        });
-        let yq = this.Modern.ModernData.modernInvestMent.filter((res) => {
-          return res.inv_type == "仪器、设备类投资明细";
-        });
-        return { jz, sc, yq };
+    modernInvestMent:{
+      get(){
+        let jz = this.Modern.ModernData.modernInvestMent.filter(res=>{
+          return res.inv_type == "建筑工程类投资明细"
+        })
+        let sc = this.Modern.ModernData.modernInvestMent.filter(res=>{
+          return res.inv_type == "生产设施建设类投资明细"
+        })
+        let yq = this.Modern.ModernData.modernInvestMent.filter(res=>{
+          return res.inv_type == "仪器、设备类投资明细"
+        })
+        return {jz, sc, yq}
       },
-      set(val) {
-        this.modernInvestMent = val;
-      },
+      set(val){
+        this.modernInvestMent = val
+      }
     },
     isDisabledData: {
       get() {
@@ -117,15 +115,15 @@ export default {
   overflow: hidden;
   overflow-y: auto;
 }
-.MoInvest .title {
-  background-color: #ece8e8;
-  height: 60px;
-  line-height: 60px;
-  font-size: 25px;
-  padding: 0 15px;
-  font-weight: bold;
-  border: 1px solid #ccc;
-}
+.MoInvest .title{
+        background-color: #ece8e8;
+        height: 60px;
+        line-height: 60px;
+        font-size: 25px;
+        padding: 0 15px;
+        font-weight: bold;
+        border: 1px solid #ccc;
+    }
 .MoInvest .demo-ruleForm .el-form-item__label {
   text-align: center;
   height: 62px;

@@ -89,13 +89,13 @@ export default {
   watch: {
     techCauses:{
       handler(val) {
-        let year = 1
+        let year = 3
         for(let item of val){
           item['task_id'] = this.HighTech.userTaskId
           //item.creator = this.Modern.userName
           
           item.pro_year = this.dataYear - year;
-          year++
+          year--
         }
       },
       deep: true

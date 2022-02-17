@@ -1,6 +1,6 @@
 <template>
   <div class="MoEquip">
-    <el-row class="title"> 主要设备清单 </el-row>
+    <el-row class="title asterisk"> 主要设备清单 </el-row>
     <el-row class="titleRow">
       <el-col :span="2">序号</el-col>
       <el-col :span="4">设备名称</el-col>
@@ -223,5 +223,11 @@ export default {
 .MoEquip .dataRow .el-input__inner {
   width: 100%;
   border: none;
+}
+.MoEquip .asterisk::before {
+    content: '*';
+    display: inline-block;
+    color: #F56C6C;
+    margin-right: 4px
 }
 </style>

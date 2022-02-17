@@ -1,5 +1,6 @@
 <template>
   <div class="MoVessel">
+    
     <el-tabs
       type="border-card"
       class="box"
@@ -10,11 +11,7 @@
         <UnitInfo ref="ModernUnitInfoValidate"></UnitInfo>
       </el-tab-pane>
 
-      <el-tab-pane
-        label="近三年财务状况"
-        :disabled="isDataShow"
-        name="InancialInfo"
-      >
+      <el-tab-pane label="近三年财务状况" :disabled="isDataShow" name="InancialInfo">
         <InancialInfo></InancialInfo>
       </el-tab-pane>
 
@@ -26,11 +23,7 @@
         <HoldInfo ref="ModernHoldInfoValidate"></HoldInfo>
       </el-tab-pane>
 
-      <el-tab-pane
-        label="项目承担单位基本情况"
-        :disabled="isDataShow"
-        name="ProjectUnitInfo"
-      >
+      <el-tab-pane label="项目承担单位基本情况" :disabled="isDataShow" name="ProjectUnitInfo">
         <ProjectUnitInfo></ProjectUnitInfo>
       </el-tab-pane>
 
@@ -42,22 +35,19 @@
         <ProjectContent ref="ModernProjectContentValidate"></ProjectContent>
       </el-tab-pane>
 
-      <el-tab-pane
-        label="项目投资情况"
-        :disabled="isDataShow"
-        name="ProjectInvest"
-      >
+      <el-tab-pane label="项目投资情况" :disabled="isDataShow" name="ProjectInvest">
         <ProjectInvest></ProjectInvest>
       </el-tab-pane>
 
       <el-tab-pane label="摘要" :disabled="isDataShow" name="SummarizeInfo">
-        <SummarizeInfo></SummarizeInfo>
+        <SummarizeInfo  ref="ModernSummarizeInfoValidate"></SummarizeInfo>
       </el-tab-pane>
 
       <el-tab-pane label="上传附件" :disabled="isDataShow" name="UploadFiles">
         <UploadFiles></UploadFiles>
       </el-tab-pane>
     </el-tabs>
+
 
     <SubmitButton
       @handleActionNameText="handleActiveName"
@@ -76,14 +66,10 @@ import ProjectInvest from "./projectInvest.vue";
 import SummarizeInfo from "./summarizeInfo.vue";
 import UploadFiles from "./uploadFiles.vue";
 import SubmitButton from "./submitButton.vue";
-import { MOdetailsInspectData } from "../../../api/searchDetailsInspect";
-import { userTaskid } from "../../../api/Modern/userInfo";
-import {
-  modernData,
-  modernClearData,
-  modernFilesData,
-} from "../../../utils/modernUpData";
-import { mapState } from "vuex";
+import {MOdetailsInspectData} from "../../../api/searchDetailsInspect"
+import {userTaskid} from "../../../api/Modern/userInfo"
+import { modernData,  modernClearData, modernFilesData } from "../../../utils/modernUpData"
+import {mapState} from "vuex"
 export default {
   data() {
     return {
@@ -92,8 +78,8 @@ export default {
     };
   },
   computed: {
-    ...mapState(["Modern"]),
-  },
+		...mapState(['Modern'])
+	},
   methods: {
     handleActiveName(name) {
       //console.log(name)
@@ -132,20 +118,21 @@ export default {
         let uploadUrlData
         res.data.data.images?uploadUrlData = modernFilesData(res.data.data.images):uploadUrlData = []
         //console.log('result', result)
-        //this.Modern.ModernData = result
-        this.$store.commit("Modern_AllClearData", { result, uploadUrlData });
-      });
-    } else {
-      userTaskid().then((res) => {
+				//this.Modern.ModernData = result
+        this.$store.commit('Modern_AllClearData', {result, uploadUrlData})
+			})
+		}else{
+			userTaskid().then(res=>{
         //console.log(res)
-        this.$store.commit("Modern_UserTaskId", res.data.data);
+        this.$store.commit('Modern_UserTaskId', res.data.data)
       });
-    }
+		}
   },
 };
 </script>
 
 <style>
+
 .MoVessel .downText {
   outline: none;
 }

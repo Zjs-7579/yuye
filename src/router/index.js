@@ -3,19 +3,18 @@ import VueRouter from "vue-router";
 import Main from "../views/Main/main";
 import Home from "../views/Home/home";
 import AgriculInfo from "../views/AgriculInfo/agriculInfo";
-import ModernInfo from "../views/ModernInfo/modernInfo";
-import FishingGuidesInfo from "../views/FishingGuidesInfo/fishingGuidesInfo";
-import HighTech from "../views/HighTech/highTech.vue";
-import User from "../views/User/user.vue";
-import Admin from "../views/Admin/admin.vue";
-import Safety from "../views/Safety/safety.vue";
+import ModernInfo from "../views/ModernInfo/modernInfo"
+import FishingGuidesInfo from "../views/FishingGuidesInfo/fishingGuidesInfo"
+import HighTech from "../views/HighTech/highTech.vue"
+import User from '../views/User/user.vue'
+import Admin from "../views/Admin/admin.vue"
 //import DetailsInspect from "../components/Home/detailsInspect.vue"
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    redirect: "/main",
+    redirect: "/main"
   },
   {
     path: "/main",
@@ -26,7 +25,7 @@ const routes = [
     path: "/home",
     name: "Home",
     component: Home,
-    meta: { title: "首页" },
+    meta: { title: '首页' }
   },
   //新用户管理
   {
@@ -38,52 +37,57 @@ const routes = [
       {
         path: "/user/:id/todo",
         name: "UserTodo",
-        component: () => import("../components/User/todoTable.vue"),
+        component: () =>
+          import("../components/User/todoTable.vue"),
         meta: { title: "待办" },
       },
       {
         path: "/user/:id/have",
         name: "UserHave",
-        component: () => import("../components/User/haveTable.vue"),
+        component: () =>
+          import("../components/User/haveTable.vue"),
         meta: { title: "已办" },
       },
       {
         path: "/user/:id/all",
         name: "UserAll",
-        component: () => import("../components/User/allTable.vue"),
+        component: () =>
+          import("../components/User/allTable.vue"),
         meta: { title: "全部" },
       },
       {
         path: "/user/:id/:event/detailInspect",
         name: "UserDetail",
-        component: () => import("../components/Home/detailsInspect.vue"),
+        component: () =>
+          import("../components/Home/detailsInspect.vue"),
         meta: { title: "详情" },
-      },
-    ],
+      }]
   },
   //管理员
   {
     path: "/admin",
     name: "Admin",
     component: Admin,
-    meta: { title: "管理员" },
+    meta: { title: '管理员' },
     children: [
       {
         path: "/admin/user",
         name: "AdminUser",
-        component: () => import("../components/Admin/adminUser.vue"),
+        component: () =>
+          import("../components/Admin/adminUser.vue"),
         meta: { title: "机构用户" },
       },
       {
         path: "/admin/role",
         name: "UserRole",
-        component: () => import("../components/Admin/adminRole.vue"),
+        component: () =>
+          import("../components/Admin/adminRole.vue"),
         meta: { title: "机构角色" },
       },
-    ],
+    ]
   },
   //用户管理
-  {
+    {
     path: "/AdminHome/admin",
     name: "Admin",
     component: Admin,
@@ -139,11 +143,11 @@ const routes = [
     path: "/agriculInfo",
     name: "AgriculInfo",
     component: AgriculInfo,
-    meta: { title: "农业贴息" },
+    meta: { title: '农业贴息' },
     children: [
       {
         path: "/agriculInfo",
-        redirect: "/agriculInfo/createInfo",
+        redirect: "/agriculInfo/createInfo"
       },
       // {
       //   path: "/agriculInfo/searchInfo",
@@ -154,15 +158,14 @@ const routes = [
       {
         path: "/agriculInfo/createInfo",
         name: "AriculCreateInfo",
-        component: () =>
-          import("../components/AgriculInfo/CreateInfo/createInfo.vue"),
-        meta: { title: "创建" },
+        component: () => import("../components/AgriculInfo/CreateInfo/createInfo.vue"),
+        meta: { title: '创建' }
       },
       {
         path: "/agriculInfo/detailInspect",
         name: "AriculDetailInspect",
         component: () => import("../components/Home/detailsInspect.vue"),
-        meta: { title: "详情" },
+        meta: { title: '详情' }
       },
       // {
       //   path: "/agriculInfo/progressDetails",
@@ -176,31 +179,29 @@ const routes = [
       //   component: () => import("../components/AgriculInfo/ProFiles/proFiles.vue"),
       //   meta: { title: '用户管理' }
       // }
-    ],
+    ]
   },
   //现代
   {
     path: "/modernInfo",
     name: "ModernInfo",
     component: ModernInfo,
-    meta: { title: "现代农业" },
+    meta: { title: '现代农业' },
     children: [
       {
         path: "/modernInfo",
-        redirect: "/modernInfo/createInfo",
+        redirect: "/modernInfo/createInfo"
       },
       {
         path: "/modernInfo/createInfo",
         name: "ModernCreateInfo",
-        component: () =>
-          import("../components/ModernInfo/CreateInfo/createInfo.vue"),
-        meta: { title: "创建" },
-      },
-      {
+        component: () => import("../components/ModernInfo/CreateInfo/createInfo.vue"),
+        meta: { title: '创建' }
+      },{
         path: "/modernInfo/detailInspect",
         name: "ModernDetailInspect",
         component: () => import("../components/Home/detailsInspect.vue"),
-        meta: { title: "详情" },
+        meta: { title: '详情' }
       },
       // {
       //   path: "/modernInfo/progressDetails",
@@ -208,71 +209,50 @@ const routes = [
       //   component: () => import("../components/Home/progressDetails.vue"),
       //   meta: { title: '进度' }
       // },
-    ],
+    ]
   },
   //渔业
   {
     path: "/fishingGuidesInfo",
     name: "FishingGuidesInfo",
     component: FishingGuidesInfo,
-    meta: { title: "远洋渔业" },
+    meta: { title: '远洋渔业' },
     children: [
       {
         path: "/fishingGuidesInfo",
-        redirect: "/fishingGuidesInfo/createInfo",
+        redirect: "/fishingGuidesInfo/createInfo"
       },
       {
         path: "/fishingGuidesInfo/createInfo",
         name: "SelectFishingGuides",
-        component: () =>
-          import("../components/FishingGuidesInfo/createInfo.vue"),
-        meta: { title: "创建" },
-      },
-      {
+        component: () => import("../components/FishingGuidesInfo/createInfo.vue"),
+        meta: { title: '创建' }
+      },{
         path: "/fishingGuidesInfo/detailInspect",
         name: "FishingGuidesDetailInspect",
         component: () => import("../components/Home/detailsInspect.vue"),
-        meta: { title: "详情" },
-      },
-    ],
+        meta: { title: '详情' }
+      }
+    ]
   },
   {
     path: "/highTech",
     name: "HighTech",
     component: HighTech,
-    meta: { title: "高新技术" },
+    meta: { title: '高新技术' },
     children: [
       {
         path: "/highTech",
-        redirect: "/highTech/createInfo",
+        redirect: "/highTech/createInfo"
       },
       {
         path: "/highTech/createInfo",
         name: "HighTechCreateInfo",
         component: () => import("../components/HighTech/createInfo.vue"),
-        meta: { title: "创建" },
-      },
-    ],
-  },
-  // 安全
-  {
-    path: "/safety",
-    name: "Safety",
-    component: Safety,
-    meta: { title: "农产品质量安全" },
-    children: [
-      {
-        path: "/safety",
-        redirect: "/safety/createInfo",
-      },
-      {
-        path: "/safety/createInfo",
-        name: "SafetyCreateInfo",
-        component: () => import("../components/Safety/createInfo.vue"),
-        meta: { title: "创建" },
-      },
-    ],
-  },
+        meta: { title: '创建' }
+      }
+    ]
+  }
 ];
 
 const router = new VueRouter({

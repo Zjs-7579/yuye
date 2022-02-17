@@ -77,7 +77,7 @@ export default {
     agriculturalFinance:{
       handler(val) {
         console.log(val)
-        let year = 1
+        let year = 3
         for(let item of val){
           item.task_id = this.Agricul.userTaskId
           
@@ -107,7 +107,7 @@ export default {
           let profit = item.profit * 1;
           let taxes_payable = item.taxes_payable * 1;
           item.nterprise_added = (wages*1000 + depreciation*1000 + profit*1000 + taxes_payable*1000)/1000;
-          year++
+          year--
         }
       },
       deep: true
@@ -188,6 +188,8 @@ export default {
 }
 .Aginancial .dataRow .el-row:nth-child(3) .el-col:nth-child(2),
 .Aginancial .dataRow .el-row:nth-child(9) .el-col:nth-child(2),
+.Aginancial .dataRow .el-row:nth-child(11) .el-col:nth-child(2),
+.Aginancial .dataRow .el-row:nth-child(12) .el-col:nth-child(2),
 .Aginancial .dataRow .el-row:nth-child(15) .el-col:nth-child(2),
 .Aginancial .dataRow .el-row:nth-child(16) .el-col:nth-child(2),
 .Aginancial .dataRow .el-row:nth-child(17) .el-col:nth-child(2),

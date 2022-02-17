@@ -25,7 +25,7 @@
           ><div class="grid-content bg-purple" style="text-align: center">{{ item.id }}</div></el-col
         >
         <el-col :span="7"
-          ><div class="grid-content bg-purple" style=" text-align: left; padding-left: 1em; " :class="(boldFrom.includes(index)?'boldText':'')">{{ item.type }}</div>
+          ><div class="grid-content bg-purple asterisk" style=" text-align: left; padding-left: 1em; " :class="(boldFrom.includes(index)?'boldText':'')">{{ item.type }}</div>
         </el-col>
         <el-col :span="5"
           ><div class="grid-content bg-purple">
@@ -98,7 +98,7 @@ export default {
   watch: {
     modernFinances:{
       handler(val) {
-        let year = 1
+        let year = 3
         for(let item of val){
           item['task_id'] = this.Modern.userTaskId
           //item.creator = this.Modern.userName
@@ -128,7 +128,7 @@ export default {
           let profit = item.profit * 1;
           let taxes_payable = item.taxes_payable * 1;
           item.nterprise_added = (wages*1000 + depreciation*1000 + profit*1000 + taxes_payable*1000)/1000;
-          year++
+          year--
         }
       },
       deep: true
@@ -174,6 +174,13 @@ export default {
   border: none;
   font-size: 18px;
 }
+
+.Moinancial .asterisk::before {
+    content: '*';
+    color: #F56C6C;
+     margin-right: 4px
+}
+
 .Moinancial .rowColor .el-input__inner{
   background-color: rgb(235, 231, 231);
 }
@@ -206,6 +213,8 @@ export default {
 }
 .Moinancial .dataPanRow .el-row:nth-child(3) .el-col:nth-child(2),
 .Moinancial .dataPanRow .el-row:nth-child(9) .el-col:nth-child(2),
+.Moinancial .dataPanRow .el-row:nth-child(11) .el-col:nth-child(2),
+.Moinancial .dataPanRow .el-row:nth-child(12) .el-col:nth-child(2),
 .Moinancial .dataPanRow .el-row:nth-child(15) .el-col:nth-child(2),
 .Moinancial .dataPanRow .el-row:nth-child(16) .el-col:nth-child(2),
 .Moinancial .dataPanRow .el-row:nth-child(17) .el-col:nth-child(2),

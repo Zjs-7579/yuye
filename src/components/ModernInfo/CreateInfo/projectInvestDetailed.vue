@@ -1,6 +1,6 @@
 <template>
   <div class="MoEngin">
-    <el-row class="title">
+    <el-row class="title asterisk">
       {{ title }}
     </el-row>
     <el-row class="titleRow">
@@ -18,12 +18,16 @@
           <div style="flex: 1; border-left: 1px solid #ccc">其他资产</div>
         </div>
       </el-col>
-      <el-col :span="4" style="border-left: 1px solid #ccc"
-        >合同、发票、银行汇款凭证</el-col
-      >
+      <el-col :span="4" style="border-left: 1px solid #ccc">合同、发票、银行汇款凭证</el-col>
     </el-row>
 
-    <el-row class="dataRow" v-for="(item, index) in data" :key="index">
+
+
+    <el-row
+      class="dataRow"
+      v-for="(item, index) in data"
+      :key="index"
+    >
       <el-col :span="2" style="text-align: center">
         {{ index + 1 }}
       </el-col>
@@ -165,7 +169,7 @@ export default {
   },
   methods: {
     handleInventDataClick(item) {
-      console.log(item);
+      console.log(item)
       //console.log(this.style.color="red")
       this.FromeItemData = item;
     },
@@ -225,7 +229,7 @@ export default {
     upLoadInvestFiles() {
       //console.log(this.formData);
       UploadFiles(this.formData).then((res) => {
-        this.FromeItemData["material_id"] = res.data.data;
+        this.FromeItemData['material_id'] = res.data.data
         this.$message.success("上传成功");
         //this.colorList[index] = '#ccc'
       });
@@ -234,7 +238,7 @@ export default {
     },
   },
   watch: {
-    data: {
+    data:{
       handler(val) {
         // if(this.title == '建筑工程类投资明细'){
         //   this.Modern.ModernData.modernInvestMent[0].inv_type == this.title;
@@ -245,24 +249,24 @@ export default {
         // if(this.title == '仪器、设备类投资明细'){
         //   this.Modern.ModernData.modernInvestMent[2].inv_type == this.title;
         // }
-        for (let item of val) {
-          item["task_id"] = this.Modern.userTaskId;
+        for(let item of val){
+          item['task_id'] = this.Modern.userTaskId
           //item.creator = this.Modern.userName
-          item["total_fixed_assets"] = this.total_fixed_assets;
-          item["total_other_assets"] = this.total_other_assets;
-          item["total_amount"] = this.total_amount;
+          item['total_fixed_assets'] = this.total_fixed_assets
+          item['total_other_assets'] = this.total_other_assets
+          item['total_amount'] = this.total_amount
           // item['project_invest'] = this.InvestTotal.project_invest
           // item['support'] = this.InvestTotal.support
         }
       },
-      deep: true,
-    },
-  },
+      deep: true
+    }
+  }
 };
 </script>
 
 <style>
-.MoEngin .el-col {
+.MoEngin .el-col{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -304,7 +308,14 @@ export default {
   width: 80%;
   border: none;
 }
-.MoEngin .el-upload {
+.MoEngin .el-upload{
   display: block;
+}
+.MoEngin .asterisk::before {
+  display: inline-block;
+    content: '*';
+    color: #F56C6C;
+    margin-right: 4px
+    
 }
 </style>

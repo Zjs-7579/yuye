@@ -25,7 +25,7 @@
           ><div class="grid-content bg-purple" style="text-align: center">{{ item.id }}</div></el-col
         >
         <el-col :span="7"
-          ><div class="grid-content bg-purple" style=" text-align: left; padding-left: 8px">{{ item.type }}</div>
+          ><div class="grid-content bg-purple asterisk" style=" text-align: left; padding-left: 8px">{{ item.type }}</div>
         </el-col>
         <el-col :span="5"
           ><div class="grid-content bg-purple">
@@ -89,14 +89,14 @@ export default {
   watch: {
     modernCauses:{
       handler(val) {
-        let year = 1
+        let year = 3
         console.log(val)
         for(let item of val){
           item['task_id'] = this.Modern.userTaskId
           //item.creator = this.Modern.userName
           
           item.pro_year = this.dataYear - year;
-          year++
+          year--
         }
       },
       deep: true
@@ -135,6 +135,11 @@ export default {
   width: 80%;
   border: none;
   font-size: 18px;
+}
+.Moinancial .asterisk::before {
+    content: '*';
+    color: #F56C6C;
+      margin-right: 4px
 }
 .Moinancial .rowColor .el-input__inner{
   background-color: rgb(235, 231, 231);

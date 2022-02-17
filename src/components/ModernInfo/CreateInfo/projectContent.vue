@@ -65,7 +65,7 @@
     ></el-input>
   </el-form-item>
 
-  <el-form-item label="6、其他需要重点说明的情况：">
+  <el-form-item label="6、其他需要重点说明的情况：" prop="other_explain">
      <el-input
       type="textarea"
       resize="none"

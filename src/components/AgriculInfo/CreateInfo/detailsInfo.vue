@@ -78,7 +78,7 @@ export default {
   data() {
     return {
       colorText: "",
-      name: "",
+      name:"",
     };
   },
   computed: {
@@ -104,7 +104,7 @@ export default {
     CountableInfo,
     //UploadFilesList
     UploadFiles,
-    AuditInfo,
+    AuditInfo
   },
   methods: {
     handleColorText(text) {
@@ -118,27 +118,31 @@ export default {
         type: "warning",
       })
         .then(() => {
-          createSubmit(this.Agricul).then((res) => {
-            if (res.data.code == 400) {
-              this.$message({
-                type: "warning",
-                message: res.data.msg,
-              });
-            }
+          createSubmit(this.Agricul).then(
+             res=>{
+              if(res.data.code == 400){
+                this.$message({
+                  type: "warning",
+                  message: res.data.msg,
+                })
+              }
 
-            if (res.data.code == 200) {
-              this.$message({
+              if(res.data.code == 200){
+                this.$message({
                 type: "success",
                 message: "表单提交成功!",
               }),
-                setTimeout(
-                  this.$router.push({
-                    path: "/home",
-                  }),
-                  1000
-                );
+               setTimeout(this.$router.push({
+                  path: "/home",
+                }),1000)
+              }
             }
-          });
+          )
+           
+            
+           
+            
+            
         })
         .catch(() => {
           this.$message({
@@ -151,11 +155,11 @@ export default {
   mounted() {
     //agriculClearData(this.Agricul)
     //console.log(this.Agricul)
-    console.log(this.$route);
+    console.log(this.$route)
     // if(!this.$router.query.id){
     //   agriculClearData(this.Agricul)
     // }
-  },
+  }
 };
 </script>
 
