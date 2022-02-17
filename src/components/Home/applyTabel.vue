@@ -245,7 +245,7 @@ export default {
 
       //console.log(idx[0])
       if (row.declare_status == "待提交") {
-        deleteData(row.task_id).then((res) => {
+        deleteData(row.task_id).then(() => {
           this.tableData.forEach((res, index) => {
             if (res.task_id == row.task_id) {
               this.tableData.splice(index, 1);

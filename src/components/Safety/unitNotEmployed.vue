@@ -193,7 +193,7 @@ export default {
     formData: {
       get() {
         //12/12/124/
-        return this.Safety.safetyCompany;
+        return this.Safety.SafetyData.safetyCompany;
       },
       set(val) {
         this.formData = val;

@@ -74,9 +74,10 @@ export default {
     SafetyShareholders: {
       get() {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.Safety.safetyShareholders[0]["task_id"] = this.Safety.userTaskId;
+        this.Safety.SafetyData.safetyShareholders[0]["task_id"] =
+          this.Safety.userTaskId;
         //this.Safety.SafetyShareholders[0].creator = this.Safety.userName
-        return this.Safety.safetyShareholders;
+        return this.Safety.SafetyData.safetyShareholders;
       },
       set(val) {
         this.SafetyShareholders = val;

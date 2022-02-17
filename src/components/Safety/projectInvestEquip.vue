@@ -79,9 +79,10 @@ export default {
     ...mapState(["Safety"]),
     safetyEquipment: {
       get() {
-        this.Safety.safetyEquipment[0].task_id = this.Safety.userTaskId;
+        this.Safety.SafetyData.safetyEquipment[0].task_id =
+          this.Safety.userTaskId;
         //this.Safety.safetyEquipment[0].creator = this.Safety.userName
-        return this.Safety.safetyEquipment;
+        return this.Safety.SafetyData.safetyEquipment;
       },
       set(val) {
         this.safetyEquipment = val;

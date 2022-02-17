@@ -74,7 +74,7 @@ export function safetyTodo(row, router, store) {
       row.status == "待提交"
     ) {
       router.push({
-        path: `/safetyInfo?&type=${row.task_source}&id=${row.task_id}`,
+        path: `/safety?&type=${row.task_source}&id=${row.task_id}`,
       });
     }
     if (
@@ -82,7 +82,7 @@ export function safetyTodo(row, router, store) {
       row.status != "待提交"
     ) {
       router.push({
-        path: `/safetyInfo/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+        path: `/safety/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
       });
     }
   });
