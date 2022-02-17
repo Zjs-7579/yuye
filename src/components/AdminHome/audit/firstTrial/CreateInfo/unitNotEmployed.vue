@@ -47,7 +47,10 @@
         </el-col>
         <el-col :span="8">
           <el-form-item label="其中女职工数:" prop="female_workerss_num">
-            <el-input v-model="unitEmpForm.female_workerss_num" disabled></el-input>
+            <el-input
+              v-model="unitEmpForm.female_workerss_num"
+              disabled
+            ></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="8">
@@ -60,12 +63,18 @@
       <el-row>
         <el-col :span="8">
           <el-form-item label="参加社保人数:" prop="social_security_num">
-            <el-input v-model="unitEmpForm.social_security_num" disabled></el-input>
+            <el-input
+              v-model="unitEmpForm.social_security_num"
+              disabled
+            ></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="8">
           <el-form-item label="外籍专家人数:" prop="foreign_experts_num">
-            <el-input v-model="unitEmpForm.foreign_experts_num" disabled></el-input>
+            <el-input
+              v-model="unitEmpForm.foreign_experts_num"
+              disabled
+            ></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="8">
@@ -84,7 +93,11 @@
         <el-input v-model="sum1[1]" placeholder="市场营销" disabled></el-input>
         <el-input v-model="sum1[2]" placeholder="研发设计" disabled></el-input>
         <el-input v-model="sum1[3]" placeholder="加工制造" disabled></el-input>
-        <el-input v-model="sum1[4]" placeholder="其他从业人数" disabled></el-input>
+        <el-input
+          v-model="sum1[4]"
+          placeholder="其他从业人数"
+          disabled
+        ></el-input>
       </el-form-item>
       <el-form-item
         label="博士毕业/硕士毕业/本科毕业/专科毕业/其他从业人数:"
@@ -95,7 +108,11 @@
         <el-input v-model="sum2[1]" placeholder="硕士毕业" disabled></el-input>
         <el-input v-model="sum2[2]" placeholder="本科毕业" disabled></el-input>
         <el-input v-model="sum2[3]" placeholder="专科毕业" disabled></el-input>
-        <el-input v-model="sum2[4]" placeholder="其他从业人数" disabled></el-input>
+        <el-input
+          v-model="sum2[4]"
+          placeholder="其他从业人数"
+          disabled
+        ></el-input>
       </el-form-item>
       <el-form-item
         label="高级职称/中级职称/初级职称/其他从业人数:"
@@ -105,7 +122,11 @@
         <el-input v-model="sum3[0]" placeholder="高级职称" disabled></el-input>
         <el-input v-model="sum3[1]" placeholder="中级职称" disabled></el-input>
         <el-input v-model="sum3[2]" placeholder="初级职称" disabled></el-input>
-        <el-input v-model="sum3[3]" placeholder="其他从业人数" disabled></el-input>
+        <el-input
+          v-model="sum3[3]"
+          placeholder="其他从业人数"
+          disabled
+        ></el-input>
       </el-form-item>
     </el-form>
   </div>

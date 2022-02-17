@@ -11,11 +11,7 @@
       <el-col :span="4">设备安装/存放地点</el-col>
     </el-row>
 
-    <el-row
-      class="dataRow"
-      v-for="(item, index) in techEquipment"
-      :key="index"
-    >
+    <el-row class="dataRow" v-for="(item, index) in techEquipment" :key="index">
       <el-col :span="2" style="text-align: center">
         {{ index + 1 }}
       </el-col>
@@ -37,7 +33,7 @@
       <el-col :span="3">
         <el-input :disabled="isDisabledData" v-model="item.price"></el-input>
       </el-col>
-      <el-col :span="3" >
+      <el-col :span="3">
         <el-input :disabled="true" v-model="item.amount"></el-input>
       </el-col>
       <el-col :span="4">
@@ -79,7 +75,8 @@ export default {
     ...mapState(["HighTech"]),
     techEquipment: {
       get() {
-        this.HighTech.HighTechData.techEquipment[0].task_id = this.HighTech.userTaskId
+        this.HighTech.HighTechData.techEquipment[0].task_id =
+          this.HighTech.userTaskId;
         //this.HighTech.HighTechData.echmodernEquipment[0].creator = this.HighTech.userName
         return this.HighTech.HighTechData.techEquipment;
       },
@@ -172,14 +169,13 @@ export default {
           //item['project_invest'] = this.HighTech.HighTechData.modernInvestTotal.project_invest
           //item['support'] = this.HighTech.HighTechData.modernInvestTotal.support
 
-          item['task_id'] = this.HighTech.userTaskId;
+          item["task_id"] = this.HighTech.userTaskId;
           //item.creator = this.HighTech.userName;
           item["total_quantity"] = this.total_quantity;
           item["total_price"] = this.total_price;
           item["total_amount"] = this.total_amount;
           item.amount = item.quantity * item.price;
           //item['modernInvestTotal'] = this.HighTech.HighTechData.modernInvestTotal
-          
         }
       },
       deep: true,
@@ -217,7 +213,6 @@ export default {
   border-right: 1px solid #ccc;
 }
 .MoEquip .el-input {
-  
   display: block;
 }
 .MoEquip .dataRow .el-input__inner {

@@ -223,14 +223,10 @@ export default {
   width: 100%;
   border: none;
 }
-<<<<<<< HEAD
 .MoEquip .asterisk::before {
-    content: '*';
-    display: inline-block;
-    color: #F56C6C;
-    margin-right: 4px
+  content: "*";
+  display: inline-block;
+  color: #f56c6c;
+  margin-right: 4px;
 }
 </style>
-=======
-</style>
->>>>>>> origin/xuwei

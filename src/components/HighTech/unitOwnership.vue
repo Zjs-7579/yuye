@@ -67,15 +67,14 @@
 import { mapState } from "vuex";
 export default {
   data() {
-    return {
-      
-    };
+    return {};
   },
   computed: {
     ...mapState(["HighTech"]),
     techShareholders: {
       get() {
-        this.HighTech.HighTechData.techShareholders[0]['task_id'] = this.HighTech.userTaskId
+        this.HighTech.HighTechData.techShareholders[0]["task_id"] =
+          this.HighTech.userTaskId;
         //this.HighTech.HighTechData.techShareholders[0].creator = this.HighTech.userName
         return this.HighTech.HighTechData.techShareholders;
       },
@@ -84,13 +83,13 @@ export default {
       },
     },
     isDisabledData: {
-        get(){
-          return this.HighTech.isDisabledData
-        },
-        set(val){
-          this.isDisabledData = val
-        }
-    }
+      get() {
+        return this.HighTech.isDisabledData;
+      },
+      set(val) {
+        this.isDisabledData = val;
+      },
+    },
   },
 
   methods: {
@@ -101,7 +100,7 @@ export default {
         amount: "",
         payer_type: "",
         share_proportion: "",
-        creator: this.HighTech.userName
+        creator: this.HighTech.userName,
       };
       this.techShareholders.push(str);
     },
@@ -117,7 +116,7 @@ export default {
         this.techShareholders.splice(len - 1, 1);
       }
     },
-  }
+  },
 };
 </script>
 

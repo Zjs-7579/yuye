@@ -1,10 +1,10 @@
-import state from "./state"
-import mutations from "./mutations"
+import state from "./state";
+import mutations from "./mutations";
 // import actions from "./actions"
 // import getters from "./getters"
- const Modern = {
-    state: state,
-    mutations: mutations
-}
+const Modern = {
+  state: state,
+  mutations: mutations,
+};
 
-export default Modern
+export default Modern;

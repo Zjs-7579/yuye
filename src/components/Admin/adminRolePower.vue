@@ -5,7 +5,6 @@
       :title="'权限设置' + visitAuthArray"
       width="45%"
       class="roleList"
-      
       @close="close"
       :before-close="handleClose"
     >
@@ -28,10 +27,7 @@
 </template>
 
 <script>
-import {
-  getAuthorityRoleId,
-  editAuth,
-} from "../../api/Admin/role";
+import { getAuthorityRoleId, editAuth } from "../../api/Admin/role";
 export default {
   props: ["powerSwitch"],
   data() {
@@ -57,8 +53,8 @@ export default {
     },
     visitAuthArray: {
       get() {
-    		console.log(this.powerSwitch.data)
-    		let list = []
+        console.log(this.powerSwitch.data);
+        let list = [];
         this.powerSwitch.data.forEach((element) => {
           if (element.label !== "审核管理" && element.label !== "系统功能") {
             list.push(element.id);
@@ -87,7 +83,7 @@ export default {
 
     //     this.$refs.myTree.setCheckedKeys(this.visitAuthArray);
     //   });
-      
+
     // },
     close() {
       //console.log('close................................')
@@ -136,5 +132,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

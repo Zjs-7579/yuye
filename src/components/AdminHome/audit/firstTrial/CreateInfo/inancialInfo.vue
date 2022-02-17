@@ -17,7 +17,7 @@
     </el-row>
 
     <div class="dataRow">
-      <el-row v-for="(item) in inancialList" :key="item.id">
+      <el-row v-for="item in inancialList" :key="item.id">
         <el-col :span="2"
           ><div class="grid-content bg-purple">{{ item.id }}</div></el-col
         >
@@ -62,7 +62,7 @@ export default {
       default: function () {
         return {};
       },
-    }
+    },
   },
   data() {
     return {
@@ -181,9 +181,9 @@ export default {
   methods: {},
   watch: {
     panyInfo(n) {
-       console.log(aa, "父类传9999值------");
+      console.log(aa, "父类传9999值------");
       if (n != null) {
-      const aa=  Object.assign(this.beforeFrom,n)
+        const aa = Object.assign(this.beforeFrom, n);
       }
     },
     beforeFrom: {

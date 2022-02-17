@@ -108,7 +108,7 @@ export default {
   },
   data() {
     return {
-      tableTaskType:"",
+      tableTaskType: "",
       agriculturalShareholder: [],
       rules: AgriculpersonInfoValidator,
     };
@@ -130,7 +130,7 @@ export default {
   methods: {},
   watch: {
     taskType(n) {
-      this.tableTaskType = n
+      this.tableTaskType = n;
     },
     agriculturalShareholderDetails(n) {
       if (n != null) {

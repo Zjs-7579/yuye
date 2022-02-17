@@ -51,47 +51,80 @@
         {{ index + 1 }}
       </el-col>
       <el-col :span="2">
-        <el-input v-model="item.ship_number" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.ship_number"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="2">
         <el-input v-model="item.type" :disabled="isDisabledData"></el-input>
       </el-col>
 
       <el-col :span="1">
-        <el-input v-model="item.gross_tonnage" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.gross_tonnage"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="1">
-        <el-input v-model="item.bu_finish_time" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.bu_finish_time"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="1">
         <el-input v-model="item.ship_age" :disabled="isDisabledData"></el-input>
       </el-col>
 
       <el-col :span="3">
-        <el-input v-model="item.ship_cfte_id" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.ship_cfte_id"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="3">
-        <el-input v-model="item.owship_id" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.owship_id"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="3">
-        <el-input v-model="item.intal_ship_id" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.intal_ship_id"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
 
       <el-col :span="1">
-        <el-input v-model="item.ship_qa_variety" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.ship_qa_variety"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="1">
-        <el-input v-model="item.ship_quota" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.ship_quota"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="1">
-        <el-input v-model="item.tol_investment" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.tol_investment"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="1">
-        <el-input v-model="item.state_funding" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.state_funding"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
 
       <el-col :span="1">
-        <el-input v-model="item.aped_funding" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.aped_funding"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
 
       <!-- <el-col :span="1" >
@@ -101,44 +134,45 @@
           <el-input v-model="subsidy"></el-input>
         </el-col> -->
       <el-col :span="1">
-        <el-input v-model="item.funds_allocated" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.funds_allocated"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="1">
-        <el-input v-model="item.appropriate" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.appropriate"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
     </el-row>
-   
-   <el-row
-     class="dataRow"
-    >
-      <el-col :span="19">
-        合计
-      </el-col>
-      <el-col :span="1">
-        <p style="padding: 0 15px;float: left">{{alltol_investment}}</p>
-      </el-col>
-      <el-col :span="1">
-        <p style="padding: 0 15px;float: left">{{allstate_funding}}</p>
-      </el-col>
-      <el-col :span="1">
-        <p style="padding: 0 15px;float: left">{{allaped_funding}}</p>
-      </el-col>
-      <el-col :span="1">
-        <p style="padding: 0 15px;float: left">{{allfunds_allocated}}</p>
-      </el-col>
-      <el-col :span="1">
-        <p style="padding: 0 15px;float: left">{{all_appropriate}}</p>
-      </el-col>
-   </el-row>
 
+    <el-row class="dataRow">
+      <el-col :span="19"> 合计 </el-col>
+      <el-col :span="1">
+        <p style="padding: 0 15px; float: left">{{ alltol_investment }}</p>
+      </el-col>
+      <el-col :span="1">
+        <p style="padding: 0 15px; float: left">{{ allstate_funding }}</p>
+      </el-col>
+      <el-col :span="1">
+        <p style="padding: 0 15px; float: left">{{ allaped_funding }}</p>
+      </el-col>
+      <el-col :span="1">
+        <p style="padding: 0 15px; float: left">{{ allfunds_allocated }}</p>
+      </el-col>
+      <el-col :span="1">
+        <p style="padding: 0 15px; float: left">{{ all_appropriate }}</p>
+      </el-col>
+    </el-row>
 
-    <div class="handle" :style="{display: isDisabledData?'none':'block'}">
+    <div class="handle" :style="{ display: isDisabledData ? 'none' : 'block' }">
       <el-button type="primary" @click="handleAddHtml">添加一条</el-button>
       <el-button @click="handleDeleteHtml" class="">删除一条</el-button>
     </div>
   </div>
 </template>
-      
+
 <script>
 import { mapState } from "vuex";
 export default {
@@ -158,12 +192,12 @@ export default {
       },
     },
     isDisabledData: {
-        get(){
-          return this.Fishing.isDisabledData
-        },
-        set(val){
-          this.isDisabledData = val
-        }
+      get() {
+        return this.Fishing.isDisabledData;
+      },
+      set(val) {
+        this.isDisabledData = val;
+      },
     },
     declare_name: {
       get() {
@@ -175,11 +209,11 @@ export default {
     },
     alltol_investment: {
       get() {
-        let sum = 0
-        for(let item of this.oceanSituationList){
-            sum += item.tol_investment * 1
+        let sum = 0;
+        for (let item of this.oceanSituationList) {
+          sum += item.tol_investment * 1;
         }
-        return sum
+        return sum;
       },
       set(val) {
         this.alltol_investment = val;
@@ -187,11 +221,11 @@ export default {
     },
     allstate_funding: {
       get() {
-        let sum = 0
-        for(let item of this.oceanSituationList){
-            sum += item.state_funding * 1
+        let sum = 0;
+        for (let item of this.oceanSituationList) {
+          sum += item.state_funding * 1;
         }
-        return sum
+        return sum;
       },
       set(val) {
         this.allstate_funding = val;
@@ -199,11 +233,11 @@ export default {
     },
     allaped_funding: {
       get() {
-        let sum = 0
-        for(let item of this.oceanSituationList){
-            sum += item.aped_funding * 1
+        let sum = 0;
+        for (let item of this.oceanSituationList) {
+          sum += item.aped_funding * 1;
         }
-        return sum
+        return sum;
       },
       set(val) {
         this.allaped_funding = val;
@@ -211,11 +245,11 @@ export default {
     },
     allfunds_allocated: {
       get() {
-        let sum = 0
-        for(let item of this.oceanSituationList){
-            sum += item.funds_allocated * 1
+        let sum = 0;
+        for (let item of this.oceanSituationList) {
+          sum += item.funds_allocated * 1;
         }
-        return sum
+        return sum;
       },
       set(val) {
         this.allfunds_allocated = val;
@@ -223,11 +257,11 @@ export default {
     },
     all_appropriate: {
       get() {
-        let sum = 0
-        for(let item of this.oceanSituationList){
-            sum += item.appropriate * 1
+        let sum = 0;
+        for (let item of this.oceanSituationList) {
+          sum += item.appropriate * 1;
         }
-        return sum
+        return sum;
       },
       set(val) {
         this.all_appropriate = val;
@@ -281,7 +315,7 @@ export default {
     oceanSituationList: {
       handler(val) {
         for (let item of val) {
-          item['task_id'] = this.Fishing.userTaskId;
+          item["task_id"] = this.Fishing.userTaskId;
           //item.creator = this.Modern.userName;
           item["alltol_investment"] = this.alltol_investment;
           item["allstate_funding"] = this.allstate_funding;

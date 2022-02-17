@@ -1,150 +1,131 @@
 <template>
   <div class="Mounit">
-     <el-form
+    <el-form
       :model="techTeamUser"
       ref="unitForm"
       :rules="rules"
       label-width="310px"
       :disabled="isDisabledData"
-      class="demo-ruleForm"  
+      class="demo-ruleForm"
     >
-
-      <el-row class="title">
-        团队基本情况
-      </el-row>
-
+      <el-row class="title"> 团队基本情况 </el-row>
 
       <el-row>
-      <el-col :span="12">
-        <el-form-item label="项目名称:" prop="prj_name">
-        <el-input v-model="techTeamUser.prj_name"></el-input>
-      </el-form-item>
-      </el-col>
-      <el-col :span="12">
-           <el-form-item label="起始时间:" prop="prj_time">
-        <el-input v-model="techTeamUser.prj_time"></el-input>
-      </el-form-item>
-      </el-col>
+        <el-col :span="12">
+          <el-form-item label="项目名称:" prop="prj_name">
+            <el-input v-model="techTeamUser.prj_name"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="起始时间:" prop="prj_time">
+            <el-input v-model="techTeamUser.prj_time"></el-input>
+          </el-form-item>
+        </el-col>
       </el-row>
-
-      
 
       <el-row>
-      <el-col :span="12">
-        <el-form-item label="所属产业:" prop="industry">
-        <el-input v-model="techTeamUser.industry"></el-input>
-      </el-form-item>
-      </el-col>
-      <el-col :span="12">
-           <el-form-item label="所属产业子领域:" prop="subfield">
-        <el-input v-model="techTeamUser.subfield"></el-input>
-      </el-form-item>
-      </el-col>
+        <el-col :span="12">
+          <el-form-item label="所属产业:" prop="industry">
+            <el-input v-model="techTeamUser.industry"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="所属产业子领域:" prop="subfield">
+            <el-input v-model="techTeamUser.subfield"></el-input>
+          </el-form-item>
+        </el-col>
       </el-row>
-
 
       <el-form-item label="项目组总参与人数：" prop="partici_num">
-           <el-input v-model="techTeamUser.partici_num"></el-input>
-        </el-form-item>
-
+        <el-input v-model="techTeamUser.partici_num"></el-input>
+      </el-form-item>
 
       <el-row>
-      <el-col :span="8">
-        <el-form-item label="博士：" prop="doctor_num">
-           <el-input v-model="techTeamUser.doctor_num"></el-input>
-        </el-form-item>
-      </el-col>
-      <el-col :span="8">
-         <el-form-item label="硕士：" prop="master_num">
-           <el-input v-model="techTeamUser.master_num"></el-input>
-        </el-form-item>
-        
-      </el-col>
-      <el-col :span="8">
-        <el-form-item label="本科：" prop="graduate_num">
-           <el-input v-model="techTeamUser.graduate_num"></el-input>
-        </el-form-item>
-      </el-col>
-        </el-row>
+        <el-col :span="8">
+          <el-form-item label="博士：" prop="doctor_num">
+            <el-input v-model="techTeamUser.doctor_num"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="8">
+          <el-form-item label="硕士：" prop="master_num">
+            <el-input v-model="techTeamUser.master_num"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="8">
+          <el-form-item label="本科：" prop="graduate_num">
+            <el-input v-model="techTeamUser.graduate_num"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
 
+      <el-row>
+        <el-col :span="8">
+          <el-form-item label="本科以下：" prop="other_num">
+            <el-input v-model="techTeamUser.other_num"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="8">
+          <el-form-item label="研发人员：" prop="research_num">
+            <el-input v-model="techTeamUser.research_num"></el-input>
+          </el-form-item>
+        </el-col>
 
+        <el-col :span="8">
+          <el-form-item label="管理人员：" prop="admin_num">
+            <el-input v-model="techTeamUser.admin_num"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
 
-        <el-row>
-          <el-col :span="8">
-            <el-form-item label="本科以下：" prop="other_num">
-           <el-input v-model="techTeamUser.other_num"></el-input>
-        </el-form-item>
-      </el-col>
-      <el-col :span="8">
-         <el-form-item label="研发人员：" prop="research_num">
-           <el-input v-model="techTeamUser.research_num"></el-input>
-        </el-form-item>
-      </el-col>
-       
-          <el-col :span="8">
-       <el-form-item label="管理人员：" prop="admin_num">
-           <el-input v-model="techTeamUser.admin_num"></el-input>
-        </el-form-item>
-      </el-col>
-     
-        
-      
-    </el-row>
+      <el-row>
+        <el-col :span="8">
+          <el-form-item label="项目总工作量（月）：" prop="prj_work">
+            <el-input v-model="techTeamUser.prj_work"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="8">
+          <el-form-item
+            label="企业是否由海外留学归来人员创办："
+            prop="overseas_sponsor"
+          >
+            <el-input v-model="techTeamUser.overseas_sponsor"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="8">
+          <el-form-item label="海外留学归来人数（人）：" prop="study_abroad">
+            <el-input v-model="techTeamUser.study_abroad"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
 
-    <el-row>
-      <el-col :span="8">
-       <el-form-item label="项目总工作量（月）：" prop="prj_work">
-          <el-input v-model="techTeamUser.prj_work"></el-input>
-        </el-form-item>
-      </el-col>
-      <el-col :span="8">
-        <el-form-item label="企业是否由海外留学归来人员创办：" prop="overseas_sponsor">
-          <el-input v-model="techTeamUser.overseas_sponsor"></el-input>
-        </el-form-item>
-      </el-col>
-      <el-col :span="8">
-        <el-form-item label="海外留学归来人数（人）：" prop="study_abroad">
-          <el-input v-model="techTeamUser.study_abroad"></el-input>
-        </el-form-item>
-      </el-col>
-    </el-row>
+      <el-row>
+        <el-col :span="12">
+          <el-form-item label="项目联系人：" prop="project_contact">
+            <el-input v-model="techTeamUser.project_contact"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="移动电话：" prop="mobile_phone">
+            <el-input v-model="techTeamUser.mobile_phone"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
 
-    <el-row>
-      <el-col :span="12">
-       <el-form-item label="项目联系人：" prop="project_contact">
-          <el-input v-model="techTeamUser.project_contact"></el-input>
-        </el-form-item>
-      </el-col>
-      <el-col :span="12">
-        <el-form-item label="移动电话：" prop="mobile_phone">
-          <el-input v-model="techTeamUser.mobile_phone"></el-input>
-        </el-form-item>
-      </el-col>
-      
-    </el-row>
-
-     <el-row>
-      <el-col :span="12">
-       <el-form-item label="电子邮箱：" prop="e_mail">
-          <el-input v-model="techTeamUser.e_mail"></el-input>
-        </el-form-item>
-      </el-col>
-      <el-col :span="12">
-        <el-form-item label="传真:" prop="fax">
-    <el-input v-model="techTeamUser.fax"></el-input>
-  </el-form-item>
-      </el-col>
-      
-    </el-row>
-
-  
-
-
-
+      <el-row>
+        <el-col :span="12">
+          <el-form-item label="电子邮箱：" prop="e_mail">
+            <el-input v-model="techTeamUser.e_mail"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="传真:" prop="fax">
+            <el-input v-model="techTeamUser.fax"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
     </el-form>
 
-
-     <el-form
+    <el-form
       v-for="(item, index) in techTeamList"
       ref="holdForm"
       :rules="rules"
@@ -153,12 +134,12 @@
       :disabled="isDisabledData"
       label-width="210px"
       class="demo-ruleForm"
-      
-
     >
-      <el-row class="title"> {{index == 0 ? '项目负责人': '项目组主要成员'+ index}}</el-row>
+      <el-row class="title">
+        {{ index == 0 ? "项目负责人" : "项目组主要成员" + index }}</el-row
+      >
       <el-form-item
-        :label="index==0?'项目负责人:':'项目成员:'"
+        :label="index == 0 ? '项目负责人:' : '项目成员:'"
         prop="member"
       >
         <el-input v-model="item.member"></el-input>
@@ -177,10 +158,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="8">
-          
           <el-form-item label="职称：" prop="title">
-                    <el-input v-model="item.title"></el-input>
-                </el-form-item>
+            <el-input v-model="item.title"></el-input>
+          </el-form-item>
         </el-col>
         <el-col :span="8">
           <el-form-item label="移动电话：" prop="mobile">
@@ -208,77 +188,74 @@
       </el-row>
 
       <el-form-item label="单位及职务：" prop="position">
-        <el-input
-          v-model="item.position"
-        ></el-input>
+        <el-input v-model="item.position"></el-input>
       </el-form-item>
 
-
       <el-form-item label="承担任务：" prop="undertake">
-            
-            <el-input type="text" v-model="item.undertake"></el-input>
-          </el-form-item>
+        <el-input type="text" v-model="item.undertake"></el-input>
+      </el-form-item>
 
-
-          <el-form-item label="工作简历、主要论文、项目、获奖及专利等：" prop="project_years">
-            
-            <el-input  type="textarea"
+      <el-form-item
+        label="工作简历、主要论文、项目、获奖及专利等："
+        prop="project_years"
+      >
+        <el-input
+          type="textarea"
           resize="none"
-          rows="8" v-model="item.resume"></el-input>
-          </el-form-item>
-     
+          rows="8"
+          v-model="item.resume"
+        ></el-input>
+      </el-form-item>
     </el-form>
-    <div
-      class="handle"
-      
-    >
-
-    <!-- :style="{ display: isDisabledData || !isHold ? 'none' : 'block' }"  -->
-      <el-button type="primary" @click="handleAddHtml" >添加一条</el-button>
+    <div class="handle">
+      <!-- :style="{ display: isDisabledData || !isHold ? 'none' : 'block' }"  -->
+      <el-button type="primary" @click="handleAddHtml">添加一条</el-button>
       <el-button @click="handleDeleteHtml">删除一条</el-button>
     </div>
   </div>
 </template>
 
 <script>
-import { UnitInfoValidator } from "../../utils/validator"
-import {mapState} from 'vuex'
+import { UnitInfoValidator } from "../../utils/validator";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
       rules: UnitInfoValidator,
     };
   },
-  computed:{
-    ...mapState(['HighTech']),
-    techTeamUser:{
-      get(){
-        this.HighTech.HighTechData.techTeamUser['task_id'] = this.HighTech.userTaskId
+  computed: {
+    ...mapState(["HighTech"]),
+    techTeamUser: {
+      get() {
+        this.HighTech.HighTechData.techTeamUser["task_id"] =
+          this.HighTech.userTaskId;
         //this.Modern.ModernData.techTeamUser.creator = this.Modern.userName
-        return this.HighTech.HighTechData.techTeamUser
+        return this.HighTech.HighTechData.techTeamUser;
       },
-      set(val){
-        this.techTeamUser = val
-      }
+      set(val) {
+        this.techTeamUser = val;
+      },
     },
     techTeamList: {
       get() {
-        this.HighTech.HighTechData.techTeamList[0]['task_id'] = this.HighTech.userTaskId;
-        return this.HighTech.HighTechData.techTeamList
+        this.HighTech.HighTechData.techTeamList[0]["task_id"] =
+          this.HighTech.userTaskId;
+        return this.HighTech.HighTechData.techTeamList;
       },
       set(val) {
         // console.log(val)
         this.techTeamList = val;
       },
     },
-    isDisabledData:{
-      get(){
-        return this.HighTech.isDisabledData
+    isDisabledData: {
+      get() {
+        return this.HighTech.isDisabledData;
       },
-      set(val){
-        this.isDisabledData = val
-      }
-    }
+      set(val) {
+        this.isDisabledData = val;
+      },
+    },
   },
   methods: {
     handleAddHtml() {
@@ -313,9 +290,7 @@ export default {
       }
     },
   },
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

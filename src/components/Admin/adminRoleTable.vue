@@ -146,11 +146,11 @@ export default {
       cnt: "",
     };
   },
-  components: { 
-    AdminRoleCreate, 
-    AdminRolePower, 
-    Pagination, 
-    },
+  components: {
+    AdminRoleCreate,
+    AdminRolePower,
+    Pagination,
+  },
   methods: {
     list(val) {
       this.tableData = val;

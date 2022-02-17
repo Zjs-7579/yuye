@@ -67,15 +67,14 @@
 import { mapState } from "vuex";
 export default {
   data() {
-    return {
-      
-    };
+    return {};
   },
   computed: {
     ...mapState(["Modern"]),
     modernShareholders: {
       get() {
-        this.Modern.ModernData.modernShareholders[0]['task_id'] = this.Modern.userTaskId
+        this.Modern.ModernData.modernShareholders[0]["task_id"] =
+          this.Modern.userTaskId;
         //this.Modern.ModernData.modernShareholders[0].creator = this.Modern.userName
         return this.Modern.ModernData.modernShareholders;
       },
@@ -84,13 +83,13 @@ export default {
       },
     },
     isDisabledData: {
-        get(){
-          return this.Modern.isDisabledData
-        },
-        set(val){
-          this.isDisabledData = val
-        }
-    }
+      get() {
+        return this.Modern.isDisabledData;
+      },
+      set(val) {
+        this.isDisabledData = val;
+      },
+    },
   },
 
   methods: {
@@ -101,7 +100,7 @@ export default {
         amount: "",
         payer_type: "",
         share_proportion: "",
-        creator: this.Modern.userName
+        creator: this.Modern.userName,
       };
       this.modernShareholders.push(str);
     },
@@ -117,7 +116,7 @@ export default {
         this.modernShareholders.splice(len - 1, 1);
       }
     },
-  }
+  },
 };
 </script>
 

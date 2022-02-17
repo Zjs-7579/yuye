@@ -24,28 +24,28 @@
         ><div class="grid-content bg-purple">
           <el-input
             type="text"
-           disabled
+            disabled
             v-model="item.shareholder"
           ></el-input></div
+      ></el-col>
+      <el-col :span="7"
+        ><div class="grid-content bg-purple">
+          <el-input type="text" disabled v-model="item.amount"></el-input></div
       ></el-col>
       <el-col :span="7"
         ><div class="grid-content bg-purple">
           <el-input
             type="text"
             disabled
-            v-model="item.amount"
-          ></el-input></div
-      ></el-col>
-      <el-col :span="7"
-        ><div class="grid-content bg-purple">
-          <el-input
-            type="text"
-           disabled
             v-model="item.share_proportion"
           ></el-input></div
       ></el-col>
     </el-row>
-    <div class="handle" style=" display: none" v-if="tableTaskTypeVisible=='待办'">
+    <div
+      class="handle"
+      style="display: none"
+      v-if="tableTaskTypeVisible == '待办'"
+    >
       <el-button class="delete" @click="handleDeleteHtml">删除一条</el-button>
       <el-button type="primary" class="add" @click="handleAddHtml"
         >添加一条</el-button
@@ -64,16 +64,16 @@ export default {
         return {};
       },
     },
-    tableTaskTypes:{
+    tableTaskTypes: {
       type: String,
       default: function () {
         return {};
       },
-    }
+    },
   },
   data() {
     return {
-      tableTaskTypeVisible:""
+      tableTaskTypeVisible: "",
     };
   },
   computed: {
@@ -102,8 +102,8 @@ export default {
     },
   },
   watch: {
-    tableTaskTypes(n){
-      this.tableTaskTypeVisible=n
+    tableTaskTypes(n) {
+      this.tableTaskTypeVisible = n;
     },
     agriculturalShareholderTable(n) {
       if (n != null) {

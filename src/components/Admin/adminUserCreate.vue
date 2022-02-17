@@ -144,17 +144,16 @@ export default {
         }
       });
     },
-    handleClose(){
-      this.$confirm('确认关闭？')
-          .then(_ => {
-            this.$emit("userDataSwitch", false);
-            done();
-          })
-          .catch(_ => {});
-    }
+    handleClose() {
+      this.$confirm("确认关闭？")
+        .then((_) => {
+          this.$emit("userDataSwitch", false);
+          done();
+        })
+        .catch((_) => {});
+    },
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>

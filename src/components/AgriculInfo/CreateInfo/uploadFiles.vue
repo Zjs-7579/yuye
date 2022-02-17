@@ -26,7 +26,7 @@
         <el-col :span="6"
           ><div class="grid-content bg-purple">
             <span :class="index == 5 ? 'boldText' : ''">{{ item.title }}</span>
-            </div></el-col
+          </div></el-col
         >
         <el-col :span="4"
           ><div class="grid-content bg-purple">盖章签字</div></el-col
@@ -50,7 +50,7 @@
 
 <script>
 import upload from "./upload.vue";
-import {mapState} from "vuex"
+import { mapState } from "vuex";
 export default {
   components: { upload },
   data() {
@@ -70,19 +70,19 @@ export default {
     };
   },
   computed: {
-    ...mapState(['Agricul']),
+    ...mapState(["Agricul"]),
     uploadUrlData: {
-      get(){
+      get() {
         //console.log("...................................................................",this.Agricul.uploadUrlData)
-        return this.Agricul.uploadUrlData
+        return this.Agricul.uploadUrlData;
       },
-      set(val){
-        this.uploadUrlData = val
-      }
-    }
+      set(val) {
+        this.uploadUrlData = val;
+      },
+    },
   },
   mounted() {
-     console.log(this.Agricul.uploadUrlData)
+    console.log(this.Agricul.uploadUrlData);
   },
   methods: {
     DownPromise(index) {
@@ -97,14 +97,13 @@ export default {
 </script>
 
 <style>
-.AgUpload .boldText{
- 
+.AgUpload .boldText {
   height: 120px;
   line-height: 2.7;
   display: block;
   white-space: pre-wrap;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
 }
 .AgUpload {
   width: 100%;
@@ -168,14 +167,14 @@ export default {
 .AgUpload .el-upload-list--text {
   text-align: left;
 }
-.AgUpload .el-upload-list__item-status-label{
+.AgUpload .el-upload-list__item-status-label {
   margin-right: 25px;
 }
 /* .el-upload-list__item-status-label .el-icon-upload-success .el-icon-circle-check, */
-.AgUpload .el-icon-close{
+.AgUpload .el-icon-close {
   margin-right: 25px;
 }
-.AgUpload .el-icon-close-tip{
+.AgUpload .el-icon-close-tip {
   margin-right: 25px;
 }
 </style>

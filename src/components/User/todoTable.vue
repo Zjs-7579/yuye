@@ -1,5 +1,5 @@
 <template>
- <div class="main_contain">
+  <div class="main_contain">
     <el-row class="search-container" style="padding: 5px">
       <!-- <el-radio-group
         v-model="taskType"
@@ -24,11 +24,10 @@
           style="width: 120px"
           placeholder="请选择"
         >
-        <el-option label="项目年份" value="pro_year" />
+          <el-option label="项目年份" value="pro_year" />
           <el-option label="项目类型" value="task_source" />
           <el-option label="项目名称" value="task_name" />
           <el-option label="项目负责人" value="project_leader" />
-          
         </el-select>
         <el-button
           slot="append"
@@ -38,24 +37,21 @@
       </el-input>
     </el-row>
 
-
-
     <el-row class="tableBox">
       <el-table
         ref="taskTable"
         :data="taskList"
         border
         height="100%"
-        :header-cell-style="{backgroundColor: '#3a71a8',  color:'#fff'}"
+        :header-cell-style="{ backgroundColor: '#3a71a8', color: '#fff' }"
         size="small"
         class="tableStyle"
       >
-      <el-table-column
+        <el-table-column
           prop="pro_year"
           label="项目年份"
           min-width="150"
           align="center"
-          
         />
         <el-table-column
           prop="task_source"
@@ -76,7 +72,7 @@
           align="center"
         />
 
-         <el-table-column
+        <el-table-column
           prop="create_time"
           label="提交时间"
           min-width="150"
@@ -95,13 +91,12 @@
           min-width="150"
           align="center"
         />
-        <el-table-column label="操作" min-width="120" align="center" >
+        <el-table-column label="操作" min-width="120" align="center">
           <template slot-scope="scope">
-             <el-button
+            <el-button
               size="mini"
               type="primary"
               @click="onFlowDetailsClick(scope.row)"
-              
               >详情</el-button
             >
           </template>
@@ -128,90 +123,89 @@
       </el-row> -->
     </el-row>
 
-
-  <el-row>
-    <Pagination :cnt="cnt" @dataList="list"></Pagination>
-  </el-row>
+    <el-row>
+      <Pagination :cnt="cnt" @dataList="list"></Pagination>
+    </el-row>
   </div>
 </template>
 
 <script>
 import { getFlowList } from "../../api/User/createInfo";
-import Pagination from "./pagination.vue"
+import Pagination from "./pagination.vue";
 //import Pagination from "@/components/Pagination/index.vue";
 export default {
- components: { Pagination },
+  components: { Pagination },
   data() {
     return {
-      text:"",
+      text: "",
       clause: "pro_year",
       taskList: [],
-      user_type: '',
+      user_type: "",
       cnt: 0,
     };
   },
   methods: {
-    list(val){
-      this.taskList = val
+    list(val) {
+      this.taskList = val;
     },
-      onSearchTaskClick(){
-          //console.log(this.clause)
-          //console.log(this.$route)
-          let params = {
-            page: 1,
-            limit: 10,
-            status: this.user_type,
-            deal_type: this.$route.meta.title 
-          }
-          params[this.clause] = this.text
-          getFlowList(params).then((res) => {
-            //console.log(res)
-            this.taskList = res.data.data
-          });
-      },
-      onFlowDetailsClick(row){
-          console.log(this.$route)
-          if (row.task_source == "农业产业化贴息项目") {
-          this.$store.commit("Agricul_IsDetailsContentOpen");
-          this.$router.push({
-            path: `${this.$route.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+    onSearchTaskClick() {
+      //console.log(this.clause)
+      //console.log(this.$route)
+      let params = {
+        page: 1,
+        limit: 10,
+        status: this.user_type,
+        deal_type: this.$route.meta.title,
+      };
+      params[this.clause] = this.text;
+      getFlowList(params).then((res) => {
+        //console.log(res)
+        this.taskList = res.data.data;
+      });
+    },
+    onFlowDetailsClick(row) {
+      console.log(this.$route);
+      if (row.task_source == "农业产业化贴息项目") {
+        this.$store.commit("Agricul_IsDetailsContentOpen");
+        this.$router.push({
+          path: `${this.$route.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
         });
       }
-      }
+    },
   },
   mounted() {
     //console.log(this.$route.meta.title)
-    let user_type
-    if(this.$route.params.id == 1){
-      user_type = "初审A"
+    let user_type;
+    if (this.$route.params.id == 1) {
+      user_type = "初审A";
     }
-    if(this.$route.params.id == 2){
-      user_type = "初审B"
+    if (this.$route.params.id == 2) {
+      user_type = "初审B";
     }
-    if(this.$route.params.id == 3){
-      user_type = "复审A"
+    if (this.$route.params.id == 3) {
+      user_type = "复审A";
     }
-    if(this.$route.params.id == 4){
-      user_type = "复审B"
+    if (this.$route.params.id == 4) {
+      user_type = "复审B";
     }
-    this.user_type = user_type
-        let params = {
-          page: 1,
-          limit: 10,
-          status: user_type,
-          deal_type: this.$route.meta.title,
-      }
-      getFlowList(params).then(res=>{
-        this.cnt = res.data.cnt
-          this.taskList = res.data.data
-      })
-    
+    this.user_type = user_type;
+    let params = {
+      page: 1,
+      limit: 10,
+      status: user_type,
+      deal_type: this.$route.meta.title,
+    };
+    getFlowList(params).then((res) => {
+      this.cnt = res.data.cnt;
+      this.taskList = res.data.data;
+    });
+
     //   console.log('dsadsadas')
     // getFlowList(params).then(res=>{
     //     console.log(res)
     // })
-  }
-}
+  },
+};
 </script>
 
 <style>

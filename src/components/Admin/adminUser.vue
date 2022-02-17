@@ -1,16 +1,14 @@
 <template>
   <div>
-      <AdminUserTable></AdminUserTable>
-</div>
+    <AdminUserTable></AdminUserTable>
+  </div>
 </template>
 
 <script>
-import AdminUserTable from "./adminUserTable.vue"
+import AdminUserTable from "./adminUserTable.vue";
 export default {
-    components: {AdminUserTable}
-}
+  components: { AdminUserTable },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

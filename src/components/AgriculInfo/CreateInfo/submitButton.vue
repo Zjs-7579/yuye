@@ -27,17 +27,29 @@
           >保存</el-button
         >
       </div>
-      
+
       <div class="submitBtn" v-else-if="activeName == 'CountableInfo'">
         <el-button @click="handleActionLast">上一步</el-button>
-        <el-button type="primary" @click="handleActionNext" style="margin: 0 25px">下一步</el-button>
+        <el-button
+          type="primary"
+          @click="handleActionNext"
+          style="margin: 0 25px"
+          >下一步</el-button
+        >
         <el-button type="primary" @click="downFile">生成申请书</el-button>
-        <el-button @click="handlePreserveInfo" style="margin-left: 25px">保存</el-button>
+        <el-button @click="handlePreserveInfo" style="margin-left: 25px"
+          >保存</el-button
+        >
       </div>
 
       <div class="submitBtn" v-else-if="activeName == 'UploadFiles'">
         <el-button @click="handleActionLast">上一步</el-button>
-        <el-button type="primary" @click="visibleSubmit" style="margin-left: 25px">提交</el-button>
+        <el-button
+          type="primary"
+          @click="visibleSubmit"
+          style="margin-left: 25px"
+          >提交</el-button
+        >
       </div>
       <div class="submitBtn" v-else>
         <el-button @click="handleActionLast">上一步</el-button>
@@ -55,7 +67,7 @@
 
 <script>
 import { createInfoData } from "../../../api/Agricul/createInfo";
-import {DownContentText} from "../../../api/Agricul/upLoad"
+import { DownContentText } from "../../../api/Agricul/upLoad";
 import DetailsInfo from "./detailsInfo.vue";
 import { mapState } from "vuex";
 export default {
@@ -103,25 +115,24 @@ export default {
         this[this.activeName + "Bool"],
         "当前表单未填写完整！！！"
       );
-    
+
       // let idx = this.activeList.indexOf(this.activeName);
       // let name = this.activeList[idx + 1];
       // this.$emit("handleActionNameText", name);
-      
-      if(this[this.activeName + "Bool"]){
-          createInfoData(this.activeName, this.Agricul.AgriculData).then(() => {
-                this.statusData = 200
-            }).catch(() => {
-                this.statusData = 0
-            })
 
-            let idx = this.activeList.indexOf(this.activeName);
-            let name = this.activeList[idx + 1];
-            this.$emit("handleActionNameText", name);
-      
+      if (this[this.activeName + "Bool"]) {
+        createInfoData(this.activeName, this.Agricul.AgriculData)
+          .then(() => {
+            this.statusData = 200;
+          })
+          .catch(() => {
+            this.statusData = 0;
+          });
+
+        let idx = this.activeList.indexOf(this.activeName);
+        let name = this.activeList[idx + 1];
+        this.$emit("handleActionNameText", name);
       }
-    
-
     },
     handleActionLast() {
       let idx = this.activeList.indexOf(this.activeName);
@@ -163,15 +174,15 @@ export default {
 
       if (activeName == "InancialInfo") {
         this.InancialInfoBool = true;
-        let sum = 0
+        let sum = 0;
         for (let item of this.Agricul.AgriculData.agriculturalFinance) {
-          sum ++
+          sum++;
           for (let result in item) {
             //console.log(result)
             if (item[result] == "") {
               this.InancialInfoBool = false;
-              console.log(result)
-              this.$store.commit("Agricul_InancialType", {sum, result})
+              console.log(result);
+              this.$store.commit("Agricul_InancialType", { sum, result });
               break;
             }
           }
@@ -242,43 +253,40 @@ export default {
     },
 
     handlePreserveInfo() {
-
       createInfoData(this.activeName, this.Agricul.AgriculData).then(() => {
-                if (this.statusData == 200) {
-                    this.$message({
-                        message: "信息保存成功",
-                        type: "success",
-                    });
-                }
-            })
-        // this.validationDataTab(this.activeName)
-        // console.log(this.Agricul.AgriculData)
-        // if(this[this.activeName + "Bool"]){
-        //     createInfoData(this.activeName, this.Agricul.AgriculData).then(() => {
-        //         if (this.statusData == 200) {
-        //             this.$message({
-        //                 message: "信息保存成功",
-        //                 type: "success",
-        //             });
-        //         }
-        //     })
-        // }else{
-        //     this.promptMessage(false,"当前表单未填写完整！！！");
-        // }
-           
+        if (this.statusData == 200) {
+          this.$message({
+            message: "信息保存成功",
+            type: "success",
+          });
+        }
+      });
+      // this.validationDataTab(this.activeName)
+      // console.log(this.Agricul.AgriculData)
+      // if(this[this.activeName + "Bool"]){
+      //     createInfoData(this.activeName, this.Agricul.AgriculData).then(() => {
+      //         if (this.statusData == 200) {
+      //             this.$message({
+      //                 message: "信息保存成功",
+      //                 type: "success",
+      //             });
+      //         }
+      //     })
+      // }else{
+      //     this.promptMessage(false,"当前表单未填写完整！！！");
+      // }
     },
-     downFile(){
-       this.handlePreserveInfo()
-            DownContentText(this.Agricul.userTaskId).then((res)=>{
-              window.open(res.data.data)
-            })
-        },
+    downFile() {
+      this.handlePreserveInfo();
+      DownContentText(this.Agricul.userTaskId).then((res) => {
+        window.open(res.data.data);
+      });
+    },
   },
   components: {
     DetailsInfo,
-  }
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>

@@ -98,7 +98,7 @@
               type="danger"
               @click="onBtnDeleteClick(scope.row)"
             >
-            <!-- scope.$index, scope.row -->
+              <!-- scope.$index, scope.row -->
               删除
             </el-button>
           </template>
@@ -114,7 +114,7 @@
         />
       </el-row>
     </el-row>
-    
+
     <!-- 创建角色对话框 -->
     <el-dialog
       :visible.sync="createDialogFormVisible"
@@ -131,17 +131,12 @@
           <el-input v-model="createForm.roleName" />
         </el-form-item>
         <el-form-item label="角色描述" prop="roleDesc">
-          <el-input
-            v-model="createForm.roleDesc"
-            type="textarea"
-          />
+          <el-input v-model="createForm.roleDesc" type="textarea" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="createDialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="getchen2"
-          >确 定</el-button
-        >
+        <el-button type="primary" @click="getchen2">确 定</el-button>
       </div>
     </el-dialog>
 
@@ -166,20 +161,27 @@
         <el-button @click="onCancel">取 消</el-button>
         <el-button type="primary" @click="getchen">确 定</el-button>
       </div>
-    </el-dialog> 
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import { getUserList2, createUser } from "@/api/Agricul/user";
-import { getAuthorityRoleId, getRoleCheck, getRoleCheck2, editauth, newauth, delauth } from "@/api/Agricul/role";
+import {
+  getAuthorityRoleId,
+  getRoleCheck,
+  getRoleCheck2,
+  editauth,
+  newauth,
+  delauth,
+} from "@/api/Agricul/role";
 import Pagination from "@/components/Pagination/index.vue";
 export default {
   components: { Pagination },
   data() {
     return {
-      roleName:'',
-      roleAuths:[],
+      roleName: "",
+      roleAuths: [],
       createDialogFormVisible: false,
       createAuthorityVisible: false,
       searchOption: {
@@ -201,15 +203,17 @@ export default {
         // usertype: "",
         // user_login_type: "",
         // roles: "",
-        roleName: '',
-        roleDesc: ''
+        roleName: "",
+        roleDesc: "",
       },
       createRules: {
-        roleName: [ { required: true, message: '请输入角色名称', trigger: 'blur' },]
+        roleName: [
+          { required: true, message: "请输入角色名称", trigger: "blur" },
+        ],
       },
       visitAuthArray: [],
-      roleId: '',
-      selectedThree: []
+      roleId: "",
+      selectedThree: [],
     };
   },
   mounted() {
@@ -217,62 +221,65 @@ export default {
   },
   methods: {
     currentChange(p1, p2) {
-      console.log(p1, p2, 'currentChange');
+      console.log(p1, p2, "currentChange");
     },
     onBtnDeleteClick(e) {
       this.$confirm(`确认删除角色${e.roleName}`)
-          .then(_ => {
-            // done();
-            delauth(e.roleId).then(res => {
-              if(res.data.code === 200) {
-                this.$message({
+        .then((_) => {
+          // done();
+          delauth(e.roleId).then((res) => {
+            if (res.data.code === 200) {
+              this.$message({
                 message: "角色删除成功",
                 type: "success",
               });
-              this.getUserList({page: 1, limit: 10})
-              }
-            })
-          })
-          .catch(_ => {});
+              this.getUserList({ page: 1, limit: 10 });
+            }
+          });
+        })
+        .catch((_) => {});
     },
     getchen2() {
       this.$refs.createForm.validate((valid) => {
-          if (valid) {
-            // alert('submit!');
-            newauth(this.createForm).then(res => {
-              this.createDialogFormVisible = false
-              this.createForm =  {
-                roleName: '',
-                roleDesc: ''
-              }
-              this.$message({
-                message: "角色创建成功",
-                type: "success",
-              });
-              this.getUserList({page: 1, limit: 10})
-            })
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        })
+        if (valid) {
+          // alert('submit!');
+          newauth(this.createForm).then((res) => {
+            this.createDialogFormVisible = false;
+            this.createForm = {
+              roleName: "",
+              roleDesc: "",
+            };
+            this.$message({
+              message: "角色创建成功",
+              type: "success",
+            });
+            this.getUserList({ page: 1, limit: 10 });
+          });
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
     },
     onTreeCheckChange(p1, p2) {
-      console.log(p2, 'p222222');
-      this.selectedThree = p2.checkedNodes
-      console.log(this.$refs.tree.getHalfCheckedKeys(), 'asdasdasdadsasdasdasdada------asdadsasda')
+      console.log(p2, "p222222");
+      this.selectedThree = p2.checkedNodes;
+      console.log(
+        this.$refs.tree.getHalfCheckedKeys(),
+        "asdasdasdadsasdasdasdada------asdadsasda"
+      );
     },
-    getchen(){
+    getchen() {
       // getthens(this.roleName).then(response=>{
       //   console.log(response)
       //   // this.roleAuths = response.data.data
       // })
-      if(this.selectedThree.length<1) {
+      if (this.selectedThree.length < 1) {
         this.$message({
-                message: "没有权限变动",
-                type: "warning",
-              });
-              return false
+          message: "没有权限变动",
+          type: "warning",
+        });
+        return false;
       }
       // const _1 = JSON.parse(JSON.stringify(this.selectedThree))
       // _1.forEach((e, i) => {
@@ -280,69 +287,69 @@ export default {
       //     this.selectedThree.splice(i, 1)
       //   }
       // })
-      console.log(this.selectedThree)
-      const _ = []
-      this.selectedThree.forEach(e => {
+      console.log(this.selectedThree);
+      const _ = [];
+      this.selectedThree.forEach((e) => {
         _.push({
           auth_id: e.id,
           role_id: this.roleId,
-          checked: 1
-        })
-      })
-      this.$refs.tree.getHalfCheckedNodes().forEach(e => {
-        console.log(e, 'eeeeeeeee---eeeeeeeee')
+          checked: 1,
+        });
+      });
+      this.$refs.tree.getHalfCheckedNodes().forEach((e) => {
+        console.log(e, "eeeeeeeee---eeeeeeeee");
         _.push({
           auth_id: e.id,
           role_id: this.roleId,
-          checked: 1
-        })
-      })
+          checked: 1,
+        });
+      });
       const data = {
-        visit: _
-      }
-      editauth(this.roleId, data).then(res => {
-        console.log(res, '编辑编辑编辑')
-        if(res.data.code === 200) {
+        visit: _,
+      };
+      editauth(this.roleId, data).then((res) => {
+        console.log(res, "编辑编辑编辑");
+        if (res.data.code === 200) {
           this.$message({
             message: "修改成功",
             type: "success",
           });
-          this.createAuthorityVisible = false
+          this.createAuthorityVisible = false;
         }
-      })
+      });
     },
     // 权限设置取消
-    onCancel(){
-      this.createAuthorityVisible = false
+    onCancel() {
+      this.createAuthorityVisible = false;
     },
     // 权限设置确定
-    onSaveRolesAuth(){
-      this.createAuthorityVisible = false
+    onSaveRolesAuth() {
+      this.createAuthorityVisible = false;
     },
     // 角色权限设置
-    onBtnAuthorityClick(index,value){
+    onBtnAuthorityClick(index, value) {
       // this.roleName = value.roles
       // this.roleis
-      console.log(value, 'valuevalue')
-      this.roleId = value.roleId
+      console.log(value, "valuevalue");
+      this.roleId = value.roleId;
       // console.log(index,value,123)
-      getAuthorityRoleId().then(response=>{
-        this.roleAuths = response.data.data
-      })
-      const _ = []
-      getRoleCheck2({ role: value.roleName }).then(res => {
-        res.data.data.visit.forEach(e => {
-          if(e.label !== '审核管理' && e.label !== '系统管理') {
-            _.push(e.label)
+      getAuthorityRoleId().then((response) => {
+        this.roleAuths = response.data.data;
+      });
+      const _ = [];
+      getRoleCheck2({ role: value.roleName }).then((res) => {
+        res.data.data.visit.forEach((e) => {
+          if (e.label !== "审核管理" && e.label !== "系统管理") {
+            _.push(e.label);
           }
         });
-        this.visitAuthArray = _
-      })
+        this.visitAuthArray = _;
+      });
       // getRoleCheck({ role: value.roles }).then(response=>{
       //   console.log(response,22222222222)
       // })
       // console.log(index,value)
-      this.createAuthorityVisible = true
+      this.createAuthorityVisible = true;
     },
     onBtnEditClick(index, row) {
       this.editDialogFormVisible = true;

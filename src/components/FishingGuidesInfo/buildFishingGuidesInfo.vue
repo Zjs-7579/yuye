@@ -1,6 +1,6 @@
 <template>
   <div class="buildFishing">
-      <el-form
+    <el-form
       :model="oceanDeepseaship"
       ref="buildForm"
       :rules="rules"
@@ -35,7 +35,10 @@
 
       <el-row>
         <el-col :span="6">
-          <el-form-item label="已获得国家资助资金（万元）：" prop="state_funding">
+          <el-form-item
+            label="已获得国家资助资金（万元）："
+            prop="state_funding"
+          >
             <el-input v-model="oceanDeepseaship.state_funding"></el-input>
           </el-form-item>
         </el-col>
@@ -81,8 +84,8 @@
 </template>
 
 <script>
-import {mapState} from "vuex"
-import {FishingAllInfoValidator} from "../../utils/validator"
+import { mapState } from "vuex";
+import { FishingAllInfoValidator } from "../../utils/validator";
 export default {
   data() {
     return {
@@ -105,29 +108,28 @@ export default {
     };
   },
   computed: {
-    ...mapState(['Fishing']),
+    ...mapState(["Fishing"]),
     oceanDeepseaship: {
-          get(){
-              //this.Fishing.OceanDeclaration.oceanDeepseaship.task_id = this.Fishing.userTaskId;
-              this.Fishing.OceanDeclaration.oceanDeepseaship.creator = this.Fishing.userName;
-              return this.Fishing.OceanDeclaration.oceanDeepseaship
-          },
-          set(val){
-              this.OceanDeclaration.oceanDeepseaship = val
-          }
+      get() {
+        //this.Fishing.OceanDeclaration.oceanDeepseaship.task_id = this.Fishing.userTaskId;
+        this.Fishing.OceanDeclaration.oceanDeepseaship.creator =
+          this.Fishing.userName;
+        return this.Fishing.OceanDeclaration.oceanDeepseaship;
       },
-      isDisabledData: {
-        get(){
-          return this.Fishing.isDisabledData
-        },
-        set(val){
-          this.isDisabledData = val
-        }
-    }
+      set(val) {
+        this.OceanDeclaration.oceanDeepseaship = val;
+      },
+    },
+    isDisabledData: {
+      get() {
+        return this.Fishing.isDisabledData;
+      },
+      set(val) {
+        this.isDisabledData = val;
+      },
+    },
   },
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

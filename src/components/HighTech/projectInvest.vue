@@ -1,8 +1,6 @@
 <template>
   <div class="MoInvest">
-<el-row class="title">
-            项目投资情况
-        </el-row>
+    <el-row class="title"> 项目投资情况 </el-row>
     <el-form
       :model="techInvestTotal"
       ref="InvestTotal"
@@ -24,14 +22,20 @@
       </el-row>
     </el-form>
 
-    <ProjectInvestDetailed title="建筑工程类投资明细" :data="techInvestMent.jz"></ProjectInvestDetailed>
+    <ProjectInvestDetailed
+      title="建筑工程类投资明细"
+      :data="techInvestMent.jz"
+    ></ProjectInvestDetailed>
 
     <ProjectInvestDetailed
       title="生产设施建设类投资明细"
       :data="techInvestMent.sc"
     ></ProjectInvestDetailed>
 
-    <ProjectInvestDetailed title="仪器、设备类投资明细" :data="techInvestMent.yq"></ProjectInvestDetailed>
+    <ProjectInvestDetailed
+      title="仪器、设备类投资明细"
+      :data="techInvestMent.yq"
+    ></ProjectInvestDetailed>
 
     <ProjectInvestEquip></ProjectInvestEquip>
   </div>
@@ -54,29 +58,30 @@ export default {
     ...mapState(["HighTech"]),
     techInvestTotal: {
       get() {
-        this.HighTech.HighTechData.techInvestTotal['task_id'] = this.HighTech.userTaskId
+        this.HighTech.HighTechData.techInvestTotal["task_id"] =
+          this.HighTech.userTaskId;
         return this.HighTech.HighTechData.techInvestTotal;
       },
       set(val) {
         this.techInvestTotal = val;
       },
     },
-    techInvestMent:{
-      get(){
-        let jz = this.HighTech.HighTechData.techInvestMent.filter(res=>{
-          return res.inv_type == "建筑工程类投资明细"
-        })
-        let sc = this.HighTech.HighTechData.techInvestMent.filter(res=>{
-          return res.inv_type == "生产设施建设类投资明细"
-        })
-        let yq = this.HighTech.HighTechData.techInvestMent.filter(res=>{
-          return res.inv_type == "仪器、设备类投资明细"
-        })
-        return {jz, sc, yq}
+    techInvestMent: {
+      get() {
+        let jz = this.HighTech.HighTechData.techInvestMent.filter((res) => {
+          return res.inv_type == "建筑工程类投资明细";
+        });
+        let sc = this.HighTech.HighTechData.techInvestMent.filter((res) => {
+          return res.inv_type == "生产设施建设类投资明细";
+        });
+        let yq = this.HighTech.HighTechData.techInvestMent.filter((res) => {
+          return res.inv_type == "仪器、设备类投资明细";
+        });
+        return { jz, sc, yq };
       },
-      set(val){
-        this.techInvestMent = val
-      }
+      set(val) {
+        this.techInvestMent = val;
+      },
     },
     isDisabledData: {
       get() {
@@ -112,15 +117,15 @@ export default {
   overflow: hidden;
   overflow-y: auto;
 }
-.MoInvest .title{
-        background-color: #ece8e8;
-        height: 60px;
-        line-height: 60px;
-        font-size: 25px;
-        padding: 0 15px;
-        font-weight: bold;
-        border: 1px solid #ccc;
-    }
+.MoInvest .title {
+  background-color: #ece8e8;
+  height: 60px;
+  line-height: 60px;
+  font-size: 25px;
+  padding: 0 15px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+}
 .MoInvest .demo-ruleForm .el-form-item__label {
   text-align: center;
   height: 62px;

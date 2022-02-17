@@ -1,12 +1,12 @@
 <template>
   <div class="baseFishing">
-      <el-form
+    <el-form
       :model="oceanBase"
       ref="baseForm"
       :rules="rules"
       label-width="250px"
       class="demo-ruleForm"
-       :disabled="isDisabledData"
+      :disabled="isDisabledData"
     >
       <el-row class="title"> 远洋渔业基地 </el-row>
 
@@ -43,22 +43,25 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="已获得农业部资助（万元）：" prop="agriculture_cost">
+          <el-form-item
+            label="已获得农业部资助（万元）："
+            prop="agriculture_cost"
+          >
             <el-input v-model="oceanBase.agriculture_cost"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
 
-       <el-form-item label="申请资助资金（万元）：" prop="appaly_cost">
-            <el-input v-model="oceanBase.appaly_cost"></el-input>
-          </el-form-item>
+      <el-form-item label="申请资助资金（万元）：" prop="appaly_cost">
+        <el-input v-model="oceanBase.appaly_cost"></el-input>
+      </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-import {mapState} from "vuex"
-import {FishingAllInfoValidator} from "../../utils/validator"
+import { mapState } from "vuex";
+import { FishingAllInfoValidator } from "../../utils/validator";
 export default {
   data() {
     return {
@@ -77,29 +80,27 @@ export default {
     };
   },
   computed: {
-    ...mapState(['Fishing']),
+    ...mapState(["Fishing"]),
     oceanBase: {
-          get(){
-              //this.Fishing.OceanDeclaration.oceanBase.task_id = this.Fishing.userTaskId;
-              this.Fishing.OceanDeclaration.oceanBase.creator = this.Fishing.userName;
-              return this.Fishing.OceanDeclaration.oceanBase
-          },
-          set(val){
-              this.OceanDeclaration.oceanBase = val
-          }
+      get() {
+        //this.Fishing.OceanDeclaration.oceanBase.task_id = this.Fishing.userTaskId;
+        this.Fishing.OceanDeclaration.oceanBase.creator = this.Fishing.userName;
+        return this.Fishing.OceanDeclaration.oceanBase;
       },
-      isDisabledData: {
-        get(){
-          return this.Fishing.isDisabledData
-        },
-        set(val){
-          this.isDisabledData = val
-        }
-    }
+      set(val) {
+        this.OceanDeclaration.oceanBase = val;
+      },
+    },
+    isDisabledData: {
+      get() {
+        return this.Fishing.isDisabledData;
+      },
+      set(val) {
+        this.isDisabledData = val;
+      },
+    },
   },
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

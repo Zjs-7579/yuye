@@ -33,7 +33,6 @@
         <el-col :span="5"
           ><div class="grid-content bg-purple">
             <el-input
-              
               disabled
               type="number"
               v-model="agriculturalFinance[0][item.Model]"
@@ -70,7 +69,7 @@ export default {
       default: function () {
         return {};
       },
-    }
+    },
   },
   data() {
     return {

@@ -24,12 +24,11 @@
           style="width: 120px"
           placeholder="请选择"
         >
-        <el-option label="项目年份" value="项目年份" />
+          <el-option label="项目年份" value="项目年份" />
           <el-option label="项目类型" value="项目类型" />
           <el-option label="项目名称" value="项目名称" />
           <el-option label="项目负责人" value="项目负责人" />
           <el-option label="单位名称" value="单位名称" />
-          
         </el-select>
         <el-button
           slot="append"
@@ -49,7 +48,7 @@
         size="small"
         class="tableStyle"
       >
-      <el-table-column
+        <el-table-column
           prop="pro_year"
           label="项目年份"
           min-width="150"
@@ -73,7 +72,7 @@
           min-width="150"
           align="center"
         />
-        
+
         <el-table-column
           prop="project_Leader"
           label="项目负责人"
@@ -86,13 +85,20 @@
           min-width="150"
           align="center"
         />
-        <el-table-column label="操作" min-width="120" align="center" v-if="this.$route.query.taskType=='已办'||this.$route.query.taskType=='全部'">
+        <el-table-column
+          label="操作"
+          min-width="120"
+          align="center"
+          v-if="
+            this.$route.query.taskType == '已办' ||
+            this.$route.query.taskType == '全部'
+          "
+        >
           <template slot-scope="scope">
-             <el-button
+            <el-button
               size="mini"
               type="primary"
               @click="onFlowDetailsClick(scope.row)"
-              
               >详情</el-button
             >
           </template>
@@ -138,8 +144,8 @@ export default {
         clause: "项目类型",
         text: "",
       },
-      taskType:'',
-      badgeNumber: '',
+      taskType: "",
+      badgeNumber: "",
       taskList: [],
     };
   },
@@ -147,13 +153,13 @@ export default {
     this.getTaskList({ page: 1, limit: 10 });
   },
   watch: {
-  $route(){
-    this.taskType= this.$route.query.taskType
-  },
-  taskType() {
-    console.log("重新请求" + this.taskType + "的数据")
-    this.getTaskList();
-  }
+    $route() {
+      this.taskType = this.$route.query.taskType;
+    },
+    taskType() {
+      console.log("重新请求" + this.taskType + "的数据");
+      this.getTaskList();
+    },
   },
   methods: {
     //查询按钮
@@ -208,20 +214,28 @@ export default {
       });
     },
     //详情
-    onFlowDetailsClick(val){
-     this.$router.push({
+    onFlowDetailsClick(val) {
+      this.$router.push({
         name: "indexDetail2",
-        query: { task_id: val.task_id, authName: this.$route.query.authName,taskType:val.deal_type },
-      })
+        query: {
+          task_id: val.task_id,
+          authName: this.$route.query.authName,
+          taskType: val.deal_type,
+        },
+      });
     },
     //审核A
     onFlowClick(val) {
       if (val.task_source == "农业产业化贴息项目") {
         this.$router.push({
           name: "indexDetail2",
-          query: { task_id: val.task_id, authName: this.$route.query.authName,taskType:val.deal_type },
+          query: {
+            task_id: val.task_id,
+            authName: this.$route.query.authName,
+            taskType: val.deal_type,
+          },
         });
-      } else if(val.task_source == "现代农业项目"){
+      } else if (val.task_source == "现代农业项目") {
         this.$router.push({
           name: "indexDetail",
           query: { task_id: val.task_id },

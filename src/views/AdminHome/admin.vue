@@ -43,7 +43,10 @@
               >
                 <template slot="title">
                   <i :class="subItem.icon"></i>
-                  <span v-if="subItem.authName=='初审-待办'">{{ subItem.authName }} <el-badge class="mark" :max="99" :value="badgeNumber" /></span>
+                  <span v-if="subItem.authName == '初审-待办'"
+                    >{{ subItem.authName }}
+                    <el-badge class="mark" :max="99" :value="badgeNumber"
+                  /></span>
                   <span v-else>{{ subItem.authName }}</span>
                 </template>
               </el-menu-item>
@@ -67,11 +70,11 @@ export default {
     return {
       cardList: routerLogin,
       name: "",
-      badgeNumber:"",
-      activeIndex:"",
+      badgeNumber: "",
+      activeIndex: "",
       arrList: [],
-      openeds:['1','2'],
-      loginRoles: '',
+      openeds: ["1", "2"],
+      loginRoles: "",
       //左边菜单
       menuList: [
         {
@@ -89,14 +92,14 @@ export default {
               url: `/AdminHome/admin/FirstIndex?authName=${this.$route.query.authName}&taskType=待办`,
               children: [],
             },
-             {
+            {
               id: 2,
               authName: "初审-已办",
               icon: "el-icon-menu",
               url: `/AdminHome/admin/FirstIndex?authName=${this.$route.query.authName}&taskType=已办`,
               children: [],
             },
-              {
+            {
               id: 3,
               authName: "初审-全部",
               icon: "el-icon-menu",
@@ -152,74 +155,74 @@ export default {
     //   console.log(res, 'asadasdasdasdasd1111')
     //   this.$store.commit("UserName", res.data.data);
     // })
-    const taskType=this.$route.query.taskType  //获取路由值
-    console.log(this.$route.query.taskType)
-    if(taskType != null || taskType != 'undefined'){
+    const taskType = this.$route.query.taskType; //获取路由值
+    console.log(this.$route.query.taskType);
+    if (taskType != null || taskType != "undefined") {
       // console.log(111)
       this.menuList.forEach((item) => {
         item.children.forEach((res, index) => {
-          if (res.url.indexOf(taskType)!=-1) {
+          if (res.url.indexOf(taskType) != -1) {
             // console.log(222)
             // console.log(res.url,'路由------')
-            this.activeIndex=res.url
+            this.activeIndex = res.url;
             // console.log(this.activeIndex=res.url, 'this.activeIndex=res.url');
           }
         });
-    });
+      });
     }
   },
   created() {
-    userToken().then(res => {
-      const roles = res.data.data.roles
+    userToken().then((res) => {
+      const roles = res.data.data.roles;
       // console.log(res, 'asadasdasdasdasd1111222333')
       this.$store.commit("UserName", res.data.data);
-      let _ = res.data.data.roles
-      let str = _.charAt(_.length - 1)
-      const regx = /^[A-Za-z0-9]*$/
+      let _ = res.data.data.roles;
+      let str = _.charAt(_.length - 1);
+      const regx = /^[A-Za-z0-9]*$/;
       // console.log(_, str, regx.test(str), 'rtrtrtrtrtrtrtrtrtrrtr');
-      if(regx.test(str)) {
-        _ = _.slice(0, _.length-1)
+      if (regx.test(str)) {
+        _ = _.slice(0, _.length - 1);
       }
-      this.loginRoles = _
+      this.loginRoles = _;
       // console.log(this.loginRoles, 'this.loginRolesthis.loginRolesthis.loginRolesthis.loginRolesthis.loginRoles');
-      this.menuList[0].children[0].authName = `${this.loginRoles}-待办`
-      this.menuList[0].children[1].authName = `${this.loginRoles}-已办`
-      this.menuList[0].children[2].authName = `${this.loginRoles}-全部`
-      getRouters(roles).then(res => {
+      this.menuList[0].children[0].authName = `${this.loginRoles}-待办`;
+      this.menuList[0].children[1].authName = `${this.loginRoles}-已办`;
+      this.menuList[0].children[2].authName = `${this.loginRoles}-全部`;
+      getRouters(roles).then((res) => {
         // console.log(res, 'adsadasdasdad123143252')
-        const _ = []
-        res.forEach(e => {
+        const _ = [];
+        res.forEach((e) => {
           // console.log(e, 'eeeeeeeeeeeeeeeeeeeeeeeee->eeeeeeeeeeeeeeeeeeeeeeeeeee')
-          _.push(e.label)
-          e.children.forEach(el => {
-            _.push(el.label)
-          })
-        })
-        if(_.indexOf('审核管理') < 0) {
-          this.menuList[0].show = false
+          _.push(e.label);
+          e.children.forEach((el) => {
+            _.push(el.label);
+          });
+        });
+        if (_.indexOf("审核管理") < 0) {
+          this.menuList[0].show = false;
         }
-        if(_.indexOf('系统管理') < 0) {
-          this.menuList[1].show = false
+        if (_.indexOf("系统管理") < 0) {
+          this.menuList[1].show = false;
         }
-        if(this.loginRoles === '管理员') {
-          this.menuList[0].show = false
-          this.menuList[1].show = true
+        if (this.loginRoles === "管理员") {
+          this.menuList[0].show = false;
+          this.menuList[1].show = true;
         }
-      })
-    })
-    this.getTaskList()
+      });
+    });
+    this.getTaskList();
     this.name = this.$route.query.authName;
     console.log(this.name);
     this.menuList.forEach((item) => {
       if (item.authName == "审核管理") {
         item.children.forEach((res, index) => {
-          console.log(res.authName,'菜单模块-----')
-          if (res.authName.indexOf('初审') != -1) {
-            console.log(res.authName,'包含------')
+          console.log(res.authName, "菜单模块-----");
+          if (res.authName.indexOf("初审") != -1) {
+            console.log(res.authName, "包含------");
             console.log(this.arrList, item.children, "----");
           } else {
-            item.children.splice(index,1)
-            console.log(res.authName,'不是包含------')
+            item.children.splice(index, 1);
+            console.log(res.authName, "不是包含------");
           }
         });
       }
@@ -238,7 +241,7 @@ export default {
         page: 1,
         limit: 10,
         status: this.$route.query.authName,
-        deal_type:'待办'
+        deal_type: "待办",
       };
       getFlowList(params).then((res) => {
         if (res.data.code === 200) {

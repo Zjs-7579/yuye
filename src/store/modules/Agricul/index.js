@@ -1,10 +1,10 @@
-import state from "./state"
-import mutations from "./mutations"
+import state from "./state";
+import mutations from "./mutations";
 // import actions from "./actions"
 // import getters from "./getters"
- const Agricul = {
-    state: state,
-    mutations: mutations
-}
+const Agricul = {
+  state: state,
+  mutations: mutations,
+};
 
-export default Agricul
+export default Agricul;

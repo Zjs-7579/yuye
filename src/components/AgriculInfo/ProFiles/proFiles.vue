@@ -1,8 +1,6 @@
 <template>
   <div>
     <div class="nav">
-     
-
       <div class="flex">
         <div style="flex: 3">
           <el-button type="primary">创建用户</el-button>
@@ -24,18 +22,23 @@
       </div>
     </div>
     <el-table
-    height="750"
-    max-height="750"
+      height="750"
+      max-height="750"
       :data="tableData"
-      style="width: 98%; margin: 0 auto;"
-      :header-cell-style="{backgroundColor: '#3a71a8',  textAlign: 'center', color:'#fff'}"
-      :cell-style="{textAlign: 'center'}"
+      style="width: 98%; margin: 0 auto"
+      :header-cell-style="{
+        backgroundColor: '#3a71a8',
+        textAlign: 'center',
+        color: '#fff',
+      }"
+      :cell-style="{ textAlign: 'center' }"
       border
     >
       <el-table-column label="用户ID" prop="task_name"> </el-table-column>
       <el-table-column label="用户姓名" prop="unit_address"> </el-table-column>
       <el-table-column label="角色" prop="project_address"> </el-table-column>
-      <el-table-column label="证件类型" prop="project_Leader"> </el-table-column>
+      <el-table-column label="证件类型" prop="project_Leader">
+      </el-table-column>
       <el-table-column label="证件号" prop="phone"> </el-table-column>
       <el-table-column label="用户类型" prop="create_time"> </el-table-column>
       <el-table-column label="创建时间" prop="status"> </el-table-column>
@@ -45,33 +48,36 @@
 
         <template slot-scope="scope">
           <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
-            >详情</el-button>
-             <el-button
-          size="mini"
-          type="danger"
-          @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            >详情</el-button
+          >
+          <el-button
+            size="mini"
+            type="danger"
+            @click="handleDelete(scope.$index, scope.row)"
+            >删除</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
 
-
     <div class="block">
-        <el-pagination
-         background
+      <el-pagination
+        background
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="currentPage"
         :page-sizes="[10, 20, 40]"
         :page-size="pageSize"
         layout="total, sizes, prev, pager, next, jumper"
-        :total="total">
-        </el-pagination>
-  </div>
+        :total="total"
+      >
+      </el-pagination>
+    </div>
   </div>
 </template>
 
 <script>
-import {searchEnterInfo} from "../../../api/Agricul/searchEnter"
+import { searchEnterInfo } from "../../../api/Agricul/searchEnter";
 //import axios from "axios"
 export default {
   data() {
@@ -84,7 +90,7 @@ export default {
       //总数
       total: 10,
       //每页显示数
-      pageSize: 10
+      pageSize: 10,
     };
   },
   methods: {
@@ -92,31 +98,30 @@ export default {
       console.log(index, row);
     },
     handleDelete(index, row) {
-        console.log(index, row);
-     },
-    dataHandel(res){
-        //console.log(res)
-        this.tableData = res.data.data
-        this.total = res.data.cnt
+      console.log(index, row);
+    },
+    dataHandel(res) {
+      //console.log(res)
+      this.tableData = res.data.data;
+      this.total = res.data.cnt;
     },
     handleSizeChange(val) {
-        //console.log(`每页 ${val} 条`);
-        this.pageSize = val
-        searchEnterInfo(this.currentPage, this.pageSize).then((res)=>{
-          this.dataHandel(res)
-        })
-      },
+      //console.log(`每页 ${val} 条`);
+      this.pageSize = val;
+      searchEnterInfo(this.currentPage, this.pageSize).then((res) => {
+        this.dataHandel(res);
+      });
+    },
     handleCurrentChange(val) {
-      searchEnterInfo(val, 10).then((res)=>{
-      this.dataHandel(res)
-    })
-
-    }
+      searchEnterInfo(val, 10).then((res) => {
+        this.dataHandel(res);
+      });
+    },
   },
-  mounted(){
-    searchEnterInfo(1, 10).then((res)=>{
-      this.dataHandel(res)
-    })
+  mounted() {
+    searchEnterInfo(1, 10).then((res) => {
+      this.dataHandel(res);
+    });
   },
 };
 </script>
@@ -140,8 +145,8 @@ export default {
   display: flex;
   margin: 10px 0;
 }
-.block{
+.block {
   width: 100%;
-  text-align: center
+  text-align: center;
 }
 </style>

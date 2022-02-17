@@ -12,7 +12,7 @@
 
     <div class="submit">
       <div class="submitText">
-        <span v-show="regist_type == '企业'&& activeName == 'InancialInfo'"
+        <span v-show="regist_type == '企业' && activeName == 'InancialInfo'"
           >注：07企业增加值=序号08+09+10+13；
           13应交税费总额=序号14+15+16+17+18；
           19实际优惠税费总额=序号20+21+22+23</span
@@ -27,14 +27,26 @@
 
       <div class="submitBtn" v-else-if="activeName == 'SummarizeInfo'">
         <el-button @click="handleActionLast">上一步</el-button>
-        <el-button type="primary" @click="handleActionNext" style="margin: 0 25px">下一步</el-button>
+        <el-button
+          type="primary"
+          @click="handleActionNext"
+          style="margin: 0 25px"
+          >下一步</el-button
+        >
         <el-button type="primary" @click="downFile">生成申请书</el-button>
-        <el-button @click="handlePreserveInfo" style="margin-left: 25px">保存</el-button>
+        <el-button @click="handlePreserveInfo" style="margin-left: 25px"
+          >保存</el-button
+        >
       </div>
 
       <div class="submitBtn" v-else-if="activeName == 'UploadFiles'">
-        <el-button @click="handleActionLast" >上一步</el-button>
-        <el-button type="primary" @click="visibleSubmit" style="margin-left: 25px">提交</el-button>
+        <el-button @click="handleActionLast">上一步</el-button>
+        <el-button
+          type="primary"
+          @click="visibleSubmit"
+          style="margin-left: 25px"
+          >提交</el-button
+        >
       </div>
       <div class="submitBtn" v-else>
         <el-button @click="handleActionLast">上一步</el-button>
@@ -51,8 +63,8 @@
 </template>
 
 <script>
-import {createInfoData} from '../../../api/Modern/createInfo'
-import {DownContentText} from "../../../api/Modern/upLoad"
+import { createInfoData } from "../../../api/Modern/createInfo";
+import { DownContentText } from "../../../api/Modern/upLoad";
 import DetailsInfo from "./detailsInfo.vue";
 import { mapState } from "vuex";
 export default {
@@ -83,39 +95,40 @@ export default {
   computed: {
     ...mapState(["Modern"]),
     regist_type: {
-      get(){
-        return this.Modern.ModernData.modernCompany.regist_type
+      get() {
+        return this.Modern.ModernData.modernCompany.regist_type;
       },
       set(val) {
-        this.regist_type = val
-      }
-    }
+        this.regist_type = val;
+      },
+    },
   },
   methods: {
     handleActionNext() {
-      console.log(this.Modern.ModernData)
+      console.log(this.Modern.ModernData);
       this.validationDataTab(this.activeName);
       this.promptMessage(
         this[this.activeName + "Bool"],
         "当前表单未填写完整！！！"
       );
-      console.log(this[this.activeName + "Bool"])
+      console.log(this[this.activeName + "Bool"]);
       // let idx = this.activeList.indexOf(this.activeName);
       // let name = this.activeList[idx + 1];
       // this.$emit("handleActionNameText", name);
 
-        if(this[this.activeName + "Bool"]){
-            createInfoData(this.activeName, this.Modern.ModernData).then(() => {
-                  this.statusData = 200
-              }).catch(() => {
-                  this.statusData = 0
-              })
+      if (this[this.activeName + "Bool"]) {
+        createInfoData(this.activeName, this.Modern.ModernData)
+          .then(() => {
+            this.statusData = 200;
+          })
+          .catch(() => {
+            this.statusData = 0;
+          });
 
-              let idx = this.activeList.indexOf(this.activeName);
-              let name = this.activeList[idx + 1];
-              this.$emit("handleActionNameText", name);
-
-        }
+        let idx = this.activeList.indexOf(this.activeName);
+        let name = this.activeList[idx + 1];
+        this.$emit("handleActionNameText", name);
+      }
     },
     handleActionLast() {
       let idx = this.activeList.indexOf(this.activeName);
@@ -148,11 +161,11 @@ export default {
     },
     validationDataTab(activeName) {
       if (activeName == "UnitInfo") {
-        this.UnitInfoBool = true
+        this.UnitInfoBool = true;
         this.$parent.$refs.ModernUnitInfoValidate.$refs.unitForm.validate(
           (e) => {
             this.UnitInfoBool = e;
-            console.log('*****************',e)
+            console.log("*****************", e);
           }
         );
 
@@ -167,42 +180,39 @@ export default {
             //this.UnitInfoBool = true;
           }
         }
-
       }
 
       if (activeName == "InancialInfo") {
-            this.InancialInfoBool = true;
+        this.InancialInfoBool = true;
 
-        if(this.Modern.ModernData.modernCompany.regist_type == "企业"){
+        if (this.Modern.ModernData.modernCompany.regist_type == "企业") {
           for (let item of this.Modern.ModernData.modernFinances) {
-          //console.log(item)
-          for (let result in item) {
-            //console.log(result)
-            if (item[result] == "") {
-              this.InancialInfoBool = false;
-              break;
+            //console.log(item)
+            for (let result in item) {
+              //console.log(result)
+              if (item[result] == "") {
+                this.InancialInfoBool = false;
+                break;
+              }
             }
           }
         }
-        }
 
-        if(this.Modern.ModernData.modernCompany.regist_type == "事业单位"){
-            this.InancialInfoBool = true;
+        if (this.Modern.ModernData.modernCompany.regist_type == "事业单位") {
+          this.InancialInfoBool = true;
 
           for (let item of this.Modern.ModernData.modernCauses) {
-          //console.log(item)
-          for (let result in item) {
-            //console.log(result)
-            if (item[result] == "") {
-              this.InancialInfoBool = false;
-              break;
+            //console.log(item)
+            for (let result in item) {
+              //console.log(result)
+              if (item[result] == "") {
+                this.InancialInfoBool = false;
+                break;
+              }
             }
           }
         }
-        }
-        
       }
-
 
       if (activeName == "HoldInfo") {
         this.HoldInfoBool = true;
@@ -212,18 +222,16 @@ export default {
             if (!e) {
               this.HoldInfoBool = e;
             }
-            
           });
         }
         //console.log(this.HoldInfoBool)
       }
 
-
       if (activeName == "ProjectUnitInfo") {
         for (let item in this.Modern.ModernData.basic_info) {
-          if(this.Modern.ModernData.basic_info[item] == ""){
+          if (this.Modern.ModernData.basic_info[item] == "") {
             this.ProjectUnitInfoBool = false;
-            break
+            break;
           }
           this.ProjectUnitInfoBool = true;
         }
@@ -233,8 +241,8 @@ export default {
         this.$parent.$refs.ModernProjectContentValidate.$refs.ProjectContent.validate(
           (e) => {
             this.ProjectContentBool = e;
-          })
-         
+          }
+        );
       }
 
       if (activeName == "ProjectInvest") {
@@ -252,25 +260,24 @@ export default {
       }
 
       if (activeName == "SummarizeInfo") {
-        this.SummarizeInfoBool = true
+        this.SummarizeInfoBool = true;
         this.$parent.$refs.ModernSummarizeInfoValidate.$refs.SummarizeForm.validate(
           (e) => {
-            this.SummarizeInfoBool = e
-          })
+            this.SummarizeInfoBool = e;
+          }
+        );
       }
-      
-
     },
 
     handlePreserveInfo() {
       createInfoData(this.activeName, this.Modern.ModernData).then(() => {
-              if (this.statusData == 200) {
-                  this.$message({
-                      message: "信息保存成功",
-                      type: "success",
-                  });
-              }
-          })
+        if (this.statusData == 200) {
+          this.$message({
+            message: "信息保存成功",
+            type: "success",
+          });
+        }
+      });
       // this.validationDataTab(this.activeName)
       // if(this[this.activeName + "Bool"]){
       //     createInfoData(this.activeName, this.Modern.ModernData).then(() => {
@@ -296,18 +303,17 @@ export default {
     //     //window.location.reload()
     //   );
     // },
-     downFile(){
-       this.handlePreserveInfo()
-            DownContentText(this.Modern.userTaskId).then((res)=>{
-                window.open(res.data.data)
-            })
-        },
+    downFile() {
+      this.handlePreserveInfo();
+      DownContentText(this.Modern.userTaskId).then((res) => {
+        window.open(res.data.data);
+      });
+    },
   },
   components: {
     DetailsInfo,
-  }
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>

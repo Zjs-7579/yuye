@@ -1,6 +1,6 @@
 <template>
   <div class="buyFishing">
-      <el-form
+    <el-form
       :model="oceanBuyseaship"
       ref="buyForm"
       :rules="rules"
@@ -29,7 +29,7 @@
       </el-row>
 
       <el-row>
-         <el-col :span="6">
+        <el-col :span="6">
           <el-form-item label="总吨位：" prop="tonnage">
             <el-input v-model="oceanBuyseaship.tonnage"></el-input>
           </el-form-item>
@@ -76,8 +76,8 @@
 </template>
 
 <script>
-import {mapState} from "vuex"
-import {FishingAllInfoValidator} from "../../utils/validator"
+import { mapState } from "vuex";
+import { FishingAllInfoValidator } from "../../utils/validator";
 export default {
   data() {
     return {
@@ -100,30 +100,28 @@ export default {
     };
   },
   computed: {
-    ...mapState(['Fishing']),
+    ...mapState(["Fishing"]),
     oceanBuyseaship: {
-          get(){
-              //this.Fishing.OceanDeclaration.oceanBuyseaship.task_id = this.Fishing.userTaskId;
-              this.Fishing.OceanDeclaration.oceanBuyseaship.creator = this.Fishing.userName;
-              return this.Fishing.OceanDeclaration.oceanBuyseaship
-          },
-          set(val){
-              this.OceanDeclaration.oceanBuyseaship = val
-          }
+      get() {
+        //this.Fishing.OceanDeclaration.oceanBuyseaship.task_id = this.Fishing.userTaskId;
+        this.Fishing.OceanDeclaration.oceanBuyseaship.creator =
+          this.Fishing.userName;
+        return this.Fishing.OceanDeclaration.oceanBuyseaship;
       },
-      isDisabledData: {
-        get(){
-          return this.Fishing.isDisabledData
-        },
-        set(val){
-          this.isDisabledData = val
-        }
-    }
-      
+      set(val) {
+        this.OceanDeclaration.oceanBuyseaship = val;
+      },
+    },
+    isDisabledData: {
+      get() {
+        return this.Fishing.isDisabledData;
+      },
+      set(val) {
+        this.isDisabledData = val;
+      },
+    },
   },
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

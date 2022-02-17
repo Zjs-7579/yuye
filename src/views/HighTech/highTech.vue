@@ -51,8 +51,7 @@
           </el-dropdown>
           <span>{{ this.$store.state.Modern.userName }}</span>
         </el-header>
-        <router-view>
-        </router-view>
+        <router-view> </router-view>
         <!-- <div>
           <el-button type="primary">深圳远洋渔业</el-button>
           <el-button type="primary">中央远洋渔业</el-button>

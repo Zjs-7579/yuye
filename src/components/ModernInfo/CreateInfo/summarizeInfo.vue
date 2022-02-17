@@ -2,53 +2,53 @@
   <div class="MoSummarize">
     <div class="SummarizeBase">
       <el-form
-      :model="modernAbstract"
-      ref="SummarizeForm"
-      :disabled="isDisabledData"
-      :rules="rules"
-      label-width="250px"
-      class="demo-ruleForm"
-    >
-      <el-row class="title"> 单位银行开户信息：（下达资助金额使用） </el-row>
-      <el-form-item label="银行账户名称:" prop="bank_name">
-        <el-input v-model="modernAbstract.bank_name"></el-input>
-      </el-form-item>
-      <el-row>
-        <el-col :span="12">
-          <el-form-item label="基本账户开户行:" prop="bank">
-            <el-input v-model="modernAbstract.bank"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="开户账号:" prop="account">
-            <el-input v-model="modernAbstract.account"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row class="title"> 企业需提供项目现场考察的实际地址： </el-row>
-      <el-row>
-        <el-col :span="6">
-          <el-form-item label="省份:" prop="province">
-            <el-input v-model="modernAbstract.province"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="6">
-          <el-form-item label="城市:" prop="city">
-            <el-input v-model="modernAbstract.city"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="6">
-          <el-form-item label="地区:" prop="area">
-            <el-input v-model="modernAbstract.area"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="6">
-          <el-form-item label="具体地址:" prop="sp_address">
-            <el-input v-model="modernAbstract.sp_address"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-    </el-form>
+        :model="modernAbstract"
+        ref="SummarizeForm"
+        :disabled="isDisabledData"
+        :rules="rules"
+        label-width="250px"
+        class="demo-ruleForm"
+      >
+        <el-row class="title"> 单位银行开户信息：（下达资助金额使用） </el-row>
+        <el-form-item label="银行账户名称:" prop="bank_name">
+          <el-input v-model="modernAbstract.bank_name"></el-input>
+        </el-form-item>
+        <el-row>
+          <el-col :span="12">
+            <el-form-item label="基本账户开户行:" prop="bank">
+              <el-input v-model="modernAbstract.bank"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="开户账号:" prop="account">
+              <el-input v-model="modernAbstract.account"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row class="title"> 企业需提供项目现场考察的实际地址： </el-row>
+        <el-row>
+          <el-col :span="6">
+            <el-form-item label="省份:" prop="province">
+              <el-input v-model="modernAbstract.province"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="6">
+            <el-form-item label="城市:" prop="city">
+              <el-input v-model="modernAbstract.city"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="6">
+            <el-form-item label="地区:" prop="area">
+              <el-input v-model="modernAbstract.area"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="6">
+            <el-form-item label="具体地址:" prop="sp_address">
+              <el-input v-model="modernAbstract.sp_address"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
     </div>
 
     <el-form

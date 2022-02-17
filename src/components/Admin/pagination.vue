@@ -43,7 +43,7 @@ export default {
       console.log(this.$route.path);
       if (this.$route.path == "/admin/user") {
         getUserList(params).then((res) => {
-          this.cnt = res.data.cnt
+          this.cnt = res.data.cnt;
           //this.taskList = res.data.data
           this.$emit("dataList", res.data.data);
         });
@@ -51,7 +51,7 @@ export default {
 
       if (this.$route.path == "/admin/role") {
         getAdminList(params).then((res) => {
-          this.cnt = res.data.cnt
+          this.cnt = res.data.cnt;
           //this.taskList = res.data.data
           this.$emit("dataList", res.data.data);
         });
@@ -64,7 +64,7 @@ export default {
       };
       if (this.$route.path == "/admin/user") {
         getUserList(params).then((res) => {
-          this.cnt = res.data.cnt
+          this.cnt = res.data.cnt;
           //this.taskList = res.data.data
           this.$emit("dataList", res.data.data);
         });
@@ -72,7 +72,7 @@ export default {
 
       if (this.$route.path == "/admin/role") {
         getAdminList(params).then((res) => {
-          this.cnt = res.data.cnt
+          this.cnt = res.data.cnt;
           //this.taskList = res.data.data
           this.$emit("dataList", res.data.data);
         });

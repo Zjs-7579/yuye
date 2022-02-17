@@ -18,17 +18,19 @@
       :file-list="fileList"
       accept=".png, .jpg, .jpeg, .pdf"
     >
-      <el-button type="primary" round >上传</el-button>
+      <el-button type="primary" round>上传</el-button>
       <!-- <span slot="tip" class="text">dsadsada</span> -->
-      <div slot="tip" class="el-upload__tip">
-       
-      </div>
+      <div slot="tip" class="el-upload__tip"></div>
     </el-upload>
   </div>
 </template>
 
 <script>
-import { UploadFiles, DeleteFiles, DownContentFiles } from "../../../api/Agricul/upLoad";
+import {
+  UploadFiles,
+  DeleteFiles,
+  DownContentFiles,
+} from "../../../api/Agricul/upLoad";
 import { mapState } from "vuex";
 export default {
   props: ["isFile", "dataFiles"],
@@ -74,39 +76,37 @@ export default {
     //   },
     // },
     isDisabledData: {
-      get(){
-        return this.Agricul.isDisabledData
+      get() {
+        return this.Agricul.isDisabledData;
       },
-      set(val){
-        this.isDisabledData = val
-      }
-    }
+      set(val) {
+        this.isDisabledData = val;
+      },
+    },
   },
   mounted() {
     // let uploadUrlData = this.Agricul.uploadUrlData
     //       .filter((item) => {
     //         return item.title == this.isFile;
     //       })[0].data;
-          //console.log(this.isFile,'-------', this.dataFiles)
-    
+    //console.log(this.isFile,'-------', this.dataFiles)
   },
   methods: {
     upLoad() {
       //console.log(this.formData)
-      
+
       let len = this.fileList.length - 1;
       UploadFiles(this.formData).then((res) => {
-        console.log(res)
+        console.log(res);
         this.fileList[len]["id"] = res.data.data;
         this.fileList[len]["material_type"] = this.isFile;
         this.fileList[len]["source"] = "农业产业化贴息";
         //this.urlFiles.push(res.data.data)
         this.imageIds.push(res.data.data);
 
-        this.dataFiles.push(this.fileList[len])
-        
+        this.dataFiles.push(this.fileList[len]);
 
-          //uploadTitle.data.push(this.fileList[len]);
+        //uploadTitle.data.push(this.fileList[len]);
         //console.log(result)
         //this.fileList = uploadTitle.data;
         //this.$emit('myUrlFiles', {'add':res.data.data})
@@ -116,22 +116,20 @@ export default {
     },
     //文件数量改变
     handleChange(file, fileList) {
-     
-      this.fileList = fileList
+      this.fileList = fileList;
     },
 
     handleRemove(file) {
       //this.$emit('myUrlFiles', {'delete':file.id})
       DeleteFiles(file.id).then(() => {
         let r = this.imageIds.indexOf(file.id);
-        
 
         //this.$emit('myUrlFiles', {'delete':file.id})
-        let idx = this.dataFiles.filter((item, index)=>{
-          if(item.id == file.id){
-            return index
+        let idx = this.dataFiles.filter((item, index) => {
+          if (item.id == file.id) {
+            return index;
           }
-        })
+        });
         this.imageIds.splice(r, 1);
         this.dataFiles.splice(idx, 1);
         this.$message.success("删除成功");
@@ -141,9 +139,9 @@ export default {
 
     handlePreview(file) {
       //console.log(file);
-      DownContentFiles(file.id).then(res=>{
-        window.open(res.data.data)
-      })
+      DownContentFiles(file.id).then((res) => {
+        window.open(res.data.data);
+      });
     },
     handleExceed(files, fileList) {
       this.$message.warning(
@@ -166,9 +164,9 @@ export default {
       formData.append("name", file.name);
       formData.append("file", file);
       this.formData = formData;
-      console.log(this.formData)
+      console.log(this.formData);
     },
-  }
+  },
 };
 </script>
 

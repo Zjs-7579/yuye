@@ -106,7 +106,7 @@ export default {
   },
   methods: {
     handleActionNext() {
-       console.log(this.HighTech.HighTechData);
+      console.log(this.HighTech.HighTechData);
       //console.log(this.Modern.ModernData);
       //this.validationDataTab(this.activeName);
       // this.promptMessage(
@@ -204,11 +204,8 @@ export default {
       // });
     },
   },
-  components: {
-    
-  },
+  components: {},
 };
 </script>
 
-<style>
-</style>
+<style></style>

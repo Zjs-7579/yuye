@@ -68,7 +68,7 @@ export default {
     ...mapState(["Agricul"]),
     agriculturalShareholder: {
       get() {
-        this.Agricul.AgriculData.agriculturalShareholder[0]['task_id'] =
+        this.Agricul.AgriculData.agriculturalShareholder[0]["task_id"] =
           this.Agricul.userTaskId;
 
         return this.Agricul.AgriculData.agriculturalShareholder;

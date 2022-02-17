@@ -8,36 +8,46 @@
       >政府人员登录</el-button
     > -->
 
-    <el-button type="primary" @click="adminUser(1)"
-      >初审A</el-button
-    >
-<el-button type="primary" @click="adminUser(2)"
-      >初审B</el-button
-    >
-    <el-button type="primary" @click="adminUser(3)"
-      >复审A</el-button
-    >
-    <el-button type="primary" @click="adminUser(4)"
-      >复审A</el-button
-    >
-    <el-button type="primary" @click="adminUser(5)"
-      >管理员</el-button
-    >
+    <el-button type="primary" @click="adminUser(1)">初审A</el-button>
+    <el-button type="primary" @click="adminUser(2)">初审B</el-button>
+    <el-button type="primary" @click="adminUser(3)">复审A</el-button>
+    <el-button type="primary" @click="adminUser(4)">复审A</el-button>
+    <el-button type="primary" @click="adminUser(5)">管理员</el-button>
 
-    <el-button type="primary" size="medium" @click="adminLoginEnter1(1)"
-      style="display: none">政府人员登录-初审A</el-button
+    <el-button
+      type="primary"
+      size="medium"
+      @click="adminLoginEnter1(1)"
+      style="display: none"
+      >政府人员登录-初审A</el-button
     >
-    <el-button type="primary" size="medium" @click="adminLoginEnter2(2)"
-      style="display: none">政府人员登录-初审B</el-button
+    <el-button
+      type="primary"
+      size="medium"
+      @click="adminLoginEnter2(2)"
+      style="display: none"
+      >政府人员登录-初审B</el-button
     >
-    <el-button type="primary" size="medium" @click="adminLoginEnter3(3)"
-      style="display: none">政府人员登录-复审A</el-button
+    <el-button
+      type="primary"
+      size="medium"
+      @click="adminLoginEnter3(3)"
+      style="display: none"
+      >政府人员登录-复审A</el-button
     >
-    <el-button type="primary" size="medium" @click="adminLoginEnter4(4)"
-      style="display: none">政府人员登录-复审A</el-button
+    <el-button
+      type="primary"
+      size="medium"
+      @click="adminLoginEnter4(4)"
+      style="display: none"
+      >政府人员登录-复审A</el-button
     >
-    <el-button type="primary" size="medium" @click="adminLoginEnter5(5)"
-      style="display: none">管理员</el-button
+    <el-button
+      type="primary"
+      size="medium"
+      @click="adminLoginEnter5(5)"
+      style="display: none"
+      >管理员</el-button
     >
   </div>
 </template>
@@ -53,19 +63,16 @@ export default {
         });
       });
     },
-    adminUser(id){
-      if(id == 5){
+    adminUser(id) {
+      if (id == 5) {
         this.$router.push({
-          path:  `/admin`
-          
+          path: `/admin`,
         });
-      }else{
+      } else {
         this.$router.push({
-          path:  `/user/${id}`
-          
+          path: `/user/${id}`,
         });
       }
-      
     },
     adminLoginEnter1(val) {
       flowType(val).then(() => {

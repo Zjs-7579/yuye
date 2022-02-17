@@ -1,16 +1,14 @@
 <template>
   <div>
-      <AdminRoleTable></AdminRoleTable>
-</div>
+    <AdminRoleTable></AdminRoleTable>
+  </div>
 </template>
 
 <script>
-import AdminRoleTable from "./adminRoleTable.vue"
+import AdminRoleTable from "./adminRoleTable.vue";
 export default {
-    components: {AdminRoleTable}
-}
+  components: { AdminRoleTable },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
