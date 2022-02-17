@@ -85,9 +85,10 @@ export default {
     ...mapState(["Safety"]),
     safetyImplement: {
       get() {
-        this.Safety.safetyImplement["task_id"] = this.Safety.userTaskId;
+        this.Safety.SafetyData.safetyImplement["task_id"] =
+          this.Safety.userTaskId;
         //this.Safety.safetyImplement.creator = this.Safety.userName
-        return this.Safety.safetyImplement;
+        return this.Safety.SafetyData.safetyImplement;
       },
       set(val) {
         console.log(val);

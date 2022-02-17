@@ -115,10 +115,10 @@ export default {
     ...mapState(["Safety"]),
     safetyAbstract: {
       get() {
-        this.Safety.safetyAbstract["task_id"] =
+        this.Safety.SafetyData.safetyAbstract["task_id"] =
           this.Safety.userTaskId;
         //this.Safety.safetyAbstract.creator = this.Safety.userName
-        return this.Safety.safetyAbstract;
+        return this.Safety.SafetyData.safetyAbstract;
       },
       set(val) {
         this.SafetyAbstract = val;

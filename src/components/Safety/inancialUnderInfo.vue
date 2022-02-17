@@ -78,7 +78,7 @@ export default {
     ...mapState(["Safety"]),
     safetyCauses: {
       get() {
-        return this.Safety.safetyCauses;
+        return this.Safety.SafetyData.safetyCauses;
       },
       set(val) {
         this.safetyCauses = val;

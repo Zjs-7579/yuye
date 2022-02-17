@@ -169,8 +169,9 @@ export default {
     ...mapState(["Safety"]),
     safetySupport: {
       get() {
-        this.Safety.safetySupport[0]["task_id"] = this.Safety.userTaskId;
-        return this.Safety.safetySupport;
+        this.Safety.SafetyData.safetySupport[0]["task_id"] =
+          this.Safety.userTaskId;
+        return this.Safety.SafetyData.safetySupport;
       },
       set(val) {
         // console.log(val)

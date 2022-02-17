@@ -90,6 +90,12 @@ import UploadFiles from "./uploadFiles.vue";
 // import MaterialList from "./MaterialList.vue";
 import InancialInfo from "./inancialInfo.vue";
 import { userTaskid } from "../../api/Safety/userInfo";
+import { SadetailsInspectData } from "../../api/searchDetailsInspect";
+import {
+  safetyData,
+  safetyClearData,
+  safetyFilesData,
+} from "../../utils/safetyUpData";
 // import { safetyClearData } from "../../../utils/safetyUpData";
 export default {
   data() {
@@ -128,8 +134,25 @@ export default {
     },
   },
   mounted() {
-    {
+    this.$store.commit("Safety_IsDisabledDataClose"); // 打开禁用
+    safetyClearData(this.Safety); // 清除数据
+    if (this.$route.query.id != undefined) {
+      SadetailsInspectData(this.$route.query.id).then((res) => {
+        //console.log('data', res)
+        // if (res.data.code == 200) {}
+        this.$store.commit("Safety_UserTaskId", this.$route.query.id);
+        let result = safetyData(res.data.data);
+        let uploadUrlData;
+        res.data.data.images
+          ? (uploadUrlData = safetyFilesData(res.data.data.images))
+          : (uploadUrlData = []);
+        //console.log('result', result)
+        //this.Modern.ModernData = result
+        this.$store.commit("Safety_AllClearData", { result, uploadUrlData });
+      });
+    } else {
       userTaskid().then((res) => {
+        //console.log(res)
         this.$store.commit("Safety_UserTaskId", res.data.data);
       });
     }

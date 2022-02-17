@@ -83,7 +83,7 @@ export default {
     ...mapState(["Safety"]),
     safetyFinances: {
       get() {
-        return this.Safety.safetyFinances;
+        return this.Safety.SafetyData.safetyFinances;
       },
       set(val) {
         this.safetyFinances = val;

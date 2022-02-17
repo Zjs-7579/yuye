@@ -19,7 +19,7 @@ export default {
     regist_type: {
       get() {
         // this.Safety.ConstrcutData.safetyCompany
-        return this.Safety.safetyCompany.regist_type;
+        return this.Safety.SafetyData.safetyCompany.regist_type;
       },
       set(val) {
         this.regist_type = val;

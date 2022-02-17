@@ -87,7 +87,7 @@ export default {
     ...mapState(["Safety", "safety"]),
     regist_type: {
       get() {
-        return this.Safety.safetyCompany.regist_type;
+        return this.Safety.SafetyData.safetyCompany.regist_type;
       },
       set(val) {
         this.regist_type = val;

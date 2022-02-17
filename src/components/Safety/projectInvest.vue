@@ -58,8 +58,9 @@ export default {
     ...mapState(["Safety"]),
     safetyInvestTotal: {
       get() {
-        this.Safety.safetyInvestTotal["task_id"] = this.Safety.userTaskId;
-        return this.Safety.safetyInvestTotal;
+        this.Safety.SafetyData.safetyInvestTotal["task_id"] =
+          this.Safety.userTaskId;
+        return this.Safety.SafetyData.safetyInvestTotal;
       },
       set(val) {
         this.safetyInvestTotal = val;
@@ -67,13 +68,13 @@ export default {
     },
     safetyInvestMent: {
       get() {
-        let jz = this.Safety.safetyInvestMent.filter((res) => {
+        let jz = this.Safety.SafetyData.safetyInvestMent.filter((res) => {
           return res.inv_type == "建筑工程类投资明细";
         });
-        let sc = this.Safety.safetyInvestMent.filter((res) => {
+        let sc = this.Safety.SafetyData.safetyInvestMent.filter((res) => {
           return res.inv_type == "生产设施建设类投资明细";
         });
-        let yq = this.Safety.safetyInvestMent.filter((res) => {
+        let yq = this.Safety.SafetyData.safetyInvestMent.filter((res) => {
           return res.inv_type == "仪器、设备类投资明细";
         });
         return { jz, sc, yq };
