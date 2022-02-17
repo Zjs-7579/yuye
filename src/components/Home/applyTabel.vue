@@ -4,8 +4,20 @@
       <div class="img">
         <span> </span>
         <span>我的申报</span>
-        <button class="btnDeal" style="border: 1px solid #E6A23C; color: #E6A23C" @click="handleProcess">办理中</button>
-        <button class="btnDeal" style="border: 1px solid #67C23A; color: #67C23A" @click="handleEnd">已办结</button>
+        <button
+          class="btnDeal"
+          style="border: 1px solid #e6a23c; color: #e6a23c"
+          @click="handleProcess"
+        >
+          办理中
+        </button>
+        <button
+          class="btnDeal"
+          style="border: 1px solid #67c23a; color: #67c23a"
+          @click="handleEnd"
+        >
+          已办结
+        </button>
       </div>
 
       <div>
@@ -74,14 +86,18 @@
 
           <el-button
             size="mini"
-            :style="{display : scope.row.declare_status == '待提交'?'':'none'}"
+            :style="{
+              display: scope.row.declare_status == '待提交' ? '' : 'none',
+            }"
             style="background-color: #eeeeee"
             @click="handleDelete(scope.row)"
             >终止申报</el-button
           >
 
           <el-button
-            :style="{display : scope.row.declare_status == '审核中'?'':'none'}"
+            :style="{
+              display: scope.row.declare_status == '审核中' ? '' : 'none',
+            }"
             size="mini"
             style="background-color: #eeeeee"
             @click="handleFile(scope.row)"
@@ -91,33 +107,23 @@
       </el-table-column>
     </el-table>
 
-  <!-- 进度 -->
-    <el-dialog
-  title="项目进度"
-  :visible.sync="progressVisible"
-  width="50%"
-  >
-  <ProgressDetails :task_id="task_id"></ProgressDetails>
-  
-</el-dialog>
+    <!-- 进度 -->
+    <el-dialog title="项目进度" :visible.sync="progressVisible" width="50%">
+      <ProgressDetails :task_id="task_id"></ProgressDetails>
+    </el-dialog>
 
-  <!-- 材料 -->
-   <el-dialog
-  title="材料详情"
-  :visible.sync="fileVisible"
-  width="50%"
-  >
-  <FileDetails :task_id="task_id"></FileDetails>
-  
-</el-dialog>
-
+    <!-- 材料 -->
+    <el-dialog title="材料详情" :visible.sync="fileVisible" width="50%">
+      <FileDetails :task_id="task_id"></FileDetails>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import { searchData, searchDataTitle, deleteData  } from "../../api/login";
+import { searchData, searchDataTitle, deleteData } from "../../api/login";
+import { agriculTodo, modernTodo } from "../../utils/Todo";
 import ProgressDetails from "./progressDetails.vue";
-import FileDetails from "./fileDetails.vue"
+import FileDetails from "./fileDetails.vue";
 export default {
   data() {
     return {
@@ -126,12 +132,12 @@ export default {
       tableData: [],
       input: "",
       select: "",
-      task_id: ""
+      task_id: "",
     };
   },
   components: {
     ProgressDetails,
-    FileDetails
+    FileDetails,
   },
   methods: {
     searchData() {
@@ -141,49 +147,73 @@ export default {
       });
     },
     handleDetails(row) {
-      console.log(row);
-      if (row.task_source == "农业产业化贴息项目" && row.status == "待提交") {
-        this.$router.push({
-          path: `/agriculInfo?&type=${row.task_source}&id=${row.task_id}`,
-        });
+      if (row.task_source == "农业产业化贴息项目") {
+        agriculTodo(row, this.$router, this.$store);
       }
-      if (row.task_source == "农业产业化贴息项目" && row.status != "待提交") {
-        this.$store.commit("Agricul_IsDetailsContentOpen");
-        this.$router.push({
-          path: `/agriculInfo/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
-        });
+      if (row.task_source == "现代农业项目") {
+        modernTodo(row, this.$router, this.$store);
       }
+      // if (row.task_source == "远洋渔业项目") {
+      //   modernTodo(row, this.$router, this.$store);
+      // }
+      // if (row.task_source == "农业产业化贴息项目" && row.status == "待提交") {
+      //   this.$router.push({
+      //     path: `/agriculInfo?&type=${row.task_source}&id=${row.task_id}`,
+      //   });
+      // }
+      // if (row.task_source == "农业产业化贴息项目" && row.status != "待提交") {
+      //   this.$store.commit("Agricul_IsDetailsContentOpen");
+      //   this.$router.push({
+      //     path: `/agriculInfo/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+      //   });
+      // }
 
-      if (row.task_source == "现代农业项目" && row.status == "待提交") {
-        this.$router.push({
-          path: `/modernInfo?&type=${row.task_source}&id=${row.task_id}`,
-        });
-      }
-      if (row.task_source == "现代农业项目" && row.status != "待提交") {
-        //this.$store.commit("Modern_IsDetailsContentOpen");
-        this.$router.push({
-          path: `/modernInfo/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
-        });
-      }
+      // if (row.task_source == "现代农业项目" && row.status == "待提交") {
+      //   this.$router.push({
+      //     path: `/modernInfo?&type=${row.task_source}&id=${row.task_id}`,
+      //   });
+      // }
+      // if (row.task_source == "现代农业项目" && row.status != "待提交") {
+      //   //this.$store.commit("Modern_IsDetailsContentOpen");
+      //   this.$router.push({
+      //     path: `/modernInfo/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+      //   });
+      // }
 
+      // if (
+      //   row.task_source == "农产品质量安全检测能力建设项目" &&
+      //   row.status == "待提交"
+      // ) {
+      //   this.$router.push({
+      //     path: `/safetyInfo?&type=${row.task_source}&id=${row.task_id}`,
+      //   });
+      // }
+      // if (
+      //   row.task_source == "农产品质量安全检测能力建设项目" &&
+      //   row.status != "待提交"
+      // ) {
+      //   //this.$store.commit("Modern_IsDetailsContentOpen");
+      //   this.$router.push({
+      //     path: `/safetyInfo/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+      //   });
+      // }
 
-      if (row.task_source == "远洋渔业项目" && row.status == "待提交") {
-        this.$router.push({
-          path: `/fishingGuidesInfo?&type=${row.task_source}&id=${row.task_id}`,
-        });
-      }
-      if (row.task_source == "远洋渔业项目" && row.status != "待提交") {
-        //this.$store.commit("Modern_IsDetailsContentOpen");
-        this.$router.push({
-          path: `/modernInfo/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
-        });
-      }
-
+      // if (row.task_source == "远洋渔业项目" && row.status == "待提交") {
+      //   this.$router.push({
+      //     path: `/fishingGuidesInfo?&type=${row.task_source}&id=${row.task_id}`,
+      //   });
+      // }
+      // if (row.task_source == "远洋渔业项目" && row.status != "待提交") {
+      //   //this.$store.commit("Modern_IsDetailsContentOpen");
+      //   this.$router.push({
+      //     path: `/modernInfo/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+      //   });
+      // }
     },
     handleProgress(row) {
       console.log(row);
-      this.progressVisible = true
-      this.task_id = row.task_id
+      this.progressVisible = true;
+      this.task_id = row.task_id;
       // if (row.task_source == "农业产业化贴息项目") {
       //   this.$router.push({
       //     path: `/agriculInfo/progressDetails?&type=${row.task_source}&id=${row.task_id}`,
@@ -196,40 +226,39 @@ export default {
       //   });
       // }
 
-
       // if (row.task_source == "远洋渔业项目") {
       //   this.$router.push({
       //     path: `/fishingGuidesInfo/progressDetails?&type=${row.task_source}&id=${row.task_id}`,
       //   });
       // }
     },
-    handleFile(row){
-      console.log(row)
-      this.fileVisible = true
-      this.task_id = row.task_id
+    handleFile(row) {
+      console.log(row);
+      this.fileVisible = true;
+      this.task_id = row.task_id;
     },
     handleDelete(row) {
-      console.log(row.task_id)
-      
+      console.log(row.task_id);
+
       //console.log(idx[0])
       if (row.declare_status == "待提交") {
         deleteData(row.task_id).then((res) => {
-          this.tableData.forEach((res, index)=>{
-            if(res.task_id == row.task_id){
-              this.tableData.splice(index, 1)
+          this.tableData.forEach((res, index) => {
+            if (res.task_id == row.task_id) {
+              this.tableData.splice(index, 1);
             }
           }),
-          this.$message.success("删除成功");
+            this.$message.success("删除成功");
         });
       }
     },
-    handleProcess(){
-      searchDataTitle('deal_type', '办理中').then((res) => {
+    handleProcess() {
+      searchDataTitle("deal_type", "办理中").then((res) => {
         this.tableData = res;
       });
     },
-    handleEnd(){
-      searchDataTitle('deal_type', '已办结').then((res) => {
+    handleEnd() {
+      searchDataTitle("deal_type", "已办结").then((res) => {
         this.tableData = res;
       });
     },
@@ -244,9 +273,7 @@ export default {
 </script>
 
 <style>
-
 .applyContent .el-table {
-  
   width: 98%;
   margin: 0 auto;
 }
@@ -283,7 +310,7 @@ export default {
 .applyContent .titleImg .img span {
   display: block;
 }
-.applyContent .titleImg .btnDeal{
+.applyContent .titleImg .btnDeal {
   display: inline-block;
   padding: 0px 15px;
   margin-left: 15px;

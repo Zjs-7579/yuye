@@ -1,0 +1,17 @@
+<template>
+  <div>
+     <el-row class="title">
+            团队基本情况
+        </el-row>
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
