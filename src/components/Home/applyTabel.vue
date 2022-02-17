@@ -115,7 +115,12 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { searchData, searchDataTitle, deleteData  } from "../../api/login";
+=======
+import { searchData, searchDataTitle, deleteData } from "../../api/login";
+import { agriculTodo, modernTodo, safetyTodo } from "../../utils/Todo";
+>>>>>>> origin/xuwei
 import ProgressDetails from "./progressDetails.vue";
 import FileDetails from "./fileDetails.vue"
 export default {
@@ -153,6 +158,26 @@ export default {
           path: `/agriculInfo/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
         });
       }
+<<<<<<< HEAD
+=======
+      if (row.task_source == "农产品质量安全检测能力建设项目") {
+        safetyTodo(row, this.$router, this.$store);
+      }
+      // if (row.task_source == "远洋渔业项目") {
+      //   modernTodo(row, this.$router, this.$store);
+      // }
+      // if (row.task_source == "农业产业化贴息项目" && row.status == "待提交") {
+      //   this.$router.push({
+      //     path: `/agriculInfo?&type=${row.task_source}&id=${row.task_id}`,
+      //   });
+      // }
+      // if (row.task_source == "农业产业化贴息项目" && row.status != "待提交") {
+      //   this.$store.commit("Agricul_IsDetailsContentOpen");
+      //   this.$router.push({
+      //     path: `/agriculInfo/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+      //   });
+      // }
+>>>>>>> origin/xuwei
 
       if (row.task_source == "现代农业项目" && row.status == "待提交") {
         this.$router.push({
@@ -213,10 +238,17 @@ export default {
       
       //console.log(idx[0])
       if (row.declare_status == "待提交") {
+<<<<<<< HEAD
         deleteData(row.task_id).then((res) => {
           this.tableData.forEach((res, index)=>{
             if(res.task_id == row.task_id){
               this.tableData.splice(index, 1)
+=======
+        deleteData(row.task_id).then(() => {
+          this.tableData.forEach((res, index) => {
+            if (res.task_id == row.task_id) {
+              this.tableData.splice(index, 1);
+>>>>>>> origin/xuwei
             }
           }),
           this.$message.success("删除成功");

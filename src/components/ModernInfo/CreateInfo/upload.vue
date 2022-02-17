@@ -140,6 +140,7 @@ export default {
         return this.$confirm(`确定移除 ${ file.name }？`);
       },
 
+<<<<<<< HEAD
 
       beforeUpload(file){
           //console.log(file)
@@ -158,6 +159,20 @@ export default {
  
     }
 }
+=======
+    beforeUpload(file) {
+      //console.log(file)
+      var formData = new FormData();
+      formData.append("task_id", this.Modern.userTaskId);
+      formData.append("material_type", this.isFile);
+      formData.append("source", "现代农业项目");
+      formData.append("name", file.name);
+      formData.append("file", file);
+      this.formData = formData;
+    },
+  },
+};
+>>>>>>> origin/xuwei
 </script>
 
 <style>

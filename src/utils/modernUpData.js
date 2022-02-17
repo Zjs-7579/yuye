@@ -532,9 +532,16 @@ export function modernData(newData) {
 };
 
 export function modernFilesData(filesData) {
+<<<<<<< HEAD
     //console.log(filesData ,newData)
     for(let item of filesData){
         //console.log(item)
+=======
+  //console.log(filesData ,newData
+  // if (!filesData) return;
+  for (let item of filesData) {
+    //console.log(item)
+>>>>>>> origin/xuwei
 
         //.data = []
         uploadUrlData.forEach(res=>{

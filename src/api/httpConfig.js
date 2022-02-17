@@ -3,8 +3,13 @@ import { Message } from 'element-ui'
  
 const http = axios.create({
   timeout: 5000,
+<<<<<<< HEAD
   baseURL: 'http://rent.greatbayit.com/yuye_spring/v1',  //与proxy中的api地址一致
   //baseURL: 'http://192.168.1.54:8092/yuye_spring/v1',
+=======
+  // baseURL: "http://rent.greatbayit.com/yuye_spring/v1", //与proxy中的api地址一致
+  baseURL: "http://192.168.1.54:8092/yuye_spring/v1",
+>>>>>>> origin/xuwei
   //baseURL: 'http://192.168.1.116:8092/yuye_spring/v1',
   //headers: 'token',
   validateStatus(status) {

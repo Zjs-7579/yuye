@@ -1,6 +1,6 @@
 <template>
   <div class="MoEquip">
-    <el-row class="title asterisk"> 主要设备清单 </el-row>
+    <el-row class="title"> 主要设备清单 </el-row>
     <el-row class="titleRow">
       <el-col :span="2">序号</el-col>
       <el-col :span="4">设备名称</el-col>
@@ -13,7 +13,7 @@
 
     <el-row
       class="dataRow"
-      v-for="(item, index) in modernEquipment"
+      v-for="(item, index) in safetyEquipment"
       :key="index"
     >
       <el-col :span="2" style="text-align: center">
@@ -76,21 +76,21 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["Modern"]),
-    modernEquipment: {
+    ...mapState(["Safety"]),
+    safetyEquipment: {
       get() {
-        this.Modern.ModernData.modernEquipment[0].task_id =
-          this.Modern.userTaskId;
-        //this.Modern.ModernData.modernEquipment[0].creator = this.Modern.userName
-        return this.Modern.ModernData.modernEquipment;
+        this.Safety.SafetyData.safetyEquipment[0].task_id =
+          this.Safety.userTaskId;
+        //this.Safety.safetyEquipment[0].creator = this.Safety.userName
+        return this.Safety.SafetyData.safetyEquipment;
       },
       set(val) {
-        this.modernEquipment = val;
+        this.safetyEquipment = val;
       },
     },
     isDisabledData: {
       get() {
-        return this.Modern.isDisabledData;
+        return this.Safety.isDisabledData;
       },
       set(val) {
         this.isDisabledData = val;
@@ -99,7 +99,7 @@ export default {
     total_quantity: {
       get() {
         let sum = 0;
-        for (let i of this.modernEquipment) {
+        for (let i of this.safetyEquipment) {
           sum += i.quantity * 1;
         }
         return sum;
@@ -111,7 +111,7 @@ export default {
     total_price: {
       get() {
         let sum = 0;
-        for (let i of this.modernEquipment) {
+        for (let i of this.safetyEquipment) {
           sum += i.price * 1;
         }
         return sum;
@@ -123,7 +123,7 @@ export default {
     total_amount: {
       get() {
         let sum = 0;
-        for (let i of this.modernEquipment) {
+        for (let i of this.safetyEquipment) {
           sum += i.amount * 1;
         }
         return sum;
@@ -136,7 +136,7 @@ export default {
   methods: {
     handleAddHtml() {
       let str = {
-        //task_id: this.Modern.userTaskId,
+        //task_id: this.Safety.userTaskId,
         equipment_name: "", //设备名称
         specifications: "", //规格型号
         quantity: "", //数量/单位
@@ -146,40 +146,34 @@ export default {
         //total_quantity: this.total_quantity, //合计-数量/单位
         //total_price: this.total_price, //合计-单价
         //total_amount: this.total_amount, //合计-金额合计
-        //creator: this.Modern.userName, //创建人
+        //creator: this.Safety.userName, //创建人
         //create_time: "", //创建时间
         // modifier: "",//修改人
         // update_time: "",//修改时间
       };
-      this.modernEquipment.push(str);
+      this.safetyEquipment.push(str);
     },
     handleDeleteHtml() {
-      let len = this.modernEquipment.length;
+      let len = this.safetyEquipment.length;
       if (len == 1) {
         this.$message({
           message: "就剩最后一条信息了！！！",
           type: "warning",
         });
       } else {
-        this.modernEquipment.splice(len - 1, 1);
+        this.safetyEquipment.splice(len - 1, 1);
       }
     },
   },
   watch: {
-    modernEquipment: {
+    safetyEquipment: {
       handler(val) {
         for (let item of val) {
-          //console.log('dsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',this.Modern.ModernData.modernInvestTotal)
-          //item['project_invest'] = this.Modern.ModernData.modernInvestTotal.project_invest
-          //item['support'] = this.Modern.ModernData.modernInvestTotal.support
-
-          item["task_id"] = this.Modern.userTaskId;
-          //item.creator = this.Modern.userName;
+          item["task_id"] = this.Safety.userTaskId;
           item["total_quantity"] = this.total_quantity;
           item["total_price"] = this.total_price;
           item["total_amount"] = this.total_amount;
           item.amount = item.quantity * item.price;
-          //item['modernInvestTotal'] = this.Modern.ModernData.modernInvestTotal
         }
       },
       deep: true,
@@ -223,14 +217,4 @@ export default {
   width: 100%;
   border: none;
 }
-<<<<<<< HEAD
-.MoEquip .asterisk::before {
-    content: '*';
-    display: inline-block;
-    color: #F56C6C;
-    margin-right: 4px
-}
 </style>
-=======
-</style>
->>>>>>> origin/xuwei
