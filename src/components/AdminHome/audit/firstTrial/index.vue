@@ -240,6 +240,11 @@ export default {
           name: "indexDetail",
           query: { task_id: val.task_id },
         });
+      } else if (val.task_source == "农产品质量安全检测能力建设项目") {
+        this.$router.push({
+          name: "indexDetail3",
+          query: { task_id: val.task_id },
+        });
       }
     },
     changeHeaderStyle() {

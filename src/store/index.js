@@ -10,6 +10,7 @@ import Agricul from "./modules/Agricul/index";
 import Fishing from "./modules/Fishing/index";
 import User from "./modules/User/index";
 import HighTech from "./modules/HighTech/index";
+import Safety from "./modules/Safety/index";
 
 Vue.use(Vuex);
 
@@ -21,5 +22,6 @@ export default new Vuex.Store({
     Fishing: Fishing,
     User: User,
     HighTech: HighTech,
+    Safety: Safety,
   },
 });
