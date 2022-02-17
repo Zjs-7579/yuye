@@ -22,6 +22,6 @@ export async function FishingDetailsInspectData(id) {
 
 //安全详情
 export async function SadetailsInspectData(id) {
-  const res = await http.get(`safety/ty/task/apply/${id}`);
+  const res = await http.get(`safety/ty/apply/${id}`);
   return res;
 }

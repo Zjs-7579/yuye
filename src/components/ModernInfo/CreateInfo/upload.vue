@@ -126,9 +126,7 @@ export default {
 
     beforeUpload(file) {
       //console.log(file)
-
       var formData = new FormData();
-      console.log(this.Modern.userTaskId, "👻");
       formData.append("task_id", this.Modern.userTaskId);
       formData.append("material_type", this.isFile);
       formData.append("source", "现代农业项目");

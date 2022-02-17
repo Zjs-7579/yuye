@@ -121,7 +121,7 @@
 
 <script>
 import { searchData, searchDataTitle, deleteData } from "../../api/login";
-import { agriculTodo, modernTodo } from "../../utils/Todo";
+import { agriculTodo, modernTodo, safetyTodo } from "../../utils/Todo";
 import ProgressDetails from "./progressDetails.vue";
 import FileDetails from "./fileDetails.vue";
 export default {
@@ -152,6 +152,9 @@ export default {
       }
       if (row.task_source == "现代农业项目") {
         modernTodo(row, this.$router, this.$store);
+      }
+      if (row.task_source == "农产品质量安全检测能力建设项目") {
+        safetyTodo(row, this.$router, this.$store);
       }
       // if (row.task_source == "远洋渔业项目") {
       //   modernTodo(row, this.$router, this.$store);

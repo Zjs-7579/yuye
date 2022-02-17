@@ -526,6 +526,7 @@ export function modernData(newData) {
 
 export function modernFilesData(filesData) {
   //console.log(filesData ,newData
+  // if (!filesData) return;
   for (let item of filesData) {
     //console.log(item)
 
