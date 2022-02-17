@@ -37,7 +37,7 @@
       <el-col :span="3">
         <el-input :disabled="isDisabledData" v-model="item.price"></el-input>
       </el-col>
-      <el-col :span="3" >
+      <el-col :span="3">
         <el-input :disabled="true" v-model="item.amount"></el-input>
       </el-col>
       <el-col :span="4">
@@ -79,7 +79,8 @@ export default {
     ...mapState(["Modern"]),
     modernEquipment: {
       get() {
-        this.Modern.ModernData.modernEquipment[0].task_id = this.Modern.userTaskId
+        this.Modern.ModernData.modernEquipment[0].task_id =
+          this.Modern.userTaskId;
         //this.Modern.ModernData.modernEquipment[0].creator = this.Modern.userName
         return this.Modern.ModernData.modernEquipment;
       },
@@ -172,14 +173,13 @@ export default {
           //item['project_invest'] = this.Modern.ModernData.modernInvestTotal.project_invest
           //item['support'] = this.Modern.ModernData.modernInvestTotal.support
 
-          item['task_id'] = this.Modern.userTaskId;
+          item["task_id"] = this.Modern.userTaskId;
           //item.creator = this.Modern.userName;
           item["total_quantity"] = this.total_quantity;
           item["total_price"] = this.total_price;
           item["total_amount"] = this.total_amount;
           item.amount = item.quantity * item.price;
           //item['modernInvestTotal'] = this.Modern.ModernData.modernInvestTotal
-          
         }
       },
       deep: true,
@@ -217,7 +217,6 @@ export default {
   border-right: 1px solid #ccc;
 }
 .MoEquip .el-input {
-  
   display: block;
 }
 .MoEquip .dataRow .el-input__inner {

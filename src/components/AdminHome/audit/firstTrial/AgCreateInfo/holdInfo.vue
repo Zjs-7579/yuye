@@ -102,11 +102,7 @@
         </el-col>
       </el-row>
     </el-form>
-    <div
-      class="handle"
-      style="display: none"
-      v-if="taskTypeVisible == '待办'"
-    >
+    <div class="handle" style="display: none" v-if="taskTypeVisible == '待办'">
       <el-button class="add" @click="handleDeleteHtml">删除一条</el-button>
       <el-button type="primary" class="add" @click="handleAddHtml"
         >添加一条</el-button
@@ -145,7 +141,7 @@ export default {
       get() {
         // this.Agricul.AgriculData.agriculturalSupport[0].task_id = this.Agricola.userTaskId
         // this.Agricul.AgriculData.agriculturalSupport[0].creator = this.Agricola.userName
-        return this.Agricul.AgriculData.agriculturalSupport
+        return this.Agricul.AgriculData.agriculturalSupport;
       },
       set(val) {
         this.agriculturalSupport = val;

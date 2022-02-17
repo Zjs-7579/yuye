@@ -26,19 +26,19 @@ export function getAdvanceDetails(id) {
 }
 
 //审核提交 (通过)
-export function flowPassSubmit(id,data) {
+export function flowPassSubmit(id, data) {
   return http({
     url: `/flow/ty/task/pass/${id}`,
     method: "put",
-    data
+    data,
   });
 }
 
 //审核提交 (退回)
-export function flowBackSubmit(id,data) {
+export function flowBackSubmit(id, data) {
   return http({
     url: `/flow/ty/task/back/${id}`,
     method: "put",
-    data
+    data,
   });
 }

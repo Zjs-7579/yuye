@@ -1,8 +1,6 @@
 <template>
-   <div class="MoTabel">
-     <el-row class="title">
-       拟购或租赁主要设备清单
-      </el-row>
+  <div class="MoTabel">
+    <el-row class="title"> 拟购或租赁主要设备清单 </el-row>
     <el-row class="titleRow">
       <el-col :span="2"><div class="grid-content bg-purple">序号</div></el-col>
       <el-col :span="5"
@@ -14,9 +12,7 @@
       <el-col :span="3"
         ><div class="grid-content bg-purple">数量/单位</div></el-col
       >
-      <el-col :span="3"
-        ><div class="grid-content bg-purple">单价</div></el-col
-      >
+      <el-col :span="3"><div class="grid-content bg-purple">单价</div></el-col>
       <el-col :span="3"
         ><div class="grid-content bg-purple">金额合计</div></el-col
       >
@@ -24,18 +20,16 @@
         ><div class="grid-content bg-purple">用途/功能描述</div></el-col
       >
     </el-row>
-    <el-row
-      v-for="(item, index) in techLease"
-      :key="index"
-      class="dataRow"
-    >
+    <el-row v-for="(item, index) in techLease" :key="index" class="dataRow">
       <el-col :span="2"
-        ><div class="grid-content bg-purple"
-        style="text-align: center; line-height: 40px;">
-            {{index + 1}}
-          </div
-      ></el-col>
-       <el-col :span="5"
+        ><div
+          class="grid-content bg-purple"
+          style="text-align: center; line-height: 40px"
+        >
+          {{ index + 1 }}
+        </div></el-col
+      >
+      <el-col :span="5"
         ><div class="grid-content bg-purple">
           <el-input
             type="text"
@@ -75,7 +69,7 @@
             v-model="item.amount"
           ></el-input></div
       ></el-col>
-       <el-col :span="3"
+      <el-col :span="3"
         ><div class="grid-content bg-purple">
           <el-input
             type="text"
@@ -91,22 +85,22 @@
       >
       <el-button class="delete" @click="handleDeleteHtml">删除一条</el-button>
     </div>
-   </div>
+  </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   computed: {
     ...mapState(["HighTech"]),
-    
+
     techLease: {
       get() {
-        this.HighTech.HighTechData.techLease[0]['task_id'] = this.HighTech.userTaskId
+        this.HighTech.HighTechData.techLease[0]["task_id"] =
+          this.HighTech.userTaskId;
         //this.Modern.ModernData.basic_info.creator = this.Modern.userName
         return this.HighTech.HighTechData.techLease;
       },
@@ -128,12 +122,12 @@ export default {
     handleAddHtml() {
       let str = {
         task_id: this.HighTech.userTaskId,
-        instruments: "",//'仪器设备名称',
-		specification: "",//'规格型号',
-		quantity: "",//'数量/单位',
-		price: "",//'单价',
-		amount: "",//'金额合计',
-		purpose: "",//'用途/功能描述',
+        instruments: "", //'仪器设备名称',
+        specification: "", //'规格型号',
+        quantity: "", //'数量/单位',
+        price: "", //'单价',
+        amount: "", //'金额合计',
+        purpose: "", //'用途/功能描述',
       };
       this.techLease.push(str);
     },
@@ -149,10 +143,8 @@ export default {
         this.techLease.splice(len - 1, 1);
       }
     },
-  }
+  },
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

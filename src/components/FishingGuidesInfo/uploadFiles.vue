@@ -26,7 +26,7 @@
         <el-col :span="6"
           ><div class="grid-content bg-purple">
             <span :class="index == 5 ? 'boldText' : ''">{{ item.title }}</span>
-            </div></el-col
+          </div></el-col
         >
         <el-col :span="4"
           ><div class="grid-content bg-purple">盖章签字</div></el-col
@@ -50,7 +50,7 @@
 
 <script>
 import upload from "./upload.vue";
-import {mapState} from "vuex"
+import { mapState } from "vuex";
 export default {
   components: { upload },
   data() {
@@ -71,30 +71,33 @@ export default {
     };
   },
   computed: {
-    ...mapState(['Fishing']),
+    ...mapState(["Fishing"]),
     tabList: {
-      get(){
-        let declare_name = this.Fishing.OceanDeclaration.declare_name
-        if(declare_name == '建造远洋渔船'){
-          return this.Fishing.uploadUrlData.Build
+      get() {
+        let declare_name = this.Fishing.OceanDeclaration.declare_name;
+        if (declare_name == "建造远洋渔船") {
+          return this.Fishing.uploadUrlData.Build;
         }
-        if(declare_name == '购买远洋渔船'){
-          return this.Fishing.uploadUrlData.Buy
+        if (declare_name == "购买远洋渔船") {
+          return this.Fishing.uploadUrlData.Buy;
         }
-        if(declare_name == '境外渔业资源使用费'){
-          return this.Fishing.uploadUrlData.Outside
+        if (declare_name == "境外渔业资源使用费") {
+          return this.Fishing.uploadUrlData.Outside;
         }
-        if(declare_name == '自捕远洋海产品回运费'){
-          return this.Fishing.uploadUrlData.Volumes
+        if (declare_name == "自捕远洋海产品回运费") {
+          return this.Fishing.uploadUrlData.Volumes;
         }
-        if(declare_name == '远洋渔业基地，包括冷链物流项目（含海产品加工厂及配套专用冷库）、超低温冷库以及境外远洋渔业基地等'){
-          return this.Fishing.uploadUrlData.Base
+        if (
+          declare_name ==
+          "远洋渔业基地，包括冷链物流项目（含海产品加工厂及配套专用冷库）、超低温冷库以及境外远洋渔业基地等"
+        ) {
+          return this.Fishing.uploadUrlData.Base;
         }
       },
-      set(val){
-        this.tabList = val
-      }
-    }
+      set(val) {
+        this.tabList = val;
+      },
+    },
   },
   methods: {
     DownPromise(index) {
@@ -109,10 +112,10 @@ export default {
 </script>
 
 <style>
-.FiUpload .bg-purple{
+.FiUpload .bg-purple {
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
 }
 .FiUpload {
   width: 100%;
@@ -176,14 +179,14 @@ export default {
 .FiUpload .el-upload-list--text {
   text-align: left;
 }
-.FiUpload .el-upload-list__item-status-label{
+.FiUpload .el-upload-list__item-status-label {
   margin-right: 25px;
 }
 /* .el-upload-list__item-status-label .el-icon-upload-success .el-icon-circle-check, */
-.FiUpload .el-icon-close{
+.FiUpload .el-icon-close {
   margin-right: 25px;
 }
-.FiUpload .el-icon-close-tip{
+.FiUpload .el-icon-close-tip {
   margin-right: 25px;
 }
 </style>

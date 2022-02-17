@@ -58,7 +58,6 @@
 </template>
 
 <script>
-
 import routerHome from "../../static/routerHome.js";
 export default {
   data() {
@@ -92,7 +91,6 @@ export default {
   mounted() {
     //console.log(routerHome)
     this.routerDataList = routerHome;
-    
   },
 
   watch: {

@@ -5,15 +5,15 @@
 </template>
 
 <style>
-#app{
+#app {
   box-sizing: border-box;
   background-color: #f3f5f9;
 }
-*{
+* {
   padding: 0;
   margin: 0;
 }
-a{
+a {
   text-decoration: none;
   color: #000;
 }

@@ -1,6 +1,5 @@
 <template>
   <div class="fishingGuides">
-
     <el-tabs type="border-card" v-model="activeName">
       <el-tab-pane label="远洋渔业项目申报表" name="ApplyInfo">
         <ApplyInfo ref="ApplyInfo"></ApplyInfo>
@@ -13,66 +12,65 @@
       </el-tab-pane>
     </el-tabs>
 
-		<SubmitButton @handleActionNameText = "handleActiveName" :activeName="activeName"></SubmitButton>
+    <SubmitButton
+      @handleActionNameText="handleActiveName"
+      :activeName="activeName"
+    ></SubmitButton>
   </div>
 </template>
 
 <script>
-import ApplyInfo from "./applyInfo.vue"
-import StatisticalInfo from "./statisticalInfo.vue"
-import SubmitButton from "./submitButton.vue"
-import UploadFiles from "./uploadFiles.vue"
-import {userTaskid} from "../../api/Fishing/userInfo"
-import { FishingDetailsInspectData } from "../../api/searchDetailsInspect"
-import {fishingData} from "../../utils/fishingUpData"
-import {mapState} from "vuex"
+import ApplyInfo from "./applyInfo.vue";
+import StatisticalInfo from "./statisticalInfo.vue";
+import SubmitButton from "./submitButton.vue";
+import UploadFiles from "./uploadFiles.vue";
+import { userTaskid } from "../../api/Fishing/userInfo";
+import { FishingDetailsInspectData } from "../../api/searchDetailsInspect";
+import { fishingData } from "../../utils/fishingUpData";
+import { mapState } from "vuex";
 export default {
-  data(){
+  data() {
     return {
-      activeName: 'UploadFiles'
-    }
+      activeName: "UploadFiles",
+    };
   },
   computed: {
-    ...mapState(['Fishing'])
+    ...mapState(["Fishing"]),
   },
- methods: {
-  handleActiveName(name){
-			this.activeName = name
-		},
- },
- components: {
-   ApplyInfo,
-   StatisticalInfo,
-   SubmitButton,
-   UploadFiles
- },
- mounted() {
+  methods: {
+    handleActiveName(name) {
+      this.activeName = name;
+    },
+  },
+  components: {
+    ApplyInfo,
+    StatisticalInfo,
+    SubmitButton,
+    UploadFiles,
+  },
+  mounted() {
+    this.$store.commit("Fishing_ClearAllData");
+    if (this.$route.query.id != undefined) {
+      console.log("id");
+      FishingDetailsInspectData(this.$route.query.id).then((res) => {
+        this.$store.commit("Fishing_UserTaskId", this.$route.query.id);
+        console.log(res);
+        let result = fishingData(res.data.data);
+        this.Fishing.OceanDeclaration = result.declaration;
 
-   this.$store.commit('Fishing_ClearAllData')
-   if(this.$route.query.id != undefined){
-     console.log("id")
-			FishingDetailsInspectData(this.$route.query.id).then(res=>{
-				
-				this.$store.commit('Fishing_UserTaskId', this.$route.query.id)
-        console.log(res)
-				let result = fishingData(res.data.data)
-				this.Fishing.OceanDeclaration = result.declaration
+        this.Fishing.OceanParam.oceanCostList = result.oceanCostList;
+        this.Fishing.OceanParam.oceanSituationList = result.oceanSituationList;
+        this.Fishing.OceanParam.oceanVolumes = result.oceanVolumes;
 
-				this.Fishing.OceanParam.oceanCostList = result.oceanCostList
-        this.Fishing.OceanParam.oceanSituationList = result.oceanSituationList
-        this.Fishing.OceanParam.oceanVolumes = result.oceanVolumes
-        
         //console.log(this.Agricul.AgriculData)
-				//console.log(this.Agricul.userTaskId)
-			})
-		}else{
-      console.log("000000000000000000000")
-      userTaskid().then(res=>{
-        this.$store.commit('Fishing_UserTaskId', res.data.data)
+        //console.log(this.Agricul.userTaskId)
       });
-		}
-
-    
+    } else {
+      console.log("000000000000000000000");
+      userTaskid().then((res) => {
+        this.$store.commit("Fishing_UserTaskId", res.data.data);
+      });
+    }
   },
 };
 </script>
@@ -81,7 +79,6 @@ export default {
 .fishingGuides {
   height: 100vh -60px;
   background-color: #fff;
- 
 }
 .fishingGuides .submit {
   margin: 15px 0;
@@ -101,17 +98,17 @@ export default {
 .fishingGuides .submitBtn {
   flex: 3;
 }
-.fishingGuides .fishingApply{
+.fishingGuides .fishingApply {
   overflow: none;
 }
 .fishingGuides .DataContent {
-	height: 60vh;
-	overflow: hidden;
-	overflow-y: auto;
+  height: 60vh;
+  overflow: hidden;
+  overflow-y: auto;
 }
 .fishingGuides .DataContent .fishingApply {
-	height: auto;
-	/* margin-bottom: 20px; */
+  height: auto;
+  /* margin-bottom: 20px; */
 }
 .fishingGuides .DataContent .allBtn {
   display: inline-block;

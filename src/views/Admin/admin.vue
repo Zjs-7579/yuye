@@ -16,50 +16,38 @@
         <el-aside width="200px" style="background: #3a71a8">
           <el-menu
             class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      background-color="#3a71a8"
-      text-color="#fff"
-      active-text-color="#ffd04b"
-     :default-openeds="openeds"
+            @open="handleOpen"
+            @close="handleClose"
+            background-color="#3a71a8"
+            text-color="#fff"
+            active-text-color="#ffd04b"
+            :default-openeds="openeds"
           >
-
-
-
-        <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>系统管理</span>
-        </template>
-        <router-link :to="{path: `/admin/user`}">
-
-
-          <el-menu-item index="1">
-            <template slot="title">
-                  <i class="el-icon-menu"></i>
-                  <span slot="title">机构用户</span>
-                </template>
-            </el-menu-item>
-
-            </router-link>
-
-
-           <router-link :to="{path: `/admin/role`}">
-            <el-menu-item index="2">
+            <el-submenu index="1">
               <template slot="title">
-                  <i class="el-icon-menu"></i>
-              <span slot="title">机构角色</span>
-                </template>
-              
-            </el-menu-item>
-            </router-link>
-            
-        
-      </el-submenu>
+                <i class="el-icon-location"></i>
+                <span>系统管理</span>
+              </template>
+              <router-link :to="{ path: `/admin/user` }">
+                <el-menu-item index="1">
+                  <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">机构用户</span>
+                  </template>
+                </el-menu-item>
+              </router-link>
 
+              <router-link :to="{ path: `/admin/role` }">
+                <el-menu-item index="2">
+                  <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">机构角色</span>
+                  </template>
+                </el-menu-item>
+              </router-link>
+            </el-submenu>
 
-
-          <!-- <el-menu-item index="1" @click="getRouter('待办')">
+            <!-- <el-menu-item index="1" @click="getRouter('待办')">
               <i class="el-icon-menu"></i>
               <span slot="title">待办</span>
             </el-menu-item>
@@ -72,7 +60,6 @@
               <i class="el-icon-menu" @click="getRouter('全部')"></i>
               <span slot="title">全部</span>
             </el-menu-item> -->
-
           </el-menu>
         </el-aside>
         <el-main style="padding: 2px">
@@ -84,35 +71,31 @@
 </template>
 
 <script>
-
 import { mapState } from "vuex";
 export default {
   data() {
     return {
-      openeds: ['1']
+      openeds: ["1"],
     };
   },
-  computed: {
-   
-  },
+  computed: {},
   methods: {
-      leaveUser() {
+    leaveUser() {
       window.localStorage.removeItem("token");
       this.$router.push({
         path: "/",
       });
       location.reload(); // 刷新
     },
-     handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      }
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    },
   },
   mounted() {
     //console.log(this.$route)
-    
   },
 };
 </script>
@@ -215,15 +198,14 @@ export default {
   margin-right: 20px;
 }
 /* el-badge__content el-badge__content--undefined is-fixed */
-.AdminContainer .el-badge__content{
+.AdminContainer .el-badge__content {
   padding: 0 6px !important;
   height: 12px !important;
-    line-height: 12px !important;
+  line-height: 12px !important;
 }
-.AdminContainer .el-badge__content.is-fixed{
+.AdminContainer .el-badge__content.is-fixed {
   position: absolute !important;
   top: 20px !important;
   right: 70px !important;
 }
-
 </style>

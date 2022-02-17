@@ -1,19 +1,19 @@
 import http from "../httpConfig";
 // 获取系统角色所有权限
-export function getAuthorityRoleId(){
-    return http({
-        url: "sysuser/ty/auths",
-        method: "get",
-    })
+export function getAuthorityRoleId() {
+  return http({
+    url: "sysuser/ty/auths",
+    method: "get",
+  });
 }
 // 获取带指定角色权限
 export function getRoleCheck(params) {
-    return http({
-      url: "sysuser/ty/auths/getcheck",
-      method: "get",
-      params,
-    });
-  }
+  return http({
+    url: "sysuser/ty/auths/getcheck",
+    method: "get",
+    params,
+  });
+}
 
 // 获取带指定角色权限2
 export function getRoleCheck2(params) {
@@ -72,8 +72,6 @@ export function newauth(data) {
 export function delauth(id) {
   return http({
     url: `/sysrole/ty/role/${id}`,
-    method: "delete"
+    method: "delete",
   });
 }
-
-

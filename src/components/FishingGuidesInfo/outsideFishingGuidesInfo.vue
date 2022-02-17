@@ -1,6 +1,6 @@
 <template>
   <div class="outsideFishing">
-      <el-form
+    <el-form
       :model="useshipsource"
       ref="outsideForm"
       :rules="rules"
@@ -16,7 +16,10 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="已交纳境外渔业资源使用费（万元）：" prop="rsous_use_cost">
+          <el-form-item
+            label="已交纳境外渔业资源使用费（万元）："
+            prop="rsous_use_cost"
+          >
             <el-input v-model="useshipsource.rsous_use_cost"></el-input>
           </el-form-item>
         </el-col>
@@ -24,7 +27,10 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="已获得农业部国际渔业资源开发补助（万元）：" prop="inal_rsous_subsidy">
+          <el-form-item
+            label="已获得农业部国际渔业资源开发补助（万元）："
+            prop="inal_rsous_subsidy"
+          >
             <el-input v-model="useshipsource.inal_rsous_subsidy"></el-input>
           </el-form-item>
         </el-col>
@@ -39,12 +45,12 @@
 </template>
 
 <script>
-import {mapState} from "vuex"
-import {FishingAllInfoValidator} from "../../utils/validator"
+import { mapState } from "vuex";
+import { FishingAllInfoValidator } from "../../utils/validator";
 export default {
   data() {
     return {
-       rules: FishingAllInfoValidator,
+      rules: FishingAllInfoValidator,
       // buildFrom: {
       //   task_id: "",
       //   sea_region: "",//远洋渔业项目作业海域
@@ -56,29 +62,28 @@ export default {
     };
   },
   computed: {
-    ...mapState(['Fishing']),
+    ...mapState(["Fishing"]),
     useshipsource: {
-          get(){
-              //this.Fishing.OceanDeclaration.useshipsource.task_id = this.Fishing.userTaskId;
-              this.Fishing.OceanDeclaration.useshipsource.creator = this.Fishing.userName;
-              return this.Fishing.OceanDeclaration.useshipsource
-          },
-          set(val){
-              this.OceanDeclaration.useshipsource = val
-          }
+      get() {
+        //this.Fishing.OceanDeclaration.useshipsource.task_id = this.Fishing.userTaskId;
+        this.Fishing.OceanDeclaration.useshipsource.creator =
+          this.Fishing.userName;
+        return this.Fishing.OceanDeclaration.useshipsource;
       },
-      isDisabledData: {
-        get(){
-          return this.Fishing.isDisabledData
-        },
-        set(val){
-          this.isDisabledData = val
-        }
-    }
+      set(val) {
+        this.OceanDeclaration.useshipsource = val;
+      },
+    },
+    isDisabledData: {
+      get() {
+        return this.Fishing.isDisabledData;
+      },
+      set(val) {
+        this.isDisabledData = val;
+      },
+    },
   },
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

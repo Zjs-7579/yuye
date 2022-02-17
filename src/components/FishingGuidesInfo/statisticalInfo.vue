@@ -1,55 +1,56 @@
 <template>
   <div class="StatisticalInfo">
-    <el-row class="title">
-        远洋渔业项目统计表
-      </el-row>
-      <StatisticalBuildOrBuy v-if="declare_name == '建造远洋渔船'||declare_name == '购买远洋渔船'"></StatisticalBuildOrBuy>
-      <StatisticalOverseas v-else-if="declare_name == '境外渔业资源使用费'"></StatisticalOverseas>
-      <StatisticalCapture v-else-if="declare_name == '自捕远洋海产品回运费'"></StatisticalCapture>
+    <el-row class="title"> 远洋渔业项目统计表 </el-row>
+    <StatisticalBuildOrBuy
+      v-if="declare_name == '建造远洋渔船' || declare_name == '购买远洋渔船'"
+    ></StatisticalBuildOrBuy>
+    <StatisticalOverseas
+      v-else-if="declare_name == '境外渔业资源使用费'"
+    ></StatisticalOverseas>
+    <StatisticalCapture
+      v-else-if="declare_name == '自捕远洋海产品回运费'"
+    ></StatisticalCapture>
   </div>
 </template>
 
 <script>
-import StatisticalBuildOrBuy from "./statisticalBuildOrBuy.vue"
-import StatisticalOverseas from "./statisticalOverseas.vue"
-import StatisticalCapture from "./statisticalCapture.vue"
-import {mapState} from 'vuex'
+import StatisticalBuildOrBuy from "./statisticalBuildOrBuy.vue";
+import StatisticalOverseas from "./statisticalOverseas.vue";
+import StatisticalCapture from "./statisticalCapture.vue";
+import { mapState } from "vuex";
 export default {
-  data(){
-    return {
-      
-    }
+  data() {
+    return {};
   },
   computed: {
-    ...mapState(['Fishing']),
+    ...mapState(["Fishing"]),
     declare_name: {
-      get(){
-        return this.Fishing.OceanDeclaration.declare_name
+      get() {
+        return this.Fishing.OceanDeclaration.declare_name;
       },
-      set(val){
-        this.declare_name = val
-      }
-    }
+      set(val) {
+        this.declare_name = val;
+      },
+    },
   },
-  components:{
+  components: {
     StatisticalBuildOrBuy,
     StatisticalOverseas,
-    StatisticalCapture
-
-  }
-}
+    StatisticalCapture,
+  },
+};
 </script>
 
 <style>
 .StatisticalInfo {
   height: 75vh;
- 
+
   background-color: #fff;
 }
-.StatisticalInfo .el-col{
+.StatisticalInfo .el-col {
   white-space: pre-wrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .StatisticalInfo .title {
   height: 60px;

@@ -15,23 +15,29 @@
       </el-aside> -->
 
       <el-container>
-        <el-header style="height: 50px;display:flex ">
-            <el-breadcrumb separator="/" style="flex: 23;font-size:14px;line-height: 50px;">
-              <el-breadcrumb-item
-                v-for="(item,index) in breadList"
-                :key="index"
-                :to="{ path: item.path }"
-              >{{item.meta.title}}</el-breadcrumb-item>
-            </el-breadcrumb>
+        <el-header style="height: 50px; display: flex">
+          <el-breadcrumb
+            separator="/"
+            style="flex: 23; font-size: 14px; line-height: 50px"
+          >
+            <el-breadcrumb-item
+              v-for="(item, index) in breadList"
+              :key="index"
+              :to="{ path: item.path }"
+              >{{ item.meta.title }}</el-breadcrumb-item
+            >
+          </el-breadcrumb>
 
           <el-dropdown style="flex: 1">
             <i class="el-icon-setting" style="margin-left: 40px"></i>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>查看</el-dropdown-item>
-              <span @click="leaveUser"><el-dropdown-item>退出</el-dropdown-item></span>
+              <span @click="leaveUser"
+                ><el-dropdown-item>退出</el-dropdown-item></span
+              >
             </el-dropdown-menu>
           </el-dropdown>
-          <span>{{this.$store.state.Agricul.userName}}</span>
+          <span>{{ this.$store.state.Agricul.userName }}</span>
         </el-header>
         <router-view></router-view>
       </el-container>
@@ -40,14 +46,14 @@
 </template>
 
 <script>
-import routerHome from '../../static/routerHome.js'
+import routerHome from "../../static/routerHome.js";
 
 export default {
   data() {
-    return{
-      routerDataList: '',
-      breadList: []
-    }
+    return {
+      routerDataList: "",
+      breadList: [],
+    };
   },
   methods: {
     isHome(route) {
@@ -61,12 +67,12 @@ export default {
       }
       this.breadList = matched;
     },
-    leaveUser(){
-       window.localStorage.removeItem('token')
-          this.$router.push({
-            path: "/",
-          });
-    }
+    leaveUser() {
+      window.localStorage.removeItem("token");
+      this.$router.push({
+        path: "/",
+      });
+    },
   },
   created() {
     this.getBreadcrumb();
@@ -78,17 +84,14 @@ export default {
     //   //console.log(res)
     //   this.$store.commit('Agricul_UserName', res.data.data)
     // });
-    
-    
   },
 
   watch: {
     $route() {
-    this.getBreadcrumb();
-    }
- },
+      this.getBreadcrumb();
+    },
+  },
 };
-
 </script>
 
 <style>
@@ -104,5 +107,4 @@ export default {
   background-color: #d3dce6;
   color: #333;
 }
-
 </style>

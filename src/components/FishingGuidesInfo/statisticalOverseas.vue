@@ -30,28 +30,49 @@
         {{ index + 1 }}
       </el-col>
       <el-col :span="3">
-        <el-input v-model="item.cost_project" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.cost_project"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="2">
-        <el-input v-model="item.ship_number" :disabled="isDisabledData"></el-input>
-      </el-col>
-
-      <el-col :span="2">
-        <el-input v-model="item.work_place" :disabled="isDisabledData"></el-input>
-      </el-col>
-
-      <el-col :span="2">
-        <el-input v-model="item.cfce_startime" :disabled="isDisabledData"></el-input>
-      </el-col>
-      <el-col :span="2">
-        <el-input v-model="item.cfce_endtime" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.ship_number"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
 
       <el-col :span="2">
-        <el-input v-model="item.outlds_fish_cost" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.work_place"
+          :disabled="isDisabledData"
+        ></el-input>
+      </el-col>
+
+      <el-col :span="2">
+        <el-input
+          v-model="item.cfce_startime"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="2">
-        <el-input v-model="item.change_rate" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.cfce_endtime"
+          :disabled="isDisabledData"
+        ></el-input>
+      </el-col>
+
+      <el-col :span="2">
+        <el-input
+          v-model="item.outlds_fish_cost"
+          :disabled="isDisabledData"
+        ></el-input>
+      </el-col>
+      <el-col :span="2">
+        <el-input
+          v-model="item.change_rate"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="3">
         <el-input v-model="item.rmb" :disabled="isDisabledData"></el-input>
@@ -61,22 +82,17 @@
       </el-col>
     </el-row>
 
-
-     <el-row class="dataRow">
-      <el-col :span="13">
-        合计
-      </el-col>
+    <el-row class="dataRow">
+      <el-col :span="13"> 合计 </el-col>
       <el-col :span="2">
-        <p style="padding: 0 15px;float: left">{{alloutlds_fish_cost}}</p>
+        <p style="padding: 0 15px; float: left">{{ alloutlds_fish_cost }}</p>
       </el-col>
-      <el-col :span="2">
-        
-      </el-col>
+      <el-col :span="2"> </el-col>
       <el-col :span="3">
-        <p style="padding: 0 15px;float: left">{{all_rmb}}</p>
+        <p style="padding: 0 15px; float: left">{{ all_rmb }}</p>
       </el-col>
-     </el-row>
-    <div class="handle" :style="{display: isDisabledData?'none':'block'}">
+    </el-row>
+    <div class="handle" :style="{ display: isDisabledData ? 'none' : 'block' }">
       <el-button type="primary" @click="handleAddHtml">添加一条</el-button>
       <el-button @click="handleDeleteHtml" class="">删除一条</el-button>
     </div>
@@ -102,20 +118,20 @@ export default {
       },
     },
     isDisabledData: {
-        get(){
-          return this.Fishing.isDisabledData
-        },
-        set(val){
-          this.isDisabledData = val
-        }
+      get() {
+        return this.Fishing.isDisabledData;
+      },
+      set(val) {
+        this.isDisabledData = val;
+      },
     },
     alloutlds_fish_cost: {
       get() {
-        let sum = 0
-        for(let item of this.oceanCostList){
-            sum += item.outlds_fish_cost * 1
+        let sum = 0;
+        for (let item of this.oceanCostList) {
+          sum += item.outlds_fish_cost * 1;
         }
-        return sum
+        return sum;
       },
       set(val) {
         this.alloutlds_fish_cost = val;
@@ -123,11 +139,11 @@ export default {
     },
     all_rmb: {
       get() {
-        let sum = 0
-        for(let item of this.oceanCostList){
-            sum += item.rmb * 1
+        let sum = 0;
+        for (let item of this.oceanCostList) {
+          sum += item.rmb * 1;
         }
-        return sum
+        return sum;
       },
       set(val) {
         this.all_rmb = val;
@@ -167,11 +183,10 @@ export default {
     oceanCostList: {
       handler(val) {
         for (let item of val) {
-          item['task_id'] = this.Fishing.userTaskId;
+          item["task_id"] = this.Fishing.userTaskId;
           //item.creator = this.Modern.userName;
           item["alloutlds_fish_cost"] = this.alloutlds_fish_cost;
           item["all_rmb"] = this.all_rmb;
-          
         }
       },
       deep: true,

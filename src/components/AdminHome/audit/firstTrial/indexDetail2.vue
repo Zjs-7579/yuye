@@ -6,7 +6,10 @@
         <el-tab-pane label="单位近三年财务状况" name="cwzk"></el-tab-pane>
         <el-tab-pane label="人员基本情况" name="ryqk"></el-tab-pane>
         <!-- <el-tab-pane label="法定代表人基本情况及主要个人简历" name="grjl"></el-tab-pane> -->
-        <el-tab-pane label="国家、省、市财政近三年全部支持情况" name="zcqk"></el-tab-pane>
+        <el-tab-pane
+          label="国家、省、市财政近三年全部支持情况"
+          name="zcqk"
+        ></el-tab-pane>
         <!-- <el-tab-pane label="项目基本情况" name="xmqk"></el-tab-pane> -->
         <el-tab-pane label="贷款情况" name="dkqk"></el-tab-pane>
         <el-tab-pane label="上传附件" name="scfj"></el-tab-pane>
@@ -179,13 +182,22 @@
       :taskType="taskType"
     ></PersonInfo>
     <el-row class="title zcqk"> 国家、省、市财政近三年全部支持情况 </el-row>
-    <HoldInfo :agriculturalSupportDetails="agriculturalSupport" :taskType="taskType"></HoldInfo>
+    <HoldInfo
+      :agriculturalSupportDetails="agriculturalSupport"
+      :taskType="taskType"
+    ></HoldInfo>
     <el-row class="title dkqk"> 贷款情况 </el-row>
-    <CountableInfo :agriculturalLoanDeatils="agriculturalLoan" :taskType="taskType"></CountableInfo>
+    <CountableInfo
+      :agriculturalLoanDeatils="agriculturalLoan"
+      :taskType="taskType"
+    ></CountableInfo>
     <el-row class="title scfj"> 上传附件 </el-row>
     <UploadFiles></UploadFiles>
     <el-row class="title sh"> 审核 </el-row>
-    <div class="Agupload" style="height: 100px;border: 1px solid #ccc;border-bottom: none">
+    <div
+      class="Agupload"
+      style="height: 100px; border: 1px solid #ccc; border-bottom: none"
+    >
       <el-row class="titleRows">
         <el-col :span="2"
           ><div class="grid-content bg-purple">审核结果</div></el-col
@@ -204,7 +216,10 @@
         ></el-col>
       </el-row>
     </div>
-    <div class="Agupload" style="height: 100px;border: 1px solid #ccc;border-top: none">
+    <div
+      class="Agupload"
+      style="height: 100px; border: 1px solid #ccc; border-top: none"
+    >
       <el-row class="titleRows">
         <el-col :span="2"
           ><div class="grid-content bg-purple">审核意见</div></el-col
@@ -247,7 +262,11 @@
 <script>
 import { UnitInfoValidator } from "@/utils/validator";
 import { UnitInfoData } from "@/api/Agricul/unitInfo";
-import { getDetailsFlowList,flowPassSubmit,flowBackSubmit } from "@/api/Agricul/flowTask";
+import {
+  getDetailsFlowList,
+  flowPassSubmit,
+  flowBackSubmit,
+} from "@/api/Agricul/flowTask";
 import InancialInfo from "@/components/AdminHome/audit/firstTrial/AgCreateInfo/inancialInfo.vue";
 import PersonInfo from "@/components/AdminHome/audit/firstTrial/AgCreateInfo/personInfo.vue";
 import HoldInfo from "@/components/AdminHome/audit/firstTrial/AgCreateInfo/holdInfo.vue";
@@ -260,17 +279,17 @@ export default {
     return {
       hy_type: "",
       xzq_type: "",
-      reason:"",//审核意见
-      note:"",//审核结果
-      taskType:"",
+      reason: "", //审核意见
+      note: "", //审核结果
+      taskType: "",
       agriculturalCompany: {}, //基本情况
       agriculturalFinance: [], //财务情况
       agriculturalPers: {}, //人员情况
       agriculturalShareholder: [], //股东情况
-      agriculturalSupport:[], //支持情况
-      agriculturalLoan:[],//贷款情况
+      agriculturalSupport: [], //支持情况
+      agriculturalLoan: [], //贷款情况
       rules: UnitInfoValidator,
-      activeName: 'jbxx'
+      activeName: "jbxx",
     };
   },
   components: {
@@ -283,10 +302,10 @@ export default {
   watch: {
     activeName(n) {
       console.log(1111111111111111);
-      console.log(document.getElementsByClassName(n)[0].offsetTop, 'top')
-      const height = document.getElementsByClassName(n)[0].offsetTop
-      document.getElementsByClassName('Agtabel')[0].scrollTop = height - 50
-    }
+      console.log(document.getElementsByClassName(n)[0].offsetTop, "top");
+      const height = document.getElementsByClassName(n)[0].offsetTop;
+      document.getElementsByClassName("Agtabel")[0].scrollTop = height - 50;
+    },
   },
   computed: {
     ...mapState(["Agricul"]),
@@ -294,10 +313,12 @@ export default {
   methods: {
     getDetailsFlowLists() {
       getDetailsFlowList(this.$route.query.task_id).then((res) => {
-        console.log(res, 'asdasdasdasda')
-        this.agriculturalCompany = res.data.data.agriculturalCompany ? res.data.data.agriculturalCompany : {}; //基本信息
-        if(res.data.data.agriculturalFinance.length > 0){
-           this.agriculturalFinance = res.data.data.agriculturalFinance; //财务信息
+        console.log(res, "asdasdasdasda");
+        this.agriculturalCompany = res.data.data.agriculturalCompany
+          ? res.data.data.agriculturalCompany
+          : {}; //基本信息
+        if (res.data.data.agriculturalFinance.length > 0) {
+          this.agriculturalFinance = res.data.data.agriculturalFinance; //财务信息
         }
         this.agriculturalPers = res.data.data.agriculturalPers; //人员情况信息
         this.agriculturalShareholder = res.data.data.agriculturalShareholder; //股权信息
@@ -311,62 +332,70 @@ export default {
       });
     },
     //审核结果下拉框
-    onNoteChange(){
-    // this.onFlowSubmit()
+    onNoteChange() {
+      // this.onFlowSubmit()
     },
     //提交按钮
-    onFlowSubmit(){
-      console.log(this.note,'审核结果----')
-       const data={
-         note:this.note,
-         reason:this.reason
-       }
-      if(this.note=='通过'){
-          this.$confirm('您确认要提交吗?', '提示', {
-            confirmButtonText: '确定',
-            cancelButtonText: '取消',
-            type: 'warning'
-          }).then(() => {
-           flowPassSubmit(this.$route.query.task_id,data).then(res=>{
-             if(res.data == 200){
-                 this.$message({
-                   message: '提交成功',
-                   type: 'success'
-                })
-                this.$router.push({
-                   name: "FirstIndex",
-                   query: { authName: this.$route.query.authName,taskType:this.$route.query.taskType }
-                });
-             }
-           })
-          })
-      }else{
-         this.$confirm('您确认要提交吗?', '提示', {
-            confirmButtonText: '确定',
-            cancelButtonText: '取消',
-            type: 'warning'
-          }).then(() => {
-           flowBackSubmit(this.$route.query.task_id,data).then(res=>{
-              if(res.data == 200){
-                 this.$message({
-                   message: '退回成功',
-                   type: 'success'
-                })
-                this.$router.push({
-                   name: "FirstIndex",
-                   query: { authName: this.$route.query.authName,taskType:this.$route.query.taskType }
-                });
-             }
-           })
-          })
+    onFlowSubmit() {
+      console.log(this.note, "审核结果----");
+      const data = {
+        note: this.note,
+        reason: this.reason,
+      };
+      if (this.note == "通过") {
+        this.$confirm("您确认要提交吗?", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+        }).then(() => {
+          flowPassSubmit(this.$route.query.task_id, data).then((res) => {
+            if (res.data == 200) {
+              this.$message({
+                message: "提交成功",
+                type: "success",
+              });
+              this.$router.push({
+                name: "FirstIndex",
+                query: {
+                  authName: this.$route.query.authName,
+                  taskType: this.$route.query.taskType,
+                },
+              });
+            }
+          });
+        });
+      } else {
+        this.$confirm("您确认要提交吗?", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+        }).then(() => {
+          flowBackSubmit(this.$route.query.task_id, data).then((res) => {
+            if (res.data == 200) {
+              this.$message({
+                message: "退回成功",
+                type: "success",
+              });
+              this.$router.push({
+                name: "FirstIndex",
+                query: {
+                  authName: this.$route.query.authName,
+                  taskType: this.$route.query.taskType,
+                },
+              });
+            }
+          });
+        });
       }
-       
     },
     //取消按钮
     onCancelClick() {
       this.$router.push({
         name: "FirstIndex",
-        query: { authName: this.$route.query.authName,taskType:this.$route.query.taskType }
+        query: {
+          authName: this.$route.query.authName,
+          taskType: this.$route.query.taskType,
+        },
       });
     },
   },
@@ -374,7 +403,7 @@ export default {
     UnitInfoData("行政区").then((res) => {
       this.xzq_type = res;
     });
-    this.taskType = this.$route.query.taskType
+    this.taskType = this.$route.query.taskType;
     this.getDetailsFlowLists();
   },
   // watch: {},
@@ -401,7 +430,7 @@ export default {
   /* display: flex; */
   /* flex-direction: row; */
   /* align-items: center; */
-  background: #Fff;
+  background: #fff;
   z-index: 9999;
 }
 .Agtabel .demo-ruleForm {

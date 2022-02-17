@@ -1,8 +1,6 @@
 <template>
   <div class="Moinancial">
-    <el-row class="title">
-        单位近三年财务状况（事业类填报）
-      </el-row>
+    <el-row class="title"> 单位近三年财务状况（事业类填报） </el-row>
     <el-row class="titleRow">
       <el-col :span="2"><div class="grid-content bg-purple">序号</div></el-col>
       <el-col :span="7"
@@ -22,10 +20,17 @@
     <div class="dataUnderRow">
       <el-row v-for="item in inancialUnderData" :key="item.id">
         <el-col :span="2"
-          ><div class="grid-content bg-purple" style="text-align: center">{{ item.id }}</div></el-col
+          ><div class="grid-content bg-purple" style="text-align: center">
+            {{ item.id }}
+          </div></el-col
         >
         <el-col :span="7"
-          ><div class="grid-content bg-purple" style=" text-align: left; padding-left: 8px">{{ item.type }}</div>
+          ><div
+            class="grid-content bg-purple"
+            style="text-align: left; padding-left: 8px"
+          >
+            {{ item.type }}
+          </div>
         </el-col>
         <el-col :span="5"
           ><div class="grid-content bg-purple">
@@ -37,7 +42,7 @@
         ></el-col>
         <el-col :span="5"
           ><div class="grid-content bg-purple">
-            <el-input 
+            <el-input
               type="number"
               :disabled="isDisabledData"
               v-model="techCauses[1][item.Model]"
@@ -58,61 +63,58 @@
 
 <script>
 import inancialUnderData from "../../static/ModernData/inancialUnderData";
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
   data() {
     return {
       inancialUnderData: inancialUnderData,
       dataYear: new Date().getFullYear(),
-    }
+    };
   },
-  computed:{
-    ...mapState(['HighTech']),
-    techCauses:{
-        get(){
-          
-          return this.HighTech.HighTechData.techCauses
-        },
-        set(val){
-          this.techCauses = val
-        }
+  computed: {
+    ...mapState(["HighTech"]),
+    techCauses: {
+      get() {
+        return this.HighTech.HighTechData.techCauses;
       },
-      isDisabledData:{
-        get(){
-          return this.HighTech.isDisabledData
-        },
-        set(val){
-          this.isDisabledData = val
-        }
-      }
+      set(val) {
+        this.techCauses = val;
+      },
     },
+    isDisabledData: {
+      get() {
+        return this.HighTech.isDisabledData;
+      },
+      set(val) {
+        this.isDisabledData = val;
+      },
+    },
+  },
   watch: {
-    techCauses:{
+    techCauses: {
       handler(val) {
-        let year = 1
-        for(let item of val){
-          item['task_id'] = this.HighTech.userTaskId
+        let year = 1;
+        for (let item of val) {
+          item["task_id"] = this.HighTech.userTaskId;
           //item.creator = this.Modern.userName
-          
+
           item.pro_year = this.dataYear - year;
-          year++
+          year++;
         }
       },
-      deep: true
-    }
-  }
- 
+      deep: true,
+    },
+  },
 };
 </script>
 
 <style>
-.Moinancial .el-tabs__content{
+.Moinancial .el-tabs__content {
   position: relative;
 }
-.Moinancial{
+.Moinancial {
   width: 100%;
   height: 75vh;
-
 }
 .Moinancial .title {
   background-color: #ece8e8;
@@ -123,47 +125,43 @@ export default {
   font-weight: bold;
   border: 1px solid #ccc;
 }
-.Moinancial .titleRow{
+.Moinancial .titleRow {
   text-align: center;
   line-height: 60px;
 }
-.Moinancial .boldText{
+.Moinancial .boldText {
   font-weight: bold;
 }
-.Moinancial .el-input__inner{
+.Moinancial .el-input__inner {
   width: 80%;
   border: none;
   font-size: 18px;
 }
-.Moinancial .rowColor .el-input__inner{
+.Moinancial .rowColor .el-input__inner {
   background-color: rgb(235, 231, 231);
 }
-.Moinancial #disabled .el-input__inner.disabled{
+.Moinancial #disabled .el-input__inner.disabled {
   opacity: 0.1;
 }
-.Moinancial .dataUnderRow{
+.Moinancial .dataUnderRow {
   height: 62vh;
   overflow: hidden;
   overflow-y: overlay;
 }
-.Moinancial .dataUnderRow .el-row{
+.Moinancial .dataUnderRow .el-row {
   border: 1px solid #ccc;
   line-height: 40px;
 }
-.Moinancial .dataUnderRow .el-col{
+.Moinancial .dataUnderRow .el-col {
   border-right: 1px solid #ccc;
   padding: 8px 0;
-  
 }
-.Moinancial .titleRow{
-  
+.Moinancial .titleRow {
   background-color: #ece8e8;
   border: 1px solid #ccc;
- 
 }
-.Moinancial .titleRow .el-col{
+.Moinancial .titleRow .el-col {
   border-right: 1px solid #ccc;
- 
 }
 .Moinancial .dataUnderRow .el-row:nth-child(5) .el-col:nth-child(2),
 .Moinancial .dataUnderRow .el-row:nth-child(6) .el-col:nth-child(2),
@@ -173,26 +171,19 @@ export default {
 .Moinancial .dataUnderRow .el-row:nth-child(13) .el-col:nth-child(2),
 .Moinancial .dataUnderRow .el-row:nth-child(16) .el-col:nth-child(2),
 .Moinancial .dataUnderRow .el-row:nth-child(17) .el-col:nth-child(2),
-.Moinancial .dataUnderRow .el-row:nth-child(18) .el-col:nth-child(2){
+.Moinancial .dataUnderRow .el-row:nth-child(18) .el-col:nth-child(2) {
   padding-left: 2em;
 }
 
-
 .Moinancial input::-webkit-inner-spin-button {
-
   -webkit-appearance: none !important;
-
 }
 
-.Moinancial input::-webkit-outer-spin-button{
-
+.Moinancial input::-webkit-outer-spin-button {
   -webkit-appearance: none !important;
-
 }
 
-.Moinancial input[type="number"]{
-
+.Moinancial input[type="number"] {
   -moz-appearance: textfield;
-
 }
 </style>

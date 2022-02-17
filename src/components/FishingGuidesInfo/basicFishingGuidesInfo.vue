@@ -5,44 +5,44 @@
       type="textarea"
       resize="none"
       rows="10"
-       :disabled="isDisabledData"
+      :disabled="isDisabledData"
       v-model="OceanDeclaration.fish_base"
     ></el-input>
   </div>
 </template>
 
 <script>
-import {mapState} from "vuex"
+import { mapState } from "vuex";
 export default {
-  data(){
-    return{
+  data() {
+    return {
       //modernImplement: ""
-    }
+    };
   },
   computed: {
-    ...mapState(['Fishing']),
+    ...mapState(["Fishing"]),
     OceanDeclaration: {
-          get(){
-              return this.Fishing.OceanDeclaration
-          },
-          set(val){
-              this.OceanDeclaration = val
-          }
+      get() {
+        return this.Fishing.OceanDeclaration;
       },
-      isDisabledData: {
-        get(){
-          return this.Fishing.isDisabledData
-        },
-        set(val){
-          this.isDisabledData = val
-        }
-    }
+      set(val) {
+        this.OceanDeclaration = val;
+      },
+    },
+    isDisabledData: {
+      get() {
+        return this.Fishing.isDisabledData;
+      },
+      set(val) {
+        this.isDisabledData = val;
+      },
+    },
   },
-}
+};
 </script>
 
 <style>
-  .title{
-    border: 1px solid #ccc;
-  }
+.title {
+  border: 1px solid #ccc;
+}
 </style>

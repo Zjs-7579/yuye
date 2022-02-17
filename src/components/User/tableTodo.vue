@@ -1,5 +1,5 @@
 <template>
- <div class="main_contain">
+  <div class="main_contain">
     <el-row class="search-container" style="padding: 5px">
       <!-- <el-radio-group
         v-model="taskType"
@@ -24,13 +24,12 @@
           style="width: 120px"
           placeholder="请选择"
         >
-        <el-option label="项目年份" value="项目年份" />
+          <el-option label="项目年份" value="项目年份" />
           <el-option label="项目类型" value="项目类型" />
           <el-option label="项目名称" value="项目名称" />
-           <el-option label="提交时间" value="提交时间" />
+          <el-option label="提交时间" value="提交时间" />
           <el-option label="项目负责人" value="项目负责人" />
           <el-option label="单位名称" value="单位名称" />
-          
         </el-select>
         <el-button
           slot="append"
@@ -40,23 +39,20 @@
       </el-input>
     </el-row>
 
-
-
     <el-row class="tableBox">
       <el-table
         ref="taskTable"
         :data="taskList"
         border
-        :header-cell-style="{backgroundColor: '#3a71a8',  color:'#fff'}"
+        :header-cell-style="{ backgroundColor: '#3a71a8', color: '#fff' }"
         size="small"
         class="tableStyle"
       >
-      <el-table-column
+        <el-table-column
           prop="pro_year"
           label="项目年份"
           min-width="150"
           align="center"
-          
         />
         <el-table-column
           prop="task_source"
@@ -77,7 +73,7 @@
           align="center"
         />
 
-         <el-table-column
+        <el-table-column
           prop="create_time"
           label="提交时间"
           min-width="150"
@@ -96,13 +92,12 @@
           min-width="150"
           align="center"
         />
-        <el-table-column label="操作" min-width="120" align="center" >
+        <el-table-column label="操作" min-width="120" align="center">
           <template slot-scope="scope">
-             <el-button
+            <el-button
               size="mini"
               type="primary"
               @click="onFlowDetailsClick(scope.row)"
-              
               >详情</el-button
             >
           </template>
@@ -135,59 +130,59 @@
 import { getFlowList } from "../../api/User/createInfo";
 //import Pagination from "@/components/Pagination/index.vue";
 export default {
- //components: { Pagination },
+  //components: { Pagination },
   data() {
     return {
-      text:"",
+      text: "",
       clause: "",
       taskList: [],
     };
   },
   methods: {
-      onSearchTaskClick(){
-          console.log('dsadasd')
-      },
-      onFlowDetailsClick(row){
-          console.log(row)
-          if (row.task_source == "农业产业化贴息项目") {
-          this.$store.commit("Agricul_IsDetailsContentOpen");
-          this.$router.push({
-            path: `/user/${this.$route.params.id}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+    onSearchTaskClick() {
+      console.log("dsadasd");
+    },
+    onFlowDetailsClick(row) {
+      console.log(row);
+      if (row.task_source == "农业产业化贴息项目") {
+        this.$store.commit("Agricul_IsDetailsContentOpen");
+        this.$router.push({
+          path: `/user/${this.$route.params.id}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
         });
       }
-      }
+    },
   },
   mounted() {
-    console.log(this.$route.meta.title)
-    let user_type
-    if(this.$route.params.id == 1){
-      user_type = "初审A"
+    console.log(this.$route.meta.title);
+    let user_type;
+    if (this.$route.params.id == 1) {
+      user_type = "初审A";
     }
-    if(this.$route.params.id == 2){
-      user_type = "初审B"
+    if (this.$route.params.id == 2) {
+      user_type = "初审B";
     }
-    if(this.$route.params.id == 3){
-      user_type = "复审A"
+    if (this.$route.params.id == 3) {
+      user_type = "复审A";
     }
-    if(this.$route.params.id == 4){
-      user_type = "复审B"
+    if (this.$route.params.id == 4) {
+      user_type = "复审B";
     }
-        let params = {
-          page: 1,
-          limit: 10,
-          status: user_type,
-          deal_type: this.$route.meta.title,
-      }
-      getFlowList(params).then(res=>{
-          this.taskList = res.data.data
-      })
-    
+    let params = {
+      page: 1,
+      limit: 10,
+      status: user_type,
+      deal_type: this.$route.meta.title,
+    };
+    getFlowList(params).then((res) => {
+      this.taskList = res.data.data;
+    });
+
     //   console.log('dsadsadas')
     // getFlowList(params).then(res=>{
     //     console.log(res)
     // })
-  }
-}
+  },
+};
 </script>
 
 <style>

@@ -1,88 +1,139 @@
 <template>
   <div class="Aginancial">
-    
     <el-row class="title"> 单位近三年财务状况</el-row>
     <el-row class="titleRow">
-        <el-col :span="4" ><div class="grid-content bg-purple">序号</div></el-col>
-        <el-col :span="5" ><div class="grid-content bg-purple">项目类别</div></el-col>
-        <el-col :span="5" ><div class="grid-content bg-purple">{{dataYear-3}}年</div></el-col>
-        <el-col :span="5" ><div class="grid-content bg-purple">{{dataYear-2}}年</div></el-col>
-        <el-col :span="5" ><div class="grid-content bg-purple">{{dataYear-1}}年</div></el-col>
-      </el-row>
+      <el-col :span="4"><div class="grid-content bg-purple">序号</div></el-col>
+      <el-col :span="5"
+        ><div class="grid-content bg-purple">项目类别</div></el-col
+      >
+      <el-col :span="5"
+        ><div class="grid-content bg-purple">{{ dataYear - 3 }}年</div></el-col
+      >
+      <el-col :span="5"
+        ><div class="grid-content bg-purple">{{ dataYear - 2 }}年</div></el-col
+      >
+      <el-col :span="5"
+        ><div class="grid-content bg-purple">{{ dataYear - 1 }}年</div></el-col
+      >
+    </el-row>
 
     <div class="dataRow">
-      <el-row v-for="(item,index) in inancialList" :key="item.id" >
-        <el-col :span="4"><div class="grid-content bg-purple" style="text-align: center;">{{item.id}}</div></el-col>
-        <el-col :span="5" ><div class="grid-content bg-purple"  style=" text-align: left; padding-left: 1em; " :class="(boldFrom.includes(index)?'boldText':'')">{{item.type}}</div></el-col>
-        <el-col :span="5" ><div class="grid-content bg-purple"><el-input :disabled="(index==6||index==12||index==18)?true:isDisabledData" type="number" v-model="agriculturalFinance[0][item.Model]" :class="(inancialType == item.Model&&inancialTypeSum==1)?'tttt':''"></el-input></div></el-col>
-        <el-col :span="5" ><div class="grid-content bg-purple"><el-input :disabled="(index==6||index==12||index==18)?true:isDisabledData" type="number" v-model="agriculturalFinance[1][item.Model]" :class="(inancialType == item.Model&&inancialTypeSum==2)?'tttt':''"></el-input></div></el-col>
-        <el-col :span="5" ><div class="grid-content bg-purple"><el-input :disabled="(index==6||index==12||index==18)?true:isDisabledData" type="number" v-model="agriculturalFinance[2][item.Model]" :class="(inancialType == item.Model&&inancialTypeSum==3)?'tttt':''"></el-input></div></el-col>
+      <el-row v-for="(item, index) in inancialList" :key="item.id">
+        <el-col :span="4"
+          ><div class="grid-content bg-purple" style="text-align: center">
+            {{ item.id }}
+          </div></el-col
+        >
+        <el-col :span="5"
+          ><div
+            class="grid-content bg-purple"
+            style="text-align: left; padding-left: 1em"
+            :class="boldFrom.includes(index) ? 'boldText' : ''"
+          >
+            {{ item.type }}
+          </div></el-col
+        >
+        <el-col :span="5"
+          ><div class="grid-content bg-purple">
+            <el-input
+              :disabled="
+                index == 6 || index == 12 || index == 18 ? true : isDisabledData
+              "
+              type="number"
+              v-model="agriculturalFinance[0][item.Model]"
+              :class="
+                inancialType == item.Model && inancialTypeSum == 1 ? 'tttt' : ''
+              "
+            ></el-input></div
+        ></el-col>
+        <el-col :span="5"
+          ><div class="grid-content bg-purple">
+            <el-input
+              :disabled="
+                index == 6 || index == 12 || index == 18 ? true : isDisabledData
+              "
+              type="number"
+              v-model="agriculturalFinance[1][item.Model]"
+              :class="
+                inancialType == item.Model && inancialTypeSum == 2 ? 'tttt' : ''
+              "
+            ></el-input></div
+        ></el-col>
+        <el-col :span="5"
+          ><div class="grid-content bg-purple">
+            <el-input
+              :disabled="
+                index == 6 || index == 12 || index == 18 ? true : isDisabledData
+              "
+              type="number"
+              v-model="agriculturalFinance[2][item.Model]"
+              :class="
+                inancialType == item.Model && inancialTypeSum == 3 ? 'tttt' : ''
+              "
+            ></el-input></div
+        ></el-col>
       </el-row>
     </div>
-
-
   </div>
 </template>
 
 <script>
-import inancialList from "../../../static/AgriculData/inancialData"
-import {mapState} from 'vuex'
+import inancialList from "../../../static/AgriculData/inancialData";
+import { mapState } from "vuex";
 export default {
-  data(){
+  data() {
     return {
       inancialList: inancialList,
       dataYear: new Date().getFullYear(),
-      boldFrom: [0,3,4,6,9,12,18,23,24,25,26,27,28,29,30,31],
-    }
+      boldFrom: [0, 3, 4, 6, 9, 12, 18, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+    };
   },
-  computed:{
-    ...mapState(['Agricul']),
-    agriculturalFinance:{
-      get(){
-        return this.Agricul.AgriculData.agriculturalFinance
+  computed: {
+    ...mapState(["Agricul"]),
+    agriculturalFinance: {
+      get() {
+        return this.Agricul.AgriculData.agriculturalFinance;
       },
-      set(val){
-        this.agriculturalFinance = val
-      }
+      set(val) {
+        this.agriculturalFinance = val;
+      },
     },
     isDisabledData: {
-        get(){
-          return this.Agricul.isDisabledData
-        },
-        set(val){
-          this.isDisabledData = val
-        }
+      get() {
+        return this.Agricul.isDisabledData;
+      },
+      set(val) {
+        this.isDisabledData = val;
+      },
     },
     inancialType: {
-      get(){
-          return this.Agricul.inancialType
-        },
-        set(val){
-          this.inancialType = val
-        }
+      get() {
+        return this.Agricul.inancialType;
+      },
+      set(val) {
+        this.inancialType = val;
+      },
     },
     inancialTypeSum: {
-      get(){
-          return this.Agricul.inancialTypeSum
-        },
-        set(val){
-          this.inancialTypeSum = val
-        }
+      get() {
+        return this.Agricul.inancialTypeSum;
+      },
+      set(val) {
+        this.inancialTypeSum = val;
+      },
     },
   },
-  methods: {
-   
-  },
+  methods: {},
   watch: {
-    agriculturalFinance:{
+    agriculturalFinance: {
       handler(val) {
-        console.log(val)
-        let year = 1
-        for(let item of val){
-          item.task_id = this.Agricul.userTaskId
-          
+        console.log(val);
+        let year = 1;
+        for (let item of val) {
+          item.task_id = this.Agricul.userTaskId;
+
           item.pro_year = this.dataYear - year;
-          
+
           //13=14+15+16+17+18
           let income_tax = item.income_tax * 1;
           let personal_tax = item.personal_tax * 1;
@@ -90,7 +141,12 @@ export default {
           let turnover = item.turnover * 1;
           let other_taxes = item.other_taxes * 1;
           item.taxes_payable =
-            (income_tax *1000 + personal_tax*1000 + value_added_tax*1000 + turnover*1000 + other_taxes*1000)/1000;
+            (income_tax * 1000 +
+              personal_tax * 1000 +
+              value_added_tax * 1000 +
+              turnover * 1000 +
+              other_taxes * 1000) /
+            1000;
 
           //19=20+21+22+23
           let income_tax_pref = item.income_tax_pref * 1;
@@ -98,7 +154,11 @@ export default {
           let business_tax_pref = item.business_tax_pref * 1;
           let other_pref = item.other_pref * 1;
           item.actual_pref_taxes =
-            (income_tax_pref*1000 + value_added_pref*1000 + business_tax_pref *1000+ other_pref*1000)/1000;
+            (income_tax_pref * 1000 +
+              value_added_pref * 1000 +
+              business_tax_pref * 1000 +
+              other_pref * 1000) /
+            1000;
 
           //let nterprise_added = val.nterprise_added;
           //7=8+9+10+13
@@ -106,34 +166,38 @@ export default {
           let depreciation = item.depreciation * 1;
           let profit = item.profit * 1;
           let taxes_payable = item.taxes_payable * 1;
-          item.nterprise_added = (wages*1000 + depreciation*1000 + profit*1000 + taxes_payable*1000)/1000;
-          year++
+          item.nterprise_added =
+            (wages * 1000 +
+              depreciation * 1000 +
+              profit * 1000 +
+              taxes_payable * 1000) /
+            1000;
+          year++;
         }
       },
-      deep: true
-    }
-  }
-}
+      deep: true,
+    },
+  },
+};
 </script>
 
 <style>
 /* .Aginancial .el-tabs__content{
   position: relative;
 } */
-.tttt{
+.tttt {
   box-sizing: border-box;
   border: 1px solid red;
 }
-.Aginancial{
+.Aginancial {
   width: 100%;
   height: 75vh;
- 
 }
 
-.bg-purple{
- overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+.bg-purple {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .Aginancial .title {
   background-color: #ece8e8;
@@ -144,71 +208,61 @@ export default {
   font-weight: bold;
   border: 1px solid #ccc;
 }
-.Aginancial .titleRow{
+.Aginancial .titleRow {
   text-align: center;
   line-height: 60px;
 }
-.Aginancial .boldText{
+.Aginancial .boldText {
   font-weight: bold;
 }
-.Aginancial .el-input__inner{
+.Aginancial .el-input__inner {
   width: 100%;
   border: none;
   font-size: 18px;
 }
-.Aginancial .rowColor .el-input__inner{
+.Aginancial .rowColor .el-input__inner {
   background-color: rgb(235, 231, 231);
 }
-.Aginancial #disabled .el-input__inner.disabled{
+.Aginancial #disabled .el-input__inner.disabled {
   opacity: 0.1;
 }
-.Aginancial .dataRow{
+.Aginancial .dataRow {
   height: 62vh;
   overflow: hidden;
   overflow-y: overlay;
 }
-.Aginancial .dataRow .el-row{
+.Aginancial .dataRow .el-row {
   border: 1px solid #ccc;
   line-height: 40px;
 }
-.Aginancial .dataRow .el-col{
+.Aginancial .dataRow .el-col {
   border-right: 1px solid #ccc;
   padding: 8px 0;
-  
 }
-.Aginancial .titleRow{
-  
+.Aginancial .titleRow {
   background-color: #ece8e8;
   border: 1px solid #ccc;
- 
 }
-.Aginancial .titleRow .el-col{
+.Aginancial .titleRow .el-col {
   border-right: 1px solid #ccc;
- 
 }
 .Aginancial .dataRow .el-row:nth-child(3) .el-col:nth-child(2),
 .Aginancial .dataRow .el-row:nth-child(9) .el-col:nth-child(2),
 .Aginancial .dataRow .el-row:nth-child(15) .el-col:nth-child(2),
 .Aginancial .dataRow .el-row:nth-child(16) .el-col:nth-child(2),
 .Aginancial .dataRow .el-row:nth-child(17) .el-col:nth-child(2),
-.Aginancial .dataRow .el-row:nth-child(18) .el-col:nth-child(2){
+.Aginancial .dataRow .el-row:nth-child(18) .el-col:nth-child(2) {
   padding-left: 3em;
 }
 .Aginancial input::-webkit-inner-spin-button {
-
   -webkit-appearance: none !important;
-
 }
 
-.Aginancial input::-webkit-outer-spin-button{
-
+.Aginancial input::-webkit-outer-spin-button {
   -webkit-appearance: none !important;
-
 }
 
-.Aginancial input[type="number"]{
-
+.Aginancial input[type="number"] {
   -moz-appearance: textfield;
-
 }
 </style>

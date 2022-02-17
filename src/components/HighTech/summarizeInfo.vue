@@ -7,10 +7,7 @@
       label-width="250px"
       class="demo-ruleForm"
     >
-      <el-row class="title">
-        单位银行开户信息：（下达资助金额使用）
-       
-      </el-row>
+      <el-row class="title"> 单位银行开户信息：（下达资助金额使用） </el-row>
       <el-form-item label="银行账户名称:" prop="bank_name">
         <el-input v-model="techAbstract.bank_name"></el-input>
       </el-form-item>
@@ -38,30 +35,22 @@
       <el-row>
         <el-col :span="6">
           <el-form-item label="省份">
-            <el-input
-              v-model="techAbstract.province"
-            ></el-input>
+            <el-input v-model="techAbstract.province"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="6">
           <el-form-item label="城市">
-            <el-input
-              v-model="techAbstract.city"
-            ></el-input>
+            <el-input v-model="techAbstract.city"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="6">
           <el-form-item label="地区">
-            <el-input
-              v-model="techAbstract.area"
-            ></el-input>
+            <el-input v-model="techAbstract.area"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="6">
           <el-form-item label="具体地址">
-            <el-input
-              v-model="techAbstract.sp_address"
-            ></el-input>
+            <el-input v-model="techAbstract.sp_address"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -117,7 +106,6 @@
 </template>
 
 <script>
-
 import { mapState } from "vuex";
 export default {
   data() {
@@ -127,7 +115,8 @@ export default {
     ...mapState(["HighTech"]),
     techAbstract: {
       get() {
-        this.HighTech.HighTechData.techAbstract['task_id'] = this.HighTech.userTaskId
+        this.HighTech.HighTechData.techAbstract["task_id"] =
+          this.HighTech.userTaskId;
         //this.HighTech.HighTechData.techAbstract.creator = this.HighTech.userName
         return this.HighTech.HighTechData.techAbstract;
       },
@@ -144,9 +133,7 @@ export default {
       },
     },
   },
-  methods: {
-     
-  },
+  methods: {},
 };
 </script>
 

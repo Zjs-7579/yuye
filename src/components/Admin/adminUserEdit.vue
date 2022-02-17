@@ -116,15 +116,14 @@ export default {
         this.editDialogFormVisible = val;
       },
     },
-    tableData:{
+    tableData: {
       get() {
-
         return this.userData.row;
       },
       set(val) {
         this.tableData = val;
       },
-    }
+    },
   },
   methods: {
     //编辑用户确认
@@ -138,7 +137,7 @@ export default {
               message: "更新成功",
               type: "success",
             });
-             this.$emit("editDataSwitch", false);
+            this.$emit("editDataSwitch", false);
           });
         }
       });
@@ -146,7 +145,7 @@ export default {
     //编辑用户取消
     handleEditUserClose() {
       this.$emit("editDataSwitch", false);
-    
+
       //console.log(this.oldUserData)
     },
     handleClose(done) {
@@ -159,10 +158,9 @@ export default {
     },
   },
   mounted() {
-        console.log(this.userData)
+    console.log(this.userData);
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>

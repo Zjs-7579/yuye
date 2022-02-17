@@ -32,7 +32,7 @@
         <el-col :span="5"
           ><div class="grid-content bg-purple">
             <el-input
-            disabled
+              disabled
               type="number"
               v-model="modernCauses[2][item.Model]"
             ></el-input></div
@@ -48,7 +48,7 @@
         <el-col :span="5"
           ><div class="grid-content bg-purple">
             <el-input
-            disabled
+              disabled
               type="number"
               v-model="modernCauses[0][item.Model]"
             ></el-input></div

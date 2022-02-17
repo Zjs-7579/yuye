@@ -1,8 +1,6 @@
 <template>
   <div class="MoboxTitle">
-    <el-row class="title">
-            项目承担单位基本情况
-        </el-row>
+    <el-row class="title"> 项目承担单位基本情况 </el-row>
     <p>
       项目单位基本情况、经营管理状况、布局全国情况、行业地位及行业影响力等，
       包括但不限于：成立时间、规模、在行业内的地位、主营业务和主要产品及市场占有率、
@@ -28,7 +26,8 @@ export default {
     ...mapState(["HighTech"]),
     basic_info: {
       get() {
-        this.HighTech.HighTechData.basic_info['task_id'] = this.HighTech.userTaskId
+        this.HighTech.HighTechData.basic_info["task_id"] =
+          this.HighTech.userTaskId;
         //this.Modern.ModernData.basic_info.creator = this.Modern.userName
         return this.HighTech.HighTechData.basic_info;
       },
@@ -53,15 +52,15 @@ export default {
   width: 100%;
   height: 75vh;
 }
-.MoboxTitle .title{
-        background-color: #ece8e8;
-        height: 60px;
-        line-height: 60px;
-        font-size: 25px;
-        padding: 0 15px;
-        font-weight: bold;
-        border: 1px solid #ccc;
-    }
+.MoboxTitle .title {
+  background-color: #ece8e8;
+  height: 60px;
+  line-height: 60px;
+  font-size: 25px;
+  padding: 0 15px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+}
 .MoboxTitle p {
   font-weight: bold;
   font-size: 20px;

@@ -40,70 +40,99 @@
         {{ index + 1 }}
       </el-col>
       <el-col :span="2">
-        <el-input v-model="item.prdon_ship_id" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.prdon_ship_id"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="2">
-        <el-input v-model="item.eption_id" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.eption_id"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
 
       <el-col :span="2">
         <el-input v-model="item.deatn_id" :disabled="isDisabledData"></el-input>
       </el-col>
       <el-col :span="2">
-        <el-input v-model="item.customs_varieties" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.customs_varieties"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
       <el-col :span="2">
-        <el-input v-model="item.customs_port" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.customs_port"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
 
       <el-col :span="2">
-        <el-input v-model="item.customs_number" :disabled="isDisabledData"></el-input>
+        <el-input
+          v-model="item.customs_number"
+          :disabled="isDisabledData"
+        ></el-input>
       </el-col>
 
       <el-col :span="10">
         <el-row>
           <el-col :span="4">
-            <el-input v-model="item.cyse_id" :disabled="isDisabledData"></el-input>
+            <el-input
+              v-model="item.cyse_id"
+              :disabled="isDisabledData"
+            ></el-input>
           </el-col>
           <el-col :span="4">
-            <el-input v-model="item.cyse_editime" :disabled="isDisabledData"></el-input>
+            <el-input
+              v-model="item.cyse_editime"
+              :disabled="isDisabledData"
+            ></el-input>
           </el-col>
           <el-col :span="4">
-            <el-input v-model="item.cyse_confirm" :disabled="isDisabledData"></el-input>
+            <el-input
+              v-model="item.cyse_confirm"
+              :disabled="isDisabledData"
+            ></el-input>
           </el-col>
           <el-col :span="4">
-            <el-input v-model="item.cyse_pushtime" :disabled="isDisabledData"></el-input>
+            <el-input
+              v-model="item.cyse_pushtime"
+              :disabled="isDisabledData"
+            ></el-input>
           </el-col>
           <el-col :span="4">
-            <el-input v-model="item.cyse_varieties" :disabled="isDisabledData"></el-input>
+            <el-input
+              v-model="item.cyse_varieties"
+              :disabled="isDisabledData"
+            ></el-input>
           </el-col>
           <el-col :span="4">
-            <el-input v-model="item.cyse_number" :disabled="isDisabledData"></el-input>
+            <el-input
+              v-model="item.cyse_number"
+              :disabled="isDisabledData"
+            ></el-input>
           </el-col>
         </el-row>
       </el-col>
     </el-row>
 
-    <el-row class="dataRow" >
-      <el-col :span="12">
-        合计
-        
-      </el-col>
+    <el-row class="dataRow">
+      <el-col :span="12"> 合计 </el-col>
       <el-col :span="2">
-        <p style="padding: 0 15px;float: left">{{all_customs_number}}</p>
+        <p style="padding: 0 15px; float: left">{{ all_customs_number }}</p>
       </el-col>
       <el-col :span="10">
         <el-row>
-            <el-col :span="20"></el-col>
-            <el-col :span="4">
-        <p style="padding: 0 15px;float: left">{{all_cyse_number}}</p>
-      </el-col>
+          <el-col :span="20"></el-col>
+          <el-col :span="4">
+            <p style="padding: 0 15px; float: left">{{ all_cyse_number }}</p>
+          </el-col>
         </el-row>
       </el-col>
-      
     </el-row>
 
-    <div class="handle" :style="{display: isDisabledData?'none':'block'}">
+    <div class="handle" :style="{ display: isDisabledData ? 'none' : 'block' }">
       <el-button type="primary" @click="handleAddHtml">添加一条</el-button>
       <el-button @click="handleDeleteHtml" class="">删除一条</el-button>
     </div>
@@ -143,20 +172,20 @@ export default {
       },
     },
     isDisabledData: {
-        get(){
-          return this.Fishing.isDisabledData
-        },
-        set(val){
-          this.isDisabledData = val
-        }
+      get() {
+        return this.Fishing.isDisabledData;
+      },
+      set(val) {
+        this.isDisabledData = val;
+      },
     },
     all_customs_number: {
       get() {
-        let sum = 0
-        for(let item of this.oceanVolumes){
-            sum += item.customs_number * 1
+        let sum = 0;
+        for (let item of this.oceanVolumes) {
+          sum += item.customs_number * 1;
         }
-        return sum
+        return sum;
       },
       set(val) {
         this.all_customs_number = val;
@@ -164,11 +193,11 @@ export default {
     },
     all_cyse_number: {
       get() {
-        let sum = 0
-        for(let item of this.oceanVolumes){
-            sum += item.cyse_number * 1
+        let sum = 0;
+        for (let item of this.oceanVolumes) {
+          sum += item.cyse_number * 1;
         }
-        return sum
+        return sum;
       },
       set(val) {
         this.all_cyse_number = val;
@@ -207,15 +236,14 @@ export default {
       }
     },
   },
-   watch: {
+  watch: {
     oceanVolumes: {
       handler(val) {
         for (let item of val) {
-          item['task_id'] = this.Fishing.userTaskId;
+          item["task_id"] = this.Fishing.userTaskId;
           //item.creator = this.Modern.userName;
           item["all_customs_number"] = this.all_customs_number;
           item["all_cyse_number"] = this.all_cyse_number;
-          
         }
       },
       deep: true,

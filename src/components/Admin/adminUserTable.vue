@@ -38,7 +38,7 @@
         :data="tableData"
         border
         height="100%"
-        :header-cell-style="{backgroundColor: '#3a71a8',  color:'#fff'}"
+        :header-cell-style="{ backgroundColor: '#3a71a8', color: '#fff' }"
         size="small"
         class="tableStyle"
       >
@@ -111,18 +111,20 @@
     </el-row>
 
     <!-- 添加用户对话框 -->
-   
-      <AdminUserCreate :userSwitch="userSwitch" @userDataSwitch="userDataSwitch"></AdminUserCreate>
-      
+
+    <AdminUserCreate
+      :userSwitch="userSwitch"
+      @userDataSwitch="userDataSwitch"
+    ></AdminUserCreate>
 
     <!-- 编辑用户对话框 -->
-    
-      
-    <AdminUserEdit :userData="userData" :editSwitch="editSwitch" @editDataSwitch="editDataSwitch"></AdminUserEdit>
-     
 
+    <AdminUserEdit
+      :userData="userData"
+      :editSwitch="editSwitch"
+      @editDataSwitch="editDataSwitch"
+    ></AdminUserEdit>
 
-    
     <el-row>
       <Pagination :cnt="cnt" @dataList="list"></Pagination>
     </el-row>
@@ -130,16 +132,13 @@
 </template>
 
 <script>
-import {
-  getUserList,
-  deleteUser,
-} from "../../api/Admin/user";
+import { getUserList, deleteUser } from "../../api/Admin/user";
 
-import AdminUserCreate from "./adminUserCreate.vue"
-import AdminUserEdit from "./adminUserEdit.vue"
-import Pagination from "./pagination.vue"
+import AdminUserCreate from "./adminUserCreate.vue";
+import AdminUserEdit from "./adminUserEdit.vue";
+import Pagination from "./pagination.vue";
 export default {
-  components: {AdminUserCreate,AdminUserEdit,Pagination },
+  components: { AdminUserCreate, AdminUserEdit, Pagination },
   data() {
     return {
       userSwitch: false,
@@ -159,62 +158,59 @@ export default {
       oldUserData: {},
     };
   },
- methods: {
-   list(val){
-      this.taskList = val
+  methods: {
+    list(val) {
+      this.taskList = val;
     },
-    userDataSwitch(val){
-      this.userSwitch = val
+    userDataSwitch(val) {
+      this.userSwitch = val;
     },
-    editDataSwitch(val){
-      this.editSwitch = val
-      if(!val){
+    editDataSwitch(val) {
+      this.editSwitch = val;
+      if (!val) {
         this.$set(this.tableData, this.userData.idx, this.oldUserData);
       }
     },
-   //创建用户
-     onCreateUserClick(){
-         this.userSwitch = true
-     },
-     //查询用户
-     onSearchUserClick(){
-       let params = {
-          page: 1,
-          limit: 10,
-          [this.clause]: this.text
-
-       }
-       getUserList(params).then(res=>{
-        this.tableData = res.data.data
-      })
-     },
-     //编辑用户
-     onBtnEditClick(index, row){
-         this.userData["idx"] = index
-         this.userData["row"] = row
-         this.oldUserData = Object.assign({}, this.userData.row)
-         this.editSwitch = true
-        
-     },
-     //删除用户
-     onBtnDeleteClick(index, row){
-         console.log(index, row)
-         deleteUser(row.id).then(res=>{
-             this.tableData.splice(index, 1)
-         })
-     },
- },
-  mounted() {
+    //创建用户
+    onCreateUserClick() {
+      this.userSwitch = true;
+    },
+    //查询用户
+    onSearchUserClick() {
       let params = {
-          page: 1,
-          limit: 10
-      }
-    getUserList(params).then(res=>{
-      this.cnt = res.data.cnt
-        this.tableData = res.data.data
-    })
+        page: 1,
+        limit: 10,
+        [this.clause]: this.text,
+      };
+      getUserList(params).then((res) => {
+        this.tableData = res.data.data;
+      });
+    },
+    //编辑用户
+    onBtnEditClick(index, row) {
+      this.userData["idx"] = index;
+      this.userData["row"] = row;
+      this.oldUserData = Object.assign({}, this.userData.row);
+      this.editSwitch = true;
+    },
+    //删除用户
+    onBtnDeleteClick(index, row) {
+      console.log(index, row);
+      deleteUser(row.id).then((res) => {
+        this.tableData.splice(index, 1);
+      });
+    },
   },
- 
+  mounted() {
+    let params = {
+      page: 1,
+      limit: 10,
+    };
+    getUserList(params).then((res) => {
+      this.cnt = res.data.cnt;
+      this.tableData = res.data.data;
+    });
+  },
 };
 </script>
 <style>
@@ -226,7 +222,6 @@ export default {
 .Admin_main_contain .tableBox {
   padding: 5px;
   height: calc(100% - 170px);
-
 }
 .Admin_main_contain .search-container {
   height: 45px;
@@ -237,5 +232,4 @@ export default {
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%), 0 0 3px 0 rgb(0 0 0 / 4%);
   overflow: hidden;
 }
-
 </style>
