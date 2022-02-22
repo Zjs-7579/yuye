@@ -29,7 +29,13 @@
           </div></el-col
         >
         <el-col :span="4"
-          ><div class="grid-content bg-purple">盖章签字</div></el-col
+          ><div class="grid-content bg-purple">
+            {{
+              ["项目申请书", "承诺书"].includes(item.title)
+                ? "盖章签字"
+                : "盖章"
+            }}
+          </div></el-col
         >
         <el-col :span="4"
           ><div class="grid-content bg-purple">

@@ -16,7 +16,7 @@ import {
 } from "../../api/searchDetailsInspect";
 import AgDetailsInfo from "../AgriculInfo/CreateInfo/detailsInfo.vue";
 import MoDetailsInfo from "../ModernInfo/CreateInfo/detailsInfo.vue";
-import { agriculFilesData } from "../../utils/agriculUpData";
+import { agriculFilesData } from "../../utils/agricul/agriculUpData";
 import { modernFilesData } from "../../utils/modernUpData";
 import { mapState } from "vuex";
 export default {

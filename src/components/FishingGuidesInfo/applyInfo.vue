@@ -102,7 +102,12 @@
     </el-form>
     <!-- 建造 -->
     <BuildFishingGuidesInfo
-      v-show="OceanDeclaration.declare_name == '建造远洋渔船'"
+      v-show="
+        ['建造远洋渔船', '建造南沙骨干渔船'].includes(
+          OceanDeclaration.declare_name
+        )
+      "
+      :title="OceanDeclaration.declare_name"
       ref="BuildFishing"
     ></BuildFishingGuidesInfo>
     <!-- 购买 -->
@@ -117,8 +122,13 @@
     ></OutsideFishingGuidesInfo>
     <!-- 自捕 -->
     <CatchFishingGuidesInfo
-      v-show="OceanDeclaration.declare_name == '自捕远洋海产品回运费'"
+      v-show="
+        ['自捕南沙海产品回运费', '自捕远洋海产品回运费'].includes(
+          OceanDeclaration.declare_name
+        )
+      "
       ref="CatchFishing"
+      :title="OceanDeclaration.declare_name"
     ></CatchFishingGuidesInfo>
     <!-- 基地 -->
     <BaseFishingGuidesInfo
@@ -174,6 +184,9 @@ export default {
           value: "建造远洋渔船",
         },
         {
+          value: "建造南沙骨干渔船",
+        },
+        {
           value: "购买远洋渔船",
         },
         {
@@ -181,6 +194,9 @@ export default {
         },
         {
           value: "自捕远洋海产品回运费",
+        },
+        {
+          value: "自捕南沙海产品回运费",
         },
         {
           value:

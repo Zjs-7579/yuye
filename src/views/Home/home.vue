@@ -25,8 +25,10 @@
               :to="item.path"
             >
               <div class="info">
-                <img :src="item.imgUrl" alt="" />
-                <span class="titleText">{{ item.text }}</span>
+                <el-card shadow="never">
+                  <img :src="item.imgUrl" alt="" />
+                  <span class="titleText">{{ item.text }}</span>
+                </el-card>
               </div>
             </router-link>
           </div>
@@ -148,7 +150,8 @@ export default {
 }
 .container .center {
   width: 100%;
-  height: 45vh;
+  /* height: 45vh; */
+  padding-bottom: 40px;
   background-color: #fff;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   position: relative;
@@ -163,8 +166,8 @@ export default {
 }
 .container .center .info img {
   display: block;
-  width: 150px;
-  height: 150px;
+  width: 125px;
+  height: 125px;
   margin: 0 auto;
   margin-top: 100px;
 }
@@ -178,7 +181,7 @@ export default {
 .container .foot {
   margin-top: 20px;
   width: 100%;
-  height: 40vh;
+  /* height: 40vh; */
   display: flex;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
@@ -210,4 +213,14 @@ export default {
   flex: 1;
   background-color: #fff;
 } */
+</style>
+
+<style>
+/* 卡片去掉边框 */
+.el-card {
+  border: none !important;
+}
+.el-card__body {
+  padding: 0px !important;
+}
 </style>

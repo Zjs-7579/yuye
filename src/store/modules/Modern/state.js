@@ -6,6 +6,7 @@ export default {
   uploadUrlData: [
     { title: "项目申请书", data: [] },
     { title: "承诺书", data: [] },
+    { title: "审计报告", data: [] },
     { title: "法定代表人或主要负责人身份证复印件(加盖申请单位公章)", data: [] },
     { title: "税务部门提供的单位上年度完税证明复印件", data: [] },
     { title: "上年度的财务报告", data: [] },
