@@ -89,16 +89,6 @@ export default {
       }
     },
   },
-  // watch: {
-  //   Modern: {
-  //     handler(val) {
-  //       //console.log(val);
-  //       this.uploadUrlData = val.uploadUrlData;
-  //     },
-  //     deep: true,
-  //     //this.uploadUrlData = val;
-  //   },
-  // },
 };
 </script>
 

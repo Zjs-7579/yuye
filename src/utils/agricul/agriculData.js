@@ -13,17 +13,6 @@ async function getAuricula(task_id, store) {
     store.commit("Agricul_UserTaskId", task_id);
     return res.data.code;
   }
-
-  //   AGdetailsInspectData(task_id).then((res) => {
-  //     if (res.data.code == 200) {
-  //       console.log("----------------------------", res);
-  //       let result = agriculData(res.data.data);
-  //       let uploadUrlData = agriculFilesData(res.data.data.images);
-  //       console.log("----------------------------", uploadUrlData);
-  //       store.commit("Agricul_AllClearData", { result, uploadUrlData });
-  //       store.commit("Agricul_UserTaskId", task_id);
-  //     }
-  //   });
 }
 
 export async function AgJudge(row, router, store) {
