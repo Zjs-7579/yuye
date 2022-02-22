@@ -59,20 +59,26 @@ export default {
   components: { upload },
   data() {
     return {
-      fileList: [],
+      //fileList: [],
     };
   },
   computed: {
     ...mapState(["Modern"]),
-    // uploadUrlData: {
-    //   get() {
-    //     //console.log("...................................................................",this.Agricul.uploadUrlData)
-    //     return this.Modern.uploadUrlData;
-    //   },
-    //   set(val) {
-    //     this.uploadUrlData = val;
-    //   },
-    // },
+    uploadUrlData: {
+      get() {
+        //console.log("...................................................................",this.Agricul.uploadUrlData)
+        if (this.Modern.userTaskId != "") {
+          console.log(this.Modern.uploadUrlData);
+          return this.Modern.uploadUrlData;
+        } else {
+          return [];
+        }
+        //return this.Modern.uploadUrlData;
+      },
+      set(val) {
+        this.uploadUrlData = val;
+      },
+    },
   },
   methods: {
     DownPromise(index) {
@@ -83,16 +89,16 @@ export default {
       }
     },
   },
-  watch: {
-    Modern: {
-      handler(val) {
-        //console.log(val);
-        this.uploadUrlData = val.uploadUrlData;
-      },
-      deep: true,
-      //this.uploadUrlData = val;
-    },
-  },
+  // watch: {
+  //   Modern: {
+  //     handler(val) {
+  //       //console.log(val);
+  //       this.uploadUrlData = val.uploadUrlData;
+  //     },
+  //     deep: true,
+  //     //this.uploadUrlData = val;
+  //   },
+  // },
 };
 </script>
 

@@ -183,11 +183,6 @@ export const ModernSummarize = {
     { required: true, message: "请输入项目建设依据", trigger: "blur" },
   ],
 };
-// export const AgriculPersonShareInfoValidator = {
-// 	shareholder: [{ required: true, message: "请填写股东名称", trigger: "change" }],
-//     amount: [{ required: true, message: "请填写出资金额", trigger: "change" }],
-//     share_proportion: [{ required: true, message: "请填写股份比例", trigger: "change" }],
-// }
 
 export const ModernUnitEmpForm = {
   legal_name: [

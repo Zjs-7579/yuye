@@ -84,7 +84,7 @@ import SummarizeInfo from "./summarizeInfo.vue";
 import UploadFiles from "./uploadFiles.vue";
 import AuditInfo from "../../User/auditInfo.vue";
 import { createSubmit } from "../../../api/Modern/createInfo";
-import { modernClearData } from "../../../utils/modernUpData";
+//import { modernClearData } from "../../../utils/modern/modernUpData";
 import { mapState } from "vuex";
 export default {
   components: {
@@ -159,9 +159,9 @@ export default {
   mounted() {
     //console.log(this.Agricul)
     console.log(this.$router.query.id);
-    if (!this.$router.query.id) {
-      modernClearData(this.Modern);
-    }
+    // if (!this.$router.query.id) {
+    //   modernClearData(this.Modern);
+    // }
   },
 };
 </script>

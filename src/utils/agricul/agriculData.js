@@ -26,7 +26,7 @@ async function getAuricula(task_id, store) {
   //   });
 }
 
-export async function judge(row, router, store) {
+export async function AgJudge(row, router, store) {
   let status = await getAuricula(row.task_id, store);
   //console.log(status);
   if (status == 200) {

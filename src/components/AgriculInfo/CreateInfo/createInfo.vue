@@ -52,7 +52,7 @@ import UploadFiles from "../CreateInfo/uploadFiles.vue";
 import SubmitButton from "./submitButton.vue";
 //import { AGdetailsInspectData } from "../../../api/searchDetailsInspect";
 import { userTaskid } from "../../../api/Agricul/userInfo";
-import { judge } from "../../../utils/agricul/agriculData";
+import { AgJudge } from "../../../utils/agricul/agriculData";
 // import {
 //   agriculData,
 //   agriculClearData,
@@ -88,40 +88,23 @@ export default {
     (async () => {
       this.$store.commit("Agricul_IsDisabledDataClose");
       //agriculClearData(this.Agricul);
-      if (this.$route.query.id != undefined && this.Agricul.userTaskId == "") {
-        let status = await judge(
-          { task_id: this.$route.query.id },
+      if (this.$route.query.id != undefined) {
+        let status = await AgJudge(
+          {
+            task_id: this.$route.query.id,
+          },
           this.$router,
           this.$store
         );
-        console.log(
-          "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
-          status,
-          this.$route.query.id
-        );
+        // console.log(
+        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+        //   status,
+        //   this.$route.query.id
+        // );
 
         if (status != 200) {
           this.$message.warning("数据出错");
         }
-        this.$nextTick(() => {
-          console.log("********************");
-        });
-
-        // AGdetailsInspectData(this.$route.query.id).then((res) => {
-        //   if (res.data.code == 200) {
-        //     console.log("----------------------------", res);
-        //     let result = agriculData(res.data.data);
-        //     let uploadUrlData = agriculFilesData(res.data.data.images);
-        //     console.log("----------------------------", uploadUrlData);
-        //     this.$store.commit("Agricul_AllClearData", { result, uploadUrlData });
-        //     this.$store.commit("Agricul_UserTaskId", this.$route.query.id);
-        //   }
-        //   //this.Agricul.AgriculData = result
-        //   //this.Agricul.uploadUrlData = uploadUrlData
-        //   //console.log("1111111111111111111111111111111111111111111111111111111",this.Agricul)
-        //   //console.log(this.Agricul.userTaskId)
-        // });
-        //this.isData = false
         console.log(this.$route.query.id);
       } else {
         userTaskid().then((res) => {

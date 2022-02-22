@@ -76,13 +76,14 @@ import ProjectInvest from "./projectInvest.vue";
 import SummarizeInfo from "./summarizeInfo.vue";
 import UploadFiles from "./uploadFiles.vue";
 import SubmitButton from "./submitButton.vue";
-import { MOdetailsInspectData } from "../../../api/searchDetailsInspect";
+// import { MOdetailsInspectData } from "../../../api/searchDetailsInspect";
 import { userTaskid } from "../../../api/Modern/userInfo";
-import {
-  modernData,
-  modernClearData,
-  modernFilesData,
-} from "../../../utils/modernUpData";
+import { MoJudge } from "../../../utils/modern/modernData";
+// import {
+//   modernData,
+//   modernClearData,
+//   modernFilesData,
+// } from "../../../utils/modernUpData";
 import { mapState } from "vuex";
 export default {
   data() {
@@ -121,26 +122,34 @@ export default {
     SubmitButton,
   },
   mounted() {
-    this.$store.commit("Modern_IsDisabledDataClose");
-    modernClearData(this.Modern);
-    if (this.$route.query.id != undefined) {
-      MOdetailsInspectData(this.$route.query.id).then((res) => {
-        if (res.data.code == 200) {
-          console.log("-------------------------------", res);
-          let result = modernData(res.data.data);
-          console.log("000000", result);
-          let uploadUrlData = modernFilesData(res.data.data.images);
-          //this.Modern.ModernData = result
-          this.$store.commit("Modern_UserTaskId", this.$route.query.id);
-          this.$store.commit("Modern_AllClearData", { result, uploadUrlData });
+    (async () => {
+      this.$store.commit("Modern_IsDisabledDataClose");
+      //agriculClearData(this.Agricul);
+      if (this.$route.query.id != undefined) {
+        let status = await MoJudge(
+          {
+            task_id: this.$route.query.id,
+          },
+          this.$router,
+          this.$store
+        );
+        // console.log(
+        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+        //   status,
+        //   this.$route.query.id
+        // );
+
+        if (status != 200) {
+          this.$message.warning("数据出错");
         }
-      });
-    } else {
-      userTaskid().then((res) => {
-        //console.log(res)
-        this.$store.commit("Modern_UserTaskId", res.data.data);
-      });
-    }
+        console.log(this.$route.query.id);
+      } else {
+        userTaskid().then((res) => {
+          //console.log(res)
+          this.$store.commit("Modern_UserTaskId", res.data.data);
+        });
+      }
+    })();
   },
 };
 </script>
