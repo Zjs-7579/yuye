@@ -6,6 +6,7 @@ export default {
     //建造
     Build: [
       { title: "专项资金申请报告", data: [] },
+      { title: "申请书", data: [] },
       { title: "申报单位主体资格材料（含统一社会信用代码证书等）", data: [] },
       { title: "农业农村部远洋渔业企业资格证书", data: [] },
       { title: "经会计师事务所审计的上一年度单位财务审计报告", data: [] },
@@ -30,6 +31,7 @@ export default {
     //购买
     Buy: [
       { title: "申请专项资金的报告", data: [] },
+      { title: "申请书", data: [] },
       { title: "申报单位主体资格材料（含统一社会信用代码证书等）", data: [] },
       { title: "农业农村部远洋渔业企业资格证书", data: [] },
       { title: "经会计师事务所审计的上一年度单位财务审计报告 ", data: [] },
@@ -42,6 +44,7 @@ export default {
     //境外
     Outside: [
       { title: "申请专项资金的报告", data: [] },
+      { title: "申请书", data: [] },
       { title: "申报单位主体资格材料（含统一社会信用代码证书等） ", data: [] },
       { title: "农业农村部远洋渔业企业资格证书", data: [] },
       { title: "农业农村部远洋渔业项目批文", data: [] },
@@ -56,6 +59,7 @@ export default {
     //自捕
     Volumes: [
       { title: "申请专项资金的报告 ", data: [] },
+      { title: "申请书", data: [] },
       { title: "申报单位主体资格材料（含统一社会信用代码证书等）", data: [] },
       { title: "农业农村部远洋渔业企业资格证书", data: [] },
       { title: "农业农村部远洋渔业项目批文", data: [] },
@@ -73,6 +77,7 @@ export default {
     //基地
     Base: [
       { title: "申请专项资金的报告", data: [] },
+      { title: "申请书", data: [] },
       { title: "申报单位主体资格材料（含统一社会信用代码证书等）", data: [] },
       { title: "经会计师事务所审计的上一年度单位财务审计报告", data: [] },
       {

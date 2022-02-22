@@ -19,7 +19,7 @@
     </el-row>
 
     <div class="dataRow">
-      <el-row v-for="(item, index) in tabList" :key="index">
+      <el-row v-for="(item, index) in uploadUrlData" :key="index">
         <el-col :span="2"
           ><div class="grid-content bg-purple">{{ index + 1 }}</div></el-col
         >
@@ -45,7 +45,7 @@
         <!-- <el-col :span="4" ><div class="grid-content bg-purple"><el-button type="primary" round>上传</el-button></div></el-col>
         <el-col :span="5" ><div class="grid-content bg-purple box"><p>dsadas</p><p>dsadsad</p></div></el-col> -->
         <el-col :span="8">
-          <upload :isFile="item.title"></upload>
+          <upload :isFile="item.title" :dataFiles="item.data"></upload>
         </el-col>
       </el-row>
     </div>
@@ -54,32 +54,25 @@
 
 <script>
 import upload from "./upload.vue";
+import { mapState } from "vuex";
 export default {
   components: { upload },
   data() {
     return {
       fileList: [],
-      tabList: [
-        { title: "项目申请书" },
-        { title: "承诺书" },
-        { title: "法定代表人或主要负责人身份证复印件(加盖申请单位公章)" },
-        { title: "税务部门提供的单位上年度完税证明复印件" },
-        { title: "上年度的财务报告" },
-        { title: "必要的生产、经营许可及认证文件" },
-        { title: "场地所有权或使用权证明复印件" },
-        { title: "项目建设的实施方案" },
-        { title: "预（决）算报告" },
-        { title: "申报项目专项审计报告" },
-        {
-          title:
-            "往年已获现代农业项目资金项目（渔业类）资助且第二年又申报项目资助的项目申报单位，还应当提交项目绩效自评报告或者注册会计师鉴证结果",
-        },
-        {
-          title:
-            "其他相关材料（如农业龙头企业、“菜篮子”基地认定、高新技术企业、专利证书等相关证明材料）",
-        },
-      ],
     };
+  },
+  computed: {
+    ...mapState(["Modern"]),
+    // uploadUrlData: {
+    //   get() {
+    //     //console.log("...................................................................",this.Agricul.uploadUrlData)
+    //     return this.Modern.uploadUrlData;
+    //   },
+    //   set(val) {
+    //     this.uploadUrlData = val;
+    //   },
+    // },
   },
   methods: {
     DownPromise(index) {
@@ -88,6 +81,16 @@ export default {
           "http://rent.greatbayit.com/yuye/publicrs/image/承诺书.docx"
         );
       }
+    },
+  },
+  watch: {
+    Modern: {
+      handler(val) {
+        //console.log(val);
+        this.uploadUrlData = val.uploadUrlData;
+      },
+      deep: true,
+      //this.uploadUrlData = val;
     },
   },
 };

@@ -1,5 +1,5 @@
 <template>
-  <div class="AgUpload">
+  <div class="MoUpload">
     <el-row class="title"> 项目所附材料清单 </el-row>
     <el-row class="titleRow">
       <el-col :span="2"><div class="grid-content bg-purple">序号</div></el-col>
@@ -25,7 +25,9 @@
         >
         <el-col :span="6"
           ><div class="grid-content bg-purple">
-            <span :class="index == 5 ? 'boldText' : ''">{{ item.title }}</span>
+            <span :class="index == 11 || index == 10 ? 'boldText' : ''">{{
+              item.title
+            }}</span>
           </div></el-col
         >
         <el-col :span="4"
@@ -40,6 +42,8 @@
               @click="DownPromise(index)"
             ></i></div
         ></el-col>
+        <!-- <el-col :span="4" ><div class="grid-content bg-purple"><el-button type="primary" round>上传</el-button></div></el-col>
+        <el-col :span="5" ><div class="grid-content bg-purple box"><p>dsadas</p><p>dsadsad</p></div></el-col> -->
         <el-col :span="8">
           <upload :isFile="item.title" :dataFiles="item.data"></upload>
         </el-col>
@@ -55,37 +59,30 @@ export default {
   components: { upload },
   data() {
     return {
-      uploadUrlData: [],
-      // AgtabList: [
-      //   { title: "项目申请书" },
-      //   { title: "承诺书" },
-      //   { title: "企业法定代表人或主要负责人及身份证复印件" },
-      //   { title: "近3个年度的会计报表：资产负债表、损益表、现金流量表" },
+      fileList: [],
+      // tabList: [
+      //   { title: "法人代表人或主要负责人身份证复印件" },
+      //   { title: "申报单位主体资格材料（含工商登记营业执照等）" },
       //   { title: "税务部门提供的单位上年度完税证明复印件" },
-      //   {
-      //     title:
-      //       "企业与银行签订的贷款合同和有关银行贷款有效凭据(银行拨款单)复印件",
-      //   },
-      //   { title: "企业归还银行贷款利息清单" },
+      //   { title: "上年度的财务报告或者通过审查的事业单位财务决算报表复印件" },
+      //   { title: "必要的生产、经营许可及认证文件；场地所有权或使用权证明复印件" },
+      //   { title: "项目建设的实施方案、预（决）算报告、项目投资证明材料等（合同、发票、银行汇款凭证等）" },
+      //   { title: "其他相关证明材料" },
+      //   { title: "往年已获农产品质量安全专项资金（渔业类）资助且第二年又申报项目资助的项目申报单位，还应当提交项目绩效自评报告或者注册会计师鉴证结果" },
       // ],
     };
   },
   computed: {
-    ...mapState(["Agricul"]),
-    // uploadUrlData: {
-    //   get() {
-    //     //console.log("...................................................................",this.Agricul.uploadUrlData)
-    //     console.log(this.Agricul.uploadUrlData);
-    //     return this.Agricul.uploadUrlData;
-    //   },
-    //   set(val) {
-    //     this.uploadUrlData = val;
-    //   },
-    // },
+    ...mapState(["Safety"]),
+    uploadUrlData: {
+      get() {
+        return this.Safety.uploadUrlData;
+      },
+      set(val) {
+        this.uploadUrlData = val;
+      },
+    },
   },
-  // mounted() {
-  //   console.log(this.Agricul.uploadUrlData);
-  // },
   methods: {
     DownPromise(index) {
       if (index == 1) {
@@ -95,34 +92,23 @@ export default {
       }
     },
   },
-  watch: {
-    Agricul: {
-      handler(val) {
-        //console.log(val);
-        this.uploadUrlData = val.uploadUrlData;
-      },
-      deep: true,
-      //this.uploadUrlData = val;
-    },
-  },
 };
 </script>
 
 <style>
-.AgUpload .boldText {
+.MoUpload .boldText {
   height: 120px;
-  line-height: 2.7;
+  line-height: 2.5;
   display: block;
   white-space: pre-wrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.AgUpload {
+.MoUpload {
   width: 100%;
   height: 75vh;
-  z-index: 999;
 }
-.AgUpload .title {
+.MoUpload .title {
   background-color: #ece8e8;
   height: 60px;
   line-height: 60px;
@@ -131,62 +117,64 @@ export default {
   font-weight: bold;
   border: 1px solid #ccc;
 }
-.AgUpload .titleRow {
-  border: 1px solid #ccc;
+.MoUpload .titleRow {
   background-color: #ece8e8;
   height: 60px;
   line-height: 60px;
-}
-.AgUpload .dataRow {
   border: 1px solid #ccc;
-  border-bottom: none;
+}
+.MoUpload .dataRow {
   height: 62vh;
   overflow: hidden;
   overflow-y: overlay;
+  border: 1px solid #ccc;
+  border-bottom: none;
 }
-.AgUpload .dataRow .el-row {
+.MoUpload .dataRow .el-row {
   height: 120px;
   line-height: 120px;
   border: 1px solid #ccc;
 }
-/* .AgUpload .dataRow .el-row:nth-child(6) .el-col-6 {
-  height: 60px;
-  line-height: 60px;
-} */
-.AgUpload .el-col {
+.MoUpload .el-col {
   text-align: center;
 }
-.AgUpload .el-row .el-col:nth-child(2) {
+.MoUpload .el-row .el-col:nth-child(2) {
   text-align: left;
 }
 
-.AgUpload .upload-demo {
+.MoUpload .upload-demo {
   width: 99%;
   margin-left: 1%;
   display: flex;
 }
-.AgUpload .el-upload--text {
+.MoUpload .el-upload--text {
   /* background-color: brown; */
   flex: 1;
 }
-.AgUpload .el-upload-list {
+.MoUpload .el-upload-list {
   flex: 1;
   height: 100px;
   width: 100%;
   overflow: hidden;
   overflow-y: auto;
 }
-.AgUpload .el-upload-list--text {
+.MoUpload .el-upload-list--text {
   text-align: left;
 }
-.AgUpload .el-upload-list__item-status-label {
+
+/* .MoUpload .dataRow .el-col-6 .boldText {
+  line-height: 40px;
+  white-space: pre-wrap !important;
+} */
+
+.MoUpload .el-upload-list__item-status-label {
   margin-right: 25px;
 }
 /* .el-upload-list__item-status-label .el-icon-upload-success .el-icon-circle-check, */
-.AgUpload .el-icon-close {
+.MoUpload .el-icon-close {
   margin-right: 25px;
 }
-.AgUpload .el-icon-close-tip {
+.MoUpload .el-icon-close-tip {
   margin-right: 25px;
 }
 </style>

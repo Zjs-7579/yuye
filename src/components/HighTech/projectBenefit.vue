@@ -1,17 +1,15 @@
 <template>
   <div class="MoboxTitle">
     <el-row class="title"> 项目效益 </el-row>
-    <span> 1、项目预期技术指标、经济和社会效益; </span>
-    <br />
-    <span>
+    <p>1、项目预期技术指标、经济和社会效益;</p>
+    <p>
       2、技术指标：项目预期达到的技术标准、技术水平、填补空白、知识产权成果（专利、著作、软件、标准等）;
-    </span>
-    <br />
-    <span>
+    </p>
+    <p>
       3、经济效益：项目实施、推广、应用实现的业务量增长，年产量、销售收入、利润、纳税额、行业引领、产业化前景、示范带动等方面作用）;
-    </span>
+    </p>
     <br />
-    <span> 4、社会效益（增加就业、节约能源、促进民生等）。 </span>
+    <p>4、社会效益（增加就业、节约能源、促进民生等）。</p>
     <el-form
       :model="techBenefit"
       ref="unitForm"
@@ -95,6 +93,7 @@ export default {
     ...mapState(["HighTech"]),
     techBenefit: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.HighTech.HighTechData.techBenefit["task_id"] =
           this.HighTech.userTaskId;
         //this.Modern.ModernData.techBenefit.creator = this.Modern.userName

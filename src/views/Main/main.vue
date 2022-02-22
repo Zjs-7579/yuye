@@ -11,7 +11,7 @@
     <el-button type="primary" @click="adminUser(1)">初审A</el-button>
     <el-button type="primary" @click="adminUser(2)">初审B</el-button>
     <el-button type="primary" @click="adminUser(3)">复审A</el-button>
-    <el-button type="primary" @click="adminUser(4)">复审A</el-button>
+    <el-button type="primary" @click="adminUser(4)">复审B</el-button>
     <el-button type="primary" @click="adminUser(5)">管理员</el-button>
 
     <el-button

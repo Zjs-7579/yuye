@@ -125,17 +125,15 @@ export default {
     modernClearData(this.Modern);
     if (this.$route.query.id != undefined) {
       MOdetailsInspectData(this.$route.query.id).then((res) => {
-        console.log("-------------------------------", res);
-        this.$store.commit("Modern_UserTaskId", this.$route.query.id);
-        let result = modernData(res.data.data);
-        console.log("000000", result);
-        let uploadUrlData;
-        res.data.data.images
-          ? (uploadUrlData = modernFilesData(res.data.data.images))
-          : (uploadUrlData = []);
-        //console.log('result', result)
-        //this.Modern.ModernData = result
-        this.$store.commit("Modern_AllClearData", { result, uploadUrlData });
+        if (res.data.code == 200) {
+          console.log("-------------------------------", res);
+          let result = modernData(res.data.data);
+          console.log("000000", result);
+          let uploadUrlData = modernFilesData(res.data.data.images);
+          //this.Modern.ModernData = result
+          this.$store.commit("Modern_UserTaskId", this.$route.query.id);
+          this.$store.commit("Modern_AllClearData", { result, uploadUrlData });
+        }
       });
     } else {
       userTaskid().then((res) => {

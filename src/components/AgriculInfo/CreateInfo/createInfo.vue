@@ -62,7 +62,7 @@ export default {
   data() {
     return {
       isDataShow: true,
-      isData: true,
+      //isData: true,
       activeName: "UnitInfo",
     };
   },
@@ -88,12 +88,14 @@ export default {
     agriculClearData(this.Agricul);
     if (this.$route.query.id != undefined) {
       AGdetailsInspectData(this.$route.query.id).then((res) => {
-        console.log("----------------------------", res);
-        let result = agriculData(res.data.data);
-        let uploadUrlData = agriculFilesData(res.data.data.images);
-
-        this.$store.commit("Agricul_AllClearData", { result, uploadUrlData });
-        this.$store.commit("Agricul_UserTaskId", this.$route.query.id);
+        if (res.data.code == 200) {
+          console.log("----------------------------", res);
+          let result = agriculData(res.data.data);
+          let uploadUrlData = agriculFilesData(res.data.data.images);
+          console.log("----------------------------", uploadUrlData);
+          this.$store.commit("Agricul_AllClearData", { result, uploadUrlData });
+          this.$store.commit("Agricul_UserTaskId", this.$route.query.id);
+        }
 
         //this.Agricul.AgriculData = result
         //this.Agricul.uploadUrlData = uploadUrlData
@@ -108,37 +110,6 @@ export default {
       });
     }
   },
-  mounted() {
-    setTimeout(() => {
-      this.isData = false;
-    }, 2000);
-    // if(this.Agricul.userTaskId > -1){
-    // 	this.isData = false
-    // }
-  },
-  // mounted() {
-  // 	this.$store.commit("Agricul_IsDisabledDataClose");
-  // 	agriculClearData(this.Agricul)
-  // 	if(this.$route.query.id != undefined){
-  // 		AGdetailsInspectData(this.$route.query.id).then(res=>{
-  // 			//console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',res)
-  // 			this.$store.commit('Agricul_UserTaskId', this.$route.query.id)
-  // 			let result = agriculData(res.data.data)
-  // 			let uploadUrlData = agriculFilesData(res.data.data.images)
-
-  // 			this.$store.commit('Agricul_AllClearData', {result, uploadUrlData})
-  // 			//this.Agricul.AgriculData = result
-  // 			//this.Agricul.uploadUrlData = uploadUrlData
-  // 			//console.log("1111111111111111111111111111111111111111111111111111111",this.Agricul)
-  // 			//console.log(this.Agricul.userTaskId)
-  // 		})
-  // 	}else{
-  // 		userTaskid().then(res=>{
-  // 			//console.log(res)
-  // 			this.$store.commit('Agricul_UserTaskId', res.data.data)
-  // 		});
-  // 	}
-  // },
   components: {
     UnitInfo,
     InancialInfo,

@@ -41,7 +41,7 @@
         <el-col style="width: 310px" class="name"> 法人代表 </el-col>
 
         <el-col :span="8">
-          <el-form-item label="姓名:" prop="legal_name" ref="name">
+          <el-form-item label="姓名:" prop="legal_name">
             <el-input v-model="techCompany.legal_name"></el-input>
           </el-form-item>
           <el-form-item label="学历:" prop="education">
@@ -144,7 +144,7 @@
             <el-input v-model="sum3[2]" placeholder="初级职称"></el-input>
             <el-input v-model="sum3[3]" placeholder="其他从业人数"></el-input>
         </el-form-item> -->
-    </el-form>
+    <!-- </el-form>
 
     <el-form
       :model="techCompany"
@@ -153,7 +153,7 @@
       :rules="rules"
       :disabled="isDisabledData"
       class="demo-ruleForm"
-    >
+    > -->
       <el-row class="titleSmall">
         行政管理/市场营销/研发设计/加工制造/其他从业人数:
       </el-row>
@@ -270,10 +270,6 @@ export default {
     techCompany: {
       get() {
         //12/12/124/
-        this.HighTech.HighTechData.techCompany["num_1"] = this.numOne.join("/");
-        this.HighTech.HighTechData.techCompany["num_2"] = this.numTwo.join("/");
-        this.HighTech.HighTechData.techCompany["num_3"] =
-          this.numThree.join("/");
         return this.HighTech.HighTechData.techCompany;
       },
       set(val) {
@@ -293,27 +289,6 @@ export default {
   //     console.log(this.$refs.behalf)
   //     console.log(this.$refs.name)
   // },
-  // watch: {
-  //     techCompany:{
-  //         handler(val){
-  //             // if(val.numOne.length && val.numTwo.length && val.numThree.length){
-
-  //             // }
-
-  //                 let sum1 = this.numOne.join("/")
-  //                 let sum2 = this.numTwo.join("/")
-  //                 let sum3 = this.numThree.join("/")
-  //                 val['sum_1'] = sum1
-  //                 val['sum_2'] = sum2
-  //                 val['sum_3'] = sum3
-  //             // val.sum_1 = sum1
-  //             // val.sum_2 = sum2
-  //             // val.sum_3 = sum3
-  //             console.log(val)
-  //         },
-  //         deep: true
-  //     }
-  // }
 };
 </script>
 

@@ -31,7 +31,7 @@
         :disabled="isDataShow"
         name="ProjectUnitInfo"
       >
-        <ProjectUnitInfo ref="SafetyProjectUnitInfoValidate" />
+        <ProjectUnitInfo />
       </el-tab-pane>
 
       <el-tab-pane
@@ -57,17 +57,6 @@
       <el-tab-pane label="上传附件" :disabled="isDataShow" name="UploadFiles">
         <UploadFiles ref="SafetyUploadFilesValidate" />
       </el-tab-pane>
-      <!--
-        一、单位基本情况
-        二、单位近三年财务状况（企业类填报）
-        二、单位近三年财务状况（事业类填报）
-        三、国家、省、市财政近三年全部支持情况
-        四、项目承担单位基本情况（限500字之内）
-        五、项目实施的背景、意义及实施内容（限1500字之内)
-        六、项目投资情况(单位：万元)
-        七、本项目所附材料清单
-        八、摘要（便于项目现场考察和专家评审时需要相关信息、数据）
-       -->
     </el-tabs>
     <SubmitButton
       @handleActionNameText="handleActiveName"
@@ -102,6 +91,7 @@ export default {
     return {
       isDataShow: false,
       activeName: "UnitInfo",
+      lastActiveName: "",
     };
   },
   computed: {
@@ -127,10 +117,14 @@ export default {
       this.activeName = name;
     },
     handleClick(tab) {
-      console.log(tab);
+      if (this.lastActiveName) {
+        console.log(this.lastActiveName, "-->", tab.name);
+      }
+      this.lastActiveName = tab.name;
+      // this.validationDataTab(tab.name);
       // this.index = tab.index
       // this.activeName = this.activeList[tab.index];
-      // this.isLabelText = this.activeTextList[tab.index];
+      // this.isLabelText = this.activeTextList[tab0.index];
     },
   },
   mounted() {
@@ -138,17 +132,12 @@ export default {
     safetyClearData(this.Safety); // 清除数据
     if (this.$route.query.id != undefined) {
       SadetailsInspectData(this.$route.query.id).then((res) => {
-        //console.log('data', res)
-        // if (res.data.code == 200) {}
-        this.$store.commit("Safety_UserTaskId", this.$route.query.id);
-        let result = safetyData(res.data.data);
-        let uploadUrlData;
-        res.data.data.images
-          ? (uploadUrlData = safetyFilesData(res.data.data.images))
-          : (uploadUrlData = []);
-        //console.log('result', result)
-        //this.Modern.ModernData = result
-        this.$store.commit("Safety_AllClearData", { result, uploadUrlData });
+        if (res.data.code == 200) {
+          this.$store.commit("Safety_UserTaskId", this.$route.query.id);
+          let result = safetyData(res.data.data);
+          let uploadUrlData = safetyFilesData(res.data.data.images);
+          this.$store.commit("Safety_AllClearData", { result, uploadUrlData });
+        }
       });
     } else {
       userTaskid().then((res) => {

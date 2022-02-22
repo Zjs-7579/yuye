@@ -63,8 +63,8 @@
 </template>
 
 <script>
-import { createInfoData } from "../../api/Modern/createInfo";
-import { DownContentText } from "../../api/Modern/upLoad";
+import { createInfoData } from "../../api/HighTech/createInfo";
+//import { DownContentText } from "../../api/Modern/upLoad";
 import { mapState } from "vuex";
 export default {
   props: ["activeName"],
@@ -72,6 +72,22 @@ export default {
     return {
       visibleSubmitContent: false, //弹窗
       statusData: 200, //数据提交成功判断
+      UnitInfoBool: "",
+      InancialInfoBool: "",
+      ResearchInfoBool: "",
+      HoldInfoBool: "",
+      TeamInfoBool: "",
+      ProjectUnitInfoBool: "",
+      ProjectContentBool: "",
+      ProjectImplementBool: "",
+      ProjectBuildBool: "",
+      ProjectConditionBool: "",
+      ProjectProgressBool: "",
+      ProjectBenefitBool: "",
+      ProjectFundBool: "",
+      ProjectInvestBool: "",
+      SummarizeInfoBool: "",
+      UploadFilesBool: "",
       activeList: [
         "UnitInfo",
         "InancialInfo",
@@ -79,6 +95,7 @@ export default {
         "HoldInfo",
         "TeamInfo",
         "ProjectUnitInfo",
+
         "ProjectContent",
         "ProjectImplement",
         "ProjectBuild",
@@ -86,10 +103,9 @@ export default {
         "ProjectProgress",
         "ProjectBenefit",
         "ProjectFund",
-
+        "ProjectInvest",
         "SummarizeInfo",
         "UploadFiles",
-        "SubmitButton",
       ],
     };
   },
@@ -108,11 +124,11 @@ export default {
     handleActionNext() {
       console.log(this.HighTech.HighTechData);
       //console.log(this.Modern.ModernData);
-      //this.validationDataTab(this.activeName);
-      // this.promptMessage(
-      //   this[this.activeName + "Bool"],
-      //   "当前表单未填写完整！！！"
-      // );
+      this.validationDataTab(this.activeName);
+      this.promptMessage(
+        this[this.activeName + "Bool"],
+        "当前表单未填写完整！！！"
+      );
 
       let idx = this.activeList.indexOf(this.activeName);
       let name = this.activeList[idx + 1];
@@ -154,24 +170,167 @@ export default {
         })
         .catch(() => {});
     },
-    // promptMessage(bool, text) {
-    //   if (!bool) {
-    //     this.$message({
-    //       message: text,
-    //       type: "warning",
-    //     });
-    //   }
-    // },
+    promptMessage(bool, text) {
+      if (!bool) {
+        this.$message({
+          message: text,
+          type: "warning",
+        });
+      }
+    },
 
+    validationDataTab(activeName) {
+      if (activeName == "UnitInfo") {
+        this.UnitInfoBool = true;
+        this.$parent.$refs.HighTechUnitInfoValidate.$refs.unitForm.validate(
+          (e) => {
+            this.UnitInfoBool = e;
+            console.log("*****************", e);
+          }
+        );
+        this.$parent.$refs.HighTechUnitInfoValidate.$refs.HighTechUnitNotEmployed.$refs.ruleForm.validate(
+          (e) => {
+            this.UnitInfoBool = e;
+            console.log("*****************", e);
+          }
+        );
+        for (let item of this.HighTech.HighTechData.techShareholders) {
+          //console.log(item)
+          for (let result in item) {
+            //console.log(result)
+            if (item[result] == "") {
+              this.UnitInfoBool = false;
+              break;
+            }
+            //this.UnitInfoBool = true;
+          }
+        }
+      }
+      if (activeName == "InancialInfo") {
+        this.InancialInfoBool = true;
+
+        if (this.regist_type == "企业") {
+          for (let item of this.Modern.ModernData.techFinances) {
+            //console.log(item)
+            for (let result in item) {
+              //console.log(result)
+              if (item[result] == "") {
+                this.InancialInfoBool = false;
+                break;
+              }
+            }
+          }
+        }
+
+        if (this.regist_type == "事业单位") {
+          this.InancialInfoBool = true;
+
+          for (let item of this.Modern.ModernData.techCauses) {
+            //console.log(item)
+            for (let result in item) {
+              //console.log(result)
+              if (item[result] == "") {
+                this.InancialInfoBool = false;
+                break;
+              }
+            }
+          }
+        }
+      }
+      if (activeName == "ResearchInfo") {
+        this.ResearchInfoBool = true;
+
+        for (let item of this.Modern.ModernData.techScientific) {
+          //console.log(item)
+          for (let result in item) {
+            //console.log(result)
+            if (item[result] == "") {
+              this.ResearchInfoBool = false;
+              break;
+            }
+          }
+        }
+      }
+      if (activeName == "HoldInfo") {
+        this.HoldInfoBool = true;
+        for (let item of this.$parent.$refs.HighTechHoldInfoValidate.$refs
+          .holdForm) {
+          item.validate((e) => {
+            if (!e) {
+              this.HoldInfoBool = e;
+            }
+          });
+        }
+        //console.log(this.HoldInfoBool)
+      }
+      if (activeName == "TeamInfo") {
+        this.TeamInfoBool = true;
+        for (let item of this.$parent.$refs.HighTechTeamInfoValidate.$refs
+          .teamForm) {
+          item.validate((e) => {
+            if (!e) {
+              this.TeamInfoBool = e;
+            }
+          });
+        }
+        //console.log(this.HoldInfoBool)
+      }
+      if (activeName == "ProjectUnitInfo") {
+        this.ProjectUnitInfoBool = true;
+
+        //console.log(item)
+        for (let item in this.Modern.ModernData.basic_info) {
+          //console.log(result)
+          if (this.Modern.ModernData.basic_info[item] == "") {
+            this.ProjectUnitInfoBool = false;
+            break;
+          }
+        }
+      }
+
+
+      if (activeName == "ProjectInvest") {
+        this.ProjectInvestBool = true;
+
+        for (let item of this.Modern.ModernData.techInvestment) {
+          //console.log(item)
+          for (let result in item) {
+            //console.log(result)
+            if (item[result] == "") {
+              this.ProjectInvestBool = false;
+              break;
+            }
+          }
+        }
+        for (let item of this.Modern.ModernData.techEquipment) {
+          for (let result in item) {
+            //console.log(result)
+            if (item[result] == "") {
+              this.ProjectInvestBool = false;
+              break;
+            }
+          }
+        }
+      }
+
+      if (activeName == "SummarizeInfo") {
+        this.SummarizeInfoBool = true;
+        this.$parent.$refs.HighTechSummarizeInfoValidate.$refs.SummarizeForm.validate(
+          (e) => {
+            this.SummarizeInfoBool = e;
+          }
+        );
+      }
+    },
     handlePreserveInfo() {
-      // createInfoData(this.activeName, this.Modern.ModernData).then(() => {
-      //   if (this.statusData == 200) {
-      //     this.$message({
-      //       message: "信息保存成功",
-      //       type: "success",
-      //     });
-      //   }
-      // });
+      createInfoData(this.activeName, this.HighTech.HighTechData).then(() => {
+        if (this.statusData == 200) {
+          this.$message({
+            message: "信息保存成功",
+            type: "success",
+          });
+        }
+      });
       // this.validationDataTab(this.activeName)
       // if(this[this.activeName + "Bool"]){
       //     createInfoData(this.activeName, this.Modern.ModernData).then(() => {

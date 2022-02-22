@@ -8,6 +8,7 @@ import FishingGuidesInfo from "../views/FishingGuidesInfo/fishingGuidesInfo";
 import HighTech from "../views/HighTech/highTech.vue";
 import User from "../views/User/user.vue";
 import Admin from "../views/Admin/admin.vue";
+import Safety from "../views/Safety/safety.vue";
 //import DetailsInspect from "../components/Home/detailsInspect.vue"
 Vue.use(VueRouter);
 
@@ -235,6 +236,7 @@ const routes = [
       },
     ],
   },
+  //高新
   {
     path: "/highTech",
     name: "HighTech",
@@ -253,12 +255,43 @@ const routes = [
       },
     ],
   },
+  //安全
+  {
+    path: "/safety",
+    name: "Safety",
+    component: Safety,
+    meta: { title: "农产品质量安全" },
+    children: [
+      {
+        path: "/safety",
+        redirect: "/safety/createInfo",
+      },
+      {
+        path: "/safety/createInfo",
+        name: "SafetyCreateInfo",
+        component: () => import("../components/Safety/createInfo.vue"),
+        meta: { title: "创建" },
+      },
+    ],
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const flag = !localStorage.getItem("name") || !localStorage.getItem("token");
+  if (to.fullPath === "/main") {
+    next();
+  } else if (flag) {
+    next("/main");
+    return false;
+  } else {
+    next();
+  }
 });
 
 export default router;

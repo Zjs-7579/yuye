@@ -66,6 +66,7 @@
 import { createInfoData } from "../../api/Safety/createInfo";
 import DetailsInfo from "./detailsInfo.vue";
 import { mapState } from "vuex";
+import { DownContentText } from "../../api/Safety/upLoad";
 export default {
   props: ["activeName"],
   data() {
@@ -84,7 +85,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["Safety", "safety"]),
+    ...mapState(["Safety"]),
     regist_type: {
       get() {
         return this.Safety.SafetyData.safetyCompany.regist_type;
@@ -96,18 +97,26 @@ export default {
   },
   methods: {
     handleActionNext() {
-      let idx = this.activeList.indexOf(this.activeName);
-      let name = this.activeList[idx + 1];
-      this.$emit("handleActionNameText", name);
+      this.validationDataTab(this.activeName);
+      this.promptMessage(
+        this[this.activeName + "Bool"],
+        "当前表单未填写完整！！！"
+      );
+      // let idx = this.activeList.indexOf(this.activeName);
+      // let name = this.activeList[idx + 1];
+      // this.$emit("handleActionNameText", name);
 
       if (this[this.activeName + "Bool"]) {
-        createInfoData(this.activeName, this.Safety)
+        createInfoData(this.activeName, this.Safety.SafetyData)
           .then(() => {
             this.statusData = 200;
           })
           .catch(() => {
             this.statusData = 0;
           });
+        let idx = this.activeList.indexOf(this.activeName);
+        let name = this.activeList[idx + 1];
+        this.$emit("handleActionNameText", name);
       }
     },
     handleActionLast() {
@@ -142,7 +151,7 @@ export default {
           }
         );
 
-        for (let item of this.Safety.safetyShareholders) {
+        for (let item of this.Safety.SafetyData.safetyShareholders) {
           for (let result in item) {
             if (item[result] == "") {
               this.UnitInfoBool = false;
@@ -155,8 +164,8 @@ export default {
 
       if (activeName == "InancialInfo") {
         this.InancialInfoBool = true;
-        if (this.Safety.safetyCompany.regist_type == "企业") {
-          for (let item of this.Safety.safetyFinances) {
+        if (this.Safety.SafetyData.safetyCompany.regist_type == "企业") {
+          for (let item of this.Safety.SafetyData.safetyFinances) {
             for (let result in item) {
               if (item[result] == "") {
                 this.InancialInfoBool = false;
@@ -166,10 +175,10 @@ export default {
           }
         }
 
-        if (this.Safety.safetyCompany.regist_type == "事业单位") {
+        if (this.Safety.SafetyData.safetyCompany.regist_type == "事业单位") {
           this.InancialInfoBool = true;
 
-          for (let item of this.Safety.safetyCauses) {
+          for (let item of this.Safety.SafetyData.safetyCauses) {
             for (let result in item) {
               if (item[result] == "") {
                 this.InancialInfoBool = false;
@@ -193,12 +202,14 @@ export default {
       }
 
       if (activeName == "ProjectUnitInfo") {
-        for (let item in this.Safety.basic_info) {
-          if (this.Safety.basic_info[item] == "") {
+        this.ProjectUnitInfoBool = true;
+        console.log(this.Safety.SafetyData.basic_info);
+        for (let item in this.Safety.SafetyData.basic_info) {
+          console.log(item);
+          if (this.Safety.SafetyData.basic_info[item] == "") {
             this.ProjectUnitInfoBool = false;
             break;
           }
-          this.ProjectUnitInfoBool = true;
         }
       }
 
@@ -211,13 +222,13 @@ export default {
       }
 
       if (activeName == "ProjectInvest") {
-        for (let item of this.Safety.safetyInvestMent) {
+        this.ProjectInvestBool = true;
+        for (let item of this.Safety.SafetyData.safetyInvestMent) {
           for (let result in item) {
-            if (item[result] == "") {
+            if (item[result] == "s") {
               this.ProjectInvestBool = false;
               break;
             }
-            this.ProjectInvestBool = true;
           }
         }
       }
@@ -234,7 +245,7 @@ export default {
     },
 
     handlePreserveInfo() {
-      createInfoData(this.activeName, this.Safety).then(() => {
+      createInfoData(this.activeName, this.Safety.SafetyData).then(() => {
         if (this.statusData == 200) {
           console.log("保存成功");
           this.$message({
@@ -244,7 +255,13 @@ export default {
         }
       });
     },
-    downFile() {},
+    downFile() {
+      // /yuye_spring/v1/safety/ty/task/report/{id}
+      this.handlePreserveInfo();
+      DownContentText(this.Safety.userTaskId).then((res) => {
+        window.open(res.data.data);
+      });
+    },
   },
   components: {
     DetailsInfo,

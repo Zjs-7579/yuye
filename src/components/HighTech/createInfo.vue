@@ -7,7 +7,7 @@
       @tab-click="handleClick"
     >
       <el-tab-pane label="单位基本情况" :disabled="isDataShow" name="UnitInfo">
-        <UnitInfo ref="ModernUnitInfoValidate"></UnitInfo>
+        <UnitInfo ref="HighTechUnitInfoValidate"></UnitInfo>
       </el-tab-pane>
 
       <el-tab-pane
@@ -31,11 +31,11 @@
         :disabled="isDataShow"
         name="HoldInfo"
       >
-        <HoldInfo></HoldInfo>
+        <HoldInfo ref="HighTechHoldInfoValidate"></HoldInfo>
       </el-tab-pane>
 
       <el-tab-pane label="团队基本情况" :disabled="isDataShow" name="TeamInfo">
-        <TeamInfo></TeamInfo>
+        <TeamInfo ref="HighTechTeamInfoValidate"></TeamInfo>
       </el-tab-pane>
 
       <el-tab-pane
@@ -102,7 +102,7 @@
       </el-tab-pane>
 
       <el-tab-pane label="摘要" :disabled="isDataShow" name="SummarizeInfo">
-        <SummarizeInfo></SummarizeInfo>
+        <SummarizeInfo ref="HighTechSummarizeInfoValidate"></SummarizeInfo>
       </el-tab-pane>
 
       <el-tab-pane label="上传附件" :disabled="isDataShow" name="UploadFiles">
@@ -138,18 +138,21 @@ import SummarizeInfo from "./summarizeInfo.vue";
 import UploadFiles from "./uploadFiles.vue";
 import SubmitButton from "./submitButton.vue";
 //import {MOdetailsInspectData} from "../../../api/searchDetailsInspect"
-//import {userTaskid} from "../../../api/Modern/userInfo"
+import { userTaskid } from "../../api/HighTech/userInfo";
 //import { modernData,  modernClearData, modernFilesData } from "../../../utils/modernUpData"
 import { mapState } from "vuex";
 export default {
   data() {
     return {
       isDataShow: false,
-      activeName: "TeamInfo",
+      activeName: "UnitInfo",
     };
   },
   computed: {
-    ...mapState(["Modern"]),
+    ...mapState(["HighTech"]),
+    regist_type() {
+      return this.HighTech.HighTechData.techCompany.regist_type;
+    },
   },
   methods: {
     handleActiveName(name) {
@@ -190,23 +193,25 @@ export default {
   mounted() {
     // this.$store.commit("Modern_IsDisabledDataClose");
     // 	modernClearData(this.Modern)
-    // if(this.$route.query.id != undefined){
-    // 		MOdetailsInspectData(this.$route.query.id).then(res=>{
-    // 			//console.log('data', res)
-    // 			this.$store.commit('Modern_UserTaskId', this.$route.query.id)
-    //     let result = modernData(res.data.data)
-    //     let uploadUrlData
-    //     res.data.data.images?uploadUrlData = modernFilesData(res.data.data.images):uploadUrlData = []
-    //     //console.log('result', result)
-    // 			//this.Modern.ModernData = result
-    //     this.$store.commit('Modern_AllClearData', {result, uploadUrlData})
-    // 		})
-    // 	}else{
-    // 		userTaskid().then(res=>{
-    //     //console.log(res)
-    //     this.$store.commit('Modern_UserTaskId', res.data.data)
-    //   });
-    // 	}
+    if (this.$route.query.id != undefined) {
+      // MOdetailsInspectData(this.$route.query.id).then((res) => {
+      //   //console.log('data', res)
+      //   this.$store.commit("Modern_UserTaskId", this.$route.query.id);
+      //   let result = modernData(res.data.data);
+      //   let uploadUrlData;
+      //   res.data.data.images
+      //     ? (uploadUrlData = modernFilesData(res.data.data.images))
+      //     : (uploadUrlData = []);
+      //   //console.log('result', result)
+      //   //this.Modern.ModernData = result
+      //   this.$store.commit("Modern_AllClearData", { result, uploadUrlData });
+      // });
+    } else {
+      userTaskid().then((res) => {
+        //console.log(res)
+        this.$store.commit("HighTech_UserTaskId", res.data.data);
+      });
+    }
   },
 };
 </script>

@@ -24,17 +24,17 @@
 
     <ProjectInvestDetailed
       title="建筑工程类投资明细"
-      :data="techInvestMent.jz"
+      :data="techInvestment.jz"
     ></ProjectInvestDetailed>
 
     <ProjectInvestDetailed
       title="生产设施建设类投资明细"
-      :data="techInvestMent.sc"
+      :data="techInvestment.sc"
     ></ProjectInvestDetailed>
 
     <ProjectInvestDetailed
       title="仪器、设备类投资明细"
-      :data="techInvestMent.yq"
+      :data="techInvestment.yq"
     ></ProjectInvestDetailed>
 
     <ProjectInvestEquip></ProjectInvestEquip>
@@ -58,6 +58,7 @@ export default {
     ...mapState(["HighTech"]),
     techInvestTotal: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.HighTech.HighTechData.techInvestTotal["task_id"] =
           this.HighTech.userTaskId;
         return this.HighTech.HighTechData.techInvestTotal;
@@ -66,21 +67,21 @@ export default {
         this.techInvestTotal = val;
       },
     },
-    techInvestMent: {
+    techInvestment: {
       get() {
-        let jz = this.HighTech.HighTechData.techInvestMent.filter((res) => {
+        let jz = this.HighTech.HighTechData.techInvestment.filter((res) => {
           return res.inv_type == "建筑工程类投资明细";
         });
-        let sc = this.HighTech.HighTechData.techInvestMent.filter((res) => {
+        let sc = this.HighTech.HighTechData.techInvestment.filter((res) => {
           return res.inv_type == "生产设施建设类投资明细";
         });
-        let yq = this.HighTech.HighTechData.techInvestMent.filter((res) => {
+        let yq = this.HighTech.HighTechData.techInvestment.filter((res) => {
           return res.inv_type == "仪器、设备类投资明细";
         });
         return { jz, sc, yq };
       },
       set(val) {
-        this.techInvestMent = val;
+        this.techInvestment = val;
       },
     },
     isDisabledData: {
@@ -97,7 +98,7 @@ export default {
     ProjectInvestEquip,
   },
   // watch:{
-  //   techInvestMent:{
+  //   techInvestment:{
   //     handler(val) {
   //       for(let item of val){
   //         item['project_invest'] = this.InvestTotal.project_invest

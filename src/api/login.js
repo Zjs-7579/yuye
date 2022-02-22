@@ -3,10 +3,11 @@ import http from "./httpConfig";
 export async function login() {
   const userData = await http.get("system/ty/loginAction/loginAuth");
   //console.log(user)
+  const user = JSON.parse(userData.data.userStr);
   const res = await http.post("system/ty/login/account", userData.data);
   //console.log(res)
   window.localStorage.setItem("token", res.data.data);
-
+  window.localStorage.setItem("name", user.user_name);
   return res;
 }
 

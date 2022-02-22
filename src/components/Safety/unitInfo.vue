@@ -9,6 +9,9 @@
       class="demo-ruleForm"
     >
       <el-row class="title"> 单位基本情况 </el-row>
+      <el-form-item label="项目名称:" prop="task_name">
+        <el-input v-model="safetyCompany.task_name"></el-input>
+      </el-form-item>
       <el-form-item label="单位名称:" prop="unit_name">
         <el-input v-model="safetyCompany.unit_name"></el-input>
       </el-form-item>

@@ -156,7 +156,7 @@ export const HoldInfoValidator = {
   //reasons: [{ required: true, message: "未完成验收原因（已完成不填）：", trigger: "blur" }],
 };
 
-export const ModernOther = {
+export const ModernSummarize = {
   project_invest: [
     { required: true, message: "请输入项目总投资", trigger: "blur" },
   ],
@@ -534,4 +534,63 @@ export const InancialValidator = {
     { required: true, message: "请输入项目名称", trigger: "blur" },
   ],
   overdue: [{ required: true, message: "请输入项目名称", trigger: "blur" }],
+};
+
+export const HighTeamValidator = {
+  prj_name: [{ required: true, message: "请输入项目名称", trigger: "blur" }], //项目名称
+  prj_time: [{ required: true, message: "请选择起始时间", trigger: "blur" }], //起始时间
+  industry: [{ required: true, message: "请输入项目名称", trigger: "blur" }], //所属产业
+  subfield: [
+    { required: true, message: "请输入所属产业子领域", trigger: "blur" },
+  ], //所属产业子领域
+  partici_num: [
+    { required: true, message: "请输入项目组总参与人数", trigger: "blur" },
+  ], //项目组总参与人数
+  doctor_num: [{ required: true, message: "请输入博士人数", trigger: "blur" }], //博士（人）
+  master_num: [{ required: true, message: "请输入硕士", trigger: "blur" }], //硕士（人）
+  research_num: [
+    { required: true, message: "请输入研发人员", trigger: "blur" },
+  ], //研发人员（人）
+  graduate_num: [{ required: true, message: "请输入本科", trigger: "blur" }], //本科（人）
+  other_num: [{ required: true, message: "请输入本科以下", trigger: "blur" }], //本科以下（人）
+  admin_num: [{ required: true, message: "请输入管理人员", trigger: "blur" }], //管理人员（人）
+  prj_work: [
+    { required: true, message: "请输入项目总工作量", trigger: "blur" },
+  ], //项目总工作量（月）
+  overseas_sponsor: [
+    {
+      required: true,
+      message: "请输入企业是否由海外留学归来人员创办",
+      trigger: "blur",
+    },
+  ], //企业是否由海外留学归来人员创办
+  study_abroad: [
+    { required: true, message: "请输入海外留学归来人数", trigger: "blur" },
+  ], //海外留学归来人数（人）
+  project_contact: [
+    { required: true, message: "请输入项目联系人", trigger: "blur" },
+  ], //项目联系人
+  mobile_phone: [
+    { required: true, message: "请输入移动电话", trigger: "blur" },
+  ], //移动电话
+  e_mail: [{ required: true, message: "请输入电子邮箱", trigger: "blur" }], //电子邮箱
+  fax: [{ required: true, message: "请输入传真", trigger: "blur" }], //传真
+  birth: [{ required: true, message: "请选择出生年月", trigger: "blur" }], //出生年月
+  title: [{ required: true, message: "请输入职称", trigger: "blur" }], //职称
+  mobile: [{ required: true, message: "请输入移动电话", trigger: "blur" }], //移动电话
+  education: [{ required: true, message: "请输入最高学历", trigger: "blur" }], //最高学历
+  major: [{ required: true, message: "请输入专业", trigger: "blur" }], //专业
+  identity: [{ required: true, message: "请输入身份证号", trigger: "blur" }], //身份证号
+  member: [{ required: true, message: "请输入姓名", trigger: "blur" }], //姓名
+  position: [{ required: true, message: "请输入单位及职务", trigger: "blur" }], //单位及职务
+  autograph: [{ required: true, message: "请输入签名", trigger: "blur" }], //签名
+  undertake: [{ required: true, message: "请输入承担任务", trigger: "blur" }], //承担任务
+  workload: [{ required: true, message: "请输入承担工作量", trigger: "blur" }], //承担工作量
+  resume: [
+    {
+      required: true,
+      message: "请输入工作简历、主要论文、项目、获奖及专利等",
+      trigger: "blur",
+    },
+  ], //工作简历、主要论文、项目、获奖及专利等
 };

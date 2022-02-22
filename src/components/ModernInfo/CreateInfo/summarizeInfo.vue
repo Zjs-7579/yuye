@@ -118,18 +118,19 @@
 </template>
 
 <script>
-import { ModernOther } from "../../../utils/validator";
+import { ModernSummarize } from "../../../utils/validator";
 import { mapState } from "vuex";
 export default {
   data() {
     return {
-      rules: ModernOther,
+      rules: ModernSummarize,
     };
   },
   computed: {
     ...mapState(["Modern"]),
     modernAbstract: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.Modern.ModernData.modernAbstract["task_id"] =
           this.Modern.userTaskId;
         //this.Modern.ModernData.modernAbstract.creator = this.Modern.userName

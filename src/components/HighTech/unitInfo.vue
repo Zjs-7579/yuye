@@ -189,7 +189,7 @@
       </el-form-item>
     </el-form>
 
-    <unitNotEmployed></unitNotEmployed>
+    <unitNotEmployed ref="HighTechUnitNotEmployed"></unitNotEmployed>
     <unitOwnership></unitOwnership>
   </div>
 </template>
@@ -209,6 +209,7 @@ export default {
     ...mapState(["HighTech"]),
     techCompany: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.HighTech.HighTechData.techCompany["task_id"] =
           this.HighTech.userTaskId;
         //this.Modern.ModernData.techCompany.creator = this.Modern.userName

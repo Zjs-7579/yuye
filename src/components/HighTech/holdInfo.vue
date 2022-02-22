@@ -169,6 +169,7 @@ export default {
     ...mapState(["HighTech"]),
     techSupport: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.HighTech.HighTechData.techSupport[0]["task_id"] =
           this.HighTech.userTaskId;
         return this.HighTech.HighTechData.techSupport;

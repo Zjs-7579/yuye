@@ -61,6 +61,7 @@ export default {
     ...mapState(["Modern"]),
     modernInvestTotal: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.Modern.ModernData.modernInvestTotal["task_id"] =
           this.Modern.userTaskId;
         return this.Modern.ModernData.modernInvestTotal;

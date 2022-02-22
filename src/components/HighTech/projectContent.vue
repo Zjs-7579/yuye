@@ -85,6 +85,7 @@ export default {
     ...mapState(["HighTech"]),
     techImplement: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.HighTech.HighTechData.techImplement["task_id"] =
           this.HighTech.userTaskId;
         //this.HighTech.HighTechData.techImplement.creator = this.HighTech.userName

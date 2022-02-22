@@ -24,17 +24,17 @@
 
     <ProjectInvestDetailed
       title="建筑工程类投资明细"
-      :data="safetyInvestMent.jz"
+      :data="safetyInvestment.jz"
     ></ProjectInvestDetailed>
 
     <ProjectInvestDetailed
       title="生产设施建设类投资明细"
-      :data="safetyInvestMent.sc"
+      :data="safetyInvestment.sc"
     ></ProjectInvestDetailed>
 
     <ProjectInvestDetailed
       title="仪器、设备类投资明细"
-      :data="safetyInvestMent.yq"
+      :data="safetyInvestment.yq"
     ></ProjectInvestDetailed>
 
     <ProjectInvestEquip></ProjectInvestEquip>
@@ -66,21 +66,22 @@ export default {
         this.safetyInvestTotal = val;
       },
     },
-    safetyInvestMent: {
+    safetyInvestment: {
       get() {
-        let jz = this.Safety.SafetyData.safetyInvestMent.filter((res) => {
+        console.log(this.Safety.SafetyData.safetyInvestment, "safetyInvestmen");
+        let jz = this.Safety.SafetyData.safetyInvestment.filter((res) => {
           return res.inv_type == "建筑工程类投资明细";
         });
-        let sc = this.Safety.SafetyData.safetyInvestMent.filter((res) => {
+        let sc = this.Safety.SafetyData.safetyInvestment.filter((res) => {
           return res.inv_type == "生产设施建设类投资明细";
         });
-        let yq = this.Safety.SafetyData.safetyInvestMent.filter((res) => {
+        let yq = this.Safety.SafetyData.safetyInvestment.filter((res) => {
           return res.inv_type == "仪器、设备类投资明细";
         });
         return { jz, sc, yq };
       },
       set(val) {
-        this.safetyInvestMent = val;
+        this.safetyInvestment = val;
       },
     },
     isDisabledData: {
@@ -97,7 +98,7 @@ export default {
     ProjectInvestEquip,
   },
   // watch:{
-  //   safetyInvestMent:{
+  //   safetyInvestment:{
   //     handler(val) {
   //       for(let item of val){
   //         item['project_invest'] = this.InvestTotal.project_invest

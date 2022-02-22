@@ -246,6 +246,8 @@ export default {
       }
 
       if (activeName == "ProjectInvest") {
+        this.ProjectInvestBool = true;
+
         for (let item of this.Modern.ModernData.modernInvestMent) {
           //console.log(item)
           for (let result in item) {
@@ -254,7 +256,6 @@ export default {
               this.ProjectInvestBool = false;
               break;
             }
-            this.ProjectInvestBool = true;
           }
         }
       }

@@ -11,7 +11,7 @@ const routerLogin = [
   },
   {
     imgUrl: require("@/assets/login/农产品质量安全@2x.png"),
-    path: "/bbb",
+    path: "/safety",
     text: "农产品质量安全检测能力建设项目",
     // 农产品质量安全检测能力建设项目
   },

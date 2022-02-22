@@ -6,6 +6,7 @@ const http = axios.create({
   baseURL: "http://rent.greatbayit.com/yuye_spring/v1", //与proxy中的api地址一致
   //baseURL: 'http://192.168.1.54:8092/yuye_spring/v1',
   //baseURL: 'http://192.168.1.116:8092/yuye_spring/v1',
+  //baseURL: "http://192.168.1.43:8092/yuye_spring/v1",
   //headers: 'token',
   validateStatus(status) {
     switch (status) {
