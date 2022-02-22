@@ -8,7 +8,7 @@
       class="demo-ruleForm"
       :disabled="isDisabledData"
     >
-      <el-row class="title"> 建造远洋渔船 </el-row>
+      <el-row class="title"> {{ title }} </el-row>
 
       <el-row>
         <el-col :span="6">
@@ -87,6 +87,7 @@
 import { mapState } from "vuex";
 import { FishingAllInfoValidator } from "../../utils/validator";
 export default {
+  props: ["title"],
   data() {
     return {
       rules: FishingAllInfoValidator,
