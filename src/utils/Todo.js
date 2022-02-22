@@ -4,7 +4,7 @@ import {
   // FishingDetailsInspectData,
   SadetailsInspectData,
 } from "../api/searchDetailsInspect";
-import { agriculData, agriculFilesData } from "./agriculUpData";
+import { agriculData, agriculFilesData } from "./agricul/agriculUpData";
 import { modernData, modernFilesData } from "./modernUpData";
 import { safetyData, safetyFilesData } from "./safetyUpData";
 
@@ -106,3 +106,5 @@ export function safetyTodo(row, router, store) {
 //     }
 //   });
 // }
+
+//export function judge(row) {}

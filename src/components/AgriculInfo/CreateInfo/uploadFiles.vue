@@ -55,7 +55,7 @@ export default {
   components: { upload },
   data() {
     return {
-      uploadUrlData: [],
+      //uploadUrlData: [],
       // AgtabList: [
       //   { title: "项目申请书" },
       //   { title: "承诺书" },
@@ -72,20 +72,29 @@ export default {
   },
   computed: {
     ...mapState(["Agricul"]),
-    // uploadUrlData: {
-    //   get() {
-    //     //console.log("...................................................................",this.Agricul.uploadUrlData)
-    //     console.log(this.Agricul.uploadUrlData);
-    //     return this.Agricul.uploadUrlData;
-    //   },
-    //   set(val) {
-    //     this.uploadUrlData = val;
-    //   },
-    // },
+    uploadUrlData: {
+      get() {
+        //console.log("...................................................................",this.Agricul.uploadUrlData)
+        if (this.Agricul.userTaskId != "") {
+          console.log(this.Agricul.uploadUrlData);
+          return this.Agricul.uploadUrlData;
+        } else {
+          return [];
+        }
+      },
+      set(val) {
+        this.uploadUrlData = val;
+      },
+    },
   },
-  // mounted() {
-  //   console.log(this.Agricul.uploadUrlData);
-  // },
+  mounted() {
+    // this.$nextTick(() => {
+    //   console.log(
+    //     "********************uploadUrlDatauploadUrlDatauploadUrlData",
+    //     this.Agricul.uploadUrlData
+    //   );
+    // });
+  },
   methods: {
     DownPromise(index) {
       if (index == 1) {
@@ -95,16 +104,16 @@ export default {
       }
     },
   },
-  watch: {
-    Agricul: {
-      handler(val) {
-        //console.log(val);
-        this.uploadUrlData = val.uploadUrlData;
-      },
-      deep: true,
-      //this.uploadUrlData = val;
-    },
-  },
+  // watch: {
+  //   Agricul: {
+  //     handler(val) {
+  //       //console.log(val);
+  //       this.uploadUrlData = val.uploadUrlData;
+  //     },
+  //     deep: true,
+  //     //this.uploadUrlData = val;
+  //   },
+  // },
 };
 </script>
 
