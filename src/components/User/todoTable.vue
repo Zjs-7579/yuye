@@ -171,6 +171,13 @@ export default {
           path: `${this.$route.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
         });
       }
+      if (row.task_source == "现代农业项目") {
+        console.log("🟡", row.task_source);
+        this.$store.commit("Modern_IsDetailsContentOpen");
+        this.$router.push({
+          path: `${this.$route.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+        });
+      }
     },
   },
   mounted() {

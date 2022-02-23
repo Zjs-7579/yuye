@@ -13,6 +13,7 @@
     <el-form
       :model="techBenefit"
       ref="unitForm"
+      :rules="rules"
       label-width="400px"
       :disabled="isDisabledData"
       class="demo-ruleForm"
@@ -85,9 +86,12 @@
 
 <script>
 import { mapState } from "vuex";
+import { ProjectBenefitVaild } from "./../../utils/validator";
 export default {
   data() {
-    return {};
+    return {
+      rules: ProjectBenefitVaild,
+    };
   },
   computed: {
     ...mapState(["HighTech"]),

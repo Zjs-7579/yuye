@@ -4,17 +4,22 @@
     <StatisticalBuildOrBuy
       v-if="declare_name == '建造远洋渔船' || declare_name == '购买远洋渔船'"
     ></StatisticalBuildOrBuy>
+    <StatisticalBuyNansha v-else-if="declare_name == '建造南沙骨干渔船'" />
     <StatisticalOverseas
       v-else-if="declare_name == '境外渔业资源使用费'"
     ></StatisticalOverseas>
     <StatisticalCapture
-      v-else-if="declare_name == '自捕远洋海产品回运费'"
+      v-else-if="
+        declare_name == '自捕远洋海产品回运费' ||
+        declare_name == '自捕南沙海产品回运费'
+      "
     ></StatisticalCapture>
   </div>
 </template>
 
 <script>
 import StatisticalBuildOrBuy from "./statisticalBuildOrBuy.vue";
+import StatisticalBuyNansha from "./statisticalBuyNansha.vue";
 import StatisticalOverseas from "./statisticalOverseas.vue";
 import StatisticalCapture from "./statisticalCapture.vue";
 import { mapState } from "vuex";
@@ -37,6 +42,7 @@ export default {
     StatisticalBuildOrBuy,
     StatisticalOverseas,
     StatisticalCapture,
+    StatisticalBuyNansha,
   },
 };
 </script>

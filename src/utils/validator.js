@@ -290,6 +290,16 @@ export const ModernProjectContent = {
   ],
 };
 
+export const HightTechImplementValidator = {
+  prj_background: [
+    {
+      required: true,
+      message: "请输入简述项目实施的背景、必要性和意义",
+      trigger: "blur",
+    },
+  ],
+};
+
 export const FishingAllInfoValidator = {
   task_name: [{ required: true, message: "请输入项目名称", trigger: "blur" }],
   unit_name: [{ required: true, message: "请输入单位名称", trigger: "blur" }], //单位名称
@@ -588,4 +598,66 @@ export const HighTeamValidator = {
       trigger: "blur",
     },
   ], //工作简历、主要论文、项目、获奖及专利等
+};
+
+export const ProjectBenefitVaild = {
+  prj_expression: [
+    {
+      required: true,
+      message: "请输入项目预期成果的表现形式",
+      trigger: "blur",
+    },
+  ],
+  employment_num: [
+    {
+      required: true,
+      message: "请输入项目执行期内新增的就业人数",
+      trigger: "blur",
+    },
+  ],
+  talents_num: [
+    {
+      required: true,
+      message: "请输入项目执行期内培养的人才数",
+      trigger: "blur",
+    },
+  ],
+  revenue: [
+    {
+      required: true,
+      message: "请输入项目执行期内产生的累计净利润/累计产品销售收入",
+      trigger: "blur",
+    },
+  ],
+  investment: [
+    {
+      required: true,
+      message: "请输入项目执行期内产生的累计纳税额/带动的资金投入",
+      trigger: "blur",
+    },
+  ],
+  patent_num: [
+    {
+      required: true,
+      message: "请输入项目执行期内申请的专利数",
+      trigger: "blur",
+    },
+  ],
+  paper_num: [
+    {
+      required: true,
+      message: "请输入项目执行期内发表的论文数",
+      trigger: "blur",
+    },
+  ],
+  prj_index: [
+    {
+      required: true,
+      message: "请输入项目执行期内实现的主要经济指标、学术指标、技术指标",
+      trigger: "blur",
+    },
+  ],
+  prj_goal: [
+    { required: true, message: "请输入项目预期目标", trigger: "blur" },
+  ],
 };

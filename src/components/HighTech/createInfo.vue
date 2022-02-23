@@ -87,10 +87,10 @@
         :disabled="isDataShow"
         name="ProjectBenefit"
       >
-        <ProjectBenefit></ProjectBenefit>
+        <ProjectBenefit ref="HighTechBenefitValidate"></ProjectBenefit>
       </el-tab-pane>
       <el-tab-pane label="项目经费" :disabled="isDataShow" name="ProjectFund">
-        <ProjectFund></ProjectFund>
+        <ProjectFund ref="HighTechFundValidate"></ProjectFund>
       </el-tab-pane>
 
       <el-tab-pane
@@ -145,7 +145,7 @@ export default {
   data() {
     return {
       isDataShow: false,
-      activeName: "UnitInfo",
+      activeName: "ProjectFund",
     };
   },
   computed: {

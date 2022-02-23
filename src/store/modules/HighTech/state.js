@@ -458,7 +458,7 @@ export default {
         stage_end: "", //结束时间
         stage_target: "", //阶段目标
         stage_content: "", //实施内容
-      }
+      },
     ],
     //项目效益
     techBenefit: {

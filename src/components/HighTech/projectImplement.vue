@@ -18,9 +18,12 @@
 
 <script>
 import { mapState } from "vuex";
+import { HightTechImplementValidator } from "../../utils/validator";
 export default {
   data() {
-    return {};
+    return {
+      rules: HightTechImplementValidator,
+    };
   },
   computed: {
     ...mapState(["HighTech"]),

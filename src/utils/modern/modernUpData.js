@@ -531,11 +531,8 @@ export function modernData(newData) {
 }
 
 export function modernFilesData(filesData) {
-  //console.log(filesData ,newData)
   for (let item of filesData) {
-    //console.log(item)
     uploadUrlData.forEach((res) => {
-      //console.log(res)
       if (item.material_type == res.title) {
         res.data.push(item);
       }

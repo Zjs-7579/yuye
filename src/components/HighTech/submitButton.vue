@@ -122,8 +122,6 @@ export default {
   },
   methods: {
     handleActionNext() {
-      console.log(this.HighTech.HighTechData);
-      //console.log(this.Modern.ModernData);
       this.validationDataTab(this.activeName);
       this.promptMessage(
         this[this.activeName + "Bool"],
@@ -210,7 +208,7 @@ export default {
         this.InancialInfoBool = true;
 
         if (this.regist_type == "企业") {
-          for (let item of this.Modern.ModernData.techFinances) {
+          for (let item of this.HighTech.HighTechData.techFinances) {
             //console.log(item)
             for (let result in item) {
               //console.log(result)
@@ -225,7 +223,7 @@ export default {
         if (this.regist_type == "事业单位") {
           this.InancialInfoBool = true;
 
-          for (let item of this.Modern.ModernData.techCauses) {
+          for (let item of this.HighTech.HighTechData.techCauses) {
             //console.log(item)
             for (let result in item) {
               //console.log(result)
@@ -240,7 +238,7 @@ export default {
       if (activeName == "ResearchInfo") {
         this.ResearchInfoBool = true;
 
-        for (let item of this.Modern.ModernData.techScientific) {
+        for (let item of this.HighTech.HighTechData.techScientific) {
           //console.log(item)
           for (let result in item) {
             //console.log(result)
@@ -279,15 +277,35 @@ export default {
         this.ProjectUnitInfoBool = true;
 
         //console.log(item)
-        for (let item in this.Modern.ModernData.basic_info) {
+        for (let item in this.HighTech.HighTechData.basic_info) {
           //console.log(result)
-          if (this.Modern.ModernData.basic_info[item] == "") {
+          if (this.HighTech.HighTechData.basic_info[item] == "") {
             this.ProjectUnitInfoBool = false;
             break;
           }
         }
       }
 
+      if (activeName == "ProjectImplement") {
+        this.ProjectImplementBool = true;
+        if (!this.HighTech.HighTechData.techImplement.prj_background.length) {
+          this.ProjectImplementBool = false;
+        }
+      }
+
+      if (activeName == "ProjectBuild") {
+        this.ProjectBuildBool = true;
+        if (!this.HighTech.HighTechData.techImplement.construction.length) {
+          this.ProjectBuildBool = false;
+        }
+      }
+
+      if (activeName == "ProjectCondition") {
+        this.ProjectConditionBool = true;
+        if (!this.HighTech.HighTechData.techImplement.basis_condition.length) {
+          this.ProjectConditionBool = false;
+        }
+      }
 
       if (activeName == "ProjectInvest") {
         this.ProjectInvestBool = true;
@@ -320,6 +338,29 @@ export default {
             this.SummarizeInfoBool = e;
           }
         );
+      }
+
+      if (activeName == "ProjectBenefit") {
+        this.ProjectBenefitBool = true;
+        this.$parent.$refs.HighTechBenefitValidate.$refs.unitForm.validate(
+          (e) => {
+            this.ProjectBenefitBool = e;
+          }
+        );
+      }
+
+      if (activeName == "ProjectFund") {
+        this.ProjectFundBool = true;
+        for (const h of this.HighTech.HighTechData.techFunds) {
+          for (const [, v] of Object.entries(h)) {
+            if (!v.length || v) this.ProjectFundBool = false;
+          }
+        }
+        for (const h of this.HighTech.HighTechData.techLease) {
+          for (const [, v] of Object.entries(h)) {
+            if (!v.length || v) this.ProjectFundBool = false;
+          }
+        }
       }
     },
     handlePreserveInfo() {

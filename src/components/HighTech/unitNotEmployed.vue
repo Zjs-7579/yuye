@@ -10,34 +10,6 @@
     >
       <el-row class="title"> 上年末从业人员情况 </el-row>
       <el-row type="flex">
-        <!-- <div style="width: 310px" class="name">
-                法人代表
-            </div>
-            <div>
-                <el-row>
-                    <el-col :span="12">
-                <el-form-item label="姓名:" prop="legal_name" ref="name">
-                    <el-input v-model="techCompany.legal_name"></el-input>
-                </el-form-item>
-                <el-form-item label="学历:" prop="education">
-                    <el-input v-model="techCompany.education"></el-input>
-                </el-form-item>
-            </el-col>
-            <el-col :span="12">
-                <el-form-item label="移动电话:" prop="mobile_phone">
-                    <el-input v-model="techCompany.mobile_phone"></el-input>
-                </el-form-item>
-                <el-form-item label="身份证号:" prop="identity">
-                    <el-input v-model="techCompany.identity"></el-input>
-                </el-form-item>
-            </el-col>
-                </el-row>
-            </div> -->
-        <!-- <el-col :span="4" >
-                
-                 <el-form-item label="法人代表" prop="name" class="name" ref="behalf">
-                </el-form-item>
-            </el-col> -->
         <el-col style="width: 310px" class="name"> 法人代表 </el-col>
 
         <el-col :span="8">
@@ -144,108 +116,109 @@
             <el-input v-model="sum3[2]" placeholder="初级职称"></el-input>
             <el-input v-model="sum3[3]" placeholder="其他从业人数"></el-input>
         </el-form-item> -->
-    <!-- </el-form>
+      <!-- </el-form>
+-->
+      <el-form
+        :model="techCompany"
+        ref="ruleForm"
+        label-width="150px"
+        :rules="rules"
+        :disabled="isDisabledData"
+        class="demo-ruleForm"
+      >
+        <el-row class="titleSmall">
+          行政管理/市场营销/研发设计/加工制造/其他从业人数:
+        </el-row>
+        <el-row>
+          <el-col :span="5">
+            <el-form-item label="行政管理人数:" prop="admin_num">
+              <el-input v-model="techCompany.admin_num"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="5">
+            <el-form-item label="市场营销人数:" prop="market_num">
+              <el-input v-model="techCompany.market_num"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="5">
+            <el-form-item label="研发设计人数:" prop="develop_num">
+              <el-input v-model="techCompany.develop_num"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="5">
+            <el-form-item label="加工制造人数:" prop="manuf_num">
+              <el-input v-model="techCompany.manuf_num"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="4">
+            <el-form-item label="其他从业人数:" prop="admin_other_num">
+              <el-input v-model="techCompany.admin_other_num"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
 
-    <el-form
-      :model="techCompany"
-      ref="ruleForm"
-      label-width="150px"
-      :rules="rules"
-      :disabled="isDisabledData"
-      class="demo-ruleForm"
-    > -->
-      <el-row class="titleSmall">
-        行政管理/市场营销/研发设计/加工制造/其他从业人数:
-      </el-row>
-      <el-row>
-        <el-col :span="5">
-          <el-form-item label="行政管理人数:" prop="admin_num">
-            <el-input v-model="techCompany.admin_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="5">
-          <el-form-item label="市场营销人数:" prop="market_num">
-            <el-input v-model="techCompany.market_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="5">
-          <el-form-item label="研发设计人数:" prop="develop_num">
-            <el-input v-model="techCompany.develop_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="5">
-          <el-form-item label="加工制造人数:" prop="manuf_num">
-            <el-input v-model="techCompany.manuf_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="4">
-          <el-form-item label="其他从业人数:" prop="admin_other_num">
-            <el-input v-model="techCompany.admin_other_num"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
+        <el-row class="titleSmall">
+          博士毕业/硕士毕业/本科毕业/专科毕业/其他从业人数:
+        </el-row>
+        <el-row>
+          <el-col :span="5">
+            <el-form-item label="博士毕业人数:" prop="doctoral_num">
+              <el-input v-model="techCompany.doctoral_num"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="5">
+            <el-form-item label="硕士毕业人数:" prop="master_num">
+              <el-input v-model="techCompany.master_num"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="5">
+            <el-form-item label="本科毕业人数:" prop="under_num">
+              <el-input v-model="techCompany.under_num"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="5">
+            <el-form-item label="专科毕业人数:" prop="speci_num">
+              <el-input v-model="techCompany.speci_num"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="4">
+            <el-form-item label="其他从业人数:" prop="edu_other_num">
+              <el-input v-model="techCompany.edu_other_num"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
 
-      <el-row class="titleSmall">
-        博士毕业/硕士毕业/本科毕业/专科毕业/其他从业人数:
-      </el-row>
-      <el-row>
-        <el-col :span="5">
-          <el-form-item label="博士毕业人数:" prop="doctoral_num">
-            <el-input v-model="techCompany.doctoral_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="5">
-          <el-form-item label="硕士毕业人数:" prop="master_num">
-            <el-input v-model="techCompany.master_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="5">
-          <el-form-item label="本科毕业人数:" prop="under_num">
-            <el-input v-model="techCompany.under_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="5">
-          <el-form-item label="专科毕业人数:" prop="speci_num">
-            <el-input v-model="techCompany.speci_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="4">
-          <el-form-item label="其他从业人数:" prop="edu_other_num">
-            <el-input v-model="techCompany.edu_other_num"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-
-      <el-row class="titleSmall">
-        高级职称/中级职称/初级职称/其他从业人数:
-      </el-row>
-      <el-row>
-        <el-col :span="5">
-          <el-form-item label="正高级职称人数:" prop="senior_num">
-            <el-input v-model="techCompany.senior_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="5">
-          <el-form-item label="副高级职称人数:" prop="deputy_num">
-            <el-input v-model="techCompany.deputy_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="5">
-          <el-form-item label="中级职称人数:" prop="middle_num">
-            <el-input v-model="techCompany.middle_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="5">
-          <el-form-item label="初级职称人数:" prop="primary_num">
-            <el-input v-model="techCompany.primary_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="4">
-          <el-form-item label="其他从业人数:" prop="title_other_num">
-            <el-input v-model="techCompany.title_other_num"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
+        <el-row class="titleSmall">
+          高级职称/中级职称/初级职称/其他从业人数:
+        </el-row>
+        <el-row>
+          <el-col :span="5">
+            <el-form-item label="正高级职称人数:" prop="senior_num">
+              <el-input v-model="techCompany.senior_num"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="5">
+            <el-form-item label="副高级职称人数:" prop="deputy_num">
+              <el-input v-model="techCompany.deputy_num"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="5">
+            <el-form-item label="中级职称人数:" prop="middle_num">
+              <el-input v-model="techCompany.middle_num"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="5">
+            <el-form-item label="初级职称人数:" prop="primary_num">
+              <el-input v-model="techCompany.primary_num"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="4">
+            <el-form-item label="其他从业人数:" prop="title_other_num">
+              <el-input v-model="techCompany.title_other_num"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
     </el-form>
   </div>
 </template>

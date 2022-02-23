@@ -192,6 +192,7 @@ export default {
 } */
 .container .foot div:nth-child(1) {
   flex: 2;
+  padding-bottom: 5px;
   background-color: #fff;
 }
 .container .foot div:nth-child(2) {

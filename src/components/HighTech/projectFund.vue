@@ -127,6 +127,7 @@
 </template>
 
 <script>
+/* eslint-disable vue/no-side-effects-in-computed-properties */
 import { mapState } from "vuex";
 import ProjectFundListing from "./projectFundListing.vue";
 import fundData from "../../static/HighTechData/fundData.js";

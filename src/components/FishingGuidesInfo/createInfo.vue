@@ -96,7 +96,7 @@ export default {
   margin: 0 15px;
 }
 .fishingGuides .submitBtn {
-  flex: 3;
+  flex: 4;
 }
 .fishingGuides .fishingApply {
   overflow: none;

@@ -10,14 +10,14 @@
 </template>
 
 <script>
-// import {
-//   AGdetailsInspectData,
-//   MOdetailsInspectData,
-// } from "../../api/searchDetailsInspect";
+import {
+  AGdetailsInspectData,
+  MOdetailsInspectData,
+} from "../../api/searchDetailsInspect";
 import AgDetailsInfo from "../AgriculInfo/CreateInfo/detailsInfo.vue";
 import MoDetailsInfo from "../ModernInfo/CreateInfo/detailsInfo.vue";
-//import { agriculFilesData } from "../../utils/agricul/agriculUpData";
-//import { modernFilesData } from "../../utils/modern/modernUpData";
+import { agriculFilesData } from "../../utils/agricul/agriculUpData";
+import { modernFilesData } from "../../utils/modern/modernUpData";
 import { mapState } from "vuex";
 export default {
   data() {
@@ -30,26 +30,26 @@ export default {
   },
   mounted() {
     // console.log(this.$route.query.type);
-    // if (this.$route.query.type == "农业产业化贴息项目") {
-    //   AGdetailsInspectData(this.$route.query.id).then((res) => {
-    //     console.log(res);
-    //     agriculFilesData(this.Agricul.uploadUrlData, res.data.data);
-    //     // let result = agriculFilesData(this.Agricul ,res.data.data)
-    //     // console.log(result)
-    //     this.$store.commit("Agricul_IsDisabledDataOpen");
-    //     this.Agricul.AgriculData = res.data.data;
-    //   });
-    // }
-    // if (this.$route.query.type == "现代农业项目") {
-    //   MOdetailsInspectData(this.$route.query.id).then((res) => {
-    //     modernFilesData(this.Modern, res.data.data);
-    //     // let result = modernFilesData(this.Modern ,res.data.data)
-    //     // console.log(result)
-    //     this.$store.commit("Modern_IsDisabledDataOpen");
-    //     this.Modern.ModernData = res.data.data;
-    //     //console.log(this.Modern.ModernData)
-    //   });
-    // }
+    if (this.$route.query.type == "农业产业化贴息项目") {
+      AGdetailsInspectData(this.$route.query.id).then((res) => {
+        console.log(res);
+        agriculFilesData(this.Agricul.uploadUrlData, res.data.data);
+        // let result = agriculFilesData(this.Agricul ,res.data.data)
+        // console.log(result)
+        this.$store.commit("Agricul_IsDisabledDataOpen");
+        this.Agricul.AgriculData = res.data.data;
+      });
+    }
+    if (this.$route.query.type == "现代农业项目") {
+      MOdetailsInspectData(this.$route.query.id).then((res) => {
+        modernFilesData(this.Modern, res.data.data);
+        // let result = modernFilesData(this.Modern ,res.data.data)
+        // console.log(result)
+        this.$store.commit("Modern_IsDisabledDataOpen");
+        this.Modern.ModernData = res.data.data;
+        //console.log(this.Modern.ModernData)
+      });
+    }
   },
   components: {
     AgDetailsInfo,
