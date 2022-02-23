@@ -1,5 +1,11 @@
 <template>
-  <div class="main_contain">
+  <div
+    class="main_contain"
+    v-loading="Loading"
+    element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.8)"
+  >
     <el-row class="search-container" style="padding: 5px">
       <!-- <el-radio-group
         v-model="taskType"
@@ -132,6 +138,7 @@
 <script>
 import { getFlowList } from "../../api/User/createInfo";
 import Pagination from "./pagination.vue";
+import { Detail } from "../../utils/Todo";
 //import Pagination from "@/components/Pagination/index.vue";
 export default {
   components: { Pagination },
@@ -142,6 +149,7 @@ export default {
       taskList: [],
       user_type: "",
       cnt: 0,
+      Loading: false,
     };
   },
   methods: {
@@ -164,20 +172,23 @@ export default {
       });
     },
     onFlowDetailsClick(row) {
-      console.log(this.$route);
-      if (row.task_source == "农业产业化贴息项目") {
-        this.$store.commit("Agricul_IsDetailsContentOpen");
-        this.$router.push({
-          path: `${this.$route.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
-        });
+      console.log(this.$router, row);
+      //row["route"] = this.$route.path;
+      this.Loading = true;
+      let status = Detail(row, this.$router, this.$store);
+      if (status == 0) {
+        this.$message.warning("数据出错");
       }
-      if (row.task_source == "现代农业项目") {
-        console.log("🟡", row.task_source);
-        this.$store.commit("Modern_IsDetailsContentOpen");
-        this.$router.push({
-          path: `${this.$route.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
-        });
+      if (status == 200) {
+        this.Loading = false;
       }
+      // console.log(this.$route);
+      // if (row.task_source == "农业产业化贴息项目") {
+      //   this.$store.commit("Agricul_IsDetailsContentOpen");
+      //   this.$router.push({
+      //     path: `${this.$route.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+      //   });
+      // }
     },
   },
   mounted() {

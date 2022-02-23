@@ -53,6 +53,7 @@ import SubmitButton from "./submitButton.vue";
 //import { AGdetailsInspectData } from "../../../api/searchDetailsInspect";
 import { userTaskid } from "../../../api/Agricul/userInfo";
 import { AgJudge } from "../../../utils/agricul/agriculData";
+import { agriculClearData } from "../../../utils/agricul/agriculUpData";
 // import {
 //   agriculData,
 //   agriculClearData,
@@ -66,6 +67,29 @@ export default {
       //isData: true,
       activeName: "UnitInfo",
     };
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log("to", to, "from", from, to.query.id);
+    if (from.path == "/") {
+      next(async (vm) => {
+        let status = await AgJudge(
+          {
+            task_id: to.query.id,
+          },
+          vm.$router,
+          vm.$store
+        );
+        // console.log(
+        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+        //   status
+        //   //this.$route.query.id
+        // );
+        if (status != 200) {
+          vm.$message.warning("数据出错");
+        }
+      });
+    }
+    next();
   },
   computed: {
     ...mapState(["Agricul"]),
@@ -85,34 +109,15 @@ export default {
     },
   },
   mounted() {
-    (async () => {
-      this.$store.commit("Agricul_IsDisabledDataClose");
-      //agriculClearData(this.Agricul);
-      if (this.$route.query.id != undefined) {
-        let status = await AgJudge(
-          {
-            task_id: this.$route.query.id,
-          },
-          this.$router,
-          this.$store
-        );
-        // console.log(
-        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
-        //   status,
-        //   this.$route.query.id
-        // );
+    if (this.$route.query.id == undefined) {
+      //console.log("xxxxxxxxxxxxxxxxxxxxxxxxx", this.Agricul);
 
-        if (status != 200) {
-          this.$message.warning("数据出错");
-        }
-        console.log(this.$route.query.id);
-      } else {
-        userTaskid().then((res) => {
-          //console.log(res)
-          this.$store.commit("Agricul_UserTaskId", res.data.data);
-        });
-      }
-    })();
+      agriculClearData(this.Agricul);
+      userTaskid().then((res) => {
+        //console.log(res)
+        this.$store.commit("Agricul_UserTaskId", res.data.data);
+      });
+    }
   },
   components: {
     UnitInfo,

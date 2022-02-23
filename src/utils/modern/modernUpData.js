@@ -459,37 +459,37 @@ const uploadUrlData = [
   },
 ];
 
-// export function modernClearData(Data) {
-//   for (let item in Data.ModernData) {
-//     if (
-//       Object.prototype.toString.call(Data.ModernData[item]) === "[object Array]"
-//     ) {
-//       for (let res of Data.ModernData[item]) {
-//         for (let item in res) {
-//           if (item == "inv_type") {
-//             console.log(res[item]);
-//             break;
-//           } else {
-//             res[item] = "";
-//           }
-//         }
-//       }
-//     }
-//     if (
-//       Object.prototype.toString.call(Data.ModernData[item]) ===
-//       "[object Object]"
-//     ) {
-//       for (let res in Data.ModernData[item]) {
-//         Data.ModernData[item][res] = "";
-//       }
-//     }
-//   }
+export function modernClearData(Data) {
+  for (let item in Data.ModernData) {
+    if (
+      Object.prototype.toString.call(Data.ModernData[item]) === "[object Array]"
+    ) {
+      for (let res of Data.ModernData[item]) {
+        for (let item in res) {
+          if (item == "inv_type") {
+            console.log(res[item]);
+            break;
+          } else {
+            res[item] = "";
+          }
+        }
+      }
+    }
+    if (
+      Object.prototype.toString.call(Data.ModernData[item]) ===
+      "[object Object]"
+    ) {
+      for (let res in Data.ModernData[item]) {
+        Data.ModernData[item][res] = "";
+      }
+    }
+  }
 
-//   for (let item of Data.uploadUrlData) {
-//     item.data.splice(0, item.data.length);
-//     //console.log(item.data)
-//   }
-// }
+  for (let item of Data.uploadUrlData) {
+    item.data.splice(0, item.data.length);
+    //console.log(item.data)
+  }
+}
 
 export function modernData(newData) {
   //console.log("saaaaaaaaaaaaaaaaaaaaaaaaaasasasa", newData)
@@ -531,12 +531,17 @@ export function modernData(newData) {
 }
 
 export function modernFilesData(filesData) {
-  for (let item of filesData) {
-    uploadUrlData.forEach((res) => {
-      if (item.material_type == res.title) {
-        res.data.push(item);
-      }
-    });
+  //console.log(filesData ,newData)
+  if (filesData) {
+    for (let item of filesData) {
+      //console.log(item)
+      uploadUrlData.forEach((res) => {
+        //console.log(res)
+        if (item.material_type == res.title) {
+          res.data.push(item);
+        }
+      });
+    }
   }
 
   return uploadUrlData;

@@ -38,6 +38,7 @@
         >上传附件</a
       >
     </div>
+    <div style="width: 100%; height: 55px"></div>
 
     <div class="AllDataTable">
       <div id="UnitInfo"><UnitInfo></UnitInfo></div>
@@ -77,7 +78,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      colorText: "",
+      colorText: "UnitInfo",
       name: "",
     };
   },
@@ -181,7 +182,7 @@ export default {
   width: 100% !important;
   /* position: absolute;
   top: 55px; */
-  /* position: fixed; */
+  position: fixed;
   /* width: calc(100% - 45px); */
   /* width: 100% !important; */
   /* padding: 15px 0; */

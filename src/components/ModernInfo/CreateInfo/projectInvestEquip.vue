@@ -79,6 +79,7 @@ export default {
     ...mapState(["Modern"]),
     modernEquipment: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.Modern.ModernData.modernEquipment[0].task_id =
           this.Modern.userTaskId;
         //this.Modern.ModernData.modernEquipment[0].creator = this.Modern.userName
@@ -100,9 +101,9 @@ export default {
       get() {
         let sum = 0;
         for (let i of this.modernEquipment) {
-          sum += i.quantity * 1;
+          sum += i.quantity * 10000;
         }
-        return sum;
+        return sum / 10000;
       },
       set(val) {
         this.total_quantity = val;
@@ -112,9 +113,9 @@ export default {
       get() {
         let sum = 0;
         for (let i of this.modernEquipment) {
-          sum += i.price * 1;
+          sum += i.price * 1 * 10000;
         }
-        return sum;
+        return sum / 10000;
       },
       set(val) {
         this.total_quantity = val;
@@ -124,9 +125,9 @@ export default {
       get() {
         let sum = 0;
         for (let i of this.modernEquipment) {
-          sum += i.amount * 1;
+          sum += i.amount * 1 * 10000;
         }
-        return sum;
+        return sum / 10000;
       },
       set(val) {
         this.total_quantity = val;

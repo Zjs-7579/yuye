@@ -83,57 +83,57 @@ const routes = [
     ],
   },
   //用户管理
-  {
-    path: "/AdminHome/admin",
-    name: "Admin",
-    component: Admin,
-    children: [
-      {
-        path: "/AdminHome/admin/UserIndex",
-        name: "UserIndex",
-        component: () =>
-          import("../components/AdminHome/systemmanager/user/index.vue"),
-        meta: { title: "机构用户" },
-      },
-      {
-        path: "/AdminHome/admin/OrgIndex",
-        name: "OrgIndex",
-        component: () =>
-          import("../components/AdminHome/systemmanager/org/index.vue"),
-        meta: { title: "机构角色" },
-      },
-      {
-        path: "/AdminHome/admin/FirstIndex",
-        name: "FirstIndex",
-        component: () =>
-          import("../components/AdminHome/audit/firstTrial/index.vue"),
-        meta: { title: "初审" },
-      },
-      {
-        path: "/AdminHome/admin/indexDetail",
-        name: "indexDetail",
-        hidden: true,
-        component: () =>
-          import("../components/AdminHome/audit/firstTrial/indexDetail.vue"),
-        meta: { title: "现代审核" },
-      },
-      {
-        path: "/AdminHome/admin/indexDetail2",
-        name: "indexDetail2",
-        hidden: true,
-        component: () =>
-          import("../components/AdminHome/audit/firstTrial/indexDetail2.vue"),
-        meta: { title: "农业贴息审核" },
-      },
-      {
-        path: "/AdminHome/admin/RecheckIndex",
-        name: "RecheckIndex",
-        component: () =>
-          import("../components/AdminHome/audit/recheck/index.vue"),
-        meta: { title: "复审" },
-      },
-    ],
-  },
+  // {
+  //   path: "/AdminHome/admin",
+  //   name: "Admin",
+  //   component: Admin,
+  //   children: [
+  //     {
+  //       path: "/AdminHome/admin/UserIndex",
+  //       name: "UserIndex",
+  //       component: () =>
+  //         import("../components/AdminHome/systemmanager/user/index.vue"),
+  //       meta: { title: "机构用户" },
+  //     },
+  //     {
+  //       path: "/AdminHome/admin/OrgIndex",
+  //       name: "OrgIndex",
+  //       component: () =>
+  //         import("../components/AdminHome/systemmanager/org/index.vue"),
+  //       meta: { title: "机构角色" },
+  //     },
+  //     {
+  //       path: "/AdminHome/admin/FirstIndex",
+  //       name: "FirstIndex",
+  //       component: () =>
+  //         import("../components/AdminHome/audit/firstTrial/index.vue"),
+  //       meta: { title: "初审" },
+  //     },
+  //     {
+  //       path: "/AdminHome/admin/indexDetail",
+  //       name: "indexDetail",
+  //       hidden: true,
+  //       component: () =>
+  //         import("../components/AdminHome/audit/firstTrial/indexDetail.vue"),
+  //       meta: { title: "现代审核" },
+  //     },
+  //     {
+  //       path: "/AdminHome/admin/indexDetail2",
+  //       name: "indexDetail2",
+  //       hidden: true,
+  //       component: () =>
+  //         import("../components/AdminHome/audit/firstTrial/indexDetail2.vue"),
+  //       meta: { title: "农业贴息审核" },
+  //     },
+  //     {
+  //       path: "/AdminHome/admin/RecheckIndex",
+  //       name: "RecheckIndex",
+  //       component: () =>
+  //         import("../components/AdminHome/audit/recheck/index.vue"),
+  //       meta: { title: "复审" },
+  //     },
+  //   ],
+  // },
   //农业
   {
     path: "/agriculInfo",

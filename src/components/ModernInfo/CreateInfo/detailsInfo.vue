@@ -53,6 +53,7 @@
         >上传附件</a
       >
     </div>
+    <div style="width: 100%; height: 55px"></div>
 
     <div class="AllDataTable">
       <div id="UnitInfo"><UnitInfo></UnitInfo></div>
@@ -89,7 +90,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      colorText: "",
+      colorText: "UnitInfo",
     };
   },
   components: {
@@ -161,6 +162,8 @@ export default {
     },
   },
   mounted() {
+    console.log("000000000000000000000000", this.$route);
+
     //console.log(this.Agricul)
     // console.log(this.$router.query.id);
     // if (!this.$router.query.id) {
@@ -186,7 +189,7 @@ export default {
   box-sizing: border-box;
   background-color: #ece8e8;
   border: 1px solid #ccc;
-  /* position:fixed; */
+  position: fixed;
   /* position: absolute;
   top: 55px; */
   width: 100%;

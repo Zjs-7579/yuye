@@ -98,6 +98,7 @@
               size="mini"
               type="primary"
               @click="onFlowDetailsClick(scope.row)"
+              v-loading.fullscreen.lock="Loading"
               >详情</el-button
             >
           </template>
@@ -128,6 +129,7 @@
 
 <script>
 import { getFlowList } from "../../api/User/createInfo";
+import { judge } from "../../utils/Todo";
 //import Pagination from "@/components/Pagination/index.vue";
 export default {
   //components: { Pagination },
@@ -136,6 +138,7 @@ export default {
       text: "",
       clause: "",
       taskList: [],
+      Loading: false,
     };
   },
   methods: {
@@ -143,12 +146,13 @@ export default {
       console.log("dsadasd");
     },
     onFlowDetailsClick(row) {
-      console.log(row);
-      if (row.task_source == "农业产业化贴息项目") {
-        this.$store.commit("Agricul_IsDetailsContentOpen");
-        this.$router.push({
-          path: `/user/${this.$route.params.id}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
-        });
+      this.Loading = true;
+      let status = judge(row, this.$router, this.$store);
+      if (status == 0) {
+        this.$message.warning("数据出错");
+      }
+      if (status == 200) {
+        this.Loading = false;
       }
     },
   },

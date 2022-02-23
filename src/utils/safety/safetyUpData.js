@@ -504,17 +504,18 @@ export function safetyData(newData) {
 
 export function safetyFilesData(filesData) {
   //console.log(filesData ,newData
-  if (!filesData) return;
-  for (let item of filesData) {
-    //console.log(item)
+  if (filesData) {
+    for (let item of filesData) {
+      //console.log(item)
 
-    //.data = []
-    uploadUrlData.forEach((res) => {
-      //console.log(res)
-      if (item.material_type == res.title) {
-        res.data.push(item);
-      }
-    });
+      //.data = []
+      uploadUrlData.forEach((res) => {
+        //console.log(res)
+        if (item.material_type == res.title) {
+          res.data.push(item);
+        }
+      });
+    }
   }
 
   return uploadUrlData;

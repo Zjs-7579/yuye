@@ -79,6 +79,7 @@ import SubmitButton from "./submitButton.vue";
 // import { MOdetailsInspectData } from "../../../api/searchDetailsInspect";
 import { userTaskid } from "../../../api/Modern/userInfo";
 import { MoJudge } from "../../../utils/modern/modernData";
+import { modernClearData } from "../../../utils/modern/modernUpData";
 // import {
 //   modernData,
 //   modernClearData,
@@ -94,6 +95,29 @@ export default {
   },
   computed: {
     ...mapState(["Modern"]),
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log("to", to, "from", from, to.query.id);
+    if (from.path == "/") {
+      next(async (vm) => {
+        let status = await MoJudge(
+          {
+            task_id: to.query.id,
+          },
+          vm.$router,
+          vm.$store
+        );
+        // console.log(
+        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+        //   status
+        //   //this.$route.query.id
+        // );
+        if (status != 200) {
+          vm.$message.warning("数据出错");
+        }
+      });
+    }
+    next();
   },
   methods: {
     handleActiveName(name) {
@@ -122,34 +146,42 @@ export default {
     SubmitButton,
   },
   mounted() {
-    (async () => {
-      this.$store.commit("Modern_IsDisabledDataClose");
-      //agriculClearData(this.Agricul);
-      if (this.$route.query.id != undefined) {
-        let status = await MoJudge(
-          {
-            task_id: this.$route.query.id,
-          },
-          this.$router,
-          this.$store
-        );
-        // console.log(
-        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
-        //   status,
-        //   this.$route.query.id
-        // );
+    if (this.$route.query.id == undefined) {
+      modernClearData(this.Modern);
+      userTaskid().then((res) => {
+        //console.log(res)
+        this.$store.commit("Modern_UserTaskId", res.data.data);
+      });
+      //   }
+    }
+    // (async () => {
+    //   this.$store.commit("Modern_IsDisabledDataClose");
+    //   //agriculClearData(this.Agricul);
+    //   if (this.$route.query.id != undefined) {
+    //     let status = await MoJudge(
+    //       {
+    //         task_id: this.$route.query.id,
+    //       },
+    //       this.$router,
+    //       this.$store
+    //     );
+    //     // console.log(
+    //     //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+    //     //   status,
+    //     //   this.$route.query.id
+    //     // );
 
-        if (status != 200) {
-          this.$message.warning("数据出错");
-        }
-        console.log(this.$route.query.id);
-      } else {
-        userTaskid().then((res) => {
-          //console.log(res)
-          this.$store.commit("Modern_UserTaskId", res.data.data);
-        });
-      }
-    })();
+    //     if (status != 200) {
+    //       this.$message.warning("数据出错");
+    //     }
+    //     console.log(this.$route.query.id);
+    //   } else {
+    //     userTaskid().then((res) => {
+    //       //console.log(res)
+    //       this.$store.commit("Modern_UserTaskId", res.data.data);
+    //     });
+    //   }
+    // })();
   },
 };
 </script>

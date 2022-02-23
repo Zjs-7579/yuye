@@ -254,38 +254,39 @@ const uploadUrlData = [
 ];
 
 //清空
-// export function agriculClearData(Data) {
-//   for (let item in Data.AgriculData) {
-//     if (
-//       Object.prototype.toString.call(Data.AgriculData[item]) ===
-//       "[object Array]"
-//     ) {
-//       for (let res of Data.AgriculData[item]) {
-//         for (let item in res) {
-//           if (item == "inv_type") {
-//             console.log(res[item]);
-//             break;
-//           } else {
-//             res[item] = "";
-//           }
-//         }
-//       }
-//     }
-//     if (
-//       Object.prototype.toString.call(Data.AgriculData[item]) ===
-//       "[object Object]"
-//     ) {
-//       for (let res in Data.AgriculData[item]) {
-//         Data.AgriculData[item][res] = "";
-//       }
-//     }
-//   }
+export function agriculClearData(Data) {
+  //console.log("11111111111111111", Data);
+  for (let item in Data.AgriculData) {
+    if (
+      Object.prototype.toString.call(Data.AgriculData[item]) ===
+      "[object Array]"
+    ) {
+      for (let res of Data.AgriculData[item]) {
+        for (let item in res) {
+          if (item == "inv_type") {
+            console.log(res[item]);
+            break;
+          } else {
+            res[item] = "";
+          }
+        }
+      }
+    }
+    if (
+      Object.prototype.toString.call(Data.AgriculData[item]) ===
+      "[object Object]"
+    ) {
+      for (let res in Data.AgriculData[item]) {
+        Data.AgriculData[item][res] = "";
+      }
+    }
+  }
 
-//   for (let item of Data.uploadUrlData) {
-//     item.data.splice(0, item.data.length);
-//     //console.log(item.data)
-//   }
-// }
+  for (let item of Data.uploadUrlData) {
+    item.data.splice(0, item.data.length);
+    //console.log(item.data)
+  }
+}
 
 //赋值
 export function agriculData(newData) {
@@ -322,16 +323,18 @@ export function agriculData(newData) {
 
 //文件
 export function agriculFilesData(filesData) {
-  for (let item of filesData) {
-    //console.log(item)
+  if (filesData) {
+    for (let item of filesData) {
+      //console.log(item)
 
-    //.data = []
-    uploadUrlData.forEach((res) => {
-      //console.log(res)
-      if (item.material_type == res.title) {
-        res.data.push(item);
-      }
-    });
+      //.data = []
+      uploadUrlData.forEach((res) => {
+        //console.log(res)
+        if (item.material_type == res.title) {
+          res.data.push(item);
+        }
+      });
+    }
   }
 
   return uploadUrlData;

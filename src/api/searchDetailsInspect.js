@@ -14,14 +14,14 @@ export async function MOdetailsInspectData(id) {
 }
 
 //渔业详情
-export async function FishingDetailsInspectData(id) {
+export async function FishingInspectData(id) {
   const res = await http.get(`ocean/ty/pelagic/${id}`);
   //console.log(res)
   return res;
 }
 
 //安全详情
-export async function SadetailsInspectData(id) {
+export async function SafetyInspectData(id) {
   const res = await http.get(`safety/ty/apply/${id}`);
   return res;
 }

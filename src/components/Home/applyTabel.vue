@@ -156,7 +156,9 @@ export default {
       //console.log(row);
       this.Loading = true;
       let status = judge(row, this.$router, this.$store);
+      console.log(status);
       if (status == 0) {
+        this.Loading = false;
         this.$message.warning("数据出错");
       }
       if (status == 200) {

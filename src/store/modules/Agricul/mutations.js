@@ -42,8 +42,8 @@ export default {
     state.inancialTypeSum = res.sum;
   },
 
-  Agricul_AllClearData(state, res) {
-    console.log("////////////", res);
+  Agricul_upAllData(state, res) {
+    //console.log("////////////", res);
     state.AgriculData = res.result;
     state.uploadUrlData = res.uploadUrlData;
 

@@ -1,11 +1,16 @@
 <template>
   <div class="Details">
-    <AgDetailsInfo
-      v-if="this.$route.query.type == '农业产业化贴息项目'"
-    ></AgDetailsInfo>
-    <MoDetailsInfo
-      v-if="this.$route.query.type == '现代农业项目'"
-    ></MoDetailsInfo>
+    <div class="DetailsInfo">
+      <AgDetailsInfo
+        v-if="this.$route.query.type == '农业产业化贴息项目'"
+      ></AgDetailsInfo>
+      <MoDetailsInfo
+        v-if="this.$route.query.type == '现代农业项目'"
+      ></MoDetailsInfo>
+      <SaDetailsInfo
+        v-if="this.$route.query.type == '农产品质量安全检测能力建设项目'"
+      ></SaDetailsInfo>
+    </div>
   </div>
 </template>
 
@@ -16,14 +21,40 @@ import {
 } from "../../api/searchDetailsInspect";
 import AgDetailsInfo from "../AgriculInfo/CreateInfo/detailsInfo.vue";
 import MoDetailsInfo from "../ModernInfo/CreateInfo/detailsInfo.vue";
-import { agriculFilesData } from "../../utils/agricul/agriculUpData";
-import { modernFilesData } from "../../utils/modern/modernUpData";
+import SaDetailsInfo from "../Safety/detailsInfo.vue";
+//import { agriculFilesData } from "../../utils/agricul/agriculUpData";
+//import { modernFilesData } from "../../utils/modern/modernUpData";
+import { Detail } from "../../utils/Todo";
 import { mapState } from "vuex";
 export default {
   data() {
     return {
       data: "",
     };
+  },
+  beforeRouteEnter(to, from, next) {
+    //console.log("to", to, "from", from, to.query.id);
+    if (from.path == "/") {
+      next((vm) => {
+        let status = Detail(
+          {
+            task_source: to.query.type,
+            task_id: to.query.id,
+          },
+          vm.$router,
+          vm.$store
+        );
+        // console.log(
+        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+        //   status
+        //   //this.$route.query.id
+        // );
+        if (status == 0) {
+          vm.$message.warning("数据出错");
+        }
+      });
+    }
+    next();
   },
   computed: {
     ...mapState(["Agricul", "Modern"]),
@@ -54,6 +85,7 @@ export default {
   components: {
     AgDetailsInfo,
     MoDetailsInfo,
+    SaDetailsInfo,
   },
 };
 </script>
@@ -62,15 +94,20 @@ export default {
 .Details {
   position: relative;
 }
-.Details .DataContent {
-  height: 90vh;
-
-  background-color: #fff;
-}
-.Details .DataContent .AllDataTable {
-  height: calc(100% - 10px);
+.Details .DetailsInfo {
   overflow: hidden;
   overflow-y: auto;
+  height: 94vh;
+  background-color: #fff;
+}
+/* .Details .DataContent {
+  height: 100%;
+  background-color: rgb(109, 16, 16);
+} */
+.Details .DataContent .AllDataTable {
+  /* height: calc(100% - 10px);
+  overflow: hidden;
+  overflow-y: auto; */
 }
 .Details .DataContent .Agtabel,
 .Details .DataContent .AgPerson,
