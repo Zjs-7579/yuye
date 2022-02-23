@@ -130,9 +130,9 @@ export default {
       get() {
         let sum = 0;
         for (let i of this.data) {
-          sum += i.amount * 1;
+          sum += i.amount * 10000;
         }
-        return sum;
+        return sum / 10000;
       },
       set(val) {
         this.total_amount = val;
@@ -142,9 +142,9 @@ export default {
       get() {
         let sum = 0;
         for (let i of this.data) {
-          sum += i.fixed_assets * 1;
+          sum += i.fixed_assets * 10000;
         }
-        return sum;
+        return sum / 10000;
       },
       set(val) {
         this.total_fixed_assets = val;
@@ -154,9 +154,9 @@ export default {
       get() {
         let sum = 0;
         for (let i of this.data) {
-          sum += i.other_assets * 1;
+          sum += i.other_assets * 10000;
         }
-        return sum;
+        return sum / 10000;
       },
       set(val) {
         this.total_other_assets = val;
@@ -202,7 +202,7 @@ export default {
           type: "warning",
         });
       } else {
-        this.colorList.splice(len, 1);
+        //this.colorList.splice(len, 1);
         this.Modern.ModernData.modernInvestMent.splice(len, 1);
       }
     },

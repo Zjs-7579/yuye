@@ -25,14 +25,38 @@ import StatisticalInfo from "./statisticalInfo.vue";
 import SubmitButton from "./submitButton.vue";
 import UploadFiles from "./uploadFiles.vue";
 import { userTaskid } from "../../api/Fishing/userInfo";
-import { FishingDetailsInspectData } from "../../api/searchDetailsInspect";
-import { fishingData } from "../../utils/fishingUpData";
+import { FiJudge } from "../../utils/fishing/fishingData";
+//import { FishingDetailsInspectData } from "../../api/searchDetailsInspect";
+import { FishingClearData } from "../../utils/fishing/fishingUpData";
 import { mapState } from "vuex";
 export default {
   data() {
     return {
-      activeName: "UploadFiles",
+      activeName: "ApplyInfo",
     };
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log("to", to, "from", from, to.query.id);
+    if (from.path == "/") {
+      next(async (vm) => {
+        let status = await FiJudge(
+          {
+            task_id: to.query.id,
+          },
+          vm.$router,
+          vm.$store
+        );
+        // console.log(
+        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+        //   status
+        //   //this.$route.query.id
+        // );
+        if (status != 200) {
+          vm.$message.warning("数据出错");
+        }
+      });
+    }
+    next();
   },
   computed: {
     ...mapState(["Fishing"]),
@@ -49,28 +73,42 @@ export default {
     UploadFiles,
   },
   mounted() {
-    this.$store.commit("Fishing_ClearAllData");
-    if (this.$route.query.id != undefined) {
-      console.log("id");
-      FishingDetailsInspectData(this.$route.query.id).then((res) => {
-        this.$store.commit("Fishing_UserTaskId", this.$route.query.id);
-        console.log(res);
-        let result = fishingData(res.data.data);
-        this.Fishing.OceanDeclaration = result.declaration;
-
-        this.Fishing.OceanParam.oceanCostList = result.oceanCostList;
-        this.Fishing.OceanParam.oceanSituationList = result.oceanSituationList;
-        this.Fishing.OceanParam.oceanVolumes = result.oceanVolumes;
-
-        //console.log(this.Agricul.AgriculData)
-        //console.log(this.Agricul.userTaskId)
-      });
-    } else {
-      console.log("000000000000000000000");
+    if (this.$route.query.id == undefined) {
+      FishingClearData(this.Fishing);
       userTaskid().then((res) => {
+        //console.log(res)
         this.$store.commit("Fishing_UserTaskId", res.data.data);
       });
     }
+    // (async () => {
+    //   //this.$store.commit("Agricul_IsDisabledDataClose");
+    //   //agriculClearData(this.Agricul);
+    //   if (this.$route.query.id != undefined) {
+    //     let status = await FiJudge(
+    //       {
+    //         task_id: this.$route.query.id,
+    //       },
+    //       this.$router,
+    //       this.$store
+    //     );
+    //     // console.log(
+    //     //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+    //     //   status,
+    //     //   this.$route.query.id
+    //     // );
+
+    //     if (status != 200) {
+    //       this.$message.warning("数据出错");
+    //     }
+    //     console.log(this.$route.query.id);
+    //   } else {
+    //     userTaskid().then((res) => {
+    //       //console.log(res)
+    //       this.$store.commit("Fishing_UserTaskId", res.data.data);
+    //     });
+    //   }
+    // })();
+    //
   },
 };
 </script>

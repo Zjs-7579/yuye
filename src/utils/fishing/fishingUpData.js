@@ -164,13 +164,121 @@ const OceanDeclaration = {
     creator: "", //创建人
   },
 };
+const uploadUrlData = {
+  //建造
+  Build: [
+    { title: "专项资金申请报告", data: [] },
+    { title: "申请书", data: [] },
+    { title: "申报单位主体资格材料（含统一社会信用代码证书等）", data: [] },
+    { title: "农业农村部远洋渔业企业资格证书", data: [] },
+    { title: "经会计师事务所审计的上一年度单位财务审计报告", data: [] },
+    {
+      title: "农业农村部渔船建造审批件、农业农村部远洋渔业项目批文",
+      data: [],
+    },
+    { title: "造船合同书及外购设备合同书", data: [] },
+    {
+      title:
+        "渔船竣工造价结算单（企业造船合同指定船厂出具的造价结算单及相关发票，以及购置设备清单、发票等）",
+      data: [],
+    },
+    { title: "渔业船舶国籍证书、所有权证书和船舶检验证书", data: [] },
+    {
+      title: "已获取国家渔船补贴的有关证明材料（仅限已获取国家补贴的渔船）",
+      data: [],
+    },
+    { title: "入渔配额证明（仅限需要配额的海区）", data: [] },
+    { title: "申报单位承诺书", data: [] },
+  ],
+  //购买
+  Buy: [
+    { title: "申请专项资金的报告", data: [] },
+    { title: "申请书", data: [] },
+    { title: "申报单位主体资格材料（含统一社会信用代码证书等）", data: [] },
+    { title: "农业农村部远洋渔业企业资格证书", data: [] },
+    { title: "经会计师事务所审计的上一年度单位财务审计报告 ", data: [] },
+    { title: "渔船买卖合同书、设备改造合同书及相关发票等", data: [] },
+    { title: "渔业船舶国籍证书、所有权证书和船舶检验证书", data: [] },
+    { title: "农业农村部远洋渔业项目批文", data: [] },
+    { title: "入渔配额证明（仅限需要配额的海区）", data: [] },
+    { title: "申报单位承诺书", data: [] },
+  ],
+  //境外
+  Outside: [
+    { title: "申请专项资金的报告", data: [] },
+    { title: "申请书", data: [] },
+    { title: "申报单位主体资格材料（含统一社会信用代码证书等） ", data: [] },
+    { title: "农业农村部远洋渔业企业资格证书", data: [] },
+    { title: "农业农村部远洋渔业项目批文", data: [] },
+    { title: "境外远洋渔业项目生产情况报告 ", data: [] },
+    { title: "缴纳境外渔业资源使用费的相关票据及证明材料 ", data: [] },
+    {
+      title: "已获得农业农村部国际渔业资源开发利用补助的有关证明材料 ",
+      data: [],
+    },
+    { title: "申报单位承诺书", data: [] },
+  ],
+  //自捕
+  Volumes: [
+    { title: "申请专项资金的报告 ", data: [] },
+    { title: "申请书", data: [] },
+    { title: "申报单位主体资格材料（含统一社会信用代码证书等）", data: [] },
+    { title: "农业农村部远洋渔业企业资格证书", data: [] },
+    { title: "农业农村部远洋渔业项目批文", data: [] },
+    { title: "入渔配额证明（仅限需要配额的海区） ", data: [] },
+    { title: "自捕远洋海产品进入深圳境地海关报关单", data: [] },
+    {
+      title:
+        "进入深圳水产品交易市场的交易凭据（提供企业与渔货交易商的交易单据及入账后的交易收款凭证等）",
+      data: [],
+    },
+    { title: "远洋渔船的国籍证书、所有权证书、船舶检验证书", data: [] },
+    { title: "已获取远洋自捕水产品回运费国家资助的有关证明材料 ", data: [] },
+    { title: "申报单位承诺书", data: [] },
+  ],
+  //基地
+  Base: [
+    { title: "申请专项资金的报告", data: [] },
+    { title: "申请书", data: [] },
+    { title: "申报单位主体资格材料（含统一社会信用代码证书等）", data: [] },
+    { title: "经会计师事务所审计的上一年度单位财务审计报告", data: [] },
+    {
+      title: "政府部门对该企业为远洋渔业基地投资建设主体单位的有关证明文件",
+      data: [],
+    },
+    {
+      title:
+        "远洋渔业冷链物流（包括海产品加工厂及配套专用冷库）、超低温冷库等项目的建设方案",
+      data: [],
+    },
+    {
+      title: "建设项目的决算审计报告、竣工决算单、付款凭证及相关发票等",
+      data: [],
+    },
+    { title: "建设项目场地所有权或者使用权证明", data: [] },
+    {
+      title:
+        "远洋渔业基地项目建设方案、农业农村部远洋渔业基地认定材料及收款凭证（仅限申请远洋渔业基地配套资助的需要提供）",
+      data: [],
+    },
+    { title: "申报单位承诺书", data: [] },
+  ],
+};
+export function FishingClearData(Data) {
+  console.log(Data.OceanDeclaration);
+  console.log(Data.OceanParam);
 
+  Data.OceanDeclaration = OceanDeclaration;
+  Data.OceanParam = OceanParam;
+}
 export function fishingData(newData) {
   //console.log(newData)
-  for (let item in newData) {
-    if (newData[item].length == 0) {
-      //console.log('null',item)
-      newData[item] = OceanParam[item];
+  if (newData) {
+    for (let item in newData) {
+      if (newData[item].length == 0) {
+        //console.log('null',item)
+        newData[item] = OceanParam[item];
+      }
     }
   }
 

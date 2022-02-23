@@ -61,7 +61,7 @@ export default {
       //console.log(this.$route.query.id)
       //console.log(this.$route.params.id)
       if (this.trial.note == "pass") {
-        flowPassSubmit(this.$route.query.id, this.trial).then((res) => {
+        flowPassSubmit(this.$route.query.id, this.trial).then(() => {
           this.$message({
             message: "提交成功",
             type: "success",
@@ -72,7 +72,7 @@ export default {
         });
       }
       if (this.trial.note == "notPass") {
-        flowNotPassSubmit(this.$route.query.id, this.trial).then((res) => {
+        flowNotPassSubmit(this.$route.query.id, this.trial).then(() => {
           this.$message({
             message: "提交成功",
             type: "success",
@@ -83,7 +83,7 @@ export default {
         });
       }
       if (this.trial.note == "not") {
-        flowBackSubmit(this.$route.query.id, this.trial).then((res) => {
+        flowBackSubmit(this.$route.query.id, this.trial).then(() => {
           this.$message({
             message: "驳回成功",
             type: "success",

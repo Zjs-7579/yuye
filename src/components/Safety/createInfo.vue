@@ -79,13 +79,7 @@ import UploadFiles from "./uploadFiles.vue";
 // import MaterialList from "./MaterialList.vue";
 import InancialInfo from "./inancialInfo.vue";
 import { userTaskid } from "../../api/Safety/userInfo";
-import { SadetailsInspectData } from "../../api/searchDetailsInspect";
-import {
-  safetyData,
-  safetyClearData,
-  safetyFilesData,
-} from "../../utils/safetyUpData";
-// import { safetyClearData } from "../../../utils/safetyUpData";
+import { SaJudge } from "../../utils/safety/safetyData";
 export default {
   data() {
     return {
@@ -93,6 +87,29 @@ export default {
       activeName: "UnitInfo",
       lastActiveName: "",
     };
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log("to", to, "from", from, to.query.id);
+    if (from.path == "/") {
+      next(async (vm) => {
+        let status = await SaJudge(
+          {
+            task_id: to.query.id,
+          },
+          vm.$router,
+          vm.$store
+        );
+        // console.log(
+        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+        //   status
+        //   //this.$route.query.id
+        // );
+        if (status != 200) {
+          vm.$message.warning("数据出错");
+        }
+      });
+    }
+    next();
   },
   computed: {
     ...mapState(["Safety"]),
@@ -128,18 +145,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.commit("Safety_IsDisabledDataClose"); // 打开禁用
-    safetyClearData(this.Safety); // 清除数据
-    if (this.$route.query.id != undefined) {
-      SadetailsInspectData(this.$route.query.id).then((res) => {
-        if (res.data.code == 200) {
-          this.$store.commit("Safety_UserTaskId", this.$route.query.id);
-          let result = safetyData(res.data.data);
-          let uploadUrlData = safetyFilesData(res.data.data.images);
-          this.$store.commit("Safety_AllClearData", { result, uploadUrlData });
-        }
-      });
-    } else {
+    if (this.$route.query.id == undefined) {
       userTaskid().then((res) => {
         //console.log(res)
         this.$store.commit("Safety_UserTaskId", res.data.data);

@@ -84,12 +84,12 @@ import SummarizeInfo from "./summarizeInfo.vue";
 import UploadFiles from "./uploadFiles.vue";
 import AuditInfo from "../User/auditInfo.vue";
 import { createSubmit } from "../../api/Safety/createInfo";
-import { safetyClearData } from "../../utils/safetyUpData";
+//import { safetyClearData } from "../../utils/safetyUpData";
 import { mapState } from "vuex";
 export default {
   data() {
     return {
-      colorText: "",
+      colorText: "UnitInfo",
     };
   },
   components: {
@@ -156,9 +156,9 @@ export default {
   mounted() {
     //console.log(this.Agricul)
     console.log(this.$router.query.id);
-    if (!this.$router.query.id) {
-      safetyClearData(this.Safety);
-    }
+    // if (!this.$router.query.id) {
+    //   safetyClearData(this.Safety);
+    // }
   },
 };
 </script>

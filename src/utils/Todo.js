@@ -11,7 +11,8 @@
 // import { fishingData, modernFilesData } from "../fishingUpData";
 import { AgJudge } from "./agricul/agriculData";
 import { MoJudge } from "./modern/modernData";
-
+import { FiJudge } from "./fishing/fishingData";
+import { SaJudge } from "./safety/safetyData";
 // export function agriculTodo(row, router, store) {
 //   AGdetailsInspectData(row.task_id).then((res) => {
 //     let result = agriculData(res.data.data);
@@ -108,6 +109,10 @@ import { MoJudge } from "./modern/modernData";
 //     }
 //   });
 // }
+import { AgDetail } from "./agricul/agriculData";
+import { MoDetail } from "./modern/modernData";
+import { FiDetail } from "./fishing/fishingData";
+import { SaDetail } from "./safety/safetyData";
 
 export function judge(row, router, store) {
   console.log(row);
@@ -118,9 +123,31 @@ export function judge(row, router, store) {
   if (row.task_source == "现代农业项目") {
     status = MoJudge(row, router, store);
   }
-  // if (row.task_source == "农产品质量安全检测能力建设项目") {
-  //   status = SaJudge(row, router, store);
-  // }
+  if (row.task_source == "远洋渔业项目") {
+    status = FiJudge(row, router, store);
+  }
+  if (row.task_source == "农产品质量安全检测能力建设项目") {
+    status = SaJudge(row, router, store);
+  }
+
+  return status;
+}
+
+export function Detail(row, router, store) {
+  console.log(row);
+  let status;
+  if (row.task_source == "农业产业化贴息项目") {
+    status = AgDetail(row, router, store);
+  }
+  if (row.task_source == "现代农业项目") {
+    status = MoDetail(row, router, store);
+  }
+  if (row.task_source == "远洋渔业项目") {
+    status = FiDetail(row, router, store);
+  }
+  if (row.task_source == "农产品质量安全检测能力建设项目") {
+    status = SaDetail(row, router, store);
+  }
 
   return status;
 }
