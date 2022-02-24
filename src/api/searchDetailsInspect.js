@@ -13,6 +13,13 @@ export async function MOdetailsInspectData(id) {
   return res;
 }
 
+//高新技术
+export async function HighTechInspectData(id) {
+  const res = await http.get(`tech/ty/apply/${id}`);
+  //console.log(res)
+  return res;
+}
+
 //渔业详情
 export async function FishingInspectData(id) {
   const res = await http.get(`ocean/ty/pelagic/${id}`);

@@ -253,6 +253,12 @@ const routes = [
         component: () => import("../components/HighTech/createInfo.vue"),
         meta: { title: "创建" },
       },
+      {
+        path: "/highTech/detailInspect",
+        name: "HighTechDetailInspect",
+        component: () => import("../components/Home/detailsInspect.vue"),
+        meta: { title: "详情" },
+      },
     ],
   },
   //安全

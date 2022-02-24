@@ -197,9 +197,9 @@ export default {
     },
   },
   methods: {
-    aaa() {
-      console.log(this.oceanSituationList);
-    },
+    // aaa() {
+    //   console.log(this.oceanSituationList);
+    // },
     handleAddHtml() {
       let data = {
         ship_number: "", //船名号

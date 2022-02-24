@@ -106,6 +106,7 @@ export default {
   },
   methods: {
     handleActionNext() {
+      console.log(this.Fishing.OceanDeclaration);
       this.validationDataTab(this.activeName);
       if (this[this.activeName + "Bool"]) {
         this.handlePreserveInfo();

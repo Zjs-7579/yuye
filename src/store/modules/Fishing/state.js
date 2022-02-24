@@ -114,9 +114,8 @@ export default {
   //       },
   //       { title: "深圳市南沙渔业生产情况表", data: []  }
   // ],
+  //统计表
   OceanParam: {
-    //统计表
-
     //建造或购买
     oceanSituationList: [
       {

@@ -160,6 +160,9 @@ export default {
       if (status == 0) {
         this.Loading = false;
         this.$message.warning("数据出错");
+        this.$router.push({
+          path: "/home",
+        });
       }
       if (status == 200) {
         this.Loading = false;

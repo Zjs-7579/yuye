@@ -47,6 +47,7 @@
       </el-tab-pane>
 
       <el-tab-pane
+        v-if="regist_type == '企业'"
         label="项目实施的背景、意义及实施内容"
         :disabled="isDataShow"
         name="ProjectContent"
@@ -55,6 +56,7 @@
       </el-tab-pane>
 
       <el-tab-pane
+        v-if="regist_type == '事业单位'"
         label="项目实施背景及意义"
         :disabled="isDataShow"
         name="ProjectImplement"
@@ -62,6 +64,7 @@
         <ProjectImplement></ProjectImplement>
       </el-tab-pane>
       <el-tab-pane
+        v-if="regist_type == '事业单位'"
         label="项目建设内容"
         :disabled="isDataShow"
         name="ProjectBuild"
@@ -69,6 +72,7 @@
         <ProjectBuild></ProjectBuild>
       </el-tab-pane>
       <el-tab-pane
+        v-if="regist_type == '事业单位'"
         label="项目实施基础和条件"
         :disabled="isDataShow"
         name="ProjectCondition"
@@ -76,6 +80,7 @@
         <ProjectCondition></ProjectCondition>
       </el-tab-pane>
       <el-tab-pane
+        v-if="regist_type == '事业单位'"
         label="项目实施进度与管理"
         :disabled="isDataShow"
         name="ProjectProgress"
@@ -83,17 +88,24 @@
         <ProjectProgress></ProjectProgress>
       </el-tab-pane>
       <el-tab-pane
+        v-if="regist_type == '事业单位'"
         label="项目效益"
         :disabled="isDataShow"
         name="ProjectBenefit"
       >
         <ProjectBenefit ref="HighTechBenefitValidate"></ProjectBenefit>
       </el-tab-pane>
-      <el-tab-pane label="项目经费" :disabled="isDataShow" name="ProjectFund">
+      <el-tab-pane
+        v-if="regist_type == '事业单位'"
+        label="项目经费"
+        :disabled="isDataShow"
+        name="ProjectFund"
+      >
         <ProjectFund ref="HighTechFundValidate"></ProjectFund>
       </el-tab-pane>
 
       <el-tab-pane
+        v-if="regist_type == '企业'"
         label="项目投资情况"
         :disabled="isDataShow"
         name="ProjectInvest"
@@ -145,7 +157,7 @@ export default {
   data() {
     return {
       isDataShow: false,
-      activeName: "ProjectFund",
+      activeName: "UploadFiles",
     };
   },
   computed: {
@@ -244,24 +256,41 @@ export default {
 .HighTech .DataContent {
   height: 60vh;
   overflow: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
-/* .HighTech .DataContent .Mounit,
+.HighTech .DataContent .Mounit,
 .HighTech .DataContent .Motabel,
 .HighTech .DataContent .Moperson,
 .HighTech .DataContent .MoHold,
 .HighTech .DataContent .MoInvest,
 .HighTech .DataContent .MoSummarize,
-.HighTech .DataContent .MoContentTitle {
+.HighTech .DataContent .MoContentTitle,
+.HighTech .DataContent .MoboxTitle,
+.HighTech .DataContent .HighFund,
+.HighTech .DataContent .HighSummarize,
+.HighTech .DataContent .HighProgress,
+.HighTech .DataContent .ReInimical,
+.HighTech .DataContent .PanInimical,
+.HighTech .DataContent .PanInimical .dataPanRow,
+.HighTech .DataContent .UnderInimical,
+.HighTech .DataContent .UnderInimical .dataUnderRow {
   height: auto;
   margin-bottom: 20px;
 }
 
-.HighTech .DataContent .Moinancial .dataPanRow,
-.HighTech .DataContent .Moinancial .dataUnderRow,
-.HighTech .DataContent .MoUpload .dataRow {
+/* .HighTech .DataContent .Moinancial .PanInimical {
+  height: auto;
+}
+.HighTech .DataContent .Moinancial .PanInimical .dataPanRow {
+  height: auto;
+} */
+/* .HighTech .DataContent .PanInimical .dataPanRow,
+.HighTech .DataContent .UnderInimical .dataUnderRow, */
+.HighTech .DataContent .ReInimical .dataRow,
+.HighTech .DataContent .MoUpload .dataRow,
+.HighTech .DataContent .HighProgress .dataRow {
   overflow: visible;
   overflow-y: visible;
   margin-bottom: 20px;
-} */
+}
 </style>

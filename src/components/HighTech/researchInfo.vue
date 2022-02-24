@@ -1,5 +1,5 @@
 <template>
-  <div class="Moinancial">
+  <div class="ReInimical">
     <el-row class="title"> 单位近三年科研活动情况 </el-row>
     <el-row class="titleRow">
       <el-col :span="2"><div class="grid-content bg-purple">序号</div></el-col>
@@ -17,8 +17,8 @@
       >
     </el-row>
 
-    <div class="dataUnderRow">
-      <el-row v-for="item in inancialUnderData" :key="item.id">
+    <div class="dataRow">
+      <el-row v-for="item in researchDataList" :key="item.id">
         <el-col :span="2"
           ><div class="grid-content bg-purple" style="text-align: center">
             {{ item.id }}
@@ -37,7 +37,7 @@
             <el-input
               type="number"
               :disabled="isDisabledData"
-              v-model="techScientific[2][item.Model]"
+              v-model="techScientific[0][item.Model]"
             ></el-input></div
         ></el-col>
         <el-col :span="5"
@@ -53,7 +53,7 @@
             <el-input
               type="number"
               :disabled="isDisabledData"
-              v-model="techScientific[0][item.Model]"
+              v-model="techScientific[2][item.Model]"
             ></el-input></div
         ></el-col>
       </el-row>
@@ -67,7 +67,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      inancialUnderData: researchDataList,
+      researchDataList: researchDataList,
       dataYear: new Date().getFullYear(),
     };
   },
@@ -93,13 +93,13 @@ export default {
   watch: {
     techScientific: {
       handler(val) {
-        let year = 1;
+        let year = 3;
         for (let item of val) {
           item["task_id"] = this.HighTech.userTaskId;
           //item.creator = this.Modern.userName
 
           item.pro_year = this.dataYear - year;
-          year++;
+          year--;
         }
       },
       deep: true,
@@ -109,14 +109,15 @@ export default {
 </script>
 
 <style>
-.Moinancial .el-tabs__content {
+.ReInimical .el-tabs__content {
   position: relative;
 }
-.Moinancial {
+.ReInimical {
   width: 100%;
   height: 75vh;
+  display: block;
 }
-.Moinancial .title {
+.ReInimical .title {
   background-color: #ece8e8;
   height: 60px;
   line-height: 60px !important;
@@ -125,54 +126,54 @@ export default {
   font-weight: bold;
   border: 1px solid #ccc;
 }
-.Moinancial .titleRow {
+.ReInimical .titleRow {
   text-align: center;
   line-height: 60px;
 }
-.Moinancial .boldText {
+.ReInimical .boldText {
   font-weight: bold;
 }
-.Moinancial .el-input__inner {
+.ReInimical .el-input__inner {
   width: 80%;
   border: none;
   font-size: 18px;
 }
-.Moinancial .rowColor .el-input__inner {
+.ReInimical .rowColor .el-input__inner {
   background-color: rgb(235, 231, 231);
 }
-.Moinancial #disabled .el-input__inner.disabled {
+.ReInimical #disabled .el-input__inner.disabled {
   opacity: 0.1;
 }
-.Moinancial .dataUnderRow {
+.ReInimical .dataRow {
   height: 62vh;
   overflow: hidden;
   overflow-y: overlay;
 }
-.Moinancial .dataUnderRow .el-row {
+.ReInimical .dataRow .el-row {
   border: 1px solid #ccc;
   line-height: 40px;
 }
-.Moinancial .dataUnderRow .el-col {
+.ReInimical .dataRow .el-col {
   border-right: 1px solid #ccc;
   padding: 8px 0;
 }
-.Moinancial .titleRow {
+.ReInimical .titleRow {
   background-color: #ece8e8;
   border: 1px solid #ccc;
 }
-.Moinancial .titleRow .el-col {
+.ReInimical .titleRow .el-col {
   border-right: 1px solid #ccc;
 }
 
-.Moinancial input::-webkit-inner-spin-button {
+.ReInimical input::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
 }
 
-.Moinancial input::-webkit-outer-spin-button {
+.ReInimical input::-webkit-outer-spin-button {
   -webkit-appearance: none !important;
 }
 
-.Moinancial input[type="number"] {
+.ReInimical input[type="number"] {
   -moz-appearance: textfield;
 }
 </style>

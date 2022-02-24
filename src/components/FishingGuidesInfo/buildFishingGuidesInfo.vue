@@ -114,8 +114,8 @@ export default {
       get() {
         //this.Fishing.OceanDeclaration.oceanDeepseaship.task_id = this.Fishing.userTaskId;
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.Fishing.OceanDeclaration.oceanDeepseaship.creator =
-          this.Fishing.userName;
+        // this.Fishing.OceanDeclaration.oceanDeepseaship.creator =
+        //   this.Fishing.userName;
         return this.Fishing.OceanDeclaration.oceanDeepseaship;
       },
       set(val) {

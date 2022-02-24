@@ -11,6 +11,7 @@
 // import { fishingData, modernFilesData } from "../fishingUpData";
 import { AgJudge } from "./agricul/agriculData";
 import { MoJudge } from "./modern/modernData";
+import { HiJudge } from "./high/highData";
 import { FiJudge } from "./fishing/fishingData";
 import { SaJudge } from "./safety/safetyData";
 // export function agriculTodo(row, router, store) {
@@ -111,6 +112,7 @@ import { SaJudge } from "./safety/safetyData";
 // }
 import { AgDetail } from "./agricul/agriculData";
 import { MoDetail } from "./modern/modernData";
+import { HiDetail } from "./high/highData";
 import { FiDetail } from "./fishing/fishingData";
 import { SaDetail } from "./safety/safetyData";
 
@@ -122,6 +124,9 @@ export function judge(row, router, store) {
   }
   if (row.task_source == "现代农业项目") {
     status = MoJudge(row, router, store);
+  }
+  if (row.task_source == "农业高新技术项目") {
+    status = HiJudge(row, router, store);
   }
   if (row.task_source == "远洋渔业项目") {
     status = FiJudge(row, router, store);
@@ -141,6 +146,9 @@ export function Detail(row, router, store) {
   }
   if (row.task_source == "现代农业项目") {
     status = MoDetail(row, router, store);
+  }
+  if (row.task_source == "农业高新技术项目") {
+    status = HiDetail(row, router, store);
   }
   if (row.task_source == "远洋渔业项目") {
     status = FiDetail(row, router, store);

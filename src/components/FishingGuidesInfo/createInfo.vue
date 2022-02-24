@@ -1,13 +1,21 @@
 <template>
   <div class="fishingGuides">
     <el-tabs type="border-card" v-model="activeName">
-      <el-tab-pane label="远洋渔业项目申报表" name="ApplyInfo">
+      <el-tab-pane
+        label="远洋渔业项目申报表"
+        name="ApplyInfo"
+        :disabled="isDataShow"
+      >
         <ApplyInfo ref="ApplyInfo"></ApplyInfo>
       </el-tab-pane>
-      <el-tab-pane label="远洋渔业项目统计表" name="StatisticalInfo">
+      <el-tab-pane
+        label="远洋渔业项目统计表"
+        name="StatisticalInfo"
+        :disabled="isDataShow"
+      >
         <StatisticalInfo></StatisticalInfo>
       </el-tab-pane>
-      <el-tab-pane label="上传附件" name="UploadFiles">
+      <el-tab-pane label="上传附件" name="UploadFiles" :disabled="isDataShow">
         <UploadFiles></UploadFiles>
       </el-tab-pane>
     </el-tabs>
@@ -32,6 +40,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
+      isDataShow: true,
       activeName: "ApplyInfo",
     };
   },
@@ -63,6 +72,9 @@ export default {
   },
   methods: {
     handleActiveName(name) {
+      if (name == "UploadFiles") {
+        this.isDataShow = false;
+      }
       this.activeName = name;
     },
   },

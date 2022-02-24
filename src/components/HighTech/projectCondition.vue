@@ -1,6 +1,6 @@
 <template>
-  <div class="MoboxTitle">
-    <el-row class="title"> 项目实施基础和条件 </el-row>
+  <div class="HIboxCond">
+    <el-row class="title asterisk"> 项目实施基础和条件 （事业）</el-row>
     <p>
       1．简述项目实施具体的支持条件，包括：项目建设场地、已有主要设备、研究平台、
       获得过的与项目相关的知识产权成果、承担过与项目相关的项目和产品以及人员保障等；
@@ -52,11 +52,11 @@ export default {
 </script>
 
 <style>
-.MoboxTitle {
+.HIboxCond {
   width: 100%;
   height: 75vh;
 }
-.MoboxTitle .title {
+.HIboxCond .title {
   background-color: #ece8e8;
   height: 60px;
   line-height: 60px;
@@ -65,9 +65,15 @@ export default {
   font-weight: bold;
   border: 1px solid #ccc;
 }
-.MoboxTitle p {
+.HIboxCond p {
   font-weight: bold;
   font-size: 20px;
   padding: 35px 0;
+}
+.HIboxCond .asterisk::before {
+  display: inline-block;
+  content: "*";
+  color: #f56c6c;
+  margin-right: 4px;
 }
 </style>
