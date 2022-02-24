@@ -22,6 +22,10 @@ export async function createInfoStatisticsData(title, params) {
       params.oceanSituationList
     );
   }
+  // TODO
+  if (title == "建造南沙骨干渔船") {
+    1;
+  }
   if (title == "境外渔业资源使用费") {
     res = await http.post(
       "ocean/ty/pelagic/createOceanCost",

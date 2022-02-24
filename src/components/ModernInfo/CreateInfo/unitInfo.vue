@@ -246,6 +246,7 @@ export default {
 
 .Mounit .demo-ruleForm {
   border: 1px solid #ccc;
+  /* box-shadow: 1px 1px 1px 1px #000; */
   margin: 0;
   padding: 0;
 }
@@ -261,6 +262,12 @@ export default {
 .Mounit .el-form-item {
   margin: 0;
   border: 1px solid #ccc;
+  margin-left: -1px;
+  height: 60px;
+  border-bottom: 1px solid #fff;
+  /* box-shadow: 1px 1px 1px 1px #000; */
+  /* border-left: 1px solid #ccc; */
+  /* margin-top: -1px; */
 }
 .Mounit .el-form-item__label {
   text-align: center;
@@ -270,6 +277,7 @@ export default {
 
 .Mounit .el-form-item .el-form-item__content {
   border-left: 1px solid #ccc;
+  margin-left: -2px;
   line-height: 60px;
 }
 

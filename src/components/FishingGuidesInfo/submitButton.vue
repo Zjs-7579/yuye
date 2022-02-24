@@ -16,7 +16,9 @@
         <span
           v-show="
             activeName == 'StatisticalInfo' &&
-            (declare_name == '建造远洋渔船' || declare_name == '购买远洋渔船')
+            (declare_name == '建造远洋渔船' ||
+              declare_name == '购买远洋渔船' ||
+              declare_name == '建造南沙骨干渔船')
           "
           >备注：1.总投入是指船舶竣工造价或购船和设备改造投入。
           2.项目申请起止时间是指项目实施补贴时间。</span
@@ -132,7 +134,10 @@ export default {
           this.UnitInfoBool = e;
         });
 
-        if (this.declare_name == "建造远洋渔船") {
+        if (
+          this.declare_name == "建造远洋渔船" ||
+          this.declare_name == "建造南沙骨干渔船"
+        ) {
           //console.log(this.$parent.$refs.ApplyInfo.$refs.BuildFishing)
           this.$parent.$refs.ApplyInfo.$refs.BuildFishing.$refs.buildForm.validate(
             (e) => {
@@ -179,13 +184,20 @@ export default {
           this.declare_name == "建造远洋渔船" ||
           this.declare_name == "购买远洋渔船"
         ) {
-          //console.log(this.$parent.$refs.ApplyInfo.$refs.BuildFishing)
           for (let item of this.Fishing.OceanParam.oceanSituationList) {
-            //console.log(item)
             for (let res in item) {
-              //console.log(res)
               if (item[res] == "") {
-                console.log(item[res]);
+                this.StatisticalInfoBool = false;
+                break;
+              }
+            }
+          }
+        }
+
+        if (this.declare_name == "建造南沙骨干渔船") {
+          for (const item of this.Fishing.OceanParam.oceanSituationNanshaList) {
+            for (let res in item) {
+              if (item[res] == "") {
                 this.StatisticalInfoBool = false;
                 break;
               }
@@ -230,7 +242,6 @@ export default {
     },
     //保存
     handlePreserveInfo() {
-      //console.log(this.activeName)
       if (this.activeName == "ApplyInfo") {
         createInfoApplyData(this.Fishing.OceanDeclaration).then(() => {
           this.$message({
@@ -241,6 +252,7 @@ export default {
       }
 
       if (this.activeName == "StatisticalInfo") {
+        console.log("🔍");
         createInfoStatisticsData(
           this.declare_name,
           this.Fishing.OceanParam

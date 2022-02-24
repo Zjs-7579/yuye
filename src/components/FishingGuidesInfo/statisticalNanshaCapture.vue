@@ -7,35 +7,36 @@
       <el-col :span="2"> 生产船名号 </el-col>
 
       <el-col :span="20">
-        <p class="flexTitleOne">自捕水产品入境情况</p>
+        <p class="flexTitleOne">供深海产品交易情况</p>
         <el-row>
           <el-col :span="12">
-            <p class="flexTitleOne">海关申报情况</p>
+            <p class="flexTitleOne">批发交易类</p>
             <p class="flexTitleTwo">
-              <span>免税证明单号</span>
-              <span>报关单海关编号</span>
+              <span>交易单号</span>
               <span>品种</span>
-              <span>口岸</span>
               <span>数量（kg）</span>
+              <span>金额</span>
             </p>
           </el-col>
 
           <el-col :span="12">
-            <p class="flexTitleOne">农业农村部申报情况</p>
+            <p class="flexTitleOne">零售交易类</p>
             <p class="flexTitleTwo">
-              <span>申报单编号</span>
-              <span>填报时间</span>
-              <span>确认批准文号</span>
-              <span>确认批文发布时间</span>
+              <span>交易单号</span>
               <span>品种</span>
               <span>数量（kg）</span>
+              <span>金额</span>
             </p>
           </el-col>
         </el-row>
       </el-col>
     </el-row>
 
-    <el-row class="dataRow" v-for="(item, index) in oceanVolumes" :key="index">
+    <el-row
+      class="dataRow"
+      v-for="(item, index) in oceanNanshaVolumes"
+      :key="index"
+    >
       <el-col :span="2">
         {{ index + 1 }}
       </el-col>
@@ -45,88 +46,89 @@
           :disabled="isDisabledData"
         ></el-input>
       </el-col>
-      <el-col :span="2">
-        <el-input
-          v-model="item.eption_id"
-          :disabled="isDisabledData"
-        ></el-input>
-      </el-col>
 
-      <el-col :span="2">
-        <el-input v-model="item.deatn_id" :disabled="isDisabledData"></el-input>
-      </el-col>
-      <el-col :span="2">
-        <el-input
-          v-model="item.customs_varieties"
-          :disabled="isDisabledData"
-        ></el-input>
-      </el-col>
-      <el-col :span="2">
-        <el-input
-          v-model="item.customs_port"
-          :disabled="isDisabledData"
-        ></el-input>
-      </el-col>
-
-      <el-col :span="2">
-        <el-input
-          v-model="item.customs_number"
-          :disabled="isDisabledData"
-        ></el-input>
-      </el-col>
-
-      <el-col :span="10">
+      <el-col :span="20">
         <el-row>
-          <el-col :span="4">
-            <el-input
-              v-model="item.cyse_id"
-              :disabled="isDisabledData"
-            ></el-input>
+          <el-col :span="12">
+            <el-row>
+              <el-col :span="6"
+                ><el-input
+                  v-model="item.wholesale_no"
+                  :disabled="isDisabledData"
+                ></el-input
+              ></el-col>
+              <el-col :span="6"
+                ><el-input
+                  v-model="item.wholesale_type"
+                  :disabled="isDisabledData"
+                ></el-input
+              ></el-col>
+              <el-col :span="6"
+                ><el-input
+                  v-model="item.wholesale_num"
+                  :disabled="isDisabledData"
+                ></el-input
+              ></el-col>
+              <el-col :span="6"
+                ><el-input
+                  v-model="item.wholesale_amt"
+                  :disabled="isDisabledData"
+                ></el-input
+              ></el-col>
+            </el-row>
           </el-col>
-          <el-col :span="4">
-            <el-input
-              v-model="item.cyse_editime"
-              :disabled="isDisabledData"
-            ></el-input>
-          </el-col>
-          <el-col :span="4">
-            <el-input
-              v-model="item.cyse_confirm"
-              :disabled="isDisabledData"
-            ></el-input>
-          </el-col>
-          <el-col :span="4">
-            <el-input
-              v-model="item.cyse_pushtime"
-              :disabled="isDisabledData"
-            ></el-input>
-          </el-col>
-          <el-col :span="4">
-            <el-input
-              v-model="item.cyse_varieties"
-              :disabled="isDisabledData"
-            ></el-input>
-          </el-col>
-          <el-col :span="4">
-            <el-input
-              v-model="item.cyse_number"
-              :disabled="isDisabledData"
-            ></el-input>
-          </el-col>
+          <el-col :span="12"
+            ><el-row>
+              <el-col :span="6"
+                ><el-input
+                  v-model="item.retail_no"
+                  :disabled="isDisabledData"
+                ></el-input
+              ></el-col>
+              <el-col :span="6"
+                ><el-input
+                  v-model="item.retail_type"
+                  :disabled="isDisabledData"
+                ></el-input
+              ></el-col>
+              <el-col :span="6"
+                ><el-input
+                  v-model="item.retail_num"
+                  :disabled="isDisabledData"
+                ></el-input
+              ></el-col>
+              <el-col :span="6"
+                ><el-input
+                  v-model="item.retail_amt"
+                  :disabled="isDisabledData"
+                ></el-input
+              ></el-col> </el-row
+          ></el-col>
         </el-row>
       </el-col>
     </el-row>
 
     <el-row class="dataRow">
-      <el-col :span="12"> 合计 </el-col>
-      <el-col :span="2">
-        <p style="padding: 0 15px; float: left">{{ all_customs_number }}</p>
+      <el-col :span="4"> 合计 </el-col>
+      <el-col :span="10">
+        <el-row>
+          <el-col :span="12" />
+          <el-col :span="6">
+            <p style="padding: 0 15px; float: left">{{ wh_total_num }}</p>
+          </el-col>
+          <el-col :span="6">
+            <p style="padding: 0 15px; float: left">{{ wh_total_amt }}</p>
+          </el-col>
+        </el-row>
       </el-col>
       <el-col :span="10">
         <el-row>
-          <el-col :span="20"></el-col>
-          <el-col :span="4">
-            <p style="padding: 0 15px; float: left">{{ all_cyse_number }}</p>
+          <el-col :span="12" />
+          <el-col :span="6">
+            <p style="padding: 0 15px; float: left">{{ re_total_num }}</p>
+          </el-col>
+          <el-col :span="6">
+            <p style="padding: 0 15px; float: left">{{ re_total_amt }}</p>
           </el-col>
         </el-row>
       </el-col>
@@ -140,20 +142,6 @@
 </template>
 
 <script>
-// prdon_ship_id: "",//生产船名号
-// eption_id: "",//海关申报情况:免税证明单号
-// deatn_id: "",//海关申报情况:报关单海关编号
-// customs_varieties: "",//海关申报情况:品种
-// customs_port: "",//海关申报情况:口岸
-// customs_number: "",//海关申报情况:数量（kg）
-// //all_customs_number: "",//
-// cyse_id: "",//农业农村部申报情况:申报单编号
-// cyse_editime: "",//农业农村部申报情况:填报时间
-// cyse_confirm: "",//农业农村部申报情况:确认批准文号
-// cyse_pushtime: "",//农业农村部申报情况:确认批文发布时间
-// cyse_varieties: "",//农业农村部申报情况:品种
-// cyse_number: "",//农业农村部申报情况:数量（kg）
-// //all_cyse_number: "",//农业农村部申报情况:数量（kg）--总计
 import { mapState } from "vuex";
 export default {
   data() {
@@ -163,12 +151,12 @@ export default {
   },
   computed: {
     ...mapState(["Fishing"]),
-    oceanVolumes: {
+    oceanNanshaVolumes: {
       get() {
-        return this.Fishing.OceanParam.oceanVolumes;
+        return this.Fishing.OceanParam.oceanNanshaVolumes;
       },
       set(val) {
-        this.oceanVolumes = val;
+        this.oceanNanshaVolumes = val;
       },
     },
     isDisabledData: {
@@ -179,15 +167,29 @@ export default {
         this.isDisabledData = val;
       },
     },
-    all_customs_number() {
-      return this.oceanVolumes.reduce((sum, item) => {
-        return sum + +item.customs_number;
+    wh_total_num() {
+      const sum = this.oceanNanshaVolumes.reduce((sum, item) => {
+        return +sum + +(item.wholesale_num ? item.wholesale_num : 0);
       }, 0);
+      return sum.toFixed(2);
     },
-    all_cyse_number() {
-      return this.oceanVolumes.reduce((sum, item) => {
-        return sum + +item.cyse_number;
+    wh_total_amt() {
+      const sum = this.oceanNanshaVolumes.reduce((sum, item) => {
+        return +sum + +(item.wholesale_amt ? item.wholesale_amt : 0);
       }, 0);
+      return sum.toFixed(2);
+    },
+    re_total_num() {
+      const sum = this.oceanNanshaVolumes.reduce((sum, item) => {
+        return +sum + +(item.retail_num ? item.retail_num : 0);
+      }, 0);
+      return sum.toFixed(2);
+    },
+    re_total_amt() {
+      const sum = this.oceanNanshaVolumes.reduce((sum, item) => {
+        return +sum + +(item.retail_amt ? item.retail_amt : 0);
+      }, 0);
+      return sum.toFixed(2);
     },
   },
   methods: {
@@ -208,22 +210,22 @@ export default {
         cyse_number: "", //农业农村部申报情况:数量（kg）
         //all_cyse_number: "",//农业农村部申报情况:数量（kg）--总计
       };
-      this.oceanVolumes.push(data);
+      this.oceanNanshaVolumes.push(data);
     },
     handleDeleteHtml() {
-      let len = this.oceanVolumes.length;
-      if (len == 1) {
+      const len = this.oceanNanshaVolumes.length;
+      if (this.oceanNanshaVolumes.length == 1) {
         this.$message({
           message: "就剩最后一条信息了！！！",
           type: "warning",
         });
       } else {
-        this.oceanVolumes.splice(len - 1, 1);
+        this.oceanNanshaVolumes.splice(len - 1, 1);
       }
     },
   },
   watch: {
-    oceanVolumes: {
+    oceanNanshaVolumes: {
       handler(val) {
         for (let item of val) {
           item["task_id"] = this.Fishing.userTaskId;
@@ -278,7 +280,10 @@ export default {
 .Capture .flexTitleTwo span {
   flex: 1;
   height: 33px;
-  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  /* margin: 0px 0px 0px -1px; */
+  margin-left: -1px;
+  /* box-shadow: 0 0 0.5px 0 #000; */
   line-height: 33px;
 }
 .Capture .dataRow {
