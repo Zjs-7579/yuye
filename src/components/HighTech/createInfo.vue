@@ -157,7 +157,7 @@ export default {
   data() {
     return {
       isDataShow: false,
-      activeName: "UploadFiles",
+      activeName: "UnitInfo",
     };
   },
   computed: {
@@ -270,10 +270,10 @@ export default {
 .HighTech .DataContent .HighSummarize,
 .HighTech .DataContent .HighProgress,
 .HighTech .DataContent .ReInimical,
-.HighTech .DataContent .PanInimical,
-.HighTech .DataContent .PanInimical .dataPanRow,
-.HighTech .DataContent .UnderInimical,
-.HighTech .DataContent .UnderInimical .dataUnderRow {
+.HighTech .DataContent .Moinancial .PanInimical,
+.HighTech .DataContent .Moinancial .PanInimical .dataPanRow,
+.HighTech .DataContent .Moinancial .UnderInimical,
+.HighTech .DataContent .Moinancial .UnderInimical .dataUnderRow {
   height: auto;
   margin-bottom: 20px;
 }
