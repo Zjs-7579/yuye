@@ -10,34 +10,6 @@
     >
       <el-row class="title"> 上年末从业人员情况 </el-row>
       <el-row type="flex">
-        <!-- <div style="width: 310px" class="name">
-                法人代表
-            </div>
-            <div>
-                <el-row>
-                    <el-col :span="12">
-                <el-form-item label="姓名:" prop="legal_name" ref="name">
-                    <el-input v-model="modernCompany.legal_name"></el-input>
-                </el-form-item>
-                <el-form-item label="学历:" prop="education">
-                    <el-input v-model="modernCompany.education"></el-input>
-                </el-form-item>
-            </el-col>
-            <el-col :span="12">
-                <el-form-item label="移动电话:" prop="mobile_phone">
-                    <el-input v-model="modernCompany.mobile_phone"></el-input>
-                </el-form-item>
-                <el-form-item label="身份证号:" prop="identity">
-                    <el-input v-model="modernCompany.identity"></el-input>
-                </el-form-item>
-            </el-col>
-                </el-row>
-            </div> -->
-        <!-- <el-col :span="4" >
-                 <el-form-item label="法人代表" prop="name" class="name" ref="behalf">
-                </el-form-item>
-            </el-col> -->
-
         <!-- TODO -->
         <el-row style="width: 100%; height: 120px" class="rowLayout">
           <el-col
@@ -85,24 +57,6 @@
             </el-row>
           </el-col>
         </el-row>
-        <!-- <el-col style="width: 310px" class="name"> 法人代表 </el-col>
-
-        <el-col :span="8">
-          <el-form-item label="姓名:" prop="legal_name" ref="name">
-            <el-input v-model="modernCompany.legal_name"></el-input>
-          </el-form-item>
-          <el-form-item label="学历:" prop="education">
-            <el-input v-model="modernCompany.education"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="移动电话:" prop="mobile_phone">
-            <el-input v-model="modernCompany.mobile_phone"></el-input>
-          </el-form-item>
-          <el-form-item label="身份证号:" prop="identity">
-            <el-input v-model="modernCompany.identity"></el-input>
-          </el-form-item>
-        </el-col> -->
       </el-row>
 
       <el-row style="width: 100%; height: 120px" class="rowLayout">
@@ -417,6 +371,10 @@ export default {
 /* .rowLayout .el-form-item {
   border: 1px solid #fff !important;
 } */
+.Tlabel .el-input {
+  width: 20%;
+  display: inline-block;
+}
 .rowLayout .el-form-item__content {
   border-left: none !important;
 }
@@ -432,10 +390,6 @@ export default {
   /* box-shadow: 0 0 1px 0 #000; */
   /* box-sizing: content-box; */
   color: #606266;
-}
-.Tlabel .el-input {
-  width: 20%;
-  display: inline-block;
 }
 .titleSmall {
   height: 30px;

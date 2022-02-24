@@ -1,6 +1,6 @@
 <template>
-  <div class="MoEngin">
-    <el-row class="title">
+  <div class="HIEngin">
+    <el-row class="title asterisk">
       {{ title }}
     </el-row>
     <el-row class="titleRow">
@@ -262,15 +262,15 @@ export default {
 </script>
 
 <style>
-.MoEngin .el-col {
+.HIEngin .el-col {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.MoEngin {
+.HIEngin {
   margin-bottom: 30px;
 }
-.MoEngin .title {
+.HIEngin .title {
   height: 60px;
   line-height: 60px;
   background-color: #ece8e8;
@@ -279,32 +279,38 @@ export default {
   font-weight: bold;
   border: 1px solid #ccc;
 }
-.MoEngin .titleRow {
+.HIEngin .titleRow {
   height: 60px;
   line-height: 60px;
   border: 1px solid #ccc;
 }
-.MoEngin .titleRow .el-col {
+.HIEngin .titleRow .el-col {
   border-right: 1px solid #ccc;
   text-align: center;
 }
-.MoEngin .dataRow {
+.HIEngin .dataRow {
   height: 60px;
   line-height: 60px;
   border: 1px solid #ccc;
   border-top: none;
 }
-.MoEngin .dataRow .el-col {
+.HIEngin .dataRow .el-col {
   border-right: 1px solid #ccc;
 }
-.MoEngin .el-input {
+.HIEngin .el-input {
   display: block;
 }
-.MoEngin .dataRow .el-input__inner {
+.HIEngin .dataRow .el-input__inner {
   width: 80%;
   border: none;
 }
-.MoEngin .el-upload {
+.HIEngin .el-upload {
   display: block;
+}
+.HIEngin .asterisk::before {
+  display: inline-block;
+  content: "*";
+  color: #f56c6c;
+  margin-right: 4px;
 }
 </style>

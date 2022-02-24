@@ -1,6 +1,6 @@
 <template>
-  <div class="MoEquip">
-    <el-row class="title"> 主要设备清单 </el-row>
+  <div class="HIEquip">
+    <el-row class="title asterisk"> 主要设备清单 </el-row>
     <el-row class="titleRow">
       <el-col :span="2">序号</el-col>
       <el-col :span="4">设备名称</el-col>
@@ -186,7 +186,7 @@ export default {
 </script>
 
 <style>
-.MoEquip .title {
+.HIEquip .title {
   height: 60px;
   line-height: 60px;
   background-color: #ece8e8;
@@ -195,29 +195,35 @@ export default {
   font-weight: bold;
   border: 1px solid #ccc;
 }
-.MoEquip .titleRow {
+.HIEquip .titleRow {
   height: 60px;
   line-height: 60px;
   border: 1px solid #ccc;
 }
-.MoEquip .titleRow .el-col {
+.HIEquip .titleRow .el-col {
   border-right: 1px solid #ccc;
   text-align: center;
 }
-.MoEquip .dataRow {
+.HIEquip .dataRow {
   height: 60px;
   line-height: 60px;
   border: 1px solid #ccc;
   border-top: none;
 }
-.MoEquip .dataRow .el-col {
+.HIEquip .dataRow .el-col {
   border-right: 1px solid #ccc;
 }
-.MoEquip .el-input {
+.HIEquip .el-input {
   display: block;
 }
-.MoEquip .dataRow .el-input__inner {
+.HIEquip .dataRow .el-input__inner {
   width: 100%;
   border: none;
+}
+.HIEquip .asterisk::before {
+  display: inline-block;
+  content: "*";
+  color: #f56c6c;
+  margin-right: 4px;
 }
 </style>

@@ -65,6 +65,7 @@
 <script>
 import { createInfoData } from "../../api/HighTech/createInfo";
 //import { DownContentText } from "../../api/Modern/upLoad";
+import DetailsInfo from "./detailsInfo.vue";
 import { mapState } from "vuex";
 export default {
   props: ["activeName"],
@@ -109,6 +110,9 @@ export default {
       ],
     };
   },
+  components: {
+    DetailsInfo,
+  },
   computed: {
     ...mapState(["HighTech"]),
     regist_type: {
@@ -128,23 +132,23 @@ export default {
         "当前表单未填写完整！！！"
       );
 
-      let idx = this.activeList.indexOf(this.activeName);
-      let name = this.activeList[idx + 1];
-      this.$emit("handleActionNameText", name);
+      // let idx = this.activeList.indexOf(this.activeName);
+      // let name = this.activeList[idx + 1];
+      // this.$emit("handleActionNameText", name);
+      //console.log("dddddddddddddddddd", this.HighTech.HighTechData);
+      if (this[this.activeName + "Bool"]) {
+        createInfoData(this.activeName, this.HighTech.HighTechData)
+          .then(() => {
+            this.statusData = 200;
+          })
+          .catch(() => {
+            this.statusData = 0;
+          });
 
-      // if (this[this.activeName + "Bool"]) {
-      //   createInfoData(this.activeName, this.Modern.ModernData)
-      //     .then(() => {
-      //       this.statusData = 200;
-      //     })
-      //     .catch(() => {
-      //       this.statusData = 0;
-      //     });
-
-      //   let idx = this.activeList.indexOf(this.activeName);
-      //   let name = this.activeList[idx + 1];
-      //   this.$emit("handleActionNameText", name);
-      // }
+        let idx = this.activeList.indexOf(this.activeName);
+        let name = this.activeList[idx + 1];
+        this.$emit("handleActionNameText", name);
+      }
     },
     handleActionLast() {
       let idx = this.activeList.indexOf(this.activeName);
@@ -310,7 +314,7 @@ export default {
       if (activeName == "ProjectInvest") {
         this.ProjectInvestBool = true;
 
-        for (let item of this.Modern.ModernData.techInvestment) {
+        for (let item of this.HighTech.HighTechData.techInvestment) {
           //console.log(item)
           for (let result in item) {
             //console.log(result)
@@ -320,7 +324,7 @@ export default {
             }
           }
         }
-        for (let item of this.Modern.ModernData.techEquipment) {
+        for (let item of this.HighTech.HighTechData.techEquipment) {
           for (let result in item) {
             //console.log(result)
             if (item[result] == "") {
@@ -363,6 +367,7 @@ export default {
         }
       }
     },
+
     handlePreserveInfo() {
       createInfoData(this.activeName, this.HighTech.HighTechData).then(() => {
         if (this.statusData == 200) {
@@ -388,14 +393,14 @@ export default {
     },
     // handleSubmitData() {
     //   this.visibleSubmitContent = false;
-    //   createSubmit(this.Modern).then(
-    //     this.$router.push({
-    //       path: "/home",
-    //     }),
-    //     //this.$store.commit("Agricul_IsCountableUploadClose"),
-    //     //this.$store.commit("Agricul_IsCountableUploadClose"),
-    //     //window.location.reload()
-    //   );
+    //   // createSubmit(this.Modern).then(
+    //   //   this.$router.push({
+    //   //     path: "/home",
+    //   //   })
+    //   //this.$store.commit("Agricul_IsCountableUploadClose"),
+    //   //this.$store.commit("Agricul_IsCountableUploadClose"),
+    //   //window.location.reload()
+    //   // );
     // },
     downFile() {
       // this.handlePreserveInfo();
@@ -404,7 +409,44 @@ export default {
       // });
     },
   },
-  components: {},
+  watch: {
+    regist_type(val) {
+      console.log(val);
+      if (val == "企业") {
+        this.activeList = [
+          "UnitInfo",
+          "InancialInfo",
+          "ResearchInfo",
+          "HoldInfo",
+          "TeamInfo",
+          "ProjectUnitInfo",
+          "ProjectContent",
+          "ProjectInvest",
+          "SummarizeInfo",
+          "UploadFiles",
+        ];
+      }
+
+      if (val == "事业单位") {
+        this.activeList = [
+          "UnitInfo",
+          "InancialInfo",
+          "ResearchInfo",
+          "HoldInfo",
+          "TeamInfo",
+          "ProjectUnitInfo",
+          "ProjectImplement",
+          "ProjectBuild",
+          "ProjectCondition",
+          "ProjectProgress",
+          "ProjectBenefit",
+          "ProjectFund",
+          "SummarizeInfo",
+          "UploadFiles",
+        ];
+      }
+    },
+  },
 };
 </script>
 

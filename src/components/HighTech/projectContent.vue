@@ -7,7 +7,7 @@
       :rules="rules"
       :disabled="isDisabledData"
     >
-      <el-row class="title"> 项目实施的背景、意义及实施内容 </el-row>
+      <el-row class="title"> 项目实施的背景、意义及实施内容 （企业）</el-row>
 
       <el-form-item label="1、项目实施背景：" prop="background">
         <el-input

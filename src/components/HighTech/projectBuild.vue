@@ -1,6 +1,6 @@
 <template>
-  <div class="MoboxTitle">
-    <el-row class="title"> 项目建设内容 </el-row>
+  <div class="HIboxBuild">
+    <el-row class="title asterisk"> 项目建设内容 （事业）</el-row>
     <p>
       项目建设内容包括：建设地点、建设内容、
       建设规模、运营模式、技术标准、技术方案、采用的新设备新技术新模式、应用推广等。
@@ -48,11 +48,11 @@ export default {
 </script>
 
 <style>
-.MoboxTitle {
+.HIboxBuild {
   width: 100%;
   height: 75vh;
 }
-.MoboxTitle .title {
+.HIboxBuild .title {
   background-color: #ece8e8;
   height: 60px;
   line-height: 60px;
@@ -61,9 +61,15 @@ export default {
   font-weight: bold;
   border: 1px solid #ccc;
 }
-.MoboxTitle p {
+.HIboxBuild p {
   font-weight: bold;
   font-size: 20px;
   padding: 35px 0;
+}
+.HIboxBuild .asterisk::before {
+  display: inline-block;
+  content: "*";
+  color: #f56c6c;
+  margin-right: 4px;
 }
 </style>

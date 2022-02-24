@@ -1,5 +1,5 @@
 <template>
-  <div class="Moinancial">
+  <div class="UnderInimical">
     <el-row class="title"> 单位近三年财务状况（事业类填报） </el-row>
     <el-row class="titleRow">
       <el-col :span="2"><div class="grid-content bg-purple">序号</div></el-col>
@@ -109,14 +109,14 @@ export default {
 </script>
 
 <style>
-.Moinancial .el-tabs__content {
+.UnderInimical .el-tabs__content {
   position: relative;
 }
-.Moinancial {
+.UnderInimical {
   width: 100%;
   height: 75vh;
 }
-.Moinancial .title {
+.UnderInimical .title {
   background-color: #ece8e8;
   height: 60px;
   line-height: 60px !important;
@@ -125,65 +125,65 @@ export default {
   font-weight: bold;
   border: 1px solid #ccc;
 }
-.Moinancial .titleRow {
+.UnderInimical .titleRow {
   text-align: center;
   line-height: 60px;
 }
-.Moinancial .boldText {
+.UnderInimical .boldText {
   font-weight: bold;
 }
-.Moinancial .el-input__inner {
+.UnderInimical .el-input__inner {
   width: 80%;
   border: none;
   font-size: 18px;
 }
-.Moinancial .rowColor .el-input__inner {
+.UnderInimical .rowColor .el-input__inner {
   background-color: rgb(235, 231, 231);
 }
-.Moinancial #disabled .el-input__inner.disabled {
+.UnderInimical #disabled .el-input__inner.disabled {
   opacity: 0.1;
 }
-.Moinancial .dataUnderRow {
+.UnderInimical .dataUnderRow {
   height: 62vh;
   overflow: hidden;
   overflow-y: overlay;
 }
-.Moinancial .dataUnderRow .el-row {
+.UnderInimical .dataUnderRow .el-row {
   border: 1px solid #ccc;
   line-height: 40px;
 }
-.Moinancial .dataUnderRow .el-col {
+.UnderInimical .dataUnderRow .el-col {
   border-right: 1px solid #ccc;
   padding: 8px 0;
 }
-.Moinancial .titleRow {
+.UnderInimical .titleRow {
   background-color: #ece8e8;
   border: 1px solid #ccc;
 }
-.Moinancial .titleRow .el-col {
+.UnderInimical .titleRow .el-col {
   border-right: 1px solid #ccc;
 }
-.Moinancial .dataUnderRow .el-row:nth-child(5) .el-col:nth-child(2),
-.Moinancial .dataUnderRow .el-row:nth-child(6) .el-col:nth-child(2),
-.Moinancial .dataUnderRow .el-row:nth-child(7) .el-col:nth-child(2),
-.Moinancial .dataUnderRow .el-row:nth-child(11) .el-col:nth-child(2),
-.Moinancial .dataUnderRow .el-row:nth-child(12) .el-col:nth-child(2),
-.Moinancial .dataUnderRow .el-row:nth-child(13) .el-col:nth-child(2),
-.Moinancial .dataUnderRow .el-row:nth-child(16) .el-col:nth-child(2),
-.Moinancial .dataUnderRow .el-row:nth-child(17) .el-col:nth-child(2),
-.Moinancial .dataUnderRow .el-row:nth-child(18) .el-col:nth-child(2) {
+.UnderInimical .dataUnderRow .el-row:nth-child(5) .el-col:nth-child(2),
+.UnderInimical .dataUnderRow .el-row:nth-child(6) .el-col:nth-child(2),
+.UnderInimical .dataUnderRow .el-row:nth-child(7) .el-col:nth-child(2),
+.UnderInimical .dataUnderRow .el-row:nth-child(11) .el-col:nth-child(2),
+.UnderInimical .dataUnderRow .el-row:nth-child(12) .el-col:nth-child(2),
+.UnderInimical .dataUnderRow .el-row:nth-child(13) .el-col:nth-child(2),
+.UnderInimical .dataUnderRow .el-row:nth-child(16) .el-col:nth-child(2),
+.UnderInimical .dataUnderRow .el-row:nth-child(17) .el-col:nth-child(2),
+.UnderInimical .dataUnderRow .el-row:nth-child(18) .el-col:nth-child(2) {
   padding-left: 2em;
 }
 
-.Moinancial input::-webkit-inner-spin-button {
+.UnderInimical input::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
 }
 
-.Moinancial input::-webkit-outer-spin-button {
+.UnderInimical input::-webkit-outer-spin-button {
   -webkit-appearance: none !important;
 }
 
-.Moinancial input[type="number"] {
+.UnderInimical input[type="number"] {
   -moz-appearance: textfield;
 }
 </style>

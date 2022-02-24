@@ -182,6 +182,15 @@ export const ModernSummarize = {
   cons_basis: [
     { required: true, message: "请输入项目建设依据", trigger: "blur" },
   ],
+  total_invest: [
+    { required: true, message: "请输入项目总投资额", trigger: "blur" },
+  ],
+  state_funding: [
+    { required: true, message: "请输入已获国家资助额", trigger: "blur" },
+  ],
+  city_support: [
+    { required: true, message: "请输入申请市财政资助额", trigger: "blur" },
+  ],
 };
 
 export const ModernUnitEmpForm = {

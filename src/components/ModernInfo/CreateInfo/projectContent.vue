@@ -85,6 +85,7 @@ export default {
     ...mapState(["Modern"]),
     modernImplement: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.Modern.ModernData.modernImplement["task_id"] =
           this.Modern.userTaskId;
         //this.Modern.ModernData.modernImplement.creator = this.Modern.userName

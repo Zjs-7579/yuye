@@ -1,6 +1,6 @@
 <template>
   <div class="HighProgress">
-    <el-row class="title"> 项目实施进度与管理 </el-row>
+    <el-row class="title asterisk"> 项目实施进度与管理 （事业）</el-row>
     <p>
       1、简述项目实施的计划进度，每一阶段应该实现的具体目标，
       包括：时间进度安排、技术指标、资金使用计划、研发计划等。
@@ -23,49 +23,52 @@
       >
     </el-row>
 
-    <el-row class="dataRow" v-for="(item, index) in techStage" :key="index">
-      <el-col :span="3">
-        <div class="grid-content bg-purple">第 {{ item.prj_stage }} 阶段</div>
-      </el-col>
-      <el-col :span="7"
-        ><div class="grid-content bg-purple">
-          <el-date-picker
-            @change="onPick(item)"
-            v-model="item.stage"
-            type="daterange"
-            value-format="yyyy-MM-DD"
-            range-separator="至"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
-          >
-          </el-date-picker>
-        </div>
-      </el-col>
-      <el-col :span="7"
-        ><div class="grid-content bg-purple">
-          <el-input
-            type="textarea"
-            resize="none"
-            rows="5"
-            :disabled="isDisabledData"
-            v-model="item.stage_target"
-          >
-          </el-input>
-        </div>
-      </el-col>
-      <el-col :span="7"
-        ><div class="grid-content bg-purple">
-          <el-input
-            type="textarea"
-            resize="none"
-            rows="5"
-            :disabled="isDisabledData"
-            v-model="item.stage_content"
-          >
-          </el-input>
-        </div>
-      </el-col>
-    </el-row>
+    <div class="dataRow">
+      <el-row v-for="(item, index) in techStage" :key="index">
+        <el-col :span="3">
+          <div class="grid-content bg-purple">第 {{ item.prj_stage }} 阶段</div>
+        </el-col>
+        <el-col :span="7"
+          ><div class="grid-content bg-purple">
+            <el-date-picker
+              @change="onPick(item, index)"
+              v-model="item.stage"
+              type="daterange"
+              value-format="yyyy-MM-dd"
+              range-separator="至"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期"
+              :default-time="['00:00:00', '23:59:59']"
+            >
+            </el-date-picker>
+          </div>
+        </el-col>
+        <el-col :span="7"
+          ><div class="grid-content bg-purple">
+            <el-input
+              type="textarea"
+              resize="none"
+              rows="5"
+              :disabled="isDisabledData"
+              v-model="item.stage_target"
+            >
+            </el-input>
+          </div>
+        </el-col>
+        <el-col :span="7"
+          ><div class="grid-content bg-purple">
+            <el-input
+              type="textarea"
+              resize="none"
+              rows="5"
+              :disabled="isDisabledData"
+              v-model="item.stage_content"
+            >
+            </el-input>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
 
     <div class="handle" :style="{ display: isDisabledData ? 'none' : 'block' }">
       <el-button type="primary" @click="handleAddHtml">添加一条</el-button>
@@ -79,8 +82,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      value1: "",
-      basis_condition: "",
+      //stage: "",
     };
   },
   computed: {
@@ -88,7 +90,8 @@ export default {
     techStage: {
       get() {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.HighTech.HighTechData.techStage[0]["task_id"] = this.HighTech.userTaskId;
+        this.HighTech.HighTechData.techStage[0]["task_id"] =
+          this.HighTech.userTaskId;
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.HighTech.HighTechData.techStage[0]["prj_stage"] = "1";
         //this.Modern.ModernData.basic_info.creator = this.Modern.userName
@@ -108,10 +111,12 @@ export default {
     },
   },
   methods: {
-    onPick(item) {
-      // item.stage_start = item.stage[0];
-      // item.stage_end = item.stage[1];
-      console.log(item);
+    onPick(item, index) {
+      item.stage_start = item.stage[0];
+      item.stage_end = item.stage[1];
+      console.log(item, index);
+      // this.techStage[index].stage_start = item.stage[0];
+      // this.techStage[index].stage_end = item.stage[1];
     },
     handleAddHtml() {
       let str = {
@@ -176,7 +181,7 @@ export default {
 }
 
 .HighProgress .dataRow .el-col {
-  border-right: 1px solid #ccc;
+  border: 1px solid #ccc;
 }
 .HighProgress .el-date-editor--daterange {
   border: none;
@@ -185,5 +190,11 @@ export default {
 }
 .HighProgress .el-textarea__inner {
   border: none;
+}
+.HighProgress .asterisk::before {
+  display: inline-block;
+  content: "*";
+  color: #f56c6c;
+  margin-right: 4px;
 }
 </style>

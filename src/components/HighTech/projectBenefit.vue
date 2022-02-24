@@ -1,6 +1,6 @@
 <template>
   <div class="MoboxTitle">
-    <el-row class="title"> 项目效益 </el-row>
+    <el-row class="title"> 项目效益 （事业）</el-row>
     <p>1、项目预期技术指标、经济和社会效益;</p>
     <p>
       2、技术指标：项目预期达到的技术标准、技术水平、填补空白、知识产权成果（专利、著作、软件、标准等）;

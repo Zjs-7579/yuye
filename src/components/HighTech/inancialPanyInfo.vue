@@ -1,5 +1,5 @@
 <template>
-  <div class="Moinancial">
+  <div class="PanInimical">
     <el-row class="title"> 单位近三年财务状况（企业类填报） </el-row>
     <el-row class="titleRow">
       <el-col :span="2"><div class="grid-content bg-purple">序号</div></el-col>
@@ -156,14 +156,15 @@ export default {
 </script>
 
 <style>
-/* .Moinancial .el-tabs__content{
+/* .PanInimical .el-tabs__content{
   position: relative;
 } */
-.Moinancial {
+.PanInimical {
   width: 100%;
   height: 75vh;
+  display: block;
 }
-.Moinancial .title {
+.PanInimical .title {
   background-color: #ece8e8;
   height: 60px;
   line-height: 60px !important;
@@ -174,67 +175,67 @@ export default {
   text-align: left;
 }
 
-.Moinancial .el-row {
+.PanInimical .el-row {
   line-height: 40px;
   /* padding: 8px; */
 }
-.Moinancial .titleRow {
+.PanInimical .titleRow {
   text-align: center;
   line-height: 60px;
 }
-.Moinancial .boldText {
+.PanInimical .boldText {
   font-weight: bold;
 }
-.Moinancial .el-input__inner {
+.PanInimical .el-input__inner {
   width: 80%;
   border: none;
   font-size: 18px;
 }
-.Moinancial .rowColor .el-input__inner {
+.PanInimical .rowColor .el-input__inner {
   background-color: rgb(235, 231, 231);
 }
-.Moinancial #disabled .el-input__inner.disabled {
+.PanInimical #disabled .el-input__inner.disabled {
   opacity: 0.1;
 }
-.Moinancial .dataPanRow {
+.PanInimical .dataPanRow {
   height: 62vh;
   overflow: hidden;
   overflow-y: overlay;
 }
-.Moinancial .dataPanRow .el-row {
+.PanInimical .dataPanRow .el-row {
   border: 1px solid #ccc;
 }
-.Moinancial .dataPanRow .el-col {
+.PanInimical .dataPanRow .el-col {
   border-right: 1px solid #ccc;
   padding: 8px 0;
 }
-.Moinancial .titleRow {
+.PanInimical .titleRow {
   background-color: #ece8e8;
   border: 1px solid #ccc;
 }
-.Moinancial .titleRow .el-col {
+.PanInimical .titleRow .el-col {
   border-right: 1px solid #ccc;
 }
-.Moinancial .dataPanRow .el-row:nth-child(3) .el-col:nth-child(2),
-.Moinancial .dataPanRow .el-row:nth-child(9) .el-col:nth-child(2),
-.Moinancial .dataPanRow .el-row:nth-child(11) .el-col:nth-child(2),
-.Moinancial .dataPanRow .el-row:nth-child(12) .el-col:nth-child(2),
-.Moinancial .dataPanRow .el-row:nth-child(15) .el-col:nth-child(2),
-.Moinancial .dataPanRow .el-row:nth-child(16) .el-col:nth-child(2),
-.Moinancial .dataPanRow .el-row:nth-child(17) .el-col:nth-child(2),
-.Moinancial .dataPanRow .el-row:nth-child(18) .el-col:nth-child(2) {
+.PanInimical .dataPanRow .el-row:nth-child(3) .el-col:nth-child(2),
+.PanInimical .dataPanRow .el-row:nth-child(9) .el-col:nth-child(2),
+.PanInimical .dataPanRow .el-row:nth-child(11) .el-col:nth-child(2),
+.PanInimical .dataPanRow .el-row:nth-child(12) .el-col:nth-child(2),
+.PanInimical .dataPanRow .el-row:nth-child(15) .el-col:nth-child(2),
+.PanInimical .dataPanRow .el-row:nth-child(16) .el-col:nth-child(2),
+.PanInimical .dataPanRow .el-row:nth-child(17) .el-col:nth-child(2),
+.PanInimical .dataPanRow .el-row:nth-child(18) .el-col:nth-child(2) {
   padding-left: 3em;
 }
 
-.Moinancial input::-webkit-inner-spin-button {
+.PanInimical input::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
 }
 
-.Moinancial input::-webkit-outer-spin-button {
+.PanInimical input::-webkit-outer-spin-button {
   -webkit-appearance: none !important;
 }
 
-.Moinancial input[type="number"] {
+.PanInimical input[type="number"] {
   -moz-appearance: textfield;
 }
 </style>

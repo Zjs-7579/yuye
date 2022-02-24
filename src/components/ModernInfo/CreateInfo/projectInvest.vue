@@ -45,7 +45,7 @@
 <script>
 import ProjectInvestDetailed from "./projectInvestDetailed.vue";
 import ProjectInvestEquip from "./projectInvestEquip.vue";
-import { ModernOther } from "../../../utils/validator";
+import { ModernSummarize } from "../../../utils/validator";
 import { mapState } from "vuex";
 export default {
   data() {
@@ -54,7 +54,7 @@ export default {
       //   project_invest: "",
       //   support: "",
       // }
-      rules: ModernOther,
+      rules: ModernSummarize,
     };
   },
   computed: {

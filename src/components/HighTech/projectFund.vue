@@ -5,6 +5,7 @@
     <el-form
       ref="ruleForm"
       label-width="150px"
+      :rules="rules"
       :disabled="isDisabledData"
       class="demo-ruleForm"
     >
@@ -27,7 +28,7 @@
     </el-form>
 
     <div class="box">
-      <el-row class="title"> 项目总投资明细 </el-row>
+      <el-row class="title asterisk"> 项目总投资明细 </el-row>
       <el-row class="titleRow">
         <el-col :span="2"
           ><div class="grid-content bg-purple">序号</div></el-col
@@ -131,9 +132,11 @@
 import { mapState } from "vuex";
 import ProjectFundListing from "./projectFundListing.vue";
 import fundData from "../../static/HighTechData/fundData.js";
+import { ModernSummarize } from "../../utils/validator";
 export default {
   data() {
     return {
+      rules: ModernSummarize,
       total_invest: "",
       state_funding: "",
       city_support: "",
@@ -148,6 +151,7 @@ export default {
       get() {
         //this.HighTech.HighTechData.techFunds['task_id'] = this.HighTech.userTaskId
         for (let item in this.HighTech.HighTechData.techFunds) {
+          // eslint-disable-next-line vue/no-side-effects-in-computed-properties
           this.HighTech.HighTechData.techFunds[item]["task_id"] =
             this.HighTech.userTaskId;
         }
@@ -178,14 +182,14 @@ export default {
             item != "state_funding" &&
             item != "city_support"
           ) {
-            sum += this.techFunds[0][item] * 1;
+            sum += this.techFunds[0][item] * 10000;
           }
         }
 
-        return sum;
+        return sum / 10000;
       },
       set(val) {
-        this.totalExpends1 = sum;
+        this.totalExpends1 = val;
       },
     },
     totalExpends2: {
@@ -199,14 +203,14 @@ export default {
             item != "state_funding" &&
             item != "city_support"
           ) {
-            sum += this.techFunds[1][item] * 1;
+            sum += this.techFunds[1][item] * 10000;
           }
         }
 
-        return sum;
+        return sum / 10000;
       },
       set(val) {
-        this.totalExpends1 = sum;
+        this.totalExpends2 = val;
       },
     },
     totalExpends3: {
@@ -220,14 +224,14 @@ export default {
             item != "state_funding" &&
             item != "city_support"
           ) {
-            sum += this.techFunds[2][item] * 1;
+            sum += this.techFunds[2][item] * 10000;
           }
         }
 
-        return sum;
+        return sum / 10000;
       },
       set(val) {
-        this.totalExpends1 = sum;
+        this.totalExpends3 = val;
       },
     },
     // total_invest: {
@@ -407,5 +411,11 @@ export default {
 
 .HighFund .dataRow input[type="text"] {
   -moz-appearance: textfield;
+}
+.HighFund .asterisk::before {
+  display: inline-block;
+  content: "*";
+  color: #f56c6c;
+  margin-right: 4px;
 }
 </style>

@@ -246,7 +246,6 @@ export default {
 
 .Mounit .demo-ruleForm {
   border: 1px solid #ccc;
-  /* box-shadow: 1px 1px 1px 1px #000; */
   margin: 0;
   padding: 0;
 }
@@ -265,9 +264,6 @@ export default {
   margin-left: -1px;
   height: 60px;
   border-bottom: 1px solid #fff;
-  /* box-shadow: 1px 1px 1px 1px #000; */
-  /* border-left: 1px solid #ccc; */
-  /* margin-top: -1px; */
 }
 .Mounit .el-form-item__label {
   text-align: center;

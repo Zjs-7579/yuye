@@ -1,21 +1,22 @@
 <template>
   <div class="MoInvest">
-    <el-row class="title"> 项目投资情况 </el-row>
+    <el-row class="title"> 项目投资情况 （企业）</el-row>
     <el-form
       :model="techInvestTotal"
       ref="InvestTotal"
+      :rules="rules"
       :disabled="isDisabledData"
       label-width="250px"
       class="demo-ruleForm"
     >
       <el-row>
         <el-col :span="12">
-          <el-form-item label="项目总投资:">
+          <el-form-item label="项目总投资:" prop="project_invest">
             <el-input v-model="techInvestTotal.project_invest"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="申请市财政资助额:">
+          <el-form-item label="申请市财政资助额:" prop="support">
             <el-input v-model="techInvestTotal.support"></el-input>
           </el-form-item>
         </el-col>
@@ -44,10 +45,12 @@
 <script>
 import ProjectInvestDetailed from "./projectInvestDetailed.vue";
 import ProjectInvestEquip from "./projectInvestEquip.vue";
+import { ModernSummarize } from "../../utils/validator";
 import { mapState } from "vuex";
 export default {
   data() {
     return {
+      rules: ModernSummarize,
       // InvestTotal: {
       //   project_invest: "",
       //   support: "",

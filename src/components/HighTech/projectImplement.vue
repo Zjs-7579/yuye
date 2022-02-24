@@ -1,6 +1,6 @@
 <template>
-  <div class="MoboxTitle">
-    <el-row class="title"> 项目实施背景及意义 </el-row>
+  <div class="HIboxMelt">
+    <el-row class="title asterisk"> 项目实施背景及意义 （事业）</el-row>
     <p>
       简述项目实施的背景、必要性和意义（结合相关产业领域国内外现状和发展趋势，
       阐述项目的创新性、领先性、对产业转型升级的影响、
@@ -52,11 +52,11 @@ export default {
 </script>
 
 <style>
-.MoboxTitle {
+.HIboxMelt {
   width: 100%;
   height: 75vh;
 }
-.MoboxTitle .title {
+.HIboxMelt .title {
   background-color: #ece8e8;
   height: 60px;
   line-height: 60px;
@@ -65,9 +65,15 @@ export default {
   font-weight: bold;
   border: 1px solid #ccc;
 }
-.MoboxTitle p {
+.HIboxMelt p {
   font-weight: bold;
   font-size: 20px;
   padding: 35px 0;
+}
+.HIboxMelt .asterisk::before {
+  display: inline-block;
+  content: "*";
+  color: #f56c6c;
+  margin-right: 4px;
 }
 </style>
