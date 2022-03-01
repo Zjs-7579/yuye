@@ -52,11 +52,14 @@ export async function MoDetail(row, router, store) {
   console.log(router);
   let status = await getModern(row.task_id, store);
   if (status == 200) {
-    if (router.history.current.name != "UserDetail") {
+    if (router.history.current.name == "UserDetail") {
       router.push({
-        path: `${router.history.current.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+        path: `${router.history.current.path}?&type=${row.task_source}&id=${row.task_id}`,
+        //path: `${router.history.current.fullPath}`,
+        //path: `${router.history.current.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
       });
-    } else {
+    }
+    if (router.history.current.name == null) {
       router.push({
         path: `${router.history.current.path}?&type=${row.task_source}&id=${row.task_id}`,
       });

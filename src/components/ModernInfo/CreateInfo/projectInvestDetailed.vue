@@ -67,6 +67,14 @@
         >
           <el-button
             size="small"
+            v-if="path.indexOf('detailInspect') > 0"
+            @click="handleLookDataClick(item)"
+          >
+            {{ item.material_id }}
+          </el-button>
+          <el-button
+            v-if="path.indexOf('createInfo') > 0"
+            size="small"
             type="primary"
             @click="handleInventDataClick(item)"
             :disabled="isDisabledData"
@@ -110,6 +118,7 @@ export default {
     return {
       FromeItemData: "", //上传当前的数据
       formData: "", //上传文件
+      path: "",
       //colorList: ['blue']
       //fileList: [],
       //From: dataFrom,
@@ -232,6 +241,10 @@ export default {
       //console.log(this.modernInvestMent)
       //console.log(this.colorList)
     },
+  },
+  mounted() {
+    console.log(this.$route);
+    this.path = this.$route.path;
   },
   watch: {
     data: {

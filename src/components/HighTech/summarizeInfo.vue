@@ -3,7 +3,7 @@
     <div class="SummarizeBase">
       <el-form
         :model="techAbstract"
-        ref="SummarizeForm"
+        ref="SummarizeFormBase"
         :disabled="isDisabledData"
         :rules="rules"
         label-width="250px"
@@ -175,6 +175,15 @@ export default {
   text-align: center;
   height: 60px;
   line-height: 60px;
+}
+.HighSummarize .SummarizeBase .el-form-item__error {
+  color: #f56c6c;
+  font-size: 12px;
+  line-height: 1;
+  padding-top: 4px;
+  position: absolute;
+  top: 80%;
+  left: 0;
 }
 .HighSummarize .SummarizeBase .el-form-item .el-form-item__content {
   border-left: 1px solid #ccc;

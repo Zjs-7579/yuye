@@ -182,11 +182,11 @@ export default {
             item != "state_funding" &&
             item != "city_support"
           ) {
-            sum += this.techFunds[0][item] * 10000;
+            sum += this.techFunds[0][item];
           }
         }
 
-        return sum / 10000;
+        return sum;
       },
       set(val) {
         this.totalExpends1 = val;
@@ -203,11 +203,11 @@ export default {
             item != "state_funding" &&
             item != "city_support"
           ) {
-            sum += this.techFunds[1][item] * 10000;
+            sum += this.techFunds[1][item];
           }
         }
 
-        return sum / 10000;
+        return sum;
       },
       set(val) {
         this.totalExpends2 = val;
@@ -224,11 +224,11 @@ export default {
             item != "state_funding" &&
             item != "city_support"
           ) {
-            sum += this.techFunds[2][item] * 10000;
+            sum += this.techFunds[2][item];
           }
         }
 
-        return sum / 10000;
+        return sum;
       },
       set(val) {
         this.totalExpends3 = val;

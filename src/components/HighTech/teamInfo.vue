@@ -127,7 +127,7 @@
 
     <el-form
       v-for="(item, index) in techMemberList"
-      ref="teamForm"
+      ref="teamFormList"
       :rules="rules"
       :key="index"
       :model="techMemberList[index]"

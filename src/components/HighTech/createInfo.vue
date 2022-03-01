@@ -48,7 +48,7 @@
 
       <el-tab-pane
         v-if="regist_type == '企业'"
-        label="项目实施的背景、意义及实施内容"
+        label="项目实施的背景、意义及实施内容(企业)"
         :disabled="isDataShow"
         name="ProjectContent"
       >
@@ -57,7 +57,7 @@
 
       <el-tab-pane
         v-if="regist_type == '事业单位'"
-        label="项目实施背景及意义"
+        label="项目实施背景及意义(事业)"
         :disabled="isDataShow"
         name="ProjectImplement"
       >
@@ -65,7 +65,7 @@
       </el-tab-pane>
       <el-tab-pane
         v-if="regist_type == '事业单位'"
-        label="项目建设内容"
+        label="项目建设内容(事业)"
         :disabled="isDataShow"
         name="ProjectBuild"
       >
@@ -73,7 +73,7 @@
       </el-tab-pane>
       <el-tab-pane
         v-if="regist_type == '事业单位'"
-        label="项目实施基础和条件"
+        label="项目实施基础和条件(事业)"
         :disabled="isDataShow"
         name="ProjectCondition"
       >
@@ -81,7 +81,7 @@
       </el-tab-pane>
       <el-tab-pane
         v-if="regist_type == '事业单位'"
-        label="项目实施进度与管理"
+        label="项目实施进度与管理(事业)"
         :disabled="isDataShow"
         name="ProjectProgress"
       >
@@ -89,7 +89,7 @@
       </el-tab-pane>
       <el-tab-pane
         v-if="regist_type == '事业单位'"
-        label="项目效益"
+        label="项目效益(事业)"
         :disabled="isDataShow"
         name="ProjectBenefit"
       >
@@ -97,7 +97,7 @@
       </el-tab-pane>
       <el-tab-pane
         v-if="regist_type == '事业单位'"
-        label="项目经费"
+        label="项目经费(事业)"
         :disabled="isDataShow"
         name="ProjectFund"
       >
@@ -106,7 +106,7 @@
 
       <el-tab-pane
         v-if="regist_type == '企业'"
-        label="项目投资情况"
+        label="项目投资情况(企业)"
         :disabled="isDataShow"
         name="ProjectInvest"
       >

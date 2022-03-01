@@ -73,6 +73,7 @@ export default {
     ...mapState(["HighTech"]),
     techShareholders: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.HighTech.HighTechData.techShareholders[0]["task_id"] =
           this.HighTech.userTaskId;
         //this.HighTech.HighTechData.techShareholders[0].creator = this.HighTech.userName
@@ -100,7 +101,6 @@ export default {
         amount: "",
         payer_type: "",
         share_proportion: "",
-        creator: this.HighTech.userName,
       };
       this.techShareholders.push(str);
     },

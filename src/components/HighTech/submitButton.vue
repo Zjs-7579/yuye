@@ -187,13 +187,19 @@ export default {
         this.$parent.$refs.HighTechUnitInfoValidate.$refs.unitForm.validate(
           (e) => {
             this.UnitInfoBool = e;
-            console.log("*****************", e);
+            //console.log("*****************", e);
           }
         );
         this.$parent.$refs.HighTechUnitInfoValidate.$refs.HighTechUnitNotEmployed.$refs.ruleForm.validate(
           (e) => {
             this.UnitInfoBool = e;
-            console.log("*****************", e);
+            //console.log("*****************", e);
+          }
+        );
+        this.$parent.$refs.HighTechUnitInfoValidate.$refs.HighTechUnitNotEmployed.$refs.ruleFormPerson.validate(
+          (e) => {
+            this.UnitInfoBool = e;
+            //console.log("*****************", e);
           }
         );
         for (let item of this.HighTech.HighTechData.techShareholders) {
@@ -267,14 +273,31 @@ export default {
       }
       if (activeName == "TeamInfo") {
         this.TeamInfoBool = true;
+        // console.log(
+        //   "@@@@@@",
+        //   this.$parent.$refs.HighTechTeamInfoValidate.$refs
+        // );
+        this.$parent.$refs.HighTechTeamInfoValidate.$refs.teamForm.validate(
+          (e) => {
+            this.TeamInfoBool = e;
+          }
+        );
         for (let item of this.$parent.$refs.HighTechTeamInfoValidate.$refs
-          .teamForm) {
+          .teamFormList) {
           item.validate((e) => {
             if (!e) {
               this.TeamInfoBool = e;
             }
           });
         }
+        // for (let item of this.$parent.$refs.HighTechTeamInfoValidate.$refs
+        //   .teamFormList[0]) {
+        //   item.validate((e) => {
+        //     if (!e) {
+        //       this.TeamInfoBool = e;
+        //     }
+        //   });
+        // }
         //console.log(this.HoldInfoBool)
       }
       if (activeName == "ProjectUnitInfo") {
@@ -337,11 +360,35 @@ export default {
 
       if (activeName == "SummarizeInfo") {
         this.SummarizeInfoBool = true;
+        console.log(
+          "@@@@@@@@",
+          this.$parent.$refs.HighTechSummarizeInfoValidate.$refs
+        );
+        this.$parent.$refs.HighTechSummarizeInfoValidate.$refs.SummarizeFormBase.validate(
+          (e) => {
+            this.SummarizeInfoBool = e;
+          }
+        );
         this.$parent.$refs.HighTechSummarizeInfoValidate.$refs.SummarizeForm.validate(
           (e) => {
             this.SummarizeInfoBool = e;
           }
         );
+      }
+
+      if (activeName == "ProjectProgress") {
+        this.ProjectProgressBool = true;
+
+        for (let item of this.HighTech.HighTechData.techStage) {
+          //console.log(item)
+          for (let result in item) {
+            //console.log(result)
+            if (item[result] == "") {
+              this.ProjectProgressBool = false;
+              break;
+            }
+          }
+        }
       }
 
       if (activeName == "ProjectBenefit") {

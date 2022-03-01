@@ -226,7 +226,7 @@ export default {
         fixed_assets: "", //年末固定资产原值
         sci_room_assets: "", //年末科研用房原值
         sci_equipment_assets: "", //年末科研设备原值
-        othert_assets: "", //其他固定资产原值
+        other_assets: "", //其他固定资产原值
         fixed_growth_rate: "", //固定资产增长率
         equipment_growth_rate: "", //科研设备资产增长率
         total_liabilities: "", //年末负债总额
