@@ -1,15 +1,15 @@
 <template>
   <div>
     <el-form
-      ref="ruleForm"
+      ref="ruleForm1"
       :model="formData"
       :disabled="isDisabledData"
+      :rules="rules"
       label-width="310px"
       class="demo-ruleForm"
     >
       <el-row class="title"> 上年末从业人员情况 </el-row>
       <el-row type="flex">
-        <!-- TODO -->
         <el-row style="width: 100%; height: 120px" class="rowLayout">
           <el-col
             :span="4"
@@ -76,12 +76,6 @@
             <el-input v-model="formData.overseas_num"></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="4"><p class="spanFont">从业人员总数</p></el-col>
-        <el-col :span="4">
-          <el-form-item label-width="0" prop="employees_num">
-            <el-input v-model="formData.employees_num"></el-input>
-          </el-form-item>
-        </el-col>
         <el-col :span="4"><p class="spanFont">参加社保人数:</p></el-col>
         <el-col :span="4">
           <el-form-item label-width="0" prop="social_security_num">
@@ -93,11 +87,18 @@
             <el-input v-model="formData.foreign_experts_num"></el-input>
           </el-form-item>
         </el-col>
+        <el-col :span="4"><p class="spanFont">新增高校毕业生:</p></el-col>
+        <el-col :span="4">
+          <el-form-item label-width="0" prop="graduate_num">
+            <el-input v-model="formData.graduate_num"></el-input>
+          </el-form-item>
+        </el-col>
       </el-row>
 
       <el-form
         :model="formData"
-        ref="ruleForm"
+        ref="ruleForm2"
+        :rules="rules"
         label-width="150px"
         :disabled="isDisabledData"
         class="demo-ruleForm"
@@ -202,13 +203,14 @@
 
 <script>
 import { mapState } from "vuex";
-
+import { ModernUnitEmpForm } from "../../utils/validator";
 export default {
   data() {
     return {
       numOne: [],
       numTwo: [],
       numThree: [],
+      rules: ModernUnitEmpForm,
       // sum1: [],
       // sum2: [],
       // sum3: [],
@@ -285,6 +287,12 @@ export default {
   /* box-shadow: 0 0 1px 0 #000; */
   /* box-sizing: content-box; */
   color: #606266;
+}
+.spanFont::before {
+  display: inline-block;
+  content: "*";
+  color: #f56c6c;
+  margin-right: 4px;
 }
 .titleSmall {
   height: 30px;

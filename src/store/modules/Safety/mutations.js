@@ -24,11 +24,8 @@ export default {
   },
 
   Safety_AllClearData(state, res) {
-    console.log("////////////", res);
     state.SafetyData = res.result;
     state.uploadUrlData = res.uploadUrlData;
-
-    console.log(state);
   },
 
   Safety_ClearAllData(state) {

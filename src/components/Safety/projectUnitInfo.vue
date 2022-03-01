@@ -1,7 +1,7 @@
 <template>
   <div class="MoboxTitle">
     <el-row class="title"> 项目承担单位基本情况 </el-row>
-    <p>
+    <p class="redPrompt">
       项目单位基本情况、经营管理状况、布局全国情况、行业地位及行业影响力等，
       包括但不限于：成立时间、规模、在行业内的地位、主营业务和主要产品及市场占有率、
       人才结构、经营业绩、已获得的各类资质认证和知识产权情况。(限500字之内)
@@ -65,5 +65,11 @@ export default {
   font-weight: bold;
   font-size: 20px;
   padding: 35px 0;
+}
+.redPrompt::before {
+  display: inline-block;
+  content: "*";
+  color: #f56c6c;
+  margin-right: 4px;
 }
 </style>

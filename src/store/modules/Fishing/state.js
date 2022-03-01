@@ -230,7 +230,7 @@ export default {
         //all_cyse_number: "",//农业农村部申报情况:数量（kg）--总计
       },
     ],
-    oceanNanshaVolumes: [
+    oceanReturns: [
       {
         // enterprise_name: "", // 企业名称
         // apltion_startime: "", // 项目申请开始时间

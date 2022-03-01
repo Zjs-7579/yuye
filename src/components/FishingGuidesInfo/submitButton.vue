@@ -160,7 +160,10 @@ export default {
             }
           );
         }
-        if (this.declare_name == "自捕远洋海产品回运费") {
+        if (
+          this.declare_name == "自捕远洋海产品回运费" ||
+          this.declare_name == "自捕南沙海产品回运费"
+        ) {
           this.$parent.$refs.ApplyInfo.$refs.CatchFishing.$refs.catchForm.validate(
             (e) => {
               this.ApplyInfoBool = e;
@@ -253,7 +256,6 @@ export default {
       }
 
       if (this.activeName == "StatisticalInfo") {
-        console.log("🔍");
         createInfoStatisticsData(
           this.declare_name,
           this.Fishing.OceanParam

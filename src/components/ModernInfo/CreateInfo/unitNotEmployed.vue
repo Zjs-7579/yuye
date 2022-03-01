@@ -10,7 +10,6 @@
     >
       <el-row class="title"> 上年末从业人员情况 </el-row>
       <el-row type="flex">
-        <!-- TODO -->
         <el-row style="width: 100%; height: 120px" class="rowLayout">
           <el-col
             :span="4"
@@ -77,12 +76,6 @@
             <el-input v-model="modernCompany.overseas_num"></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="4"><p class="spanFont">从业人员总数</p></el-col>
-        <el-col :span="4">
-          <el-form-item label-width="0" prop="employees_num">
-            <el-input v-model="modernCompany.employees_num"></el-input>
-          </el-form-item>
-        </el-col>
         <el-col :span="4"><p class="spanFont">参加社保人数:</p></el-col>
         <el-col :span="4">
           <el-form-item label-width="0" prop="social_security_num">
@@ -92,6 +85,12 @@
         <el-col :span="4">
           <el-form-item label-width="0" prop="foreign_experts_num">
             <el-input v-model="modernCompany.foreign_experts_num"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="4"><p class="spanFont">新增高校毕业生:</p></el-col>
+        <el-col :span="4">
+          <el-form-item label-width="0" prop="graduate_num">
+            <el-input v-model="modernCompany.graduate_num"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -288,6 +287,7 @@
 </template>
 
 <script>
+/* eslint-disable vue/no-side-effects-in-computed-properties */
 import { mapState } from "vuex";
 import { ModernUnitEmpForm } from "../../../utils/validator";
 export default {

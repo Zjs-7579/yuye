@@ -188,7 +188,7 @@
       </el-form-item>
     </el-form>
 
-    <unitNotEmployed></unitNotEmployed>
+    <unitNotEmployed ref="unitNotEmployedForm"></unitNotEmployed>
     <unitOwnership></unitOwnership>
   </div>
 </template>
@@ -208,6 +208,7 @@ export default {
     ...mapState(["Safety"]),
     safetyCompany: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.Safety.SafetyData.safetyCompany["task_id"] =
           this.Safety.userTaskId;
         return this.Safety.SafetyData.safetyCompany;

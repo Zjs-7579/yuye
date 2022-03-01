@@ -32,11 +32,7 @@
       </el-col>
     </el-row>
 
-    <el-row
-      class="dataRow"
-      v-for="(item, index) in oceanNanshaVolumes"
-      :key="index"
-    >
+    <el-row class="dataRow" v-for="(item, index) in oceanReturns" :key="index">
       <el-col :span="2">
         {{ index + 1 }}
       </el-col>
@@ -151,12 +147,12 @@ export default {
   },
   computed: {
     ...mapState(["Fishing"]),
-    oceanNanshaVolumes: {
+    oceanReturns: {
       get() {
-        return this.Fishing.OceanParam.oceanNanshaVolumes;
+        return this.Fishing.OceanParam.oceanReturns;
       },
       set(val) {
-        this.oceanNanshaVolumes = val;
+        this.oceanReturns = val;
       },
     },
     isDisabledData: {
@@ -168,28 +164,24 @@ export default {
       },
     },
     wh_total_num() {
-      const sum = this.oceanNanshaVolumes.reduce((sum, item) => {
+      return this.oceanReturns.reduce((sum, item) => {
         return +sum + +(item.wholesale_num ? item.wholesale_num : 0);
       }, 0);
-      return sum.toFixed(2);
     },
     wh_total_amt() {
-      const sum = this.oceanNanshaVolumes.reduce((sum, item) => {
+      return this.oceanReturns.reduce((sum, item) => {
         return +sum + +(item.wholesale_amt ? item.wholesale_amt : 0);
       }, 0);
-      return sum.toFixed(2);
     },
     re_total_num() {
-      const sum = this.oceanNanshaVolumes.reduce((sum, item) => {
+      return this.oceanReturns.reduce((sum, item) => {
         return +sum + +(item.retail_num ? item.retail_num : 0);
       }, 0);
-      return sum.toFixed(2);
     },
     re_total_amt() {
-      const sum = this.oceanNanshaVolumes.reduce((sum, item) => {
+      return this.oceanReturns.reduce((sum, item) => {
         return +sum + +(item.retail_amt ? item.retail_amt : 0);
       }, 0);
-      return sum.toFixed(2);
     },
   },
   methods: {
@@ -210,28 +202,30 @@ export default {
         cyse_number: "", //农业农村部申报情况:数量（kg）
         //all_cyse_number: "",//农业农村部申报情况:数量（kg）--总计
       };
-      this.oceanNanshaVolumes.push(data);
+      this.oceanReturns.push(data);
     },
     handleDeleteHtml() {
-      const len = this.oceanNanshaVolumes.length;
-      if (this.oceanNanshaVolumes.length == 1) {
+      const len = this.oceanReturns.length;
+      if (this.oceanReturns.length == 1) {
         this.$message({
           message: "就剩最后一条信息了！！！",
           type: "warning",
         });
       } else {
-        this.oceanNanshaVolumes.splice(len - 1, 1);
+        this.oceanReturns.splice(len - 1, 1);
       }
     },
   },
   watch: {
-    oceanNanshaVolumes: {
+    oceanReturns: {
       handler(val) {
         for (let item of val) {
           item["task_id"] = this.Fishing.userTaskId;
           //item.creator = this.Modern.userName;
-          item["all_customs_number"] = this.all_customs_number;
-          item["all_cyse_number"] = this.all_cyse_number;
+          item["wh_total_num"] = this.wh_total_num;
+          item["wh_total_amt"] = this.wh_total_amt;
+          item["re_total_num"] = this.re_total_num;
+          item["re_total_amt"] = this.re_total_amt;
         }
       },
       deep: true,

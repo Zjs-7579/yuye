@@ -2,10 +2,8 @@ import { SafetyInspectData } from "../../api/searchDetailsInspect";
 import { safetyData, safetyFilesData } from "./safetyUpData";
 
 async function getSafety(task_id, store) {
-  //console.log(store);
   const res = await SafetyInspectData(task_id);
   if (res.data.code == 200) {
-    //console.log("----------------------------", res);
     store.commit("Safety_UserTaskId", task_id);
     let result = safetyData(res.data.data);
     let uploadUrlData = safetyFilesData(res.data.data.images);
@@ -33,7 +31,7 @@ export async function SaJudge(row, router, store) {
       row.declare_status == "待提交"
     ) {
       router.push({
-        path: `/fishingGuidesInfo?&type=${row.task_source}&id=${row.task_id}`,
+        path: `/safety?&type=${row.task_source}&id=${row.task_id}`,
       });
     }
     if (
@@ -42,7 +40,7 @@ export async function SaJudge(row, router, store) {
     ) {
       //store.commit("Agricul_IsDetailsContentOpen");
       router.push({
-        path: `/fishingGuidesInfo/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+        path: `/safety/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
       });
     }
   } else {

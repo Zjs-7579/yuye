@@ -38,10 +38,7 @@ export default {
   },
 
   HighTech_AllClearData(state, res) {
-    console.log("////////////", res);
     state.HighTechData = res.result;
     state.uploadUrlData = res.uploadUrlData;
-
-    console.log(state);
   },
 };
