@@ -25,17 +25,17 @@
 
     <ProjectInvestDetailed
       title="建筑工程类投资明细"
-      :data="techInvestment.jz"
+      :data="techInvestmentList.jz"
     ></ProjectInvestDetailed>
 
     <ProjectInvestDetailed
       title="生产设施建设类投资明细"
-      :data="techInvestment.sc"
+      :data="techInvestmentList.sc"
     ></ProjectInvestDetailed>
 
     <ProjectInvestDetailed
       title="仪器、设备类投资明细"
-      :data="techInvestment.yq"
+      :data="techInvestmentList.yq"
     ></ProjectInvestDetailed>
 
     <ProjectInvestEquip></ProjectInvestEquip>
@@ -70,21 +70,21 @@ export default {
         this.techInvestTotal = val;
       },
     },
-    techInvestment: {
+    techInvestmentList: {
       get() {
-        let jz = this.HighTech.HighTechData.techInvestment.filter((res) => {
+        let jz = this.HighTech.HighTechData.techInvestmentList.filter((res) => {
           return res.inv_type == "建筑工程类投资明细";
         });
-        let sc = this.HighTech.HighTechData.techInvestment.filter((res) => {
+        let sc = this.HighTech.HighTechData.techInvestmentList.filter((res) => {
           return res.inv_type == "生产设施建设类投资明细";
         });
-        let yq = this.HighTech.HighTechData.techInvestment.filter((res) => {
+        let yq = this.HighTech.HighTechData.techInvestmentList.filter((res) => {
           return res.inv_type == "仪器、设备类投资明细";
         });
         return { jz, sc, yq };
       },
       set(val) {
-        this.techInvestment = val;
+        this.techInvestmentList = val;
       },
     },
     isDisabledData: {
@@ -101,7 +101,7 @@ export default {
     ProjectInvestEquip,
   },
   // watch:{
-  //   techInvestment:{
+  //   techInvestmentList:{
   //     handler(val) {
   //       for(let item of val){
   //         item['project_invest'] = this.InvestTotal.project_invest

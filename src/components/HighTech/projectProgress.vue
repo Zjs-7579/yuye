@@ -24,7 +24,7 @@
     </el-row>
 
     <div class="dataRow">
-      <el-row v-for="(item, index) in techStage" :key="index">
+      <el-row v-for="(item, index) in techStageList" :key="index">
         <el-col :span="3">
           <div class="grid-content bg-purple">第 {{ item.prj_stage }} 阶段</div>
         </el-col>
@@ -87,18 +87,18 @@ export default {
   },
   computed: {
     ...mapState(["HighTech"]),
-    techStage: {
+    techStageList: {
       get() {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.HighTech.HighTechData.techStage[0]["task_id"] =
+        this.HighTech.HighTechData.techStageList[0]["task_id"] =
           this.HighTech.userTaskId;
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.HighTech.HighTechData.techStage[0]["prj_stage"] = "1";
+        this.HighTech.HighTechData.techStageList[0]["prj_stage"] = "1";
         //this.Modern.ModernData.basic_info.creator = this.Modern.userName
-        return this.HighTech.HighTechData.techStage;
+        return this.HighTech.HighTechData.techStageList;
       },
       set(val) {
-        this.techStage = val;
+        this.techStageList = val;
       },
     },
     isDisabledData: {
@@ -115,29 +115,29 @@ export default {
       item.stage_start = item.stage[0];
       item.stage_end = item.stage[1];
       console.log(item, index);
-      // this.techStage[index].stage_start = item.stage[0];
-      // this.techStage[index].stage_end = item.stage[1];
+      // this.techStageList[index].stage_start = item.stage[0];
+      // this.techStageList[index].stage_end = item.stage[1];
     },
     handleAddHtml() {
       let str = {
         task_id: this.HighTech.userTaskId,
-        prj_stage: this.techStage.length + 1, // 阶段
+        prj_stage: this.techStageList.length + 1, // 阶段
         stage_start: "", //起始时间
         stage_end: "", //结束时间
         stage_target: "", //阶段目标
         stage_content: "", //实施内容
       };
-      this.techStage.push(str);
+      this.techStageList.push(str);
     },
     handleDeleteHtml() {
-      let len = this.techStage.length;
+      let len = this.techStageList.length;
       if (len == 1) {
         this.$message({
           message: "就剩最后一条信息了！！！",
           type: "warning",
         });
       } else {
-        this.techStage.splice(len - 1, 1);
+        this.techStageList.splice(len - 1, 1);
       }
     },
   },

@@ -20,7 +20,7 @@
         ><div class="grid-content bg-purple">用途/功能描述</div></el-col
       >
     </el-row>
-    <el-row v-for="(item, index) in techLease" :key="index" class="dataRow">
+    <el-row v-for="(item, index) in techLeaseList" :key="index" class="dataRow">
       <el-col :span="2"
         ><div
           class="grid-content bg-purple"
@@ -97,17 +97,17 @@ export default {
   computed: {
     ...mapState(["HighTech"]),
 
-    techLease: {
+    techLeaseList: {
       get() {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.HighTech.HighTechData.techLease[0]["task_id"] =
+        this.HighTech.HighTechData.techLeaseList[0]["task_id"] =
           this.HighTech.userTaskId;
         //this.Modern.ModernData.basic_info.creator = this.Modern.userName
-        return this.HighTech.HighTechData.techLease;
+        return this.HighTech.HighTechData.techLeaseList;
       },
       set(val) {
         //console.log(val)
-        this.techLease = val;
+        this.techLeaseList = val;
       },
     },
     isDisabledData: {
@@ -130,10 +130,10 @@ export default {
         amount: "", //'金额合计',
         purpose: "", //'用途/功能描述',
       };
-      this.techLease.push(str);
+      this.techLeaseList.push(str);
     },
     handleDeleteHtml() {
-      let len = this.techLease.length;
+      let len = this.techLeaseList.length;
       if (len == 1) {
         this.$message({
           message: "就剩最后一条信息了！！！",
@@ -141,7 +141,7 @@ export default {
         });
       } else {
         //this.$store.commit('PersonShareholder_deleteHtml', len)
-        this.techLease.splice(len - 1, 1);
+        this.techLeaseList.splice(len - 1, 1);
       }
     },
   },

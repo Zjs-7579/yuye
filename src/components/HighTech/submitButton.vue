@@ -404,12 +404,18 @@ export default {
         this.ProjectFundBool = true;
         for (const h of this.HighTech.HighTechData.techFunds) {
           for (const [, v] of Object.entries(h)) {
-            if (!v.length || v) this.ProjectFundBool = false;
+            if (v == "") {
+              this.ProjectFundBool = false;
+              break;
+            }
           }
         }
         for (const h of this.HighTech.HighTechData.techLease) {
           for (const [, v] of Object.entries(h)) {
-            if (!v.length || v) this.ProjectFundBool = false;
+            if (v == "") {
+              this.ProjectFundBool = false;
+              break;
+            }
           }
         }
       }

@@ -37,7 +37,7 @@
             <el-input
               type="number"
               :disabled="isDisabledData"
-              v-model="techScientific[0][item.Model]"
+              v-model="techScientificList[0][item.Model]"
             ></el-input></div
         ></el-col>
         <el-col :span="5"
@@ -45,7 +45,7 @@
             <el-input
               type="number"
               :disabled="isDisabledData"
-              v-model="techScientific[1][item.Model]"
+              v-model="techScientificList[1][item.Model]"
             ></el-input></div
         ></el-col>
         <el-col :span="5"
@@ -53,7 +53,7 @@
             <el-input
               type="number"
               :disabled="isDisabledData"
-              v-model="techScientific[2][item.Model]"
+              v-model="techScientificList[2][item.Model]"
             ></el-input></div
         ></el-col>
       </el-row>
@@ -73,12 +73,12 @@ export default {
   },
   computed: {
     ...mapState(["HighTech"]),
-    techScientific: {
+    techScientificList: {
       get() {
-        return this.HighTech.HighTechData.techScientific;
+        return this.HighTech.HighTechData.techScientificList;
       },
       set(val) {
-        this.techScientific = val;
+        this.techScientificList = val;
       },
     },
     isDisabledData: {
@@ -91,7 +91,7 @@ export default {
     },
   },
   watch: {
-    techScientific: {
+    techScientificList: {
       handler(val) {
         let year = 3;
         for (let item of val) {

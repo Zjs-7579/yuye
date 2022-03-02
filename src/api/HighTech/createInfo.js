@@ -28,7 +28,7 @@ export async function createInfoData(name, parmse) {
     if (res.data.code == 200) {
       res = await http.post(
         "tech/ty/apply/createShareholders",
-        parmse.techShareholders
+        parmse.techShareholdersList
       );
     }
   }
@@ -39,12 +39,12 @@ export async function createInfoData(name, parmse) {
       console.log("企业类");
       res = await http.post(
         "tech/ty/apply/createFinances",
-        parmse.techFinances
+        parmse.techFinanceList
       );
     }
     if (parmse.techCompany.regist_type == "事业单位") {
       console.log("事业单位");
-      res = await http.post("tech/ty/apply/createCauses", parmse.techCauses);
+      res = await http.post("tech/ty/apply/createCauses", parmse.techCauseList);
     }
   }
 
@@ -52,13 +52,16 @@ export async function createInfoData(name, parmse) {
   if (name == "ResearchInfo") {
     res = await http.post(
       "tech/ty/apply/createScientific",
-      parmse.techScientific
+      parmse.techScientificList
     );
   }
 
   //支持情况
   if (name == "HoldInfo") {
-    res = await http.post("tech/ty/apply/createSupport", parmse.techSupport);
+    res = await http.post(
+      "tech/ty/apply/createSupport",
+      parmse.techSupportList
+    );
   }
 
   //团队基本情况
@@ -110,7 +113,7 @@ export async function createInfoData(name, parmse) {
   }
   //项目实施进度与管理
   if (name == "ProjectProgress") {
-    res = await http.post("tech/ty/apply/createStage", parmse.techStage);
+    res = await http.post("tech/ty/apply/createStage", parmse.techStageList);
   }
 
   //项目效益
@@ -118,39 +121,46 @@ export async function createInfoData(name, parmse) {
     res = await http.post("tech/ty/apply/createBenefit", parmse.techBenefit);
   }
 
-  //项目效益
   //项目经费-拟购或租赁主要设备清单
   if (name == "ProjectFund") {
-    let fund = await http.post("tech/ty/apply/createFunds", parmse.techFunds);
+    for (let item of parmse.techFundsList) {
+      item["total_invest"] = parmse.techFundAMT.total_invest;
+      item["state_funding"] = parmse.techFundAMT.state_funding;
+      item["city_support"] = parmse.techFundAMT.city_support;
+    }
+    let fund = await http.post(
+      "tech/ty/apply/createFunds",
+      parmse.techFundsList
+    );
     if (fund.data.code == 200) {
-      res = await http.post("tech/ty/apply/createLease", parmse.techLease);
+      res = await http.post("tech/ty/apply/createLease", parmse.techLeaseList);
     }
   }
 
   //项目投资情况
   if (name == "ProjectInvest") {
-    for (let item of parmse.techEquipment) {
+    for (let item of parmse.techEquipmentList) {
       item["project_invest"] = parmse.techInvestTotal.project_invest;
       item["support"] = parmse.techInvestTotal.support;
     }
     //投资明细
-    console.log(parmse.techInvestMent, parmse.techEquipment);
+    console.log(parmse.techInvestmentList, parmse.techEquipmentList);
 
     res = await http.post(
       "tech/ty/apply/createInvestment",
-      parmse.techInvestMent
+      parmse.techInvestmentList
     );
     if (res.status == 200) {
       //设备
       res = await http.post(
         "tech/ty/apply/createEquipment",
-        parmse.techEquipment
+        parmse.techEquipmentList
       );
     }
   }
 
   if (name == "SummarizeInfo") {
-    res = await http.post("tech/ty/apply/createAbstract", parmse.techAbstract);
+    res = await http.post("tech/ty/apply/createAbstract", parmse.myAbstract);
   }
 
   //console.log(res)

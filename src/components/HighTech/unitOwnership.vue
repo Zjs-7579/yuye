@@ -16,7 +16,7 @@
       >
     </el-row>
     <el-row
-      v-for="(item, index) in techShareholders"
+      v-for="(item, index) in techShareholderList"
       :key="index"
       class="dataRow"
     >
@@ -71,16 +71,16 @@ export default {
   },
   computed: {
     ...mapState(["HighTech"]),
-    techShareholders: {
+    techShareholderList: {
       get() {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.HighTech.HighTechData.techShareholders[0]["task_id"] =
+        this.HighTech.HighTechData.techShareholderList[0]["task_id"] =
           this.HighTech.userTaskId;
         //this.HighTech.HighTechData.techShareholders[0].creator = this.HighTech.userName
-        return this.HighTech.HighTechData.techShareholders;
+        return this.HighTech.HighTechData.techShareholderList;
       },
       set(val) {
-        this.techShareholders = val;
+        this.techShareholderList = val;
       },
     },
     isDisabledData: {
@@ -102,10 +102,10 @@ export default {
         payer_type: "",
         share_proportion: "",
       };
-      this.techShareholders.push(str);
+      this.techShareholderList.push(str);
     },
     handleDeleteHtml() {
-      let len = this.techShareholders.length;
+      let len = this.techShareholderList.length;
       if (len == 1) {
         this.$message({
           message: "就剩最后一条信息了！！！",
@@ -113,7 +113,7 @@ export default {
         });
       } else {
         //this.$store.commit('PersonShareholder_deleteHtml', len)
-        this.techShareholders.splice(len - 1, 1);
+        this.techShareholderList.splice(len - 1, 1);
       }
     },
   },

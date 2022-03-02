@@ -7,8 +7,8 @@ async function getHighTech(task_id, store) {
   if (res.data.code == 200) {
     //console.log("----------------------------", res);
     let result = highData(res.data.data);
-    let uploadUrlData = highFilesData(res.data.data.images);
-    console.log("----------------------------", uploadUrlData);
+    let uploadUrlData = highFilesData(res.data.data.materialList);
+    //console.log("----------------------------", uploadUrlData);
     store.commit("HighTech_upAllData", { result, uploadUrlData });
     store.commit("HighTech_UserTaskId", task_id);
     return res.data.code;

@@ -18,6 +18,10 @@ export default {
     ...mapState(["HighTech"]),
     regist_type: {
       get() {
+        // console.log(
+        //   "@@@@@@@@@@@@@@@@@@@@@@@@",
+        //   this.HighTech.HighTechData.techCompany.regist_type
+        // );
         return this.HighTech.HighTechData.techCompany.regist_type;
       },
       set(val) {

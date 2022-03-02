@@ -2,7 +2,7 @@
   <div class="HighSummarize">
     <div class="SummarizeBase">
       <el-form
-        :model="techAbstract"
+        :model="myAbstract"
         ref="SummarizeFormBase"
         :disabled="isDisabledData"
         :rules="rules"
@@ -11,17 +11,17 @@
       >
         <el-row class="title"> 单位银行开户信息：（下达资助金额使用） </el-row>
         <el-form-item label="银行账户名称:" prop="bank_name">
-          <el-input v-model="techAbstract.bank_name"></el-input>
+          <el-input v-model="myAbstract.bank_name"></el-input>
         </el-form-item>
         <el-row>
           <el-col :span="12">
             <el-form-item label="基本账户开户行:" prop="bank">
-              <el-input v-model="techAbstract.bank"></el-input>
+              <el-input v-model="myAbstract.bank"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="开户账号:" prop="account">
-              <el-input v-model="techAbstract.account"></el-input>
+              <el-input v-model="myAbstract.account"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -29,22 +29,22 @@
         <el-row>
           <el-col :span="6">
             <el-form-item label="省份:" prop="province">
-              <el-input v-model="techAbstract.province"></el-input>
+              <el-input v-model="myAbstract.province"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="6">
             <el-form-item label="城市:" prop="city">
-              <el-input v-model="techAbstract.city"></el-input>
+              <el-input v-model="myAbstract.city"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="6">
             <el-form-item label="地区:" prop="area">
-              <el-input v-model="techAbstract.area"></el-input>
+              <el-input v-model="myAbstract.area"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="6">
             <el-form-item label="具体地址:" prop="sp_address">
-              <el-input v-model="techAbstract.sp_address"></el-input>
+              <el-input v-model="myAbstract.sp_address"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -53,7 +53,7 @@
 
     <el-form
       label-position="top"
-      :model="techAbstract"
+      :model="myAbstract"
       ref="SummarizeForm"
       :disabled="isDisabledData"
       :rules="rules"
@@ -66,7 +66,7 @@
           resize="none"
           rows="10"
           :disabled="isDisabledData"
-          v-model="techAbstract.act_investment"
+          v-model="myAbstract.act_investment"
         ></el-input>
       </el-form-item>
 
@@ -76,7 +76,7 @@
           resize="none"
           rows="10"
           :disabled="isDisabledData"
-          v-model="techAbstract.com_rate"
+          v-model="myAbstract.com_rate"
         ></el-input>
       </el-form-item>
 
@@ -89,7 +89,7 @@
           resize="none"
           rows="10"
           :disabled="isDisabledData"
-          v-model="techAbstract.eco_indi"
+          v-model="myAbstract.eco_indi"
         ></el-input>
       </el-form-item>
 
@@ -99,7 +99,7 @@
           resize="none"
           rows="10"
           :disabled="isDisabledData"
-          v-model="techAbstract.other"
+          v-model="myAbstract.other"
         ></el-input>
       </el-form-item>
 
@@ -110,7 +110,7 @@
           resize="none"
           rows="10"
           :disabled="isDisabledData"
-          v-model="techAbstract.cons_basis"
+          v-model="myAbstract.cons_basis"
         ></el-input>
       </el-form-item>
     </el-form>
@@ -128,16 +128,16 @@ export default {
   },
   computed: {
     ...mapState(["HighTech"]),
-    techAbstract: {
+    myAbstract: {
       get() {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.HighTech.HighTechData.techAbstract["task_id"] =
+        this.HighTech.HighTechData.myAbstract["task_id"] =
           this.HighTech.userTaskId;
-        //this.HighTech.HighTechData.techAbstract.creator = this.HighTech.userName
-        return this.HighTech.HighTechData.techAbstract;
+        //this.HighTech.HighTechData.myAbstract.creator = this.HighTech.userName
+        return this.HighTech.HighTechData.myAbstract;
       },
       set(val) {
-        this.techAbstract = val;
+        this.myAbstract = val;
       },
     },
     isDisabledData: {
