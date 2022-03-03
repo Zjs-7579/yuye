@@ -47,18 +47,18 @@ export default {
   beforeRouteEnter(to, from, next) {
     if (from.path == "/") {
       next(async (vm) => {
-        let status = 0;
-        if (to.query.id) {
-          status = await FiJudge(
-            {
-              task_id: to.query.id,
-            },
-            vm.$router,
-            vm.$store
-          );
-        } else {
-          status = 200;
-        }
+        let status = await FiJudge(
+          {
+            task_id: to.query.id,
+          },
+          vm.$router,
+          vm.$store
+        );
+        // console.log(
+        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+        //   status
+        //   //this.$route.query.id
+        // );
         if (status != 200) {
           vm.$message.warning("数据出错");
         }

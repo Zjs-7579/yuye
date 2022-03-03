@@ -98,7 +98,6 @@ export default {
   methods: {
     handleActionNext() {
       this.validationDataTab(this.activeName);
-      console.log(1111111);
       this.promptMessage(
         this[this.activeName + "Bool"],
         "当前表单未填写完整！！！"

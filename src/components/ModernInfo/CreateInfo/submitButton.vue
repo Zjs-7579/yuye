@@ -198,7 +198,7 @@ export default {
         if (this.Modern.ModernData.modernCompany.regist_type == "企业") {
           for (let item of this.Modern.ModernData.modernFinances) {
             for (let result in item) {
-              if (item[result].length === 0) {
+              if (item[result] == "") {
                 this.InancialInfoBool = false;
                 break;
               }

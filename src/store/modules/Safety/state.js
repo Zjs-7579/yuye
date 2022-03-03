@@ -6,6 +6,8 @@ export default {
   imageIds: [],
   isDetailsContent: true,
   uploadUrlData: [
+    { title: "项目申请书", data: [] },
+    { title: "承诺书", data: [] },
     { title: "审计报告", data: [] },
     { title: "法人代表人或主要负责人身份证复印件", data: [] },
     { title: "申报单位主体资格材料（含工商登记营业执照等）", data: [] },

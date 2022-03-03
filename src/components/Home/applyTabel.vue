@@ -153,10 +153,8 @@ export default {
       });
     },
     handleDetails(row) {
-      //console.log(row);
       this.Loading = true;
       let status = judge(row, this.$router, this.$store);
-      console.log(status);
       if (status == 0) {
         this.Loading = false;
         this.$message.warning("数据出错");
@@ -184,7 +182,6 @@ export default {
       // }
     },
     handleProgress(row) {
-      console.log(row);
       this.progressVisible = true;
       this.task_id = row.task_id;
       // if (row.task_source == "农业产业化贴息项目") {
@@ -206,7 +203,6 @@ export default {
       // }
     },
     handleFile(row) {
-      console.log(row);
       this.fileVisible = true;
       this.task_id = row.task_id;
     },

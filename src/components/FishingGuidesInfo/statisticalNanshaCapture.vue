@@ -130,10 +130,15 @@
       </el-col>
     </el-row>
 
-    <div class="handle" :style="{ display: isDisabledData ? 'none' : 'block' }">
+    <el-row
+      class="dataRow"
+      :style="{ visibility: isDisabledData ? 'hidden' : 'visible' }"
+    >
+      <!-- <div :style="{ display: isDisabledData ? 'none' : 'block' }"> -->
       <el-button type="primary" @click="handleAddHtml">添加一条</el-button>
       <el-button @click="handleDeleteHtml" class="">删除一条</el-button>
-    </div>
+      <!-- </div> -->
+    </el-row>
   </div>
 </template>
 
@@ -235,6 +240,11 @@ export default {
 </script>
 
 <style>
+.Capture {
+  height: 68vh;
+  overflow: hidden;
+  overflow-y: auto;
+}
 .Capture .title {
   height: 60px;
   line-height: 60px;
@@ -282,7 +292,7 @@ export default {
 }
 .Capture .dataRow {
   height: 50px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-top: none;
 }
 .Capture .dataRow .el-col {

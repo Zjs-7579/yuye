@@ -98,7 +98,6 @@ export async function createInfoData(name, parmse) {
 
 //总提交接口
 export async function createSubmit(parmse) {
-  //console.log(parmse)
-  const res = await http.put(`flow/ty/submit/${parmse.userTaskId}`);
+  const res = await http.put(`flow/ty/task/submit/${parmse.userTaskId}`);
   return res;
 }

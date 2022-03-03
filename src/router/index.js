@@ -266,7 +266,7 @@ const routes = [
     path: "/safety",
     name: "Safety",
     component: Safety,
-    meta: { title: "农产品质量安全" },
+    meta: { title: "农产品质量安全检测能力建设" },
     children: [
       {
         path: "/safety",
@@ -277,6 +277,12 @@ const routes = [
         name: "SafetyCreateInfo",
         component: () => import("../components/Safety/createInfo.vue"),
         meta: { title: "创建" },
+      },
+      {
+        path: "/safety/detailInspect",
+        name: "SafetyDetailInspect",
+        component: () => import("../components/Home/detailsInspect.vue"),
+        meta: { title: "详情" },
       },
     ],
   },

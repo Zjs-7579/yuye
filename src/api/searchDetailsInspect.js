@@ -15,7 +15,7 @@ export async function MOdetailsInspectData(id) {
 
 //高新技术
 export async function HighTechInspectData(id) {
-  const res = await http.get(`tech/ty/apply/get/${id}`);
+  const res = await http.get(`tech/ty/apply/${id}`);
   //console.log(res)
   return res;
 }

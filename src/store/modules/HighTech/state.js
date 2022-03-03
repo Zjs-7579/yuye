@@ -6,42 +6,13 @@ export default {
   //isDetailsContent: true,//判断detailsInfo的锚点是否显示
   //用户上传的附件
   uploadUrlData: [
-    { title: "承诺书", data: [] },
-    { title: "项目申请书", data: [] },
-
-    { title: "项目可行性研究报告（申请事前资助项目需提供）", data: [] },
-    { title: "上年度财务报告", data: [] },
-    { title: "税务部门提供的单位上年度完税证明复印件", data: [] },
-    {
-      title:
-        "项目建设的实施方案、预（决）算报告、项目投资证明材料等（合同、发票、银行汇款凭证等）",
-      data: [],
-    },
-    {
-      title: "必要的生产、经营许可及认证文件；场地所有权或者使用权证明",
-      data: [],
-    },
-    {
-      title:
-        "项目团队负责人及核心骨干人员的职称或学位证书复印件及社保局网站上自助打印或由社保局开具的社保证明（申请事前资助项目提供）",
-      data: [],
-    },
-    {
-      title:
-        "与项目相关的知识产权证、检测报告、获奖证书、国家或者省有关批复文件、应用示范合作协议或者合同、项目的核心技术成果材料、生产许可文件或者产品资质证明文件",
-      data: [],
-    },
-    {
-      title:
-        "品种审定证书或品种权授权使用协议复印件，基因生物安全监管机关审批证书复印件、科技成果登记证书或查新报告、地市级以上政府部门颁发的科技成果登记证书或市级以上政府部门授权机构出具的科技成果鉴定证书（新品种推广应用项目）",
-      data: [],
-    },
-    {
-      title:
-        "其他相关材料（有关政府文件、前期调研报告、专家咨询意见、鉴定报告、新品种新技术推广用户证明材料以及本单位相关研究成果资料、中国种业骨干企业、市级以上农业龙头企业、实验室、工程中心、高新技术企业等有关证书复印件专利（或知识产权）证书等）",
-      data: [],
-    },
-    { title: "申报项目专项审计报告", data: [] },
+    // {title: '项目申请书', data:[]},
+    // {title: "承诺书", data:[]},
+    // {title: "企业法定代表人或主要负责人及身份证复印件", data:[]},
+    // {title: "近3个年度的会计报表：资产负债表、损益表、现金流量表", data:[]},
+    // {title: "税务部门提供的单位上年度完税证明复印件", data:[]},
+    // {title: "企业与银行签订的贷款合同和有关银行贷款有效凭据(银行拨款单)复印件", data:[]},
+    // {title: "企业归还银行贷款利息清单", data:[]}
   ],
   HighTechData: {
     //基本信息
@@ -110,18 +81,18 @@ export default {
       //creator: ""
     },
     //出资比例
-    techShareholderList: [
+    techShareholders: [
       {
         //task_id: "",
         shareholder: "", //主要股东名称
         amount: "", //出资金额
-        contribution: "", //出资方式
+        payer_type: "", //出资方式
         share_proportion: "", //股份比例(%)
         //creator: ""
       },
     ],
     //企业三年
-    techFinanceList: [
+    techFinances: [
       {
         //task_id: "",
         pro_year: "",
@@ -235,7 +206,7 @@ export default {
       },
     ],
     //事业三年
-    techCauseList: [
+    techCauses: [
       {
         //task_id: "",
         total_revenue: "", //年度总收入
@@ -319,7 +290,7 @@ export default {
       },
     ],
     //科研三年
-    techScientificList: [
+    techScientific: [
       {
         //task_id:"",// 任务id,
         pro_year: "", // 财务年份,
@@ -397,7 +368,7 @@ export default {
       },
     ],
     //支持三年
-    techSupportList: [
+    techSupport: [
       {
         //task_id: '',
         project_name: "", //项目名称
@@ -479,7 +450,7 @@ export default {
       //creator: "",//创建人
     },
     //项目实施进度与管理
-    techStageList: [
+    techStage: [
       {
         prj_stage: "", // 阶段
         stage: "",
@@ -503,11 +474,11 @@ export default {
       prj_goal: "", // 项目预期目标,
     },
     //项目经费
-    techFundsList: [
+    techFunds: [
       {
-        //total_invest: "", //项目总投资额
-        //state_funding: "", //已获国家资助额
-        //city_support: "", //申请市财政资助额
+        total_invest: "", //项目总投资额
+        state_funding: "", //已获国家资助额
+        city_support: "", //申请市财政资助额
         funds_type: "apply", //'1.市财政资助申请额(apply);2.申请单位自筹经费(apply);3.小计(subtotal)',
 
         total_expendt: "", //'合计',
@@ -538,9 +509,9 @@ export default {
         other_cost: "", //'(6)其他',
       },
       {
-        //total_invest: "", //项目总投资额
-        //state_funding: "", //已获国家资助额
-        //city_support: "", //申请市财政资助额
+        total_invest: "", //项目总投资额
+        state_funding: "", //已获国家资助额
+        city_support: "", //申请市财政资助额
         funds_type: "raise", //'1.市财政资助申请额(apply);2.申请单位自筹经费(raise);3.小计(subtotal)',
 
         total_expendt: "", //'合计',
@@ -570,10 +541,10 @@ export default {
         other_cost: "", //'(6)其他',
       },
       {
-        //total_invest: "", //项目总投资额
-        //state_funding: "", //已获国家资助额
-        //city_support: "", //申请市财政资助额
-        //funds_type: "subtotal", //'1.市财政资助申请额(apply);2.申请单位自筹经费(raise);3.小计(subtotal)',
+        total_invest: "", //项目总投资额
+        state_funding: "", //已获国家资助额
+        city_support: "", //申请市财政资助额
+        funds_type: "subtotal", //'1.市财政资助申请额(apply);2.申请单位自筹经费(raise);3.小计(subtotal)',
 
         total_expendt: "", //'合计',
         con_invest: "", //'建设投资',
@@ -603,7 +574,7 @@ export default {
       },
     ],
     //项目经费
-    techLeaseList: [
+    techLease: [
       {
         //task_id: "",//'任务id',
         instruments: "", //'仪器设备名称',
@@ -618,19 +589,13 @@ export default {
         // update_time: "",//'修改时间',
       },
     ],
-    //项目经费金额
-    techFundAMT: {
-      total_invest: "",
-      state_funding: "",
-      city_support: "",
-    },
     //项目总投资情况
     techInvestTotal: {
       project_invest: "",
       support: "",
     },
     //项目投资情况
-    techInvestmentList: [
+    techInvestment: [
       {
         //task_id: '',
         inv_type: "建筑工程类投资明细",
@@ -684,7 +649,7 @@ export default {
       },
     ],
     //项目投资情况
-    techEquipmentList: [
+    techEquipment: [
       {
         //task_id: "",
         equipment_name: "", //设备名称
@@ -703,7 +668,7 @@ export default {
       },
     ],
     //摘要
-    myAbstract: {
+    techAbstract: {
       //task_id: "",//
       bank_name: "", //银行账户名称
       bank: "", //基本账户开户行
@@ -722,6 +687,5 @@ export default {
       // modifier: "",//
       // update_time: "",//
     },
-    imageIds: [],
   },
 };

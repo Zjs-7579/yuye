@@ -80,6 +80,8 @@ import UploadFiles from "./uploadFiles.vue";
 import InancialInfo from "./inancialInfo.vue";
 import { userTaskid } from "../../api/Safety/userInfo";
 import { SaJudge } from "../../utils/safety/safetyData";
+import { safetyClearData } from "../../utils/safety/safetyUpData";
+
 export default {
   data() {
     return {
@@ -91,8 +93,10 @@ export default {
   beforeRouteEnter(to, from, next) {
     if (from.path == "/") {
       next(async (vm) => {
-        let status = 0;
-        if (to.query.id) {
+        let status;
+        if (!to.query.id) {
+          status = 200;
+        } else {
           status = await SaJudge(
             {
               task_id: to.query.id,
@@ -100,8 +104,6 @@ export default {
             vm.$router,
             vm.$store
           );
-        } else {
-          status = 200;
         }
         if (status != 200) {
           vm.$message.warning("数据出错");
@@ -134,7 +136,8 @@ export default {
     },
     handleClick(tab) {
       if (this.lastActiveName) {
-        console.log(this.lastActiveName, "-->", tab.name);
+        // console.log(this.lastActiveName, "-->", tab.name);
+        ("");
       }
       this.lastActiveName = tab.name;
       // this.validationDataTab(tab.name);
@@ -145,8 +148,8 @@ export default {
   },
   mounted() {
     if (this.$route.query.id == undefined) {
+      safetyClearData(this.Safety);
       userTaskid().then((res) => {
-        //console.log(res)
         this.$store.commit("Safety_UserTaskId", res.data.data);
       });
     }

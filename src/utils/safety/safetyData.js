@@ -14,7 +14,6 @@ async function getSafety(task_id, store) {
 
 export async function SaJudge(row, router, store) {
   let status = await getSafety(row.task_id, store);
-  //console.log(status);
   if (status == 200) {
     // if (
     //   row.task_source == "农产品质量安全检测能力建设项目" &&

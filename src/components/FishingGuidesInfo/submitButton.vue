@@ -108,7 +108,6 @@ export default {
   },
   methods: {
     handleActionNext() {
-      console.log(this.Fishing.OceanDeclaration);
       this.validationDataTab(this.activeName);
       if (this[this.activeName + "Bool"]) {
         this.handlePreserveInfo();
@@ -139,7 +138,6 @@ export default {
           this.declare_name == "建造远洋渔船" ||
           this.declare_name == "建造南沙骨干渔船"
         ) {
-          //console.log(this.$parent.$refs.ApplyInfo.$refs.BuildFishing)
           this.$parent.$refs.ApplyInfo.$refs.BuildFishing.$refs.buildForm.validate(
             (e) => {
               this.ApplyInfoBool = e;
@@ -199,8 +197,30 @@ export default {
         }
 
         if (this.declare_name == "建造南沙骨干渔船") {
-          for (const item of this.Fishing.OceanParam.oceanSituationNanshaList) {
+          // console.log("👻", this.Fishing.OceanParam.oceanPurchases);
+          // this.StatisticalInfoBool =
+          //   this.Fishing.OceanParam.oceanPurchases.every((item) =>
+          //     Object.values(item).every((value) => value !== "")
+          //   );
+          // console.log(this.StatisticalInfoBool, "👻");
+          const skipField = [
+            "create_time",
+            "creator",
+            "edit_time",
+            "enterprise_name",
+            "project_endtime",
+            "project_startime",
+            "saon_number",
+            "ship_qa_variety",
+            "ship_quota",
+            "ship_source_b",
+            "ship_source_n",
+            "update_time",
+            "modifier",
+          ];
+          for (const item of this.Fishing.OceanParam.oceanPurchases) {
             for (let res in item) {
+              if (skipField.includes(res)) continue;
               if (item[res] == "") {
                 this.StatisticalInfoBool = false;
                 break;
@@ -222,6 +242,28 @@ export default {
         if (this.declare_name == "自捕远洋海产品回运费") {
           for (let item of this.Fishing.OceanParam.oceanVolumes) {
             for (let res in item) {
+              if (item[res] == "") {
+                this.StatisticalInfoBool = false;
+                break;
+              }
+            }
+          }
+        }
+        if (this.declare_name == "自捕南沙海产品回运费") {
+          const skipField = [
+            "apltion_endtime",
+            "apltion_startime",
+            "create_time",
+            "creator",
+            "edit_time",
+            "enterprise_name",
+            "modifier",
+            "update_time",
+            "volume_number",
+          ];
+          for (let item of this.Fishing.OceanParam.oceanReturns) {
+            for (let res in item) {
+              if (skipField.includes(res)) continue;
               if (item[res] == "") {
                 this.StatisticalInfoBool = false;
                 break;
@@ -254,7 +296,6 @@ export default {
           });
         });
       }
-
       if (this.activeName == "StatisticalInfo") {
         createInfoStatisticsData(
           this.declare_name,

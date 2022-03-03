@@ -91,7 +91,6 @@ export default {
     },
   },
   created() {
-    console.log();
     this.getBreadcrumb();
   },
   mounted() {

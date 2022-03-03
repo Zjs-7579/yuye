@@ -26,45 +26,41 @@
 </template>
 
 <script>
-import {
-  UploadFiles,
-  DeleteFiles,
-  DownContentFiles,
-} from "../../api/HighTech/upLoad";
+import { UploadFiles, DeleteFiles } from "../../api/Modern/upLoad";
 import { mapState } from "vuex";
 export default {
-  props: ["isFile", "dataFiles"],
+  props: ["isFile"],
   data() {
     return {
-      url: "",
-      fileList: this.dataFiles,
+      url: "modern/ty/task/upload",
+      fileList: [],
       formData: {},
     };
   },
   computed: {
-    ...mapState(["HighTech"]),
+    ...mapState(["Modern"]),
     imageIds: {
       get() {
-        return this.HighTech.HighTechData.imageIds;
+        return this.Modern.ModernData.imageIds;
       },
       set(val) {
         this.imageIds = val;
       },
     },
-    // uploadUrlData: {
-    //   get() {
-    //     let uploadUrlData = this.Modern.uploadUrlData.filter((item) => {
-    //       return item.title == this.isFile;
-    //     })[0].data;
-    //     return uploadUrlData;
-    //   },
-    //   set(val) {
-    //     this.uploadUrlData = val;
-    //   },
-    // },
+    uploadUrlData: {
+      get() {
+        let uploadUrlData = this.Modern.uploadUrlData.filter((item) => {
+          return item.title == this.isFile;
+        })[0].data;
+        return uploadUrlData;
+      },
+      set(val) {
+        this.uploadUrlData = val;
+      },
+    },
     isDisabledData: {
       get() {
-        return this.HighTech.isDisabledData;
+        return this.Modern.isDisabledData;
       },
       set(val) {
         this.isDisabledData = val;
@@ -86,11 +82,11 @@ export default {
       UploadFiles(this.formData).then((res) => {
         this.fileList[len]["id"] = res.data.data;
         this.fileList[len]["material_type"] = this.isFile;
-        this.fileList[len]["source"] = "农业高新技术项目";
+        this.fileList[len]["source"] = "现代农业项目";
         //this.urlFiles.push(res.data.data)
         this.imageIds.push(res.data.data);
 
-        this.dataFiles.push(this.fileList[len]);
+        this.uploadUrlData.push(this.fileList[len]);
         // this.uploadUrlData.filter(item =>{
         //   return item.title == this.isFile
         // })[0].data.push(this.fileList[len])
@@ -115,7 +111,7 @@ export default {
           }
         });
         this.imageIds.splice(r, 1);
-        this.dataFiles.splice(idx, 1);
+        this.uploadUrlData.splice(idx, 1);
         //this.$emit('myUrlFiles', {'delete':file.id})
         this.$message.success("删除成功");
         //console.log(res)
@@ -123,9 +119,8 @@ export default {
     },
 
     handlePreview(file) {
-      DownContentFiles(file.id).then((res) => {
-        window.open(res.data.data);
-      });
+      //console.log(file);
+      //window.open('http://rent.greatbayit.com/yuye/publicrs/image/'+file.id+'.pdf')
     },
     handleExceed(files, fileList) {
       this.$message.warning(
@@ -140,10 +135,11 @@ export default {
 
     beforeUpload(file) {
       //console.log(file)
+
       var formData = new FormData();
-      formData.append("task_id", this.HighTech.userTaskId);
+      formData.append("task_id", this.Modern.userTaskId);
       formData.append("material_type", this.isFile);
-      formData.append("source", "农业高新技术项目");
+      formData.append("source", "农业产业化贴息");
       formData.append("name", file.name);
       formData.append("file", file);
       this.formData = formData;

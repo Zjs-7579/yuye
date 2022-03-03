@@ -4,25 +4,24 @@
 
     <el-form
       ref="ruleForm"
-      :model="techFundAMT"
       label-width="150px"
       :rules="rules"
       :disabled="isDisabledData"
       class="demo-ruleForm"
     >
       <el-form-item label="项目总投资额:" prop="total_invest">
-        <el-input v-model="techFundAMT.total_invest"></el-input>
+        <el-input v-model="total_invest"></el-input>
       </el-form-item>
 
       <el-row>
         <el-col :span="12">
           <el-form-item label="已获国家资助额:" prop="state_funding">
-            <el-input v-model="techFundAMT.state_funding"></el-input>
+            <el-input v-model="state_funding"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="申请市财政资助额:" prop="city_support">
-            <el-input v-model="techFundAMT.city_support"></el-input>
+            <el-input v-model="city_support"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -67,21 +66,21 @@
           <el-col :span="5"
             ><div class="grid-content bg-purple">
               <el-input
-                v-model="techFundsList[0][item.data]"
+                v-model="techFunds[0][item.data]"
                 type="number"
               ></el-input></div
           ></el-col>
           <el-col :span="5"
             ><div class="grid-content bg-purple">
               <el-input
-                v-model="techFundsList[1][item.data]"
+                v-model="techFunds[1][item.data]"
                 type="number"
               ></el-input></div
           ></el-col>
           <el-col :span="5"
             ><div class="grid-content bg-purple">
               <el-input
-                v-model="techFundsList[2][item.data]"
+                v-model="techFunds[2][item.data]"
                 type="number"
               ></el-input></div
           ></el-col>
@@ -138,12 +137,9 @@ export default {
   data() {
     return {
       rules: ModernSummarize,
-      //total_invest: "",
-      //state_funding: "",
-      //city_support: "",
-      //totalExpends1: "",
-      //totalExpends2: "",
-      //totalExpends3: "",
+      total_invest: "",
+      state_funding: "",
+      city_support: "",
       fundData: fundData,
       boldFrom: [0, 5, 16, 17],
     };
@@ -151,32 +147,20 @@ export default {
   components: { ProjectFundListing },
   computed: {
     ...mapState(["HighTech"]),
-    techFundAMT: {
+    techFunds: {
       get() {
-        this.HighTech.HighTechData.techFundAMT["task_id"] =
-          this.HighTech.userTaskId;
-        //this.Modern.ModernData.basic_info.creator = this.Modern.userName
-        return this.HighTech.HighTechData.techFundAMT;
-      },
-      set(val) {
-        //console.log(val)
-        this.techFundAMT = val;
-      },
-    },
-    techFundsList: {
-      get() {
-        //this.HighTech.HighTechData.techFundsList['task_id'] = this.HighTech.userTaskId
-        for (let item in this.HighTech.HighTechData.techFundsList) {
+        //this.HighTech.HighTechData.techFunds['task_id'] = this.HighTech.userTaskId
+        for (let item in this.HighTech.HighTechData.techFunds) {
           // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-          this.HighTech.HighTechData.techFundsList[item]["task_id"] =
+          this.HighTech.HighTechData.techFunds[item]["task_id"] =
             this.HighTech.userTaskId;
         }
         //this.Modern.ModernData.basic_info.creator = this.Modern.userName
-        return this.HighTech.HighTechData.techFundsList;
+        return this.HighTech.HighTechData.techFunds;
       },
       set(val) {
         //console.log(val)
-        this.techFundsList = val;
+        this.techFunds = val;
       },
     },
     isDisabledData: {
@@ -190,61 +174,116 @@ export default {
     totalExpends1: {
       get() {
         let sum = 0;
-        let result = this.techFundsList[0];
-        for (let item in result) {
-          if (item != "funds_type" && item != "task_id") {
-            //console.log(result[item]);
-            sum += result[item] * 1;
+        for (let item in this.techFunds[0]) {
+          if (
+            item != "funds_type" &&
+            item != "total_expendt" &&
+            item != "total_invest" &&
+            item != "state_funding" &&
+            item != "city_support"
+          ) {
+            sum += this.techFunds[0][item];
           }
         }
+
         return sum;
       },
       set(val) {
-        this.techFundsList[0].total_expendt = val;
         this.totalExpends1 = val;
       },
     },
     totalExpends2: {
       get() {
         let sum = 0;
-        let result = this.techFundsList[1];
-        for (let item in result) {
-          if (item != "funds_type" && item != "task_id") {
-            //console.log(result[item]);
-            sum += result[item] * 1;
+        for (let item in this.techFunds[1]) {
+          if (
+            item != "funds_type" &&
+            item != "total_expendt" &&
+            item != "total_invest" &&
+            item != "state_funding" &&
+            item != "city_support"
+          ) {
+            sum += this.techFunds[1][item];
           }
         }
+
         return sum;
       },
       set(val) {
-        this.techFundsList[1].total_expendt = val;
         this.totalExpends2 = val;
       },
     },
     totalExpends3: {
       get() {
         let sum = 0;
-        let result = this.techFundsList[2];
-        for (let item in result) {
-          if (item != "funds_type" && item != "task_id") {
-            //console.log(result[item]);
-            sum += result[item] * 1;
+        for (let item in this.techFunds[2]) {
+          if (
+            item != "funds_type" &&
+            item != "total_expendt" &&
+            item != "total_invest" &&
+            item != "state_funding" &&
+            item != "city_support"
+          ) {
+            sum += this.techFunds[2][item];
           }
         }
+
         return sum;
       },
       set(val) {
-        this.techFundsList[2].total_expendt = val;
         this.totalExpends3 = val;
       },
     },
+    // total_invest: {
+    //   get() {
+    //     return this.HighTech.isDisabledData;
+    //   },
+    //   set(val) {
+    //     this.isDisabledData = val;
+    //   },
+    // },
+    // state_funding: {
+    //   get() {
+    //     return this.HighTech.isDisabledData;
+    //   },
+    //   set(val) {
+    //     this.isDisabledData = val;
+    //   },
+    // },
+    // city_support: {
+    //   get() {
+    //     return this.HighTech.isDisabledData;
+    //   },
+    //   set(val) {
+    //     this.isDisabledData = val;
+    //   },
+    // },
   },
   watch: {
-    // techFundsList(val) {
-    //   val[0].total_expendt = this.totalExpends1;
-    //   val[1].total_expendt = this.totalExpends2;
-    //   val[2].total_expendt = this.totalExpends3;
-    // },
+    total_invest(val) {
+      for (let item of this.techFunds) {
+        item.total_invest = val;
+      }
+    },
+    state_funding(val) {
+      for (let item of this.techFunds) {
+        item.state_funding = val;
+      }
+    },
+    city_support(val) {
+      for (let item of this.techFunds) {
+        item.city_support = val;
+      }
+    },
+    totalExpends1(val) {
+      this.techFunds[0]["total_expendt"] = val;
+    },
+    totalExpends2(val) {
+      this.techFunds[1]["total_expendt"] = val;
+    },
+    totalExpends3(val) {
+      this.techFunds[2]["total_expendt"] = val;
+    },
   },
 };
 </script>

@@ -26,7 +26,7 @@ export async function createInfoStatisticsData(title, params) {
   if (title == "建造南沙骨干渔船") {
     res = await http.post(
       "ocean/ty/pelagic/createOceanPurchase",
-      params.oceanSituationNanshaList
+      params.oceanPurchases
     );
   }
   if (title == "境外渔业资源使用费") {

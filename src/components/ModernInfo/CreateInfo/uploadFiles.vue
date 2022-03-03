@@ -72,14 +72,11 @@ export default {
     ...mapState(["Modern"]),
     uploadUrlData: {
       get() {
-        //console.log("...................................................................",this.Agricul.uploadUrlData)
         if (this.Modern.userTaskId != "") {
-          console.log(this.Modern.uploadUrlData);
           return this.Modern.uploadUrlData;
         } else {
           return [];
         }
-        //return this.Modern.uploadUrlData;
       },
       set(val) {
         this.uploadUrlData = val;

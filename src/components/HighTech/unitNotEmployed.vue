@@ -90,7 +90,7 @@
         <el-col :span="4"><p class="spanFont">新增高校毕业生:</p></el-col>
         <el-col :span="4">
           <el-form-item label-width="0" prop="graduate_num">
-            <el-input v-model="techCompany.graduate_num"></el-input>
+            <el-input v-model="formData.graduate_num"></el-input>
           </el-form-item>
         </el-col>
       </el-row>

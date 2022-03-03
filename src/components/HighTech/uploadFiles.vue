@@ -19,7 +19,7 @@
     </el-row>
 
     <div class="dataRow">
-      <el-row v-for="(item, index) in uploadUrlData" :key="index">
+      <el-row v-for="(item, index) in tabList" :key="index">
         <el-col :span="2"
           ><div class="grid-content bg-purple">{{ index + 1 }}</div></el-col
         >
@@ -51,7 +51,7 @@
         <!-- <el-col :span="4" ><div class="grid-content bg-purple"><el-button type="primary" round>上传</el-button></div></el-col>
         <el-col :span="5" ><div class="grid-content bg-purple box"><p>dsadas</p><p>dsadsad</p></div></el-col> -->
         <el-col :span="8">
-          <upload :isFile="item.title" :dataFiles="item.data"></upload>
+          <upload :isFile="item.title"></upload>
         </el-col>
       </el-row>
     </div>
@@ -60,31 +60,41 @@
 
 <script>
 import upload from "./upload.vue";
-import { mapState } from "vuex";
 export default {
   components: { upload },
   data() {
     return {
-      //fileList: [],
+      fileList: [],
+      tabList: [
+        { title: "项目申请书" },
+        { title: "承诺书" },
+        { title: "项目可行性研究报告（申请事前资助项目需提供）" },
+        { title: "上年度财务报告" },
+        { title: "税务部门提供的单位上年度完税证明复印件" },
+        {
+          title:
+            "项目建设的实施方案、预（决）算报告、项目投资证明材料等（合同、发票、银行汇款凭证等）",
+        },
+        { title: "必要的生产、经营许可及认证文件；场地所有权或者使用权证明" },
+        {
+          title:
+            "项目团队负责人及核心骨干人员的职称或学位证书复印件及社保局网站上自助打印或由社保局开具的社保证明（申请事前资助项目提供）",
+        },
+        {
+          title:
+            "与项目相关的知识产权证、检测报告、获奖证书、国家或者省有关批复文件、应用示范合作协议或者合同、项目的核心技术成果材料、生产许可文件或者产品资质证明文件",
+        },
+        {
+          title:
+            "品种审定证书或品种权授权使用协议复印件，基因生物安全监管机关审批证书复印件、科技成果登记证书或查新报告、地市级以上政府部门颁发的科技成果登记证书或市级以上政府部门授权机构出具的科技成果鉴定证书（新品种推广应用项目）",
+        },
+        {
+          title:
+            "其他相关材料（有关政府文件、前期调研报告、专家咨询意见、鉴定报告、新品种新技术推广用户证明材料以及本单位相关研究成果资料、中国种业骨干企业、市级以上农业龙头企业、实验室、工程中心、高新技术企业等有关证书复印件专利（或知识产权）证书等）",
+        },
+        { title: "申报项目专项审计报告" },
+      ],
     };
-  },
-  computed: {
-    ...mapState(["HighTech"]),
-    uploadUrlData: {
-      get() {
-        //console.log("...................................................................",this.Agricul.uploadUrlData)
-        if (this.HighTech.userTaskId != "") {
-          console.log(this.HighTech.uploadUrlData);
-          return this.HighTech.uploadUrlData;
-        } else {
-          return [];
-        }
-        //return this.Modern.uploadUrlData;
-      },
-      set(val) {
-        this.uploadUrlData = val;
-      },
-    },
   },
   methods: {
     DownPromise(index) {

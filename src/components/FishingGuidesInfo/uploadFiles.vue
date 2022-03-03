@@ -55,6 +55,7 @@
 </template>
 
 <script>
+/* eslint-disable vue/return-in-computed-property */
 import upload from "./upload.vue";
 import { mapState } from "vuex";
 export default {
@@ -98,6 +99,9 @@ export default {
           "远洋渔业基地，包括冷链物流项目（含海产品加工厂及配套专用冷库）、超低温冷库以及境外远洋渔业基地等"
         ) {
           return this.Fishing.uploadUrlData.Base;
+        }
+        if (declare_name == "自捕南沙海产品回运费") {
+          return this.Fishing.uploadUrlData.Volumes;
         }
       },
       set(val) {

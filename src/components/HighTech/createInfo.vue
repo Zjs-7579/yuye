@@ -52,7 +52,7 @@
         :disabled="isDataShow"
         name="ProjectContent"
       >
-        <ProjectContent ref="HighTechProjectContentValidate"></ProjectContent>
+        <ProjectContent></ProjectContent>
       </el-tab-pane>
 
       <el-tab-pane
@@ -152,8 +152,6 @@ import SubmitButton from "./submitButton.vue";
 //import {MOdetailsInspectData} from "../../../api/searchDetailsInspect"
 import { userTaskid } from "../../api/HighTech/userInfo";
 //import { modernData,  modernClearData, modernFilesData } from "../../../utils/modernUpData"
-import { HiJudge } from "../../utils/high/highData";
-import { highClearData } from "../../utils/high/highUpData";
 import { mapState } from "vuex";
 export default {
   data() {
@@ -161,30 +159,6 @@ export default {
       isDataShow: false,
       activeName: "UnitInfo",
     };
-  },
-
-  beforeRouteEnter(to, from, next) {
-    console.log("to", to, "from", from, to.query.id);
-    if (from.path == "/") {
-      next(async (vm) => {
-        let status = 0;
-        if (to.query.id) {
-          status = await HiJudge(
-            {
-              task_id: to.query.id,
-            },
-            vm.$router,
-            vm.$store
-          );
-        } else {
-          status = 200;
-        }
-        if (status != 200) {
-          vm.$message.warning("数据出错");
-        }
-      });
-    }
-    next();
   },
   computed: {
     ...mapState(["HighTech"]),
@@ -229,10 +203,22 @@ export default {
     SubmitButton,
   },
   mounted() {
-    if (this.$route.query.id == undefined) {
-      //console.log("xxxxxxxxxxxxxxxxxxxxxxxxx", this.Agricul);
-
-      highClearData(this.HighTech);
+    // this.$store.commit("Modern_IsDisabledDataClose");
+    // 	modernClearData(this.Modern)
+    if (this.$route.query.id != undefined) {
+      // MOdetailsInspectData(this.$route.query.id).then((res) => {
+      //   //console.log('data', res)
+      //   this.$store.commit("Modern_UserTaskId", this.$route.query.id);
+      //   let result = modernData(res.data.data);
+      //   let uploadUrlData;
+      //   res.data.data.images
+      //     ? (uploadUrlData = modernFilesData(res.data.data.images))
+      //     : (uploadUrlData = []);
+      //   //console.log('result', result)
+      //   //this.Modern.ModernData = result
+      //   this.$store.commit("Modern_AllClearData", { result, uploadUrlData });
+      // });
+    } else {
       userTaskid().then((res) => {
         //console.log(res)
         this.$store.commit("HighTech_UserTaskId", res.data.data);

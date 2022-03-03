@@ -38,13 +38,13 @@
 
       <el-form-item
         label="4、项目预期经济和技术指标（销售量、营业收入、纳税额等）："
-        prop="my_index"
+        prop="index"
       >
         <el-input
           type="textarea"
           resize="none"
           rows="10"
-          v-model="techImplement.my_index"
+          v-model="techImplement.index"
         ></el-input>
       </el-form-item>
 

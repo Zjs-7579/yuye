@@ -71,19 +71,13 @@ export default {
   beforeRouteEnter(to, from, next) {
     if (from.path == "/") {
       next(async (vm) => {
-        let status = 0;
-        if (to.query.id) {
-          status = await AgJudge(
-            {
-              task_id: to.query.id,
-            },
-            vm.$router,
-            vm.$store
-          );
-        } else {
-          status = 200;
-        }
-
+        let status = await AgJudge(
+          {
+            task_id: to.query.id,
+          },
+          vm.$router,
+          vm.$store
+        );
         // console.log(
         //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
         //   status

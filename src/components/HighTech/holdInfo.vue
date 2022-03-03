@@ -20,12 +20,12 @@
     </p>
     <div v-if="isHold">
       <el-form
-        v-for="(item, index) in techSupportList"
+        v-for="(item, index) in techSupport"
         ref="holdForm"
         :disabled="isDisabledData"
         :rules="rules"
         :key="index"
-        :model="techSupportList[index]"
+        :model="techSupport[index]"
         label-width="210px"
         class="demo-ruleForm"
       >
@@ -167,16 +167,16 @@ export default {
   },
   computed: {
     ...mapState(["HighTech"]),
-    techSupportList: {
+    techSupport: {
       get() {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.HighTech.HighTechData.techSupportList[0]["task_id"] =
+        this.HighTech.HighTechData.techSupport[0]["task_id"] =
           this.HighTech.userTaskId;
-        return this.HighTech.HighTechData.techSupportList;
+        return this.HighTech.HighTechData.techSupport;
       },
       set(val) {
         // console.log(val)
-        this.techSupportList = val;
+        this.techSupport = val;
       },
     },
     isDisabledData: {
@@ -207,17 +207,17 @@ export default {
         // modifier: '',
         // update_time: ''
       };
-      this.techSupportList.push(str);
+      this.techSupport.push(str);
     },
     handleDeleteHtml() {
-      let len = this.techSupportList.length;
+      let len = this.techSupport.length;
       if (len == 1) {
         this.$message({
           message: "就剩最后一条信息了！！！",
           type: "warning",
         });
       } else {
-        this.techSupportList.splice(len - 1, 1);
+        this.techSupport.splice(len - 1, 1);
       }
     },
   },
@@ -225,18 +225,18 @@ export default {
     isHold(per) {
       if (per) {
         console.log(per);
-        console.log(this.techSupportList);
+        console.log(this.techSupport);
         this.handleAddHtml();
-        let len = this.techSupportList.length;
-        this.techSupportList.splice(0, len - 1);
+        let len = this.techSupport.length;
+        this.techSupport.splice(0, len - 1);
 
-        console.log(this.techSupportList);
+        console.log(this.techSupport);
       }
       // if(per != old){
 
       //   if(old){
-      //     let len = this.techSupportList.length;
-      //     this.techSupportList.splice(0, len-1)
+      //     let len = this.techSupport.length;
+      //     this.techSupport.splice(0, len-1)
       //     this.handleAddHtml()
 
       //   }

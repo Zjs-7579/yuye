@@ -43,8 +43,9 @@ export default {
   },
   watch: {
     task_id(val) {
+      // TODO
+      console.log(val, "watch");
       fileData(val).then((res) => {
-        console.log("dsadsadadsaaaaaaaaaaaaaa", res);
         this.filesData = res.data.data;
       });
     },
@@ -69,13 +70,13 @@ export default {
   font-size: 14px;
   color: black;
 }
-.filesType{
+.filesType {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   display: block;
 }
-.filesType:hover{
+.filesType:hover {
   cursor: pointer;
 }
 .waring {

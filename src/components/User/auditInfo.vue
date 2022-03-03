@@ -14,16 +14,7 @@
           <el-option label="驳回" value="not"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="简单意见：">
-        <el-input
-          v-model="trial.remark"
-          type="textarea"
-          rows="5"
-          resize="none"
-          style="width: 50%"
-        ></el-input>
-      </el-form-item>
-      <el-form-item label="详细意见：">
+      <el-form-item label="详情意见：">
         <el-input
           v-model="trial.reason"
           type="textarea"

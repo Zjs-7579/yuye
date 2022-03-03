@@ -6,7 +6,6 @@ export default {
     state.userName = res.user_name;
   },
   Safety_UserTaskId(state, res) {
-    //console.log('Safety_UserTaskId', res)
     state.userTaskId = res;
   },
   Safety_IsDisabledDataOpen(state) {
@@ -28,30 +27,30 @@ export default {
     state.uploadUrlData = res.uploadUrlData;
   },
 
-  Safety_ClearAllData(state) {
-    //console.log('aaaa')
-    for (let item in state.SafetyData) {
-      if (state.SafetyData[item].constructor == Array) {
-        for (let res of state.SafetyData[item]) {
-          for (let item in res) {
-            if (item == "inv_type") {
-              console.log(res[item]);
-              break;
-            } else {
-              res[item] = "";
-            }
-          }
-        }
-      }
-      if (state.SafetyData[item].constructor == Object) {
-        for (let res in state.SafetyData[item]) {
-          state.SafetyData[item][res] = "";
-        }
-      }
-      //    for(let res in state.SafetyData[item]){
-      //     state.SafetyData[item][res] = ""
-      //    }
-      console.log(state.SafetyData);
-    }
-  },
+  // Safety_ClearAllData(state) {
+  //   //console.log('aaaa')
+  //   for (let item in state.SafetyData) {
+  //     if (state.SafetyData[item].constructor == Array) {
+  //       for (let res of state.SafetyData[item]) {
+  //         for (let item in res) {
+  //           if (item == "inv_type") {
+  //             console.log(res[item]);
+  //             break;
+  //           } else {
+  //             res[item] = "";
+  //           }
+  //         }
+  //       }
+  //     }
+  //     if (state.SafetyData[item].constructor == Object) {
+  //       for (let res in state.SafetyData[item]) {
+  //         state.SafetyData[item][res] = "";
+  //       }
+  //     }
+  //     //    for(let res in state.SafetyData[item]){
+  //     //     state.SafetyData[item][res] = ""
+  //     //    }
+  //     console.log(state.SafetyData);
+  //   }
+  // },
 };

@@ -167,6 +167,9 @@ export default {
   font-size: 25px;
   font-weight: bold;
 }
+.el-form-item__error {
+  top: 80%;
+}
 .MoSummarize .SummarizeBase .el-form-item {
   margin: 0;
   border: 1px solid #ccc;

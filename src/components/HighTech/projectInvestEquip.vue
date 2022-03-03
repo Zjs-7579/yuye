@@ -11,11 +11,7 @@
       <el-col :span="4">设备安装/存放地点</el-col>
     </el-row>
 
-    <el-row
-      class="dataRow"
-      v-for="(item, index) in techEquipmentList"
-      :key="index"
-    >
+    <el-row class="dataRow" v-for="(item, index) in techEquipment" :key="index">
       <el-col :span="2" style="text-align: center">
         {{ index + 1 }}
       </el-col>
@@ -77,16 +73,16 @@ export default {
   },
   computed: {
     ...mapState(["HighTech"]),
-    techEquipmentList: {
+    techEquipment: {
       get() {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.HighTech.HighTechData.techEquipmentList[0].task_id =
+        this.HighTech.HighTechData.techEquipment[0].task_id =
           this.HighTech.userTaskId;
         //this.HighTech.HighTechData.echmodernEquipment[0].creator = this.HighTech.userName
-        return this.HighTech.HighTechData.techEquipmentList;
+        return this.HighTech.HighTechData.techEquipment;
       },
       set(val) {
-        this.techEquipmentList = val;
+        this.techEquipment = val;
       },
     },
     isDisabledData: {
@@ -100,7 +96,7 @@ export default {
     total_quantity: {
       get() {
         let sum = 0;
-        for (let i of this.techEquipmentList) {
+        for (let i of this.techEquipment) {
           sum += i.quantity * 1;
         }
         return sum;
@@ -112,7 +108,7 @@ export default {
     total_price: {
       get() {
         let sum = 0;
-        for (let i of this.techEquipmentList) {
+        for (let i of this.techEquipment) {
           sum += i.price * 1;
         }
         return sum;
@@ -124,7 +120,7 @@ export default {
     total_amount: {
       get() {
         let sum = 0;
-        for (let i of this.techEquipmentList) {
+        for (let i of this.techEquipment) {
           sum += i.amount * 1;
         }
         return sum;
@@ -152,22 +148,22 @@ export default {
         // modifier: "",//修改人
         // update_time: "",//修改时间
       };
-      this.techEquipmentList.push(str);
+      this.techEquipment.push(str);
     },
     handleDeleteHtml() {
-      let len = this.techEquipmentList.length;
+      let len = this.techEquipment.length;
       if (len == 1) {
         this.$message({
           message: "就剩最后一条信息了！！！",
           type: "warning",
         });
       } else {
-        this.techEquipmentList.splice(len - 1, 1);
+        this.techEquipment.splice(len - 1, 1);
       }
     },
   },
   watch: {
-    techEquipmentList: {
+    techEquipment: {
       handler(val) {
         for (let item of val) {
           //console.log('dsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',this.HighTech.HighTechData.modernInvestTotal)

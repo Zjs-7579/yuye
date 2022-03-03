@@ -117,7 +117,6 @@ import { FiDetail } from "./fishing/fishingData";
 import { SaDetail } from "./safety/safetyData";
 
 export function judge(row, router, store) {
-  console.log(row);
   let status;
   if (row.task_source == "农业产业化贴息项目") {
     status = AgJudge(row, router, store);
@@ -139,7 +138,6 @@ export function judge(row, router, store) {
 }
 
 export function Detail(row, router, store) {
-  console.log(row);
   let status;
   if (row.task_source == "农业产业化贴息项目") {
     status = AgDetail(row, router, store);

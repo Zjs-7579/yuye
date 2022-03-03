@@ -52,11 +52,6 @@ export default {
           vm.$router,
           vm.$store
         );
-        // console.log(
-        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
-        //   status
-        //   //this.$route.query.id
-        // );
         if (status == 0) {
           vm.$message.warning("数据出错");
         }

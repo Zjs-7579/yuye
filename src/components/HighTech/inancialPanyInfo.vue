@@ -40,7 +40,7 @@
                 index == 6 || index == 12 || index == 18 ? true : isDisabledData
               "
               type="number"
-              v-model="techFinanceList[0][item.Model]"
+              v-model="techFinances[2][item.Model]"
             ></el-input></div
         ></el-col>
         <el-col :span="5"
@@ -50,7 +50,7 @@
                 index == 6 || index == 12 || index == 18 ? true : isDisabledData
               "
               type="number"
-              v-model="techFinanceList[1][item.Model]"
+              v-model="techFinances[1][item.Model]"
             ></el-input></div
         ></el-col>
         <el-col :span="5"
@@ -60,7 +60,7 @@
                 index == 6 || index == 12 || index == 18 ? true : isDisabledData
               "
               type="number"
-              v-model="techFinanceList[2][item.Model]"
+              v-model="techFinances[0][item.Model]"
             ></el-input></div
         ></el-col>
       </el-row>
@@ -81,12 +81,12 @@ export default {
   },
   computed: {
     ...mapState(["HighTech"]),
-    techFinanceList: {
+    techFinances: {
       get() {
-        return this.HighTech.HighTechData.techFinanceList;
+        return this.HighTech.HighTechData.techFinances;
       },
       set(val) {
-        this.techFinanceList = val;
+        this.techFinances = val;
       },
     },
     isDisabledData: {
@@ -100,7 +100,7 @@ export default {
   },
   methods: {},
   watch: {
-    techFinanceList: {
+    techFinances: {
       handler(val) {
         let year = 3;
         for (let item of val) {

@@ -264,7 +264,6 @@ export function agriculClearData(Data) {
       for (let res of Data.AgriculData[item]) {
         for (let item in res) {
           if (item == "inv_type") {
-            console.log(res[item]);
             break;
           } else {
             res[item] = "";

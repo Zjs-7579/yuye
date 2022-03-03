@@ -16,7 +16,7 @@
       >
     </el-row>
     <el-row
-      v-for="(item, index) in techShareholderList"
+      v-for="(item, index) in techShareholders"
       :key="index"
       class="dataRow"
     >
@@ -41,7 +41,7 @@
           <el-input
             type="text"
             :disabled="isDisabledData"
-            v-model="item.contribution"
+            v-model="item.payer_type"
           ></el-input></div
       ></el-col>
       <el-col :span="6"
@@ -71,16 +71,16 @@ export default {
   },
   computed: {
     ...mapState(["HighTech"]),
-    techShareholderList: {
+    techShareholders: {
       get() {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.HighTech.HighTechData.techShareholderList[0]["task_id"] =
+        this.HighTech.HighTechData.techShareholders[0]["task_id"] =
           this.HighTech.userTaskId;
         //this.HighTech.HighTechData.techShareholders[0].creator = this.HighTech.userName
-        return this.HighTech.HighTechData.techShareholderList;
+        return this.HighTech.HighTechData.techShareholders;
       },
       set(val) {
-        this.techShareholderList = val;
+        this.techShareholders = val;
       },
     },
     isDisabledData: {
@@ -102,10 +102,10 @@ export default {
         payer_type: "",
         share_proportion: "",
       };
-      this.techShareholderList.push(str);
+      this.techShareholders.push(str);
     },
     handleDeleteHtml() {
-      let len = this.techShareholderList.length;
+      let len = this.techShareholders.length;
       if (len == 1) {
         this.$message({
           message: "就剩最后一条信息了！！！",
@@ -113,7 +113,7 @@ export default {
         });
       } else {
         //this.$store.commit('PersonShareholder_deleteHtml', len)
-        this.techShareholderList.splice(len - 1, 1);
+        this.techShareholders.splice(len - 1, 1);
       }
     },
   },
