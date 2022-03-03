@@ -143,6 +143,10 @@ export async function createInfoData(name, parmse) {
       item["project_invest"] = parmse.techInvestTotal.project_invest;
       item["support"] = parmse.techInvestTotal.support;
     }
+    for (let item of parmse.techInvestmentList) {
+      item["project_invest"] = parmse.techInvestTotal.project_invest;
+      item["support"] = parmse.techInvestTotal.support;
+    }
     //投资明细
     console.log(parmse.techInvestmentList, parmse.techEquipmentList);
 

@@ -287,6 +287,9 @@ export const ModernProjectContent = {
   index: [
     { required: true, message: "项目预期经济和技术指标", trigger: "blur" },
   ],
+  my_index: [
+    { required: true, message: "项目预期经济和技术指标", trigger: "blur" },
+  ],
   social_results: [
     { required: true, message: "请输入项目社会效益", trigger: "blur" },
   ],

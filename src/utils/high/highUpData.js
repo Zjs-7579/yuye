@@ -65,7 +65,7 @@ const HighTechData = {
     //creator: ""
   },
   //出资比例
-  techShareholdersList: [
+  techShareholderList: [
     {
       //task_id: "",
       shareholder: "", //主要股东名称
@@ -716,12 +716,12 @@ const uploadUrlData = [
 //清空
 export function highClearData(Data) {
   //console.log("11111111111111111", Data);
-  for (let item in Data.AgriculData) {
+  for (let item in Data.HighTechData) {
     if (
-      Object.prototype.toString.call(Data.AgriculData[item]) ===
+      Object.prototype.toString.call(Data.HighTechData[item]) ===
       "[object Array]"
     ) {
-      for (let res of Data.AgriculData[item]) {
+      for (let res of Data.HighTechData[item]) {
         for (let item in res) {
           if (item == "inv_type") {
             console.log(res[item]);
@@ -733,11 +733,11 @@ export function highClearData(Data) {
       }
     }
     if (
-      Object.prototype.toString.call(Data.AgriculData[item]) ===
+      Object.prototype.toString.call(Data.HighTechData[item]) ===
       "[object Object]"
     ) {
-      for (let res in Data.AgriculData[item]) {
-        Data.AgriculData[item][res] = "";
+      for (let res in Data.HighTechData[item]) {
+        Data.HighTechData[item][res] = "";
       }
     }
   }
@@ -760,6 +760,9 @@ export function highData(newData) {
       Object.prototype.toString.call(newData[item]) == "[object Array]" &&
       newData[item].length == 0
     ) {
+      newData[item] = HighTechData[item];
+    }
+    if (newData[item] == "") {
       newData[item] = HighTechData[item];
     }
 
@@ -786,6 +789,13 @@ export function highData(newData) {
       //   city_support: newData[item][0].city_support,
       // };
       newData["techFundAMT"] = techFundAMT;
+    }
+    if (item == "techInvestmentList") {
+      let techInvestTotal = {
+        project_invest: newData[item][0].project_invest,
+        support: newData[item][0].support,
+      };
+      newData["techInvestTotal"] = techInvestTotal;
     }
     //console.log(Object.prototype.toString.call(newData[item]) )
     // if(Object.prototype.toString.call(newData[item]) == "[object Array]"){

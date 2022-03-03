@@ -72,13 +72,19 @@ export default {
     console.log("to", to, "from", from, to.query.id);
     if (from.path == "/") {
       next(async (vm) => {
-        let status = await AgJudge(
-          {
-            task_id: to.query.id,
-          },
-          vm.$router,
-          vm.$store
-        );
+        let status = 0;
+        if (to.query.id) {
+          status = await AgJudge(
+            {
+              task_id: to.query.id,
+            },
+            vm.$router,
+            vm.$store
+          );
+        } else {
+          status = 200;
+        }
+
         // console.log(
         //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
         //   status

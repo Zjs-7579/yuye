@@ -92,18 +92,18 @@ export default {
     console.log("to", to, "from", from, to.query.id);
     if (from.path == "/") {
       next(async (vm) => {
-        let status = await SaJudge(
-          {
-            task_id: to.query.id,
-          },
-          vm.$router,
-          vm.$store
-        );
-        // console.log(
-        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
-        //   status
-        //   //this.$route.query.id
-        // );
+        let status = 0;
+        if (to.query.id) {
+          status = await SaJudge(
+            {
+              task_id: to.query.id,
+            },
+            vm.$router,
+            vm.$store
+          );
+        } else {
+          status = 200;
+        }
         if (status != 200) {
           vm.$message.warning("数据出错");
         }
