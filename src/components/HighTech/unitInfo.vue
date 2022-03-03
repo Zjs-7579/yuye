@@ -261,6 +261,9 @@ export default {
 .Mounit .el-form-item {
   margin: 0;
   border: 1px solid #ccc;
+  margin-left: -1px;
+  height: 60px;
+  border-bottom: 1px solid #fff;
 }
 .Mounit .el-form-item__label {
   text-align: center;

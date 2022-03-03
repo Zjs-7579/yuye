@@ -169,17 +169,27 @@ export default {
           }
         );
 
+        this.$parent.$refs.ModernUnitInfoValidate.$refs.ModernUnitEmpForm.$refs.ruleForm.validate(
+          (e) => {
+            this.UnitInfoBool = e;
+            console.log("*****************", e);
+          }
+        );
+
         for (let item of this.Modern.ModernData.modernShareholders) {
-          //console.log(item)
           for (let result in item) {
             //console.log(result)
             if (item[result] == "") {
               this.UnitInfoBool = false;
               break;
             }
-            //this.UnitInfoBool = true;
           }
         }
+        // this.UnitInfoBool = Object.values(
+        //   this.Modern.ModernData.unitEmpForm
+        // ).some((item) => {
+        //   item !== "";
+        // });
       }
 
       if (activeName == "InancialInfo") {
@@ -187,10 +197,8 @@ export default {
 
         if (this.Modern.ModernData.modernCompany.regist_type == "企业") {
           for (let item of this.Modern.ModernData.modernFinances) {
-            //console.log(item)
             for (let result in item) {
-              //console.log(result)
-              if (item[result] == "") {
+              if (item[result].length === 0) {
                 this.InancialInfoBool = false;
                 break;
               }

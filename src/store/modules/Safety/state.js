@@ -347,7 +347,7 @@ export default {
       project_invest: "",
       support: "",
     },
-    safetyInvestMent: [
+    safetyInvestment: [
       {
         //task_id: '',
         inv_type: "建筑工程类投资明细",

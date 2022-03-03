@@ -91,22 +91,21 @@ export default {
       //numThree: [10,4,5,5,5], //高级职称∕中级职称∕初级职称∕其他从业人数
       //creator: ""
     },
-    //   unitEmpForm:{
-    //     legal_name: "", //法定代表人姓名
-    //     education: "", //法定代表人学历
-    //     mobile_phone: "", //移动电话
-    //     identity: "", //身份证号
-    //     employees_num: "", //从业人员总数
-    //     female_workerss_num: "", //女员工数量
-    //     overseas_num: "", //留学归国数量
-    //     social_security_num: "", //参加社保数量
-    //     foreign_experts_num: "", //外籍专家人数
-    //     graduate_num: "", //高效毕业生数量
-    //     num_1: "", //行政管理∕市场营销∕研发设计∕加工制造∕其他从业人数
-    //     num_2: "", //博士毕业∕硕士毕业∕本科毕业∕大专毕业∕其他从业人数
-    //     num_3: "", //高级职称∕中级职称∕初级职称∕其他从业人数
-
-    // },
+    unitEmpForm: {
+      legal_name: "", //法定代表人姓名
+      education: "", //法定代表人学历
+      mobile_phone: "", //移动电话
+      identity: "", //身份证号
+      employees_num: "", //从业人员总数
+      female_workerss_num: "", //女员工数量
+      overseas_num: "", //留学归国数量
+      social_security_num: "", //参加社保数量
+      foreign_experts_num: "", //外籍专家人数
+      graduate_num: "", //高效毕业生数量
+      num_1: "", //行政管理∕市场营销∕研发设计∕加工制造∕其他从业人数
+      num_2: "", //博士毕业∕硕士毕业∕本科毕业∕大专毕业∕其他从业人数
+      num_3: "", //高级职称∕中级职称∕初级职称∕其他从业人数
+    },
     modernShareholders: [
       {
         //task_id: "",

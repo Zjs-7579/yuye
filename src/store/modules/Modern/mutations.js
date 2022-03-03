@@ -24,11 +24,8 @@ export default {
   },
 
   Modern_AllClearData(state, res) {
-    console.log("////////////", res);
     state.ModernData = res.result;
     state.uploadUrlData = res.uploadUrlData;
-
-    console.log(state);
   },
 
   // Modern_ClearAllData(state) {

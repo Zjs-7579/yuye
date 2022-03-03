@@ -191,23 +191,20 @@ export default {
             //console.log("*****************", e);
           }
         );
-        console.log(this.UnitInfoBool);
         this.$parent.$refs.HighTechUnitInfoValidate.$refs.HighTechUnitNotEmployed.$refs.ruleForm.validate(
           (e) => {
             this.UnitInfoBool = e;
             //console.log("*****************", e);
           }
         );
-        console.log(this.UnitInfoBool);
         this.$parent.$refs.HighTechUnitInfoValidate.$refs.HighTechUnitNotEmployed.$refs.ruleFormPerson.validate(
           (e) => {
             this.UnitInfoBool = e;
             //console.log("*****************", e);
           }
         );
-        console.log(this.UnitInfoBool);
+        console.log(this.HighTech.HighTechData.techShareholderList, "jiaoyang");
         for (let item of this.HighTech.HighTechData.techShareholderList) {
-          //console.log(item)
           for (let result in item) {
             //console.log(result)
             if (item[result] == "") {
@@ -217,7 +214,6 @@ export default {
             //this.UnitInfoBool = true;
           }
         }
-        console.log(this.UnitInfoBool);
       }
       if (activeName == "InancialInfo") {
         this.InancialInfoBool = true;

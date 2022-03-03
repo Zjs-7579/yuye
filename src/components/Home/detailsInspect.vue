@@ -42,7 +42,6 @@ export default {
     };
   },
   beforeRouteEnter(to, from, next) {
-    //console.log("to", to, "from", from, to.query.id);
     if (from.path == "/") {
       next((vm) => {
         let status = Detail(

@@ -189,7 +189,7 @@
       </el-form-item>
     </el-form>
 
-    <unitNotEmployed></unitNotEmployed>
+    <unitNotEmployed ref="ModernUnitEmpForm"></unitNotEmployed>
     <unitOwnership></unitOwnership>
   </div>
 </template>
@@ -261,6 +261,9 @@ export default {
 .Mounit .el-form-item {
   margin: 0;
   border: 1px solid #ccc;
+  margin-left: -1px;
+  height: 60px;
+  border-bottom: 1px solid #fff;
 }
 .Mounit .el-form-item__label {
   text-align: center;
@@ -270,6 +273,7 @@ export default {
 
 .Mounit .el-form-item .el-form-item__content {
   border-left: 1px solid #ccc;
+  margin-left: -2px;
   line-height: 60px;
 }
 

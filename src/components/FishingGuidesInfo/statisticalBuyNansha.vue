@@ -25,7 +25,7 @@
 
     <el-row
       class="dataRow"
-      v-for="(item, index) in oceanSituationList"
+      v-for="(item, index) in oceanSituationNanshaList"
       :key="index"
     >
       <el-col :span="1">
@@ -38,7 +38,7 @@
         ></el-input>
       </el-col>
       <el-col :span="2">
-        <el-input v-model="item.type" :disabled="isDisabledData"></el-input>
+        <el-input v-model="item.job_type" :disabled="isDisabledData"></el-input>
       </el-col>
 
       <el-col :span="1">
@@ -74,7 +74,7 @@
       </el-col>
       <el-col :span="3">
         <el-input
-          v-model="item.ship_inspect_id"
+          v-model="item.certificate_no"
           :disabled="isDisabledData"
         ></el-input>
       </el-col>
@@ -99,7 +99,7 @@
         </el-col> -->
       <el-col :span="2">
         <el-input
-          v-model="item.appropriate"
+          v-model="item.aped_funding"
           :disabled="isDisabledData"
         ></el-input>
       </el-col>
@@ -114,7 +114,7 @@
         <p style="padding: 0 15px; float: left">{{ allstate_funding }}</p>
       </el-col>
       <el-col :span="2">
-        <p style="padding: 0 15px; float: left">{{ all_appropriate }}</p>
+        <p style="padding: 0 15px; float: left">{{ allaped_funding }}</p>
       </el-col>
     </el-row>
 
@@ -135,12 +135,12 @@ export default {
   },
   computed: {
     ...mapState(["Fishing"]),
-    oceanSituationList: {
+    oceanSituationNanshaList: {
       get() {
-        return this.Fishing.OceanParam.oceanSituationList;
+        return this.Fishing.OceanParam.oceanSituationNanshaList;
       },
       set(val) {
-        this.oceanSituationList = val;
+        this.oceanSituationNanshaList = val;
       },
     },
     isDisabledData: {
@@ -162,10 +162,10 @@ export default {
     alltol_investment: {
       get() {
         let sum = 0;
-        for (let item of this.oceanSituationList) {
+        for (let item of this.oceanSituationNanshaList) {
           sum += item.tol_investment * 1;
         }
-        return sum;
+        return sum.toFixed(2);
       },
       set(val) {
         this.alltol_investment = val;
@@ -174,25 +174,25 @@ export default {
     allstate_funding: {
       get() {
         let sum = 0;
-        for (let item of this.oceanSituationList) {
+        for (let item of this.oceanSituationNanshaList) {
           sum += item.state_funding * 1;
         }
-        return sum;
+        return sum.toFixed(2);
       },
       set(val) {
         this.allstate_funding = val;
       },
     },
-    all_appropriate: {
+    allaped_funding: {
       get() {
         let sum = 0;
-        for (let item of this.oceanSituationList) {
-          sum += item.appropriate * 1;
+        for (let item of this.oceanSituationNanshaList) {
+          sum += item.aped_funding * 1;
         }
-        return sum;
+        return sum.toFixed(2);
       },
       set(val) {
-        this.all_appropriate = val;
+        this.allaped_funding = val;
       },
     },
   },
@@ -203,13 +203,13 @@ export default {
     handleAddHtml() {
       let data = {
         ship_number: "", //船名号
-        type: "", //作业类型
+        job_type: "", //作业类型
         ship_length: "", // 船长
         gross_tonnage: "", //总吨位(吨)
         bu_finish_time: "", //建造完成日期
         ship_cfte_id: "", //船舶登记证书编号
         owship_id: "", //船舶所有权证书编号
-        ship_inspect_id: "", // 渔船检验证书编号
+        certificate_no: "", // 渔船检验证书编号
         tol_investment: "", //总投入（万元）
         alltol_investment: "", //总投入（万元）--总计
         aped_funding: "", //核定资助资金（万元）
@@ -219,30 +219,30 @@ export default {
         appropriate: "", //此次申请拨付资助资金（万元）
         all_appropriate: "", //此次申请拨付资助资金（万元）--总计
       };
-      this.oceanSituationList.push(data);
+      this.oceanSituationNanshaList.push(data);
     },
     handleDeleteHtml() {
-      let len = this.oceanSituationList.length;
+      let len = this.oceanSituationNanshaList.length;
       if (len == 1) {
         this.$message({
           message: "就剩最后一条信息了！！！",
           type: "warning",
         });
       } else {
-        this.oceanSituationList.splice(len - 1, 1);
+        this.oceanSituationNanshaList.splice(len - 1, 1);
       }
     },
   },
   watch: {
-    oceanSituationList: {
+    oceanSituationNanshaList: {
       handler(val) {
         for (let item of val) {
           item["task_id"] = this.Fishing.userTaskId;
           //item.creator = this.Modern.userName;
           item["alltol_investment"] = this.alltol_investment;
           item["allstate_funding"] = this.allstate_funding;
-          // item["allaped_funding"] = this.allaped_funding;
-          item["all_appropriate"] = this.all_appropriate;
+          item["allaped_funding"] = this.allaped_funding;
+          // item["all_appropriate"] = this.all_appropriate;
         }
       },
       deep: true,
