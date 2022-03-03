@@ -191,18 +191,21 @@ export default {
             //console.log("*****************", e);
           }
         );
+        console.log(this.UnitInfoBool);
         this.$parent.$refs.HighTechUnitInfoValidate.$refs.HighTechUnitNotEmployed.$refs.ruleForm.validate(
           (e) => {
             this.UnitInfoBool = e;
             //console.log("*****************", e);
           }
         );
+        console.log(this.UnitInfoBool);
         this.$parent.$refs.HighTechUnitInfoValidate.$refs.HighTechUnitNotEmployed.$refs.ruleFormPerson.validate(
           (e) => {
             this.UnitInfoBool = e;
             //console.log("*****************", e);
           }
         );
+        console.log(this.UnitInfoBool);
         for (let item of this.HighTech.HighTechData.techShareholderList) {
           //console.log(item)
           for (let result in item) {
@@ -214,6 +217,7 @@ export default {
             //this.UnitInfoBool = true;
           }
         }
+        console.log(this.UnitInfoBool);
       }
       if (activeName == "InancialInfo") {
         this.InancialInfoBool = true;
