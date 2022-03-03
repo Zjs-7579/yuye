@@ -22,6 +22,13 @@ export async function createInfoStatisticsData(title, params) {
       params.oceanSituationList
     );
   }
+  // TODO
+  if (title == "建造南沙骨干渔船") {
+    res = await http.post(
+      "ocean/ty/pelagic/createOceanPurchase",
+      params.oceanSituationNanshaList
+    );
+  }
   if (title == "境外渔业资源使用费") {
     res = await http.post(
       "ocean/ty/pelagic/createOceanCost",
@@ -32,6 +39,13 @@ export async function createInfoStatisticsData(title, params) {
     res = await http.post(
       "ocean/ty/pelagic/createOceanVolume",
       params.oceanVolumes
+    );
+  }
+
+  if (title == "自捕南沙海产品回运费") {
+    res = await http.post(
+      "ocean/ty/pelagic/createOceanReturn",
+      params.oceanReturns
     );
   }
 

@@ -10,58 +10,87 @@
     >
       <el-row class="title"> 上年末从业人员情况 </el-row>
       <el-row type="flex">
-        <el-col style="width: 310px" class="name"> 法人代表 </el-col>
-
-        <el-col :span="8">
-          <el-form-item label="姓名:" prop="legal_name">
-            <el-input v-model="techCompany.legal_name"></el-input>
-          </el-form-item>
-          <el-form-item label="学历:" prop="education">
-            <el-input v-model="techCompany.education"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="移动电话:" prop="mobile_phone">
-            <el-input v-model="techCompany.mobile_phone"></el-input>
-          </el-form-item>
-          <el-form-item label="身份证号:" prop="identity">
-            <el-input v-model="techCompany.identity"></el-input>
-          </el-form-item>
-        </el-col>
+        <el-row style="width: 100%; height: 120px" class="rowLayout">
+          <el-col
+            :span="4"
+            style="
+              display: inline-block;
+              line-height: 120px;
+              text-align: center;
+              font-size: 16px;
+            "
+            ><p class="spanFont" style="height: 120px; line-height: 120px">
+              法定代表人
+            </p></el-col
+          >
+          <el-col :span="8" style="height: 120px">
+            <el-row>
+              <el-col :span="12"><p class="spanFont">姓名:</p></el-col>
+              <el-col :span="12">
+                <el-form-item label-width="0" prop="legal_name">
+                  <el-input v-model="techCompany.legal_name"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12"><p class="spanFont">学历:</p></el-col>
+              <el-col :span="12">
+                <el-form-item label-width="0" prop="education">
+                  <el-input v-model="techCompany.education"></el-input>
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </el-col>
+          <el-col :span="12" style="height: 120px">
+            <el-row>
+              <el-col :span="8"><p class="spanFont">移动电话:</p></el-col>
+              <el-col :span="16">
+                <el-form-item label-width="0" prop="mobile_phone">
+                  <el-input v-model="techCompany.mobile_phone"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8"><p class="spanFont">身份证号:</p></el-col>
+              <el-col :span="16">
+                <el-form-item label-width="0" prop="identity">
+                  <el-input v-model="techCompany.identity"></el-input>
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </el-col>
+        </el-row>
       </el-row>
 
-      <el-row type="flex">
-        <el-col :span="8">
-          <el-form-item label="从业人员总数:" prop="employees_num">
+      <el-row style="width: 100%; height: 120px" class="rowLayout">
+        <el-col :span="4"><p class="spanFont">从业人员总数:</p></el-col>
+        <el-col :span="4">
+          <el-form-item label-width="0" prop="employees_num">
             <el-input v-model="techCompany.employees_num"></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="8">
-          <el-form-item label="其中女职工数:" prop="female_workerss_num">
+        <el-col :span="4"><p class="spanFont">其中女职工数:</p></el-col>
+        <el-col :span="4">
+          <el-form-item label-width="0" prop="female_workerss_num">
             <el-input v-model="techCompany.female_workerss_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="8">
-          <el-form-item label="留学归国人员数:" prop="overseas_num">
+          </el-form-item> </el-col
+        ><el-col :span="4"><p class="spanFont">留学归国人员数:</p></el-col>
+        <el-col :span="4">
+          <el-form-item label-width="0" prop="overseas_num">
             <el-input v-model="techCompany.overseas_num"></el-input>
           </el-form-item>
         </el-col>
-      </el-row>
-
-      <el-row type="flex">
-        <el-col :span="8">
-          <el-form-item label="参加社保人数:" prop="social_security_num">
+        <el-col :span="4"><p class="spanFont">参加社保人数:</p></el-col>
+        <el-col :span="4">
+          <el-form-item label-width="0" prop="social_security_num">
             <el-input v-model="techCompany.social_security_num"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="8">
-          <el-form-item label="外籍专家人数:" prop="foreign_experts_num">
+          </el-form-item> </el-col
+        ><el-col :span="4"><p class="spanFont">外籍专家人数:</p></el-col>
+        <el-col :span="4">
+          <el-form-item label-width="0" prop="foreign_experts_num">
             <el-input v-model="techCompany.foreign_experts_num"></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="8">
-          <el-form-item label="新增高校毕业生:" prop="graduate_num">
-            <el-input v-model="techCompany.graduate_num"></el-input>
+        <el-col :span="4"><p class="spanFont">新增高校毕业生:</p></el-col>
+        <el-col :span="4">
+          <el-form-item label-width="0" prop="graduate_num">
+            <el-input v-model="formData.graduate_num"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -279,6 +308,22 @@ export default {
   font-size: 14px;
   background-color: #ece8e8;
   padding-left: 15px;
+}
+.rowLayout .el-form-item__content {
+  border-left: none !important;
+}
+.spanFont {
+  font-size: 14px;
+  text-align: center;
+  line-height: 60px;
+  /* border: 1px solid #ccc; */
+  /* border-bottom: 1px solid #ccc; */
+  /* margin-bottom: -1px; */
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  /* box-shadow: 0 0 1px 0 #000; */
+  /* box-sizing: content-box; */
+  color: #606266;
 }
 .name {
   /* display: inline-block; */

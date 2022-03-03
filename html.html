@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .outter {
+      height: 120px;
+      width: 100vw;
+      display: grid;
+      grid-template-columns: 310px 1fr 1fr;
+      background-color: pink;
+    }
+    .inner1 {
+      background-color: blueviolet;
+    }
+    .inner2 {
+      background-color: lightblue;
+      border-right: 1px solid pink
+    }
+    .text1 {
+      display: inline-block;
+      height: 60px;
+      width: 100%;
+      line-height: 60px;
+      text-align: center;
+      border-bottom: 1px solid pink;
+    }
+  </style>
+</head>
+<body>
+  <div class="outter">
+    <div class="inner1"></div>
+    <div class="inner2">
+      <div class="text1">1</div>
+      <div class="text1">2</div>
+    </div>
+    <div class="inner2"></div>
+  </div>
+</body>
+</html>

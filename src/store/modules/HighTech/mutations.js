@@ -37,11 +37,8 @@ export default {
     state.userTaskId = res;
   },
 
-  HighTech_upAllData(state, res) {
-    console.log("////////////", res);
+  HighTech_AllClearData(state, res) {
     state.HighTechData = res.result;
     state.uploadUrlData = res.uploadUrlData;
-
-    console.log(state);
   },
 };

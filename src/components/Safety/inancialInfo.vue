@@ -18,7 +18,6 @@ export default {
     ...mapState(["Safety"]),
     regist_type: {
       get() {
-        console.log(this.Safety.SafetyData.safetyCompany.regist_type, "🔍");
         return this.Safety.SafetyData.safetyCompany.regist_type;
       },
       set(val) {

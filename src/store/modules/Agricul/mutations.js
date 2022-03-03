@@ -43,10 +43,7 @@ export default {
   },
 
   Agricul_upAllData(state, res) {
-    //console.log("////////////", res);
     state.AgriculData = res.result;
     state.uploadUrlData = res.uploadUrlData;
-
-    console.log(state);
   },
 };

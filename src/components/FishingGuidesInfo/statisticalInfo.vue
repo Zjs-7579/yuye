@@ -9,11 +9,11 @@
       v-else-if="declare_name == '境外渔业资源使用费'"
     ></StatisticalOverseas>
     <StatisticalCapture
-      v-else-if="
-        declare_name == '自捕远洋海产品回运费' ||
-        declare_name == '自捕南沙海产品回运费'
-      "
+      v-else-if="declare_name == '自捕远洋海产品回运费'"
     ></StatisticalCapture>
+    <StatisticalNanshaCapture
+      v-else-if="declare_name == '自捕南沙海产品回运费'"
+    />
   </div>
 </template>
 
@@ -22,6 +22,7 @@ import StatisticalBuildOrBuy from "./statisticalBuildOrBuy.vue";
 import StatisticalBuyNansha from "./statisticalBuyNansha.vue";
 import StatisticalOverseas from "./statisticalOverseas.vue";
 import StatisticalCapture from "./statisticalCapture.vue";
+import StatisticalNanshaCapture from "./statisticalNanshaCapture.vue";
 import { mapState } from "vuex";
 export default {
   data() {
@@ -43,6 +44,7 @@ export default {
     StatisticalOverseas,
     StatisticalCapture,
     StatisticalBuyNansha,
+    StatisticalNanshaCapture,
   },
 };
 </script>

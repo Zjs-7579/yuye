@@ -151,6 +151,41 @@ export default {
       },
     ],
 
+    // 南沙
+    oceanSituationNanshaList: [
+      {
+        // id: "", // 主键id
+        // task_id: "", // 任务id
+        // enterprise_name: "", // 企业名称
+        // project_startime: "", // 项目开始时间
+        // project_endtime: "", // 项目结束时间
+        // edit_time: "", // 填表时间
+        // saon_number: "", // 序号
+        // ship_number: "", // 船名号
+        job_type: "", // 作业类型
+        ship_length: "", // 船长（米）
+        gross_tonnage: "", // 总吨位
+        bu_finish_time: "", // 建造完成日期
+        ship_cfte_id: "", // 船舶登记证书编号
+        owship_id: "", // 船舶所有权证书编号
+        certificate_no: "", // 渔船检验证书编号
+        // ship_source_n: "", // 渔船来源
+        // ship_source_b: "", // 渔船来源
+        // ship_qa_variety: "", // 入渔配额
+        // ship_quota: "", // 入渔配额
+        tol_investment: "", // 总投入（万元）
+        alltol_investment: "", // 总投入（万元）
+        state_funding: "", // 已获中央财政渔船补助（万元）
+        allstate_funding: "", // 已获中央财政渔船补助（万元）
+        aped_funding: "", //  申请资助资金（万元）
+        allaped_funding: "", //  申请资助资金（万元）
+        // creator: "", // 创建人
+        // create_time: "", // 创建时间
+        // modifier: "", // 修改人
+        // update_time: "", // 修改时间
+      },
+    ],
+
     //入渔
     oceanCostList: [
       {
@@ -193,6 +228,32 @@ export default {
         cyse_varieties: "", //农业农村部申报情况:品种
         cyse_number: "", //农业农村部申报情况:数量（kg）
         //all_cyse_number: "",//农业农村部申报情况:数量（kg）--总计
+      },
+    ],
+    oceanReturns: [
+      {
+        // enterprise_name: "", // 企业名称
+        // apltion_startime: "", // 项目申请开始时间
+        // apltion_endtime: "", // 项目申请结束时间
+        // edit_time: "", // 填表日期
+        // volume_number: "", // 序号
+        prdon_ship_id: "", // 生产船名号
+        wholesale_no: "", // 批发交易类-交易单号
+        wholesale_type: "", // 批发交易类-品种
+        wholesale_num: "", // 批发交易类-数量（kg）
+        wh_total_num: "", // 批发交易类-数量（kg）-合计
+        wholesale_amt: "", // 批发交易类-金额（元）
+        wh_total_amt: "", // 批发交易类-金额（元）-合计
+        retail_no: "", // 批发交易类-交易单号
+        retail_type: "", // 批发交易类-品种
+        retail_num: "", // 批发交易类-数量（kg）
+        re_total_num: "", // 批发交易类-数量（kg）-合计
+        retail_amt: "", // 批发交易类-金额（元）
+        re_total_amt: "", // 批发交易类-金额（元）-合计
+        creator: "", // 创建人
+        create_time: "", // 创建时间
+        modifier: "", // 修改人
+        update_time: "", // 修改时间
       },
     ],
   },

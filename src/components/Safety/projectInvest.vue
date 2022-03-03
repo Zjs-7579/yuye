@@ -58,6 +58,7 @@ export default {
     ...mapState(["Safety"]),
     safetyInvestTotal: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.Safety.SafetyData.safetyInvestTotal["task_id"] =
           this.Safety.userTaskId;
         return this.Safety.SafetyData.safetyInvestTotal;
@@ -68,7 +69,6 @@ export default {
     },
     safetyInvestment: {
       get() {
-        console.log(this.Safety.SafetyData.safetyInvestment, "safetyInvestmen");
         let jz = this.Safety.SafetyData.safetyInvestment.filter((res) => {
           return res.inv_type == "建筑工程类投资明细";
         });
