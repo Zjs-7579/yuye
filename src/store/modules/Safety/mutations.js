@@ -6,6 +6,7 @@ export default {
     state.userName = res.user_name;
   },
   Safety_UserTaskId(state, res) {
+    console.log("Safety_UserTaskId", res);
     state.userTaskId = res;
   },
   Safety_IsDisabledDataOpen(state) {
