@@ -150,6 +150,16 @@ export default {
             this.UnitInfoBool = e;
           }
         );
+        this.$parent.$refs.SafetyUnitInfoValidate.$refs.unitNotEmployedForm.$refs.ruleForm1.validate(
+          (e) => {
+            this.UnitInfoBool = e;
+          }
+        );
+        this.$parent.$refs.SafetyUnitInfoValidate.$refs.unitNotEmployedForm.$refs.ruleForm2.validate(
+          (e) => {
+            this.UnitInfoBool = e;
+          }
+        );
 
         for (let item of this.Safety.SafetyData.safetyShareholders) {
           for (let result in item) {
@@ -157,7 +167,6 @@ export default {
               this.UnitInfoBool = false;
               break;
             }
-            this.UnitInfoBool = true;
           }
         }
       }
@@ -223,19 +232,18 @@ export default {
 
       if (activeName == "ProjectInvest") {
         this.ProjectInvestBool = true;
-        for (let item of this.Safety.SafetyData.safetyInvestMent) {
+        for (let item of this.Safety.SafetyData.safetyInvestment) {
           for (let result in item) {
-            if (item[result] == "s") {
+            if (item[result] == "") {
               this.ProjectInvestBool = false;
               break;
             }
           }
         }
       }
-
       if (activeName == "SummarizeInfo") {
-        for (let item in this.Safety.safetyAbstract) {
-          if (this.Safety.safetyAbstract[item] == "") {
+        for (let item in this.Safety.SafetyData.safetyAbstract) {
+          if (this.Safety.SafetyData.safetyAbstract[item] == "") {
             this.SummarizeInfoBool = false;
             break;
           }

@@ -67,6 +67,14 @@
         >
           <el-button
             size="small"
+            v-if="path.indexOf('detailInspect') > 0"
+            @click="handleLookDataClick(item)"
+          >
+            {{ item.material_id }}
+          </el-button>
+          <el-button
+            v-if="path.indexOf('createInfo') > 0"
+            size="small"
             type="primary"
             @click="handleInventDataClick(item)"
             :disabled="isDisabledData"
@@ -110,6 +118,7 @@ export default {
     return {
       FromeItemData: "", //上传当前的数据
       formData: "", //上传文件
+      path: "",
       //colorList: ['blue']
       //fileList: [],
       //From: dataFrom,
@@ -163,9 +172,11 @@ export default {
       },
     },
   },
+  mounted() {
+    this.path = this.$route.path;
+  },
   methods: {
     handleInventDataClick(item) {
-      console.log(item);
       //console.log(this.style.color="red")
       this.FromeItemData = item;
     },
@@ -187,13 +198,13 @@ export default {
       };
       //console.log(this.From[val])
       //this.colorList.push("blue")
-      this.Safety.safetyInvestMent.push(str);
+      this.Safety.safetyInvestment.push(str);
     },
     handleDeleteHtml(val) {
-      let result = this.Safety.safetyInvestMent.filter((item) => {
+      let result = this.Safety.safetyInvestment.filter((item) => {
         return item.inv_type == val;
       });
-      let len = this.Safety.safetyInvestMent.lastIndexOf(
+      let len = this.Safety.safetyInvestment.lastIndexOf(
         result[result.length - 1]
       );
       if (result.length == 1) {
@@ -203,14 +214,13 @@ export default {
         });
       } else {
         this.colorList.splice(len, 1);
-        this.Safety.safetyInvestMent.splice(len, 1);
+        this.Safety.safetyInvestment.splice(len, 1);
       }
     },
     // handleChange(file){
     //   console.log(file)
     // },
     beforeUpload(file) {
-      console.log(file);
       var formData = new FormData();
       //formData = {...this.FromeItemData, file}
       //formData.append(...this.FromeItemData)
@@ -229,7 +239,7 @@ export default {
         this.$message.success("上传成功");
         //this.colorList[index] = '#ccc'
       });
-      //console.log(this.safetyInvestMent)
+      //console.log(this.safetyInvestment)
       //console.log(this.colorList)
     },
   },
@@ -237,13 +247,13 @@ export default {
     data: {
       handler(val) {
         // if(this.title == '建筑工程类投资明细'){
-        //   this.Safety.safetyInvestMent[0].inv_type == this.title;
+        //   this.Safety.safetyInvestment[0].inv_type == this.title;
         // }
         // if(this.title == '生产设施建设类投资明细'){
-        //   this.Safety.safetyInvestMent[1].inv_type == this.title;
+        //   this.Safety.safetyInvestment[1].inv_type == this.title;
         // }
         // if(this.title == '仪器、设备类投资明细'){
-        //   this.Safety.safetyInvestMent[2].inv_type == this.title;
+        //   this.Safety.safetyInvestment[2].inv_type == this.title;
         // }
         for (let item of val) {
           item["task_id"] = this.Safety.userTaskId;
@@ -278,6 +288,12 @@ export default {
   font-size: 25px;
   font-weight: bold;
   border: 1px solid #ccc;
+}
+.title::before {
+  display: inline-block;
+  content: "*";
+  color: #f56c6c;
+  margin-right: 4px;
 }
 .MoEngin .titleRow {
   height: 60px;

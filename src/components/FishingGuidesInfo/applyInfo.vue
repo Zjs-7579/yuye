@@ -209,6 +209,7 @@ export default {
     ...mapState(["Fishing"]),
     OceanDeclaration: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.Fishing.OceanDeclaration["task_id"] = this.Fishing.userTaskId;
         //this.Fishing.OceanDeclaration.creator = this.Fishing.userName;
         return this.Fishing.OceanDeclaration;

@@ -23,7 +23,6 @@ export async function DeleteFiles(id) {
 
 //下载申请书
 export async function DownContentText(id) {
-  //console.log(parmse)
   const res = await http.get(`safety/ty/task/report/${id}`);
   return res;
 }

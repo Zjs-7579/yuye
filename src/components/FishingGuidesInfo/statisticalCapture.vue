@@ -179,29 +179,15 @@ export default {
         this.isDisabledData = val;
       },
     },
-    all_customs_number: {
-      get() {
-        let sum = 0;
-        for (let item of this.oceanVolumes) {
-          sum += item.customs_number * 1;
-        }
-        return sum;
-      },
-      set(val) {
-        this.all_customs_number = val;
-      },
+    all_customs_number() {
+      return this.oceanVolumes.reduce((sum, item) => {
+        return sum + +item.customs_number;
+      }, 0);
     },
-    all_cyse_number: {
-      get() {
-        let sum = 0;
-        for (let item of this.oceanVolumes) {
-          sum += item.cyse_number * 1;
-        }
-        return sum;
-      },
-      set(val) {
-        this.all_cyse_number = val;
-      },
+    all_cyse_number() {
+      return this.oceanVolumes.reduce((sum, item) => {
+        return sum + +item.cyse_number;
+      }, 0);
     },
   },
   methods: {

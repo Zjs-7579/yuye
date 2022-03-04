@@ -58,7 +58,6 @@ const SafetyData = {
   },
   safetyCauses: [
     {
-      //task_id: "",
       total_revenue: "", //年度总收入
       financial_appr: "", //财政拨款额
       production_income: "", //生产经营活动收入
@@ -82,10 +81,8 @@ const SafetyData = {
       total_liabilities: "", //年末负债总额
       monetary_Fund: "", //年末货币资金金额
       borrowed_money: "", //年末借入款项金额
-      //creator: "",//创建人
     },
     {
-      //task_id: "",
       total_revenue: "", //年度总收入
       financial_appr: "", //财政拨款额
       production_income: "", //生产经营活动收入
@@ -109,10 +106,8 @@ const SafetyData = {
       total_liabilities: "", //年末负债总额
       monetary_Fund: "", //年末货币资金金额
       borrowed_money: "", //年末借入款项金额
-      //creator: "",//创建人
     },
     {
-      //task_id: "",
       total_revenue: "", //年度总收入
       financial_appr: "", //财政拨款额
       production_income: "", //生产经营活动收入
@@ -136,12 +131,10 @@ const SafetyData = {
       total_liabilities: "", //年末负债总额
       monetary_Fund: "", //年末货币资金金额
       borrowed_money: "", //年末借入款项金额
-      //creator: "",//创建人
     },
   ],
   safetyFinances: [
     {
-      //task_id: "",
       pro_year: "",
       business_income: "",
       main_business_income: "",
@@ -175,10 +168,8 @@ const SafetyData = {
       technology_inv: "",
       government_loan: "",
       overdue: "",
-      //creator: ""
     },
     {
-      //task_id: "",
       pro_year: "",
       business_income: "",
       main_business_income: "",
@@ -212,10 +203,8 @@ const SafetyData = {
       technology_inv: "",
       government_loan: "",
       overdue: "",
-      //creator: ""
     },
     {
-      //task_id: "",
       pro_year: "",
       business_income: "",
       main_business_income: "",
@@ -249,22 +238,18 @@ const SafetyData = {
       technology_inv: "",
       government_loan: "",
       overdue: "",
-      //creator: ""
     },
   ],
   safetyShareholders: [
     {
-      // task_id: "",
       shareholder: "", //主要股东名称
       amount: "", //出资金额
       payer_type: "", //出资方式
       share_proportion: "", //股份比例(%)
-      //creator: ""i
     },
   ],
   safetySupport: [
     {
-      //task_id: '',
       project_name: "", //项目名称
       funding_unit: "", //资助单位
       funding_year: "", //受资助年份
@@ -276,10 +261,6 @@ const SafetyData = {
       project_years: "", //项目实施年限
       accept: "", //是否完成验收及时间
       reasons: "", //未完成验收原因
-      //creator: '',//创建人
-      // create_time: "",
-      // modifier: '',
-      // update_time: ''
     },
   ],
   safetyImplement: {
@@ -315,75 +296,43 @@ const SafetyData = {
     project_invest: "",
     support: "",
   },
-  safetyInvestMent: [
+  safetyInvestment: [
     {
-      //task_id: '',
       inv_type: "建筑工程类投资明细",
-      //inv_type: '',
-      // project_invest: '',
-      //support: '',
       spending_type: "", //支出类别
       start_and_end: "", //起止时间
       content: "", //建成项目主要内容
       amount: "", //金额（万元）
       fixed_assets: "", //固定资产
       other_assets: "", //其他资产
-      //creator: '', //创建人
-      //create_time: '', //创建时间
-      // modifier: '',
-      // update_time: ''
     },
     {
-      //task_id: '',
-      //inv_type: '',
       inv_type: "生产设施建设类投资明细",
-      // project_invest: '',
-      //support: '',
       spending_type: "", //支出类别
       start_and_end: "", //起止时间
       content: "", //建成项目主要内容
       amount: "", //金额（万元）
       fixed_assets: "", //固定资产
       other_assets: "", //其他资产
-      //creator: '', //创建人
-      //create_time: '', //创建时间
-      // modifier: '',
-      // update_time: ''
     },
     {
-      //task_id: '',
-      //inv_type: '',
       inv_type: "仪器、设备类投资明细",
-      // project_invest: '',
-      //support: '',
       spending_type: "", //支出类别
       start_and_end: "", //起止时间
       content: "", //建成项目主要内容
       amount: "", //金额（万元）
       fixed_assets: "", //固定资产
       other_assets: "", //其他资产
-      //creator: '', //创建人
-      //create_time: '', //创建时间
-      // modifier: '',
-      // update_time: ''
     },
   ],
   safetyEquipment: [
     {
-      //task_id: "",
       equipment_name: "", //设备名称
       specifications: "", //规格型号
       quantity: "", //数量/单位
       price: "", //单价
       amount: "", //金额合计
       storage_loc: "", //设备安装/存放地点
-      //total_quantity: "",//合计-数量/单位
-      //total_price: "",//合计-单价
-      //total_amount: "",//合计-金额合计
-      //creator: "",//创建人
-      //create_time: "",//创建时间
-      // modifier: "",//修改人
-      // update_time: "",//修改时间
     },
   ],
   basic_info: {
@@ -426,7 +375,6 @@ export function safetyClearData(Data) {
       for (let res of Data.SafetyData[item]) {
         for (let item in res) {
           if (item == "inv_type") {
-            console.log(res[item]);
             break;
           } else {
             res[item] = "";
@@ -451,66 +399,48 @@ export function safetyClearData(Data) {
 }
 
 export function safetyData(newData) {
-  //console.log("saaaaaaaaaaaaaaaaaaaaaaaaaasasasa", newData)
   newData["safetyInvestTotal"] = {};
   for (let item in newData) {
     if (newData[item] == null) {
-      //console.log('null',item)
-      newData[item] = SafetyData[item];
-      // newData[item] = "";
-    }
-
-    if (item == "safetyFinances" && newData[item].length == 0) {
-      //console.log('2222')
       newData[item] = SafetyData[item];
     }
 
     if (item == "safetyFinances" && newData[item].length == 0) {
-      //console.log('2222')
+      newData[item] = SafetyData[item];
+    }
+
+    if (item == "safetyFinances" && newData[item].length == 0) {
       newData[item] = SafetyData[item];
     }
 
     if (item == "safetyCauses" && newData[item].length == 0) {
-      //console.log('4444')
       newData[item] = SafetyData[item];
-      //console.log(newData[item] )
     }
 
     if (item == "safetySupport" && newData[item].length == 0) {
-      //console.log('4444')
       newData[item] = SafetyData[item];
-      //console.log(newData[item] )
     }
 
     if (item == "safetyEquipment") {
-      //console.log('dsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', newData[item])
       newData["safetyInvestTotal"]["project_invest"] =
         newData[item][0].project_invest;
       newData["safetyInvestTotal"]["support"] = newData[item][0].support;
 
       if (item == "safetyEquipment") {
-        //console.log('dsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', newData[item])
         newData["safetyInvestTotal"]["project_invest"] =
           newData[item][0].project_invest;
         newData["safetyInvestTotal"]["support"] = newData[item][0].support;
-
-        //console.log(newData['safetyInvestTotal'])
       }
     }
-
-    return newData;
   }
+  return newData;
 }
 
 export function safetyFilesData(filesData) {
   //console.log(filesData ,newData
   if (filesData) {
     for (let item of filesData) {
-      //console.log(item)
-
-      //.data = []
       uploadUrlData.forEach((res) => {
-        //console.log(res)
         if (item.material_type == res.title) {
           res.data.push(item);
         }

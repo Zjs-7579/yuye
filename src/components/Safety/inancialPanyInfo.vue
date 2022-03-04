@@ -198,7 +198,7 @@ export default {
 .Moinancial .dataPanRow {
   height: 62vh;
   overflow: hidden;
-  overflow-y: overlay;
+  overflow-y: auto;
 }
 .Moinancial .dataPanRow .el-row {
   border: 1px solid #ccc;

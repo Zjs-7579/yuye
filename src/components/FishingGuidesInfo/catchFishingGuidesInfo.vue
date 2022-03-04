@@ -77,6 +77,7 @@ export default {
     oceanSelfcapture: {
       get() {
         //this.Fishing.OceanDeclaration.oceanSelfcapture.task_id = this.Fishing.userTaskId;
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.Fishing.OceanDeclaration.oceanSelfcapture.creator =
           this.Fishing.userName;
         return this.Fishing.OceanDeclaration.oceanSelfcapture;

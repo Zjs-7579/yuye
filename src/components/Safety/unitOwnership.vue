@@ -94,7 +94,6 @@ export default {
   },
   methods: {
     handleAddHtml() {
-      console.log(this.Safety);
       let str = {
         task_id: this.Safety.userTaskId,
         shareholder: "",

@@ -16,7 +16,9 @@
         <span
           v-show="
             activeName == 'StatisticalInfo' &&
-            (declare_name == '建造远洋渔船' || declare_name == '购买远洋渔船')
+            (declare_name == '建造远洋渔船' ||
+              declare_name == '购买远洋渔船' ||
+              declare_name == '建造南沙骨干渔船')
           "
           >备注：1.总投入是指船舶竣工造价或购船和设备改造投入。
           2.项目申请起止时间是指项目实施补贴时间。</span
@@ -106,7 +108,6 @@ export default {
   },
   methods: {
     handleActionNext() {
-      console.log(this.Fishing.OceanDeclaration);
       this.validationDataTab(this.activeName);
       if (this[this.activeName + "Bool"]) {
         this.handlePreserveInfo();
@@ -133,8 +134,10 @@ export default {
           this.UnitInfoBool = e;
         });
 
-        if (this.declare_name == "建造远洋渔船") {
-          //console.log(this.$parent.$refs.ApplyInfo.$refs.BuildFishing)
+        if (
+          this.declare_name == "建造远洋渔船" ||
+          this.declare_name == "建造南沙骨干渔船"
+        ) {
           this.$parent.$refs.ApplyInfo.$refs.BuildFishing.$refs.buildForm.validate(
             (e) => {
               this.ApplyInfoBool = e;
@@ -155,7 +158,10 @@ export default {
             }
           );
         }
-        if (this.declare_name == "自捕远洋海产品回运费") {
+        if (
+          this.declare_name == "自捕远洋海产品回运费" ||
+          this.declare_name == "自捕南沙海产品回运费"
+        ) {
           this.$parent.$refs.ApplyInfo.$refs.CatchFishing.$refs.catchForm.validate(
             (e) => {
               this.ApplyInfoBool = e;
@@ -180,13 +186,42 @@ export default {
           this.declare_name == "建造远洋渔船" ||
           this.declare_name == "购买远洋渔船"
         ) {
-          //console.log(this.$parent.$refs.ApplyInfo.$refs.BuildFishing)
           for (let item of this.Fishing.OceanParam.oceanSituationList) {
-            //console.log(item)
             for (let res in item) {
-              //console.log(res)
               if (item[res] == "") {
-                console.log(item[res]);
+                this.StatisticalInfoBool = false;
+                break;
+              }
+            }
+          }
+        }
+
+        if (this.declare_name == "建造南沙骨干渔船") {
+          // console.log("👻", this.Fishing.OceanParam.oceanPurchases);
+          // this.StatisticalInfoBool =
+          //   this.Fishing.OceanParam.oceanPurchases.every((item) =>
+          //     Object.values(item).every((value) => value !== "")
+          //   );
+          // console.log(this.StatisticalInfoBool, "👻");
+          const skipField = [
+            "create_time",
+            "creator",
+            "edit_time",
+            "enterprise_name",
+            "project_endtime",
+            "project_startime",
+            "saon_number",
+            "ship_qa_variety",
+            "ship_quota",
+            "ship_source_b",
+            "ship_source_n",
+            "update_time",
+            "modifier",
+          ];
+          for (const item of this.Fishing.OceanParam.oceanPurchases) {
+            for (let res in item) {
+              if (skipField.includes(res)) continue;
+              if (item[res] == "") {
                 this.StatisticalInfoBool = false;
                 break;
               }
@@ -214,6 +249,28 @@ export default {
             }
           }
         }
+        if (this.declare_name == "自捕南沙海产品回运费") {
+          const skipField = [
+            "apltion_endtime",
+            "apltion_startime",
+            "create_time",
+            "creator",
+            "edit_time",
+            "enterprise_name",
+            "modifier",
+            "update_time",
+            "volume_number",
+          ];
+          for (let item of this.Fishing.OceanParam.oceanReturns) {
+            for (let res in item) {
+              if (skipField.includes(res)) continue;
+              if (item[res] == "") {
+                this.StatisticalInfoBool = false;
+                break;
+              }
+            }
+          }
+        }
       }
 
       if (activeName == "UploadFiles") {
@@ -231,7 +288,6 @@ export default {
     },
     //保存
     handlePreserveInfo() {
-      //console.log(this.activeName)
       if (this.activeName == "ApplyInfo") {
         createInfoApplyData(this.Fishing.OceanDeclaration).then(() => {
           this.$message({
@@ -240,7 +296,6 @@ export default {
           });
         });
       }
-
       if (this.activeName == "StatisticalInfo") {
         createInfoStatisticsData(
           this.declare_name,

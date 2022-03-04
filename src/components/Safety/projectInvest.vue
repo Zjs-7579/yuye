@@ -4,18 +4,19 @@
     <el-form
       :model="safetyInvestTotal"
       ref="InvestTotal"
+      :rules="rules"
       :disabled="isDisabledData"
       label-width="250px"
       class="demo-ruleForm"
     >
       <el-row>
         <el-col :span="12">
-          <el-form-item label="项目总投资:">
+          <el-form-item label="项目总投资:" prop="project_invest">
             <el-input v-model="safetyInvestTotal.project_invest"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="申请市财政资助额:">
+          <el-form-item label="申请市财政资助额:" prop="support">
             <el-input v-model="safetyInvestTotal.support"></el-input>
           </el-form-item>
         </el-col>
@@ -44,6 +45,7 @@
 <script>
 import ProjectInvestDetailed from "./projectInvestDetailed.vue";
 import ProjectInvestEquip from "./projectInvestEquip.vue";
+import { ModernSummarize } from "../../utils/validator";
 import { mapState } from "vuex";
 export default {
   data() {
@@ -52,12 +54,14 @@ export default {
       //   project_invest: "",
       //   support: "",
       // },
+      rules: ModernSummarize,
     };
   },
   computed: {
     ...mapState(["Safety"]),
     safetyInvestTotal: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.Safety.SafetyData.safetyInvestTotal["task_id"] =
           this.Safety.userTaskId;
         return this.Safety.SafetyData.safetyInvestTotal;
@@ -68,7 +72,6 @@ export default {
     },
     safetyInvestment: {
       get() {
-        console.log(this.Safety.SafetyData.safetyInvestment, "safetyInvestmen");
         let jz = this.Safety.SafetyData.safetyInvestment.filter((res) => {
           return res.inv_type == "建筑工程类投资明细";
         });

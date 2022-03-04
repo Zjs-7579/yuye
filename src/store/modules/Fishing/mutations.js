@@ -52,14 +52,14 @@ export default {
         }
       }
     }
-
-    console.log(state);
   },
   Fishing_upAllData(state, result) {
     state.OceanDeclaration = result.declaration;
 
     state.OceanParam.oceanCostList = result.oceanCostList;
     state.OceanParam.oceanSituationList = result.oceanSituationList;
+    state.OceanParam.oceanReturns = result.oceanReturns;
+    state.OceanParam.oceanPurchases = result.oceanPurchases;
     state.OceanParam.oceanVolumes = result.oceanVolumes;
   },
 };
