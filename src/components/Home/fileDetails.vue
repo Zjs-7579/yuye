@@ -84,12 +84,15 @@ export default {
   align-items: center;
   line-height: 20px;
 }
-p.filesType {
+.filesTypeLook {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: wrap;
-  display: inline-block;
-  vertical-align: middle;
+  white-space: nowrap;
+  display: block;
+  /* height: 80px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1px; */
 }
 /* .filesType span {
   width: 100px;
