@@ -209,12 +209,6 @@ export default {
         }
 
         if (this.declare_name == "建造南沙骨干渔船") {
-          // console.log("👻", this.Fishing.OceanParam.oceanPurchases);
-          // this.StatisticalInfoBool =
-          //   this.Fishing.OceanParam.oceanPurchases.every((item) =>
-          //     Object.values(item).every((value) => value !== "")
-          //   );
-          // console.log(this.StatisticalInfoBool, "👻");
           const skipField = [
             "create_time",
             "creator",

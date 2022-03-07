@@ -30,7 +30,7 @@ export async function SaJudge(row, router, store) {
       row.declare_status == "待提交"
     ) {
       router.push({
-        path: `/safety?&type=${row.task_source}&id=${row.task_id}`,
+        path: `/safety?type=${row.task_source}&id=${row.task_id}`,
       });
     }
     if (
@@ -39,7 +39,7 @@ export async function SaJudge(row, router, store) {
     ) {
       //store.commit("Agricul_IsDetailsContentOpen");
       router.push({
-        path: `/safety/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+        path: `/safety/detailInspect?type=${row.task_source}&id=${row.task_id}`,
       });
     }
   } else {
@@ -52,13 +52,30 @@ export async function SaJudge(row, router, store) {
 export async function SaDetail(row, router, store) {
   let status = await getSafety(row.task_id, store);
   if (status == 200) {
-    if (router.history.current.name != "UserDetail") {
+    // if (router.history.current.name == "UserDetail") {
+    //   router.push({
+    //     path: `${router.history.current.path}?&type=${row.task_source}&id=${row.task_id}`,
+    //     //path: `${router.history.current.fullPath}`,
+    //     //path: `${router.history.current.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+    //   });
+    // }
+    // if (router.history.current.name == null) {
+    //   router.push({
+    //     path: `${router.history.current.path}/createInfo?&type=${row.task_source}&id=${row.task_id}`,
+    //   });
+    // }
+    if (router.history.current.path.includes("detailInspect")) {
+      console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
       router.push({
-        path: `${router.history.current.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+        path: `${router.history.current.path}?type=${row.task_source}&id=${row.task_id}`,
       });
     } else {
+      console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
       router.push({
-        path: `${router.history.current.path}?&type=${row.task_source}&id=${row.task_id}`,
+        path: `${router.history.current.path}/detailInspect?type=${row.task_source}&id=${row.task_id}`,
+        //path: `${router.history.current.fullPath}`,
+        //path: `${router.history.current.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
       });
     }
   }

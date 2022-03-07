@@ -5,6 +5,7 @@ export default {
   isDisabledData: false,
   imageIds: [],
   isDetailsContent: true,
+  isHoldInfo: true, //近三年支持情况
   uploadUrlData: [
     { title: "项目申请书", data: [] },
     { title: "承诺书", data: [] },

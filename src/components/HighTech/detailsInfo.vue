@@ -21,6 +21,7 @@
       >
       <a
         href="#HoldInfo"
+        v-if="isHoldInfo"
         @click="handleColorText('HoldInfo')"
         :class="colorText == 'HoldInfo' ? 'colorText' : ''"
         >国家、省、市财政近三年全部支持情况</a
@@ -121,7 +122,7 @@
       <div id="UnitInfo"><UnitInfo /></div>
       <div id="InancialInfo"><InancialInfo /></div>
       <div id="ResearchInfo"><ResearchInfo /></div>
-      <div id="HoldInfo"><HoldInfo /></div>
+      <div id="HoldInfo" v-if="isHoldInfo"><HoldInfo /></div>
       <div id="TeamInfo"><TeamInfo /></div>
       <div id="ProjectUnitInfo"><ProjectUnitInfo /></div>
       <div id="ProjectContent" v-if="regist_type == '企业'">
@@ -209,6 +210,9 @@ export default {
         this.isDetailsContent = val;
       },
     },
+    isHoldInfo() {
+      return this.HighTech.isHoldInfo;
+    },
     regist_type() {
       return this.HighTech.HighTechData.techCompany.regist_type;
     },
@@ -274,6 +278,7 @@ export default {
     },
   },
   mounted() {
+    this.$store.commit("HighTech_IsDisabledData", true);
     //agriculClearData(this.Agricul)
     //console.log(this.Agricul)
     console.log(this.$route);

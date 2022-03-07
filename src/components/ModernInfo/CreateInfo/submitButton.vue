@@ -137,8 +137,8 @@ export default {
     },
     visibleSubmit() {
       this.visibleSubmitContent = true;
-      this.$store.commit("Modern_IsDisabledDataOpen");
-      this.$store.commit("Modern_IsDetailsContentClose");
+      this.$store.commit("Modern_IsDisabledData", true);
+      this.$store.commit("Modern_IsDetailsContent", false);
       //this.$store.commit("Agricul_IsCountableUploadClose");
       //this.$store.commit("Agricul_IsDetailsContentClose");
     },
@@ -146,8 +146,8 @@ export default {
       this.$confirm("是否退出提交？")
         .then(() => {
           done();
-          this.$store.commit("Modern_IsDisabledDataClose");
-          this.$store.commit("Modern_IsDetailsContentClose");
+          this.$store.commit("Modern_IsDisabledData", false);
+          this.$store.commit("Modern_IsDetailsContent", false);
         })
         .catch(() => {});
     },

@@ -1,6 +1,6 @@
 <template>
   <div class="filesData">
-    <el-row class="title"> 项目所附材料清单 </el-row>
+    <el-row class="title"> 项目所附材料清单 {{ task_id }}</el-row>
     <div v-if="filesData.length > 0">
       <el-row
         v-for="(item, index) in filesData"
@@ -12,7 +12,7 @@
           {{ item.material_type }}
         </el-col>
         <el-col :span="6"
-          ><p class="filesType" @click="lookDetailed(item.file_path)">
+          ><p class="filesTypeLook" @click="lookDetailed(item.file_path)">
             {{ item.name }}
           </p></el-col
         >
@@ -35,13 +35,15 @@ export default {
     lookDetailed(title) {
       window.open(title);
     },
+    async updata(id) {
+      const data = await fileData(id);
+      this.filesData = data.data.data;
+    },
   },
   mounted() {
-    //this.fileData = []
-    // fileData(this.task_id).then((res) => {
-    //   console.log("dsadsadadsaaaaaaaaaaaaaa", res);
-    //   this.filesData = res.data.data;
-    // });
+    this.$nextTick(() => {
+      this.updata(this.task_id);
+    });
   },
   watch: {
     task_id(val) {
@@ -54,6 +56,11 @@ export default {
 </script>
 
 <style>
+.filesData {
+  height: 400px;
+  overflow: hidden;
+  overflow-y: auto;
+}
 .filesData .title {
   background-color: #ece8e8;
   height: 60px;

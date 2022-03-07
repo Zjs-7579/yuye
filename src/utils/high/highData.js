@@ -41,9 +41,9 @@ export async function HiJudge(row, router, store) {
       row.task_source == "农业高新技术项目" &&
       row.declare_status == "审核中"
     ) {
-      store.commit("Agricul_IsDetailsContentOpen");
+      //store.commit("Agricul_IsDetailsContentOpen");
       router.push({
-        path: `/highTech/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+        path: `/highTech/detailInspect?type=${row.task_source}&id=${row.task_id}`,
       });
     }
   } else {
@@ -56,13 +56,30 @@ export async function HiJudge(row, router, store) {
 export async function HiDetail(row, router, store) {
   let status = await getHighTech(row.task_id, store);
   if (status == 200) {
-    if (router.history.current.name != "UserDetail") {
+    // if (router.history.current.name == "UserDetail") {
+    //   router.push({
+    //     path: `${router.history.current.path}?&type=${row.task_source}&id=${row.task_id}`,
+    //     //path: `${router.history.current.fullPath}`,
+    //     //path: `${router.history.current.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+    //   });
+    // }
+    // if (router.history.current.name == null) {
+    //   router.push({
+    //     path: `${router.history.current.path}/createInfo?&type=${row.task_source}&id=${row.task_id}`,
+    //   });
+    // }
+    if (router.history.current.path.includes("detailInspect")) {
+      console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
       router.push({
-        path: `${router.history.current.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+        path: `${router.history.current.path}?type=${row.task_source}&id=${row.task_id}`,
       });
     } else {
+      console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
       router.push({
-        path: `${router.history.current.path}?&type=${row.task_source}&id=${row.task_id}`,
+        path: `${router.history.current.path}/detailInspect?type=${row.task_source}&id=${row.task_id}`,
+        //path: `${router.history.current.fullPath}`,
+        //path: `${router.history.current.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
       });
     }
   }

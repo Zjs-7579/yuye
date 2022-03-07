@@ -25,7 +25,7 @@
 
     <el-row
       class="dataRow"
-      v-for="(item, index) in oceanSituationNanshaList"
+      v-for="(item, index) in oceanPurchases"
       :key="index"
     >
       <el-col :span="1">
@@ -135,12 +135,12 @@ export default {
   },
   computed: {
     ...mapState(["Fishing"]),
-    oceanSituationNanshaList: {
+    oceanPurchases: {
       get() {
-        return this.Fishing.OceanParam.oceanSituationNanshaList;
+        return this.Fishing.OceanParam.oceanPurchases;
       },
       set(val) {
-        this.oceanSituationNanshaList = val;
+        this.oceanPurchases = val;
       },
     },
     isDisabledData: {
@@ -162,7 +162,7 @@ export default {
     alltol_investment: {
       get() {
         let sum = 0;
-        for (let item of this.oceanSituationNanshaList) {
+        for (let item of this.oceanPurchases) {
           sum += item.tol_investment * 1;
         }
         return sum.toFixed(2);
@@ -174,7 +174,7 @@ export default {
     allstate_funding: {
       get() {
         let sum = 0;
-        for (let item of this.oceanSituationNanshaList) {
+        for (let item of this.oceanPurchases) {
           sum += item.state_funding * 1;
         }
         return sum.toFixed(2);
@@ -186,7 +186,7 @@ export default {
     allaped_funding: {
       get() {
         let sum = 0;
-        for (let item of this.oceanSituationNanshaList) {
+        for (let item of this.oceanPurchases) {
           sum += item.aped_funding * 1;
         }
         return sum.toFixed(2);
@@ -219,22 +219,22 @@ export default {
         appropriate: "", //此次申请拨付资助资金（万元）
         all_appropriate: "", //此次申请拨付资助资金（万元）--总计
       };
-      this.oceanSituationNanshaList.push(data);
+      this.oceanPurchases.push(data);
     },
     handleDeleteHtml() {
-      let len = this.oceanSituationNanshaList.length;
+      let len = this.oceanPurchases.length;
       if (len == 1) {
         this.$message({
           message: "就剩最后一条信息了！！！",
           type: "warning",
         });
       } else {
-        this.oceanSituationNanshaList.splice(len - 1, 1);
+        this.oceanPurchases.splice(len - 1, 1);
       }
     },
   },
   watch: {
-    oceanSituationNanshaList: {
+    oceanPurchases: {
       handler(val) {
         for (let item of val) {
           item["task_id"] = this.Fishing.userTaskId;

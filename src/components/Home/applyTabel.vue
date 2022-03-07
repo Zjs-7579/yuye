@@ -147,7 +147,6 @@ export default {
   },
   methods: {
     searchData() {
-      //alert(this.select)
       searchDataTitle(this.select, this.input).then((res) => {
         this.tableData = res;
       });
@@ -204,6 +203,7 @@ export default {
     },
     handleFile(row) {
       this.fileVisible = true;
+      this.task_id = 0;
       this.task_id = row.task_id;
     },
     handleDelete(row) {

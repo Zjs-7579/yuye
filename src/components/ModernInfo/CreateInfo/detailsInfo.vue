@@ -68,7 +68,7 @@
         <AuditInfo></AuditInfo>
       </div>
     </div>
-    <div class="allBtn" :style="{ display: !isDetailsContent }">
+    <div class="allBtn" v-if="this.$route.name == 'ModernCreateInfo'">
       <el-button type="primary" @click="SubmitData">提交</el-button>
     </div>
   </div>
@@ -143,7 +143,7 @@ export default {
                 type: "success",
                 message: "表单提交成功!",
               }),
-                this.$store.commit("Modern_IsDisabledDataClose"),
+                this.$store.commit("Modern_IsDisabledData", false),
                 setTimeout(
                   this.$router.push({
                     path: "/home",
@@ -162,6 +162,7 @@ export default {
     },
   },
   mounted() {
+    this.$store.commit("Modern_IsDisabledData", true);
     console.log("000000000000000000000000", this.$route);
 
     //console.log(this.Agricul)

@@ -106,6 +106,9 @@ export default {
   },
   computed: {
     ...mapState(["Agricul"]),
+    isHoldInfo() {
+      return this.Agricul.isHoldInfo;
+    },
   },
   methods: {
     handleActionNext() {
@@ -141,15 +144,17 @@ export default {
     },
     visibleSubmit() {
       this.visibleSubmitContent = true;
-      this.$store.commit("Agricul_IsDisabledDataOpen");
+      this.$store.commit("Agricul_IsDisabledData", true);
+      this.$store.commit("Agricul_IsDetailsContent", false);
+      //this.$store.commit("Agricul_IsDisabledDataOpen");
       //this.$store.commit("Agricul_IsCountableUploadClose");
-      this.$store.commit("Agricul_IsDetailsContentClose");
+      //this.$store.commit("Agricul_IsDetailsContentClose");
     },
     handleClose(done) {
       this.$confirm("是否退出提交？")
         .then(() => {
           done();
-          this.$store.commit("Agricul_IsDisabledDataClose");
+          this.$store.commit("Agricul_IsDisabledData", false);
           //this.$store.commit("Agricul_IsCountableUploadOpen");
         })
         .catch(() => {});
@@ -211,15 +216,18 @@ export default {
 
       if (activeName == "HoldInfo") {
         this.HoldInfoBool = true;
-        for (let item of this.$parent.$refs.AgriculHoldInfoValidate.$refs
-          .holdForm) {
-          item.validate((e) => {
-            if (!e) {
-              this.HoldInfoBool = e;
-            }
-          });
+        if (this.isHoldInfo) {
+          for (let item of this.$parent.$refs.AgriculHoldInfoValidate.$refs
+            .holdForm) {
+            item.validate((e) => {
+              if (!e) {
+                this.HoldInfoBool = e;
+              }
+            });
+          }
         }
         //console.log(this.HoldInfoBool)
+        // eslint-disable-next-line no-undef
       }
 
       if (activeName == "CountableInfo") {

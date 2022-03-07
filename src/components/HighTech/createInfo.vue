@@ -203,22 +203,11 @@ export default {
     SubmitButton,
   },
   mounted() {
-    // this.$store.commit("Modern_IsDisabledDataClose");
-    // 	modernClearData(this.Modern)
-    if (this.$route.query.id != undefined) {
-      // MOdetailsInspectData(this.$route.query.id).then((res) => {
-      //   //console.log('data', res)
-      //   this.$store.commit("Modern_UserTaskId", this.$route.query.id);
-      //   let result = modernData(res.data.data);
-      //   let uploadUrlData;
-      //   res.data.data.images
-      //     ? (uploadUrlData = modernFilesData(res.data.data.images))
-      //     : (uploadUrlData = []);
-      //   //console.log('result', result)
-      //   //this.Modern.ModernData = result
-      //   this.$store.commit("Modern_AllClearData", { result, uploadUrlData });
-      // });
-    } else {
+    this.$store.commit("HighTech_IsDisabledData", false);
+    if (this.$route.query.id == undefined) {
+      //console.log("xxxxxxxxxxxxxxxxxxxxxxxxx", this.Agricul);
+
+      highClearData(this.HighTech);
       userTaskid().then((res) => {
         //console.log(res)
         this.$store.commit("HighTech_UserTaskId", res.data.data);
