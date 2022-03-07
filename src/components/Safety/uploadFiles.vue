@@ -82,7 +82,7 @@ export default {
     ...mapState(["Safety"]),
     uploadUrlData: {
       get() {
-        return this.Safety.uploadUrlData;
+        return this.Safety.userTaskId != "" ? this.Safety.uploadUrlData : [];
       },
       set(val) {
         this.uploadUrlData = val;

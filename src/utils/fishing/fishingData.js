@@ -7,7 +7,6 @@ async function getFishing(task_id, store) {
   if (res.data.code == 200) {
     //console.log("----------------------------", res);
     store.commit("Fishing_UserTaskId", task_id);
-    console.log(res);
     let result = fishingData(res.data.data);
 
     store.commit("Fishing_upAllData", result);

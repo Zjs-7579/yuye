@@ -41,7 +41,7 @@
           <el-input
             type="text"
             :disabled="isDisabledData"
-            v-model="item.payer_type"
+            v-model="item.contribution"
           ></el-input></div
       ></el-col>
       <el-col :span="6"

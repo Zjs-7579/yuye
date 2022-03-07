@@ -9,6 +9,10 @@
         <ApplyInfo ref="ApplyInfo"></ApplyInfo>
       </el-tab-pane>
       <el-tab-pane
+        v-if="
+          Fishing.OceanDeclaration.declare_name !==
+          '远洋渔业基地，包括冷链物流项目（含海产品加工厂及配套专用冷库）、超低温冷库以及境外远洋渔业基地等'
+        "
         label="远洋渔业项目统计表"
         name="StatisticalInfo"
         :disabled="isDataShow"
@@ -47,18 +51,18 @@ export default {
   beforeRouteEnter(to, from, next) {
     if (from.path == "/") {
       next(async (vm) => {
-        let status = 0;
-        if (to.query.id) {
-          status = await FiJudge(
-            {
-              task_id: to.query.id,
-            },
-            vm.$router,
-            vm.$store
-          );
-        } else {
-          status = 200;
-        }
+        let status = await FiJudge(
+          {
+            task_id: to.query.id,
+          },
+          vm.$router,
+          vm.$store
+        );
+        // console.log(
+        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+        //   status
+        //   //this.$route.query.id
+        // );
         if (status != 200) {
           vm.$message.warning("数据出错");
         }

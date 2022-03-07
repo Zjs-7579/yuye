@@ -230,7 +230,8 @@ export default {
         //all_cyse_number: "",//农业农村部申报情况:数量（kg）--总计
       },
     ],
-    oceanReturns: [
+    // 建造南沙骨干渔船情况统计表
+    oceanPurchases: [
       {
         // enterprise_name: "", // 企业名称
         // apltion_startime: "", // 项目申请开始时间
@@ -254,6 +255,33 @@ export default {
         create_time: "", // 创建时间
         modifier: "", // 修改人
         update_time: "", // 修改时间
+      },
+    ],
+    oceanReturns: [
+      {
+        // task_id: "",
+        // enterprise_name: "",
+        // apltion_startime: "",
+        // apltion_endtime: "",
+        // edit_time: "",
+        // volume_number: "",
+        prdon_ship_id: "",
+        wholesale_no: "",
+        wholesale_type: "",
+        wholesale_num: "",
+        wh_total_num: "",
+        wholesale_amt: "",
+        wh_total_amt: "",
+        retail_no: "",
+        retail_type: "",
+        retail_num: "",
+        re_total_num: "",
+        retail_amt: "",
+        re_total_amt: "",
+        creator: "",
+        create_time: "",
+        modifier: "",
+        update_time: "",
       },
     ],
   },

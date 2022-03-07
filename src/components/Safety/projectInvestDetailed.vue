@@ -67,6 +67,14 @@
         >
           <el-button
             size="small"
+            v-if="path.indexOf('detailInspect') > 0"
+            @click="handleLookDataClick(item)"
+          >
+            {{ item.material_id }}
+          </el-button>
+          <el-button
+            v-if="path.indexOf('createInfo') > 0"
+            size="small"
             type="primary"
             @click="handleInventDataClick(item)"
             :disabled="isDisabledData"
@@ -110,6 +118,7 @@ export default {
     return {
       FromeItemData: "", //上传当前的数据
       formData: "", //上传文件
+      path: "",
       //colorList: ['blue']
       //fileList: [],
       //From: dataFrom,
@@ -163,9 +172,11 @@ export default {
       },
     },
   },
+  mounted() {
+    this.path = this.$route.path;
+  },
   methods: {
     handleInventDataClick(item) {
-      console.log(item);
       //console.log(this.style.color="red")
       this.FromeItemData = item;
     },
@@ -210,7 +221,6 @@ export default {
     //   console.log(file)
     // },
     beforeUpload(file) {
-      console.log(file);
       var formData = new FormData();
       //formData = {...this.FromeItemData, file}
       //formData.append(...this.FromeItemData)
@@ -278,6 +288,12 @@ export default {
   font-size: 25px;
   font-weight: bold;
   border: 1px solid #ccc;
+}
+.title::before {
+  display: inline-block;
+  content: "*";
+  color: #f56c6c;
+  margin-right: 4px;
 }
 .MoEngin .titleRow {
   height: 60px;

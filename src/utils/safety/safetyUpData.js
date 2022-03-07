@@ -375,7 +375,6 @@ export function safetyClearData(Data) {
       for (let res of Data.SafetyData[item]) {
         for (let item in res) {
           if (item == "inv_type") {
-            console.log(res[item]);
             break;
           } else {
             res[item] = "";
