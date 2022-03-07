@@ -82,7 +82,10 @@ export default {
     tabList: {
       get() {
         let declare_name = this.Fishing.OceanDeclaration.declare_name;
-        if (declare_name == "建造远洋渔船") {
+        if (
+          declare_name == "建造远洋渔船" ||
+          declare_name == "建造南沙骨干渔船"
+        ) {
           return this.Fishing.uploadUrlData.Build;
         }
         if (declare_name == "购买远洋渔船") {

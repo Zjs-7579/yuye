@@ -126,11 +126,15 @@ export default {
     },
     visibleSubmit() {
       this.visibleSubmitContent = true;
+      this.$store.commit("Safety_IsDisabledData", true);
+      this.$store.commit("Safety_IsDetailsContent", false);
     },
     handleClose(done) {
       this.$confirm("是否退出提交？")
         .then(() => {
           done();
+          this.$store.commit("Safety_IsDisabledData", false);
+          this.$store.commit("Safety_IsDetailsContent", false);
         })
         .catch(() => {});
     },

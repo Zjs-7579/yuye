@@ -39,10 +39,15 @@ export default {
   },
   mounted() {
     progressDetailData(this.task_id).then((res) => {
-      //console.log(res)
       this.progressData = res.data.data;
-      //this.progressData = res.data.data.nodeList
     });
+  },
+  watch: {
+    task_id(val) {
+      progressDetailData(val).then((res) => {
+        this.progressData = res.data.data;
+      });
+    },
   },
 };
 </script>

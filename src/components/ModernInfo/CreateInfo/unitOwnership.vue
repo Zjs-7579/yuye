@@ -73,6 +73,7 @@ export default {
     ...mapState(["Modern"]),
     modernShareholders: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.Modern.ModernData.modernShareholders[0]["task_id"] =
           this.Modern.userTaskId;
         //this.Modern.ModernData.modernShareholders[0].creator = this.Modern.userName

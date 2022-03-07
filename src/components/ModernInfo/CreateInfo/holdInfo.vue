@@ -13,7 +13,7 @@
         inactive-text="否"
       >
       </el-switch> -->
-      <el-radio-group v-model="isHold">
+      <el-radio-group v-model="isHold" @change="handleRadio">
         <el-radio :label="true">是</el-radio>
         <el-radio :label="false">否</el-radio>
       </el-radio-group>
@@ -173,7 +173,8 @@ export default {
     modernSupport: {
       get() {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.Modern.ModernData.modernSupport[0]["task_id"] = this.Modern.userTaskId;
+        this.Modern.ModernData.modernSupport[0]["task_id"] =
+          this.Modern.userTaskId;
         return this.Modern.ModernData.modernSupport;
       },
       set(val) {
@@ -217,6 +218,20 @@ export default {
     },
   },
   methods: {
+    handleRadio(e) {
+      console.log(">>>>>>>>>>", e);
+      this.$store.commit("Modern_IsHoldInfo", e);
+      if (e) {
+        console.log(e);
+        console.log(this.modernSupport);
+        this.handleAddHtml();
+        let len = this.modernSupport.length;
+        this.modernSupport.splice(0, len - 1);
+
+        console.log(this.modernSupport);
+      }
+      //this.isHold = e;
+    },
     handleAddHtml() {
       let str = {
         task_id: this.Modern.userTaskId,
@@ -254,29 +269,6 @@ export default {
         item.accept = "";
       }
       this.$forceUpdate();
-    }
-  },
-  watch: {
-    isHold(per) {
-      if (per) {
-        console.log(per);
-        console.log(this.modernSupport);
-        this.handleAddHtml();
-        let len = this.modernSupport.length;
-        this.modernSupport.splice(0, len - 1);
-
-        console.log(this.modernSupport);
-      }
-      // if(per != old){
-
-      //   if(old){
-      //     let len = this.modernSupport.length;
-      //     this.modernSupport.splice(0, len-1)
-      //     this.handleAddHtml()
-
-      //   }
-
-      //this.$refs.holdForm.resetFields();
     },
   },
 };

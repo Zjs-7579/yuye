@@ -229,6 +229,7 @@ export default {
     SubmitButton,
   },
   mounted() {
+    this.$store.commit("HighTech_IsDisabledData", false);
     if (this.$route.query.id == undefined) {
       //console.log("xxxxxxxxxxxxxxxxxxxxxxxxx", this.Agricul);
 

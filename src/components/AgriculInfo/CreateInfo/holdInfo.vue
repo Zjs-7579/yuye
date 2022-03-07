@@ -13,7 +13,7 @@
   				inactive-text="否"
 			>
 			</el-switch> -->
-      <el-radio-group v-model="isHold">
+      <el-radio-group v-model="isHold" @change="handleRadio">
         <el-radio :label="true">是</el-radio>
         <el-radio :label="false">否</el-radio>
       </el-radio-group>
@@ -204,9 +204,6 @@ export default {
     isAccept: {
       get() {
         let list = [];
-        //console.log(this.Agricul.AgriculData.agriculturalSupport[0].accept)
-        // this.Agricul.AgriculData.agriculturalSupport[0].creator =
-        //   this.Total.userName;
         for (let item of this.Agricul.AgriculData.agriculturalSupport) {
           if (item.accept == "") {
             list.push(false);
@@ -215,12 +212,6 @@ export default {
           }
         }
         console.log(list);
-        // if(this.Agricul.AgriculData.agriculturalSupport.accept){
-        //   return true
-        // }else{
-        //   return false
-        // }
-        //return this.Agricul.AgriculData.agriculturalSupport.accept;
         return list;
       },
       set(val) {
@@ -232,11 +223,33 @@ export default {
         return this.Agricul.isDisabledData;
       },
       set(val) {
-        this.isDisabledData = val;
+        this.isHold = val;
       },
     },
+    // isHold: {
+    //   get() {
+    //     return this.Agricul.isHoldInfo;
+    //   },
+    //   set(val) {
+    //     this.isHold = val;
+    //   },
+    // },
   },
   methods: {
+    handleRadio(e) {
+      console.log(">>>>>>>>>>", e);
+      this.$store.commit("Agricul_IsHoldInfo", e);
+      if (e) {
+        //console.log(per)
+        //console.log(this.modernSupport)
+        this.handleAddHtml();
+        let len = this.agriculturalSupport.length;
+        this.agriculturalSupport.splice(0, len - 1);
+
+        //console.log(this.modernSupport)
+      }
+      //this.isHold = e;
+    },
     handleAddHtml() {
       let str = {
         task_id: this.Agricul.userTaskId,
@@ -275,22 +288,6 @@ export default {
         item.accept = "";
       }
       this.$forceUpdate();
-    },
-  },
-  watch: {
-    isHold(per) {
-      console.log(per);
-      //console.log(this.agriculturalSupport)
-      if (per) {
-        //console.log(per)
-        //console.log(this.modernSupport)
-        this.handleAddHtml();
-        let len = this.agriculturalSupport.length;
-        this.agriculturalSupport.splice(0, len - 1);
-
-        //console.log(this.modernSupport)
-      }
-      //this.$refs.holdForm.resetFields();
     },
   },
 };

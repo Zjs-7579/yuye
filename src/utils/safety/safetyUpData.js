@@ -343,6 +343,8 @@ const SafetyData = {
 };
 
 const uploadUrlData = [
+  { title: "项目申请书", data: [] },
+  { title: "承诺书", data: [] },
   { title: "法人代表人或主要负责人身份证复印件", data: [] },
   { title: "申报单位主体资格材料（含工商登记营业执照等）", data: [] },
   { title: "税务部门提供的单位上年度完税证明复印件", data: [] },
@@ -375,6 +377,7 @@ export function safetyClearData(Data) {
       for (let res of Data.SafetyData[item]) {
         for (let item in res) {
           if (item == "inv_type") {
+            console.log(res[item]);
             break;
           } else {
             res[item] = "";

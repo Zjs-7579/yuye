@@ -146,6 +146,7 @@ export default {
     SubmitButton,
   },
   mounted() {
+    this.$store.commit("Modern_IsDisabledData", false);
     if (this.$route.query.id == undefined) {
       modernClearData(this.Modern);
       userTaskid().then((res) => {
@@ -154,34 +155,6 @@ export default {
       });
       //   }
     }
-    // (async () => {
-    //   this.$store.commit("Modern_IsDisabledDataClose");
-    //   //agriculClearData(this.Agricul);
-    //   if (this.$route.query.id != undefined) {
-    //     let status = await MoJudge(
-    //       {
-    //         task_id: this.$route.query.id,
-    //       },
-    //       this.$router,
-    //       this.$store
-    //     );
-    //     // console.log(
-    //     //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
-    //     //   status,
-    //     //   this.$route.query.id
-    //     // );
-
-    //     if (status != 200) {
-    //       this.$message.warning("数据出错");
-    //     }
-    //     console.log(this.$route.query.id);
-    //   } else {
-    //     userTaskid().then((res) => {
-    //       //console.log(res)
-    //       this.$store.commit("Modern_UserTaskId", res.data.data);
-    //     });
-    //   }
-    // })();
   },
 };
 </script>

@@ -3,6 +3,7 @@ export default {
   userTaskId: "", //task_id
   isDisabledData: false, //判断用户查看是否可写
   isDetailsContent: true, //判断detailsInfo的锚点是否显示
+  isHoldInfo: true, //三年支持情况
   uploadUrlData: [
     { title: "项目申请书", data: [] },
     { title: "承诺书", data: [] },
