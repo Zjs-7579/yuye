@@ -1,6 +1,6 @@
 export const UnitInfoValidator = {
   task_name: [
-    { required: true, message: "请输入单位名称", trigger: "blur" },
+    { required: true, message: "请输入项目名称", trigger: "blur" },
     // {
     // 	min: 3,
     // 	max: 20,

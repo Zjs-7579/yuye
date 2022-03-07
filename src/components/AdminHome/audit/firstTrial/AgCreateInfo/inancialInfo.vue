@@ -176,7 +176,6 @@ export default {
 .Aginancial .el-input__inner {
   width: 80%;
   border: none;
-  font-size: 18px;
 }
 .Aginancial .rowColor .el-input__inner {
   background-color: rgb(235, 231, 231);

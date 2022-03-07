@@ -8,7 +8,9 @@
         class="filesTable"
       >
         <el-col :span="2" style="text-align: center">{{ index + 1 }}</el-col>
-        <el-col :span="16" class="filesType">{{ item.material_type }}</el-col>
+        <el-col :span="16" class="filesType">
+          {{ item.material_type }}
+        </el-col>
         <el-col :span="6"
           ><p class="filesType" @click="lookDetailed(item.file_path)">
             {{ item.name }}
@@ -43,8 +45,6 @@ export default {
   },
   watch: {
     task_id(val) {
-      // TODO
-      console.log(val, "watch");
       fileData(val).then((res) => {
         this.filesData = res.data.data;
       });
@@ -71,11 +71,23 @@ export default {
   color: black;
 }
 .filesType {
+  height: 80px;
+  padding-right: 30px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 20px;
+}
+p.filesType {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  display: block;
+  white-space: wrap;
+  display: inline-block;
+  vertical-align: middle;
 }
+/* .filesType span {
+  width: 100px;
+  overflow-wrap: break-word;
+} */
 .filesType:hover {
   cursor: pointer;
 }

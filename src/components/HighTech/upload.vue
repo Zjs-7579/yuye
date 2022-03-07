@@ -119,7 +119,7 @@ export default {
     },
 
     handlePreview(file) {
-      //console.log(file);
+      // console.log(file);
       //window.open('http://rent.greatbayit.com/yuye/publicrs/image/'+file.id+'.pdf')
     },
     handleExceed(files, fileList) {

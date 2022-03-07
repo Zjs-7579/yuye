@@ -135,7 +135,6 @@ export default {
 .UnderInimical .el-input__inner {
   width: 80%;
   border: none;
-  font-size: 18px;
 }
 .UnderInimical .rowColor .el-input__inner {
   background-color: rgb(235, 231, 231);

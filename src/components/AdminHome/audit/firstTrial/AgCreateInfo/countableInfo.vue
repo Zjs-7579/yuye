@@ -300,7 +300,6 @@ export default {
   margin: 0 auto;
   width: 80%;
   border: none;
-  font-size: 18px;
 }
 .AgCountable .el-row {
   border: 1px solid #ccc;
