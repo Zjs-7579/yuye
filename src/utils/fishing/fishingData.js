@@ -36,13 +36,13 @@ export async function FiJudge(row, router, store) {
     // }
     if (row.task_source == "远洋渔业项目" && row.declare_status == "待提交") {
       router.push({
-        path: `/fishingGuidesInfo?&type=${row.task_source}&id=${row.task_id}`,
+        path: `/fishingGuidesInfo?type=${row.task_source}&id=${row.task_id}`,
       });
     }
     if (row.task_source == "远洋渔业项目" && row.declare_status == "审核中") {
       //store.commit("Agricul_IsDetailsContentOpen");
       router.push({
-        path: `/fishingGuidesInfo/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+        path: `/fishingGuidesInfo/detailInspect?type=${row.task_source}&id=${row.task_id}`,
       });
     }
   } else {
@@ -55,13 +55,30 @@ export async function FiJudge(row, router, store) {
 export async function FiDetail(row, router, store) {
   let status = await getFishing(row.task_id, store);
   if (status == 200) {
-    if (router.history.current.name != "UserDetail") {
+    // if (router.history.current.name == "UserDetail") {
+    //   router.push({
+    //     path: `${router.history.current.path}?&type=${row.task_source}&id=${row.task_id}`,
+    //     //path: `${router.history.current.fullPath}`,
+    //     //path: `${router.history.current.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+    //   });
+    // }
+    // if (router.history.current.name == null) {
+    //   router.push({
+    //     path: `${router.history.current.path}/createInfo?&type=${row.task_source}&id=${row.task_id}`,
+    //   });
+    // }
+    if (router.history.current.path.includes("detailInspect")) {
+      console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
       router.push({
-        path: `${router.history.current.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
+        path: `${router.history.current.path}?type=${row.task_source}&id=${row.task_id}`,
       });
     } else {
+      console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
       router.push({
-        path: `${router.history.current.path}?&type=${row.task_source}&id=${row.task_id}`,
+        path: `${router.history.current.path}/detailInspect?type=${row.task_source}&id=${row.task_id}`,
+        //path: `${router.history.current.fullPath}`,
+        //path: `${router.history.current.path}/detailInspect?&type=${row.task_source}&id=${row.task_id}`,
       });
     }
   }

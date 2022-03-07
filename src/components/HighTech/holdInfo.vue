@@ -13,7 +13,7 @@
         inactive-text="否"
       >
       </el-switch> -->
-      <el-radio-group v-model="isHold">
+      <el-radio-group v-model="isHold" @change="handleRadio">
         <el-radio :label="true">是</el-radio>
         <el-radio :label="false">否</el-radio>
       </el-radio-group>
@@ -108,31 +108,53 @@
           <el-col :span="8">
             <el-form-item
               label="是否完成验收及时间："
-              :prop="isAccept ? 'accept' : ''"
+              :prop="isAccept[index] ? 'accept' : ''"
               class="isAccept"
             >
-              <el-radio-group v-model="isAccept">
+              <el-radio-group
+                v-model="isAccept[index]"
+                @change="(value) => changeIndex(value, index, item)"
+              >
                 <el-radio :label="true">是</el-radio>
                 <el-radio :label="false">否</el-radio>
               </el-radio-group>
 
               <el-date-picker
-                v-if="isAccept"
+                v-if="isAccept[index]"
                 value-format="yyyy-MM-DD"
                 type="date"
                 placeholder="选择验收时间"
                 v-model="item.accept"
                 style="width: 60%"
               ></el-date-picker>
-              <!-- <el-input type="textarea" resize="none"
-          rows="6" v-model="item.accept"></el-input>-->
-              <!-- <el-date-picker 
-                        value-format="yyyy-MM"
-                        type="month" 
-                        placeholder="选择验收时间" 
-                        v-model="item.accept" 
-                        style="width: 100%;"></el-date-picker> -->
+              <!-- <el-date-picker
+              value-format="yyyy-MM"
+              type="month"
+              placeholder="选择验收时间"
+              v-model="item.accept"
+              style="width: 100%;"></el-date-picker> -->
+              <!-- <el-input
+                type="textarea"
+                resize="none"
+                rows="6"
+                v-model="item.accept"
+              ></el-input> -->
+              <!-- <el-popconfirm
+                confirm-button-text='好的'
+                cancel-button-text='不用了'
+                icon="el-icon-info"
+                icon-color="red"
+                title="这是一段内容确定删除吗？"
+              >
+              <el-date-picker slot="reference" type="date" placeholder="选择日期" v-model="item.accept" style="width: 100%;"></el-date-picker>
+              </el-popconfirm> -->
             </el-form-item>
+
+            <!-- <el-col :span="4" v-if="isAccept">
+            <el-form-item prop="accept" style="background-color: red">
+              <el-input type="text" v-model="item.accept"></el-input>
+            </el-form-item>
+          </el-col> -->
           </el-col>
           <el-col :span="8">
             <el-form-item label="未完成验收原因(已完成不填)：" prop="reasons">
@@ -161,7 +183,6 @@ export default {
   data() {
     return {
       isHold: true,
-      isAccept: false,
       rules: HoldInfoValidator,
     };
   },
@@ -179,6 +200,32 @@ export default {
         this.techSupportList = val;
       },
     },
+    isAccept: {
+      get() {
+        let list = [];
+        //console.log(this.Agricul.AgriculData.agriculturalSupport[0].accept)
+        // this.Agricul.AgriculData.agriculturalSupport[0].creator =
+        //   this.Total.userName;
+        for (let item of this.HighTech.HighTechData.techSupportList) {
+          if (item.accept == "") {
+            list.push(false);
+          } else {
+            list.push(true);
+          }
+        }
+        console.log(list);
+        // if(this.Agricul.AgriculData.agriculturalSupport.accept){
+        //   return true
+        // }else{
+        //   return false
+        // }
+        //return this.Agricul.AgriculData.agriculturalSupport.accept;
+        return list;
+      },
+      set(val) {
+        this.isAccept = val;
+      },
+    },
     isDisabledData: {
       get() {
         return this.HighTech.isDisabledData;
@@ -189,6 +236,20 @@ export default {
     },
   },
   methods: {
+    handleRadio(e) {
+      this.$store.commit("HighTech_IsHoldInfo", e);
+
+      if (e) {
+        console.log(e);
+        console.log(this.techSupportList);
+        this.handleAddHtml();
+        let len = this.techSupportList.length;
+        this.techSupportList.splice(0, len - 1);
+
+        console.log(this.techSupportList);
+      }
+      //this.isHold = e;
+    },
     handleAddHtml() {
       let str = {
         task_id: this.HighTech.userTaskId,
@@ -220,28 +281,12 @@ export default {
         this.techSupportList.splice(len - 1, 1);
       }
     },
-  },
-  watch: {
-    isHold(per) {
-      if (per) {
-        console.log(per);
-        console.log(this.techSupportList);
-        this.handleAddHtml();
-        let len = this.techSupportList.length;
-        this.techSupportList.splice(0, len - 1);
-
-        console.log(this.techSupportList);
+    changeIndex(value, index, item) {
+      this.isAccept[index] = !value;
+      if (!this.isAccept[index]) {
+        item.accept = "";
       }
-      // if(per != old){
-
-      //   if(old){
-      //     let len = this.techSupportList.length;
-      //     this.techSupportList.splice(0, len-1)
-      //     this.handleAddHtml()
-
-      //   }
-
-      //this.$refs.holdForm.resetFields();
+      this.$forceUpdate();
     },
   },
 };

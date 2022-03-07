@@ -33,7 +33,7 @@ import HiDetailsInfo from "../HighTech/detailsInfo.vue";
 import SaDetailsInfo from "../Safety/detailsInfo.vue";
 //import { agriculFilesData } from "../../utils/agricul/agriculUpData";
 //import { modernFilesData } from "../../utils/modern/modernUpData";
-import { Detail } from "../../utils/Todo";
+import { judge, Detail } from "../../utils/Todo";
 //import { mapState } from "vuex";
 export default {
   data() {
@@ -42,7 +42,25 @@ export default {
     };
   },
   beforeRouteEnter(to, from, next) {
-    if (from.path == "/") {
+    console.log("to", to, "from", from);
+
+    // if (to.name.includes("DetailInspect") && from.path == "/") {
+    //   next((vm) => {
+    //     let status = judge(
+    //       {
+    //         task_source: to.query.type,
+    //         task_id: to.query.id,
+    //         declare_status: "审核中",
+    //       },
+    //       vm.$router,
+    //       vm.$store
+    //     );
+    //     if (status == 0) {
+    //       vm.$message.warning("数据出错");
+    //     }
+    //   });
+    // }
+    if (to.name == "UserDetail" && from.path == "/") {
       next((vm) => {
         let status = Detail(
           {
@@ -52,16 +70,74 @@ export default {
           vm.$router,
           vm.$store
         );
-        // console.log(
-        //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
-        //   status
-        //   //this.$route.query.id
-        // );
+        if (status == 0) {
+          vm.$message.warning("数据出错");
+        }
+      });
+    } else if (to.name.includes("DetailInspect") && from.path == "/") {
+      next((vm) => {
+        let status = judge(
+          {
+            task_source: to.query.type,
+            task_id: to.query.id,
+            declare_status: "审核中",
+          },
+          vm.$router,
+          vm.$store
+        );
         if (status == 0) {
           vm.$message.warning("数据出错");
         }
       });
     }
+    // if (to.name == "UserDetail") {
+    //   next((vm) => {
+    //     let status = Detail(
+    //       {
+    //         task_source: to.query.type,
+    //         task_id: to.query.id,
+    //         declare_status: "审核中",
+    //       },
+    //       vm.$router,
+    //       vm.$store
+    //     );
+    //     if (status == 0) {
+    //       vm.$message.warning("数据出错");
+    //     }
+    //   });
+    // }
+    // if (to.name == "AriculDetailInspect") {
+    //   next((vm) => {
+    //     let status = judge(
+    //       {
+    //         task_source: to.query.type,
+    //         task_id: to.query.id,
+    //         declare_status: "审核中",
+    //       },
+    //       vm.$router,
+    //       vm.$store
+    //     );
+    //     if (status == 0) {
+    //       vm.$message.warning("数据出错");
+    //     }
+    //   });
+    // }
+    // if (from.path == "/") {
+    //   next((vm) => {
+    //     let status = judge(
+    //       {
+    //         task_source: to.query.type,
+    //         task_id: to.query.id,
+    //         declare_status: "审核中",
+    //       },
+    //       vm.$router,
+    //       vm.$store
+    //     );
+    //     if (status == 0) {
+    //       vm.$message.warning("数据出错");
+    //     }
+    //   });
+    // }
     next();
   },
   computed: {

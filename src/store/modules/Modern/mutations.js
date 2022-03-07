@@ -9,49 +9,31 @@ export default {
     console.log("Modern_UserTaskId", res);
     state.userTaskId = res;
   },
-  Modern_IsDisabledDataOpen(state) {
-    state.isDisabledData = true;
+  Modern_IsDisabledData(state, bool) {
+    state.isDisabledData = bool;
   },
-  Modern_IsDisabledDataClose(state) {
-    state.isDisabledData = false;
+  // Modern_IsDisabledDataOpen(state) {
+  //   state.isDisabledData = true;
+  // },
+  // Modern_IsDisabledDataClose(state) {
+  //   state.isDisabledData = false;
+  // },
+  Modern_IsDetailsContent(state, bool) {
+    state.isDetailsContent = bool;
   },
 
-  Modern_IsDetailsContentClose(state) {
-    state.isDetailsContent = false;
+  Modern_IsHoldInfo(state, bool) {
+    state.isHoldInfo = bool;
   },
-  Modern_IsDetailsContentOpen(state) {
-    state.isDetailsContent = true;
-  },
+  // Modern_IsDetailsContentClose(state) {
+  //   state.isDetailsContent = false;
+  // },
+  // Modern_IsDetailsContentOpen(state) {
+  //   state.isDetailsContent = true;
+  // },
 
   Modern_AllClearData(state, res) {
     state.ModernData = res.result;
     state.uploadUrlData = res.uploadUrlData;
   },
-
-  // Modern_ClearAllData(state) {
-  //   //console.log('aaaa')
-  //   for (let item in state.ModernData) {
-  //     if (state.ModernData[item].constructor == Array) {
-  //       for (let res of state.ModernData[item]) {
-  //         for (let item in res) {
-  //           if (item == "inv_type") {
-  //             console.log(res[item]);
-  //             break;
-  //           } else {
-  //             res[item] = "";
-  //           }
-  //         }
-  //       }
-  //     }
-  //     if (state.ModernData[item].constructor == Object) {
-  //       for (let res in state.ModernData[item]) {
-  //         state.ModernData[item][res] = "";
-  //       }
-  //     }
-  //     //    for(let res in state.ModernData[item]){
-  //     //     state.ModernData[item][res] = ""
-  //     //    }
-  //     console.log(state.ModernData);
-  //   }
-  // },
 };

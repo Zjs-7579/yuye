@@ -147,13 +147,11 @@ export default {
   },
   methods: {
     searchData() {
-      //alert(this.select)
       searchDataTitle(this.select, this.input).then((res) => {
         this.tableData = res;
       });
     },
     handleDetails(row) {
-      //console.log(row);
       this.Loading = true;
       let status = judge(row, this.$router, this.$store);
       console.log(status);
@@ -184,7 +182,6 @@ export default {
       // }
     },
     handleProgress(row) {
-      console.log(row);
       this.progressVisible = true;
       this.task_id = row.task_id;
       // if (row.task_source == "农业产业化贴息项目") {
@@ -206,8 +203,8 @@ export default {
       // }
     },
     handleFile(row) {
-      console.log(row);
       this.fileVisible = true;
+      this.task_id = 0;
       this.task_id = row.task_id;
     },
     handleDelete(row) {

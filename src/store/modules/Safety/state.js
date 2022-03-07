@@ -5,6 +5,7 @@ export default {
   isDisabledData: false,
   imageIds: [],
   isDetailsContent: true,
+  isHoldInfo: true, //近三年支持情况
   uploadUrlData: [
     { title: "审计报告", data: [] },
     { title: "法人代表人或主要负责人身份证复印件", data: [] },
