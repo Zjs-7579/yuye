@@ -113,6 +113,12 @@ export default {
         this.handlePreserveInfo();
         let idx = this.activeList.indexOf(this.activeName);
         let name = this.activeList[idx + 1];
+        if (
+          this.declare_name ===
+          "远洋渔业基地，包括冷链物流项目（含海产品加工厂及配套专用冷库）、超低温冷库以及境外远洋渔业基地等"
+        ) {
+          name = this.activeList[idx + 2];
+        }
         this.$emit("handleActionNameText", name);
       } else {
         this.promptMessage(
@@ -124,6 +130,12 @@ export default {
     handleActionLast() {
       let idx = this.activeList.indexOf(this.activeName);
       let name = this.activeList[idx - 1];
+      if (
+        this.declare_name ===
+        "远洋渔业基地，包括冷链物流项目（含海产品加工厂及配套专用冷库）、超低温冷库以及境外远洋渔业基地等"
+      ) {
+        name = this.activeList[idx - 2];
+      }
       this.$emit("handleActionNameText", name);
     },
     //验证

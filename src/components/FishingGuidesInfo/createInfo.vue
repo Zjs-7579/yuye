@@ -9,6 +9,10 @@
         <ApplyInfo ref="ApplyInfo"></ApplyInfo>
       </el-tab-pane>
       <el-tab-pane
+        v-if="
+          Fishing.OceanDeclaration.declare_name !==
+          '远洋渔业基地，包括冷链物流项目（含海产品加工厂及配套专用冷库）、超低温冷库以及境外远洋渔业基地等'
+        "
         label="远洋渔业项目统计表"
         name="StatisticalInfo"
         :disabled="isDataShow"
