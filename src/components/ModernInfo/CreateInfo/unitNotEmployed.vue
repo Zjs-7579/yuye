@@ -3,43 +3,14 @@
     <el-form
       :model="modernCompany"
       ref="ruleForm"
-      label-width="310px"
+      label-width="calc(100%/24 * 12)"
       :rules="rules"
       :disabled="isDisabledData"
       class="demo-ruleForm"
     >
       <el-row class="title"> 上年末从业人员情况 </el-row>
       <el-row type="flex">
-        <!-- <div style="width: 310px" class="name">
-                法人代表
-            </div>
-            <div>
-                <el-row>
-                    <el-col :span="12">
-                <el-form-item label="姓名:" prop="legal_name" ref="name">
-                    <el-input v-model="modernCompany.legal_name"></el-input>
-                </el-form-item>
-                <el-form-item label="学历:" prop="education">
-                    <el-input v-model="modernCompany.education"></el-input>
-                </el-form-item>
-            </el-col>
-            <el-col :span="12">
-                <el-form-item label="移动电话:" prop="mobile_phone">
-                    <el-input v-model="modernCompany.mobile_phone"></el-input>
-                </el-form-item>
-                <el-form-item label="身份证号:" prop="identity">
-                    <el-input v-model="modernCompany.identity"></el-input>
-                </el-form-item>
-            </el-col>
-                </el-row>
-            </div> -->
-        <!-- <el-col :span="4" >
-                
-                 <el-form-item label="法人代表" prop="name" class="name" ref="behalf">
-                </el-form-item>
-            </el-col> -->
-        <el-col style="width: 310px" class="name"> 法人代表 </el-col>
-
+        <el-col :span="4" class="name">法人代表</el-col>
         <el-col :span="8">
           <el-form-item label="姓名:" prop="legal_name" ref="name">
             <el-input v-model="modernCompany.legal_name"></el-input>
@@ -48,14 +19,30 @@
             <el-input v-model="modernCompany.education"></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          <el-form-item label="移动电话:" prop="mobile_phone">
+        <el-col :span="8">
+          <el-form-item
+            label="移动电话:"
+            prop="mobile_phone"
+            style="border-right: none; border-top: 1px solid #ccc"
+          >
             <el-input v-model="modernCompany.mobile_phone"></el-input>
           </el-form-item>
-          <el-form-item label="身份证号:" prop="identity">
+          <el-form-item
+            label="身份证号:"
+            prop="identity"
+            style="border-right: none"
+          >
             <el-input v-model="modernCompany.identity"></el-input>
           </el-form-item>
         </el-col>
+        <el-col
+          :span="4"
+          style="
+            height: 63px;
+            border-bottom: 2px solid #ccc;
+            border-top: 1px solid #ccc;
+          "
+        ></el-col>
       </el-row>
 
       <el-row type="flex">
@@ -93,62 +80,11 @@
           </el-form-item>
         </el-col>
       </el-row>
-
-      <!-- <el-row>
-            <el-col :span="4">
-                 <el-form-item label="行政管理人数:" prop="num_1">
-                    <el-input v-model="sum1[0]"></el-input>
-                </el-form-item>
-            </el-col>
-            <el-col :span="4">
-                <el-form-item label="市场营销人数:" prop="num_1">
-                    <el-input v-model="sum1[1]"></el-input>
-                </el-form-item>
-            </el-col>
-            <el-col :span="4">
-                <el-form-item label="研发设计人数:" prop="num_1">
-                    <el-input v-model="sum1[2]"></el-input>
-                </el-form-item>
-            </el-col>
-            <el-col :span="4">
-                 <el-form-item label="加工制造人数:" prop="num_1">
-                    <el-input v-model="sum1[0]"></el-input>
-                </el-form-item>
-            </el-col>
-            <el-col :span="4">
-                <el-form-item label="其他从业人数:" prop="num_1">
-                    <el-input v-model="sum1[1]"></el-input>
-                </el-form-item>
-            </el-col>
-            <el-col :span="4">
-                <el-form-item label="研发设计人数:" prop="num_1">
-                    <el-input v-model="sum1[2]"></el-input>
-                </el-form-item>
-            </el-col>
-        </el-row> -->
-
-      <!-- <el-form-item label="行政管理/市场营销/研发设计/加工制造/其他从业人数:" prop="num_1" class="Tlabel" >
-            <el-input v-model="sum1[3]" placeholder="加工制造"></el-input>
-            <el-input v-model="sum1[4]" placeholder="其他从业人数"></el-input>
-        </el-form-item>
-        <el-form-item label="博士毕业/硕士毕业/本科毕业/专科毕业/其他从业人数:" prop="num_2" class="Tlabel">
-            <el-input v-model="sum2[0]" placeholder="博士毕业"></el-input>
-            <el-input v-model="sum2[1]" placeholder="硕士毕业"></el-input>
-            <el-input v-model="sum2[2]" placeholder="本科毕业"></el-input>
-            <el-input v-model="sum2[3]" placeholder="专科毕业"></el-input>
-            <el-input v-model="sum2[4]" placeholder="其他从业人数"></el-input>
-        </el-form-item>
-        <el-form-item label="高级职称/中级职称/初级职称/其他从业人数:" prop="num_3" class="Tlabel">
-            <el-input v-model="sum3[0]" placeholder="高级职称"></el-input>
-            <el-input v-model="sum3[1]" placeholder="中级职称"></el-input>
-            <el-input v-model="sum3[2]" placeholder="初级职称"></el-input>
-            <el-input v-model="sum3[3]" placeholder="其他从业人数"></el-input>
-        </el-form-item> -->
     </el-form>
 
     <el-form
       :model="modernCompany"
-      ref="ruleForm"
+      ref="ruleFormPerson"
       label-width="150px"
       :rules="rules"
       :disabled="isDisabledData"
@@ -256,9 +192,9 @@ import { ModernUnitEmpForm } from "../../../utils/validator";
 export default {
   data() {
     return {
-      numOne: [],
-      numTwo: [],
-      numThree: [],
+      //numOne: [],
+      //numTwo: [],
+      //numThree: [],
       // sum1: [],
       // sum2: [],
       // sum3: [],
@@ -270,9 +206,9 @@ export default {
     modernCompany: {
       get() {
         //12/12/124/
-        this.Modern.ModernData.modernCompany["num_1"] = this.numOne.join("/");
-        this.Modern.ModernData.modernCompany["num_2"] = this.numTwo.join("/");
-        this.Modern.ModernData.modernCompany["num_3"] = this.numThree.join("/");
+        //this.Modern.ModernData.modernCompany["num_1"] = this.numOne.join("/");
+        //this.Modern.ModernData.modernCompany["num_2"] = this.numTwo.join("/");
+        //this.Modern.ModernData.modernCompany["num_3"] = this.numThree.join("/");
         return this.Modern.ModernData.modernCompany;
       },
       set(val) {

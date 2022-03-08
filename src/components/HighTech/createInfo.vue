@@ -165,7 +165,7 @@ export default {
 
   beforeRouteEnter(to, from, next) {
     console.log("to", to, "from", from, to.query.id);
-    if (from.path == "/") {
+    if (from.path == "/" && to.query.id) {
       next(async (vm) => {
         let status = 0;
         if (to.query.id) {
@@ -182,6 +182,13 @@ export default {
         if (status != 200) {
           vm.$message.warning("数据出错");
         }
+      });
+    }
+    if (from.path == "/" && !to.query.id) {
+      next(async (vm) => {
+        vm.$router.push({
+          path: "/home",
+        });
       });
     }
     next();
