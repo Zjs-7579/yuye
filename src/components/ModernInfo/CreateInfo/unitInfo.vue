@@ -189,7 +189,7 @@
       </el-form-item>
     </el-form>
 
-    <unitNotEmployed ref="ModernUnitEmpForm"></unitNotEmployed>
+    <unitNotEmployed ref="ModernUnitNotEmployed"></unitNotEmployed>
     <unitOwnership></unitOwnership>
   </div>
 </template>

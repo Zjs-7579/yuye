@@ -97,7 +97,8 @@ export default {
     ...mapState(["Modern"]),
   },
   beforeRouteEnter(to, from, next) {
-    if (from.path == "/") {
+    console.log("to", to, "from", from, to.query.id);
+    if (from.path == "/" && to.query.id) {
       next(async (vm) => {
         let status = await MoJudge(
           {
@@ -116,6 +117,35 @@ export default {
         }
       });
     }
+    if (from.path == "/" && !to.query.id) {
+      next(async (vm) => {
+        vm.$router.push({
+          path: "/home",
+        });
+      });
+    }
+    //  else {
+    //   next(async (vm) => {
+    //     vm.$router.push({
+    //       path: "/home",
+    //     });
+    // let status = 0;
+    // if (to.query.id) {
+    //   status = await MoJudge(
+    //     {
+    //       task_id: to.query.id,
+    //     },
+    //     vm.$router,
+    //     vm.$store
+    //   );
+    // } else {
+    //   status = 200;
+    // }
+    // if (status != 200) {
+    //   vm.$message.warning("数据出错");
+    // }
+    // });
+    //}
     next();
   },
   methods: {

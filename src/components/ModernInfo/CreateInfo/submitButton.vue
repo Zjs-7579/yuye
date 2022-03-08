@@ -168,6 +168,19 @@ export default {
             console.log("*****************", e);
           }
         );
+        this.$parent.$refs.ModernUnitInfoValidate.$refs.ModernUnitNotEmployed.$refs.ruleForm.validate(
+          (e) => {
+            this.UnitInfoBool = e;
+            //console.log("*****************", e);
+          }
+        );
+        console.log(this.UnitInfoBool);
+        this.$parent.$refs.ModernUnitInfoValidate.$refs.ModernUnitNotEmployed.$refs.ruleFormPerson.validate(
+          (e) => {
+            this.UnitInfoBool = e;
+            //console.log("*****************", e);
+          }
+        );
 
         this.$parent.$refs.ModernUnitInfoValidate.$refs.ModernUnitEmpForm.$refs.ruleForm.validate(
           (e) => {

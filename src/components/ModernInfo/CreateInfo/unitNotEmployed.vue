@@ -3,59 +3,46 @@
     <el-form
       :model="modernCompany"
       ref="ruleForm"
-      label-width="310px"
+      label-width="calc(100%/24 * 12)"
       :rules="rules"
       :disabled="isDisabledData"
       class="demo-ruleForm"
     >
       <el-row class="title"> 上年末从业人员情况 </el-row>
       <el-row type="flex">
-        <el-row style="width: 100%; height: 120px" class="rowLayout">
-          <el-col
-            :span="4"
-            style="
-              display: inline-block;
-              line-height: 120px;
-              text-align: center;
-              font-size: 16px;
-            "
-            ><p class="spanFont" style="height: 120px; line-height: 120px">
-              法定代表人
-            </p></el-col
+        <el-col :span="4" class="name">法人代表</el-col>
+        <el-col :span="8">
+          <el-form-item label="姓名:" prop="legal_name" ref="name">
+            <el-input v-model="modernCompany.legal_name"></el-input>
+          </el-form-item>
+          <el-form-item label="学历:" prop="education">
+            <el-input v-model="modernCompany.education"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="8">
+          <el-form-item
+            label="移动电话:"
+            prop="mobile_phone"
+            style="border-right: none; border-top: 1px solid #ccc"
           >
-          <el-col :span="8" style="height: 120px">
-            <el-row>
-              <el-col :span="12"><p class="spanFont">姓名:</p></el-col>
-              <el-col :span="12">
-                <el-form-item label-width="0" prop="legal_name">
-                  <el-input v-model="modernCompany.legal_name"></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="12"><p class="spanFont">学历:</p></el-col>
-              <el-col :span="12">
-                <el-form-item label-width="0" prop="education">
-                  <el-input v-model="modernCompany.education"></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-          </el-col>
-          <el-col :span="12" style="height: 120px">
-            <el-row>
-              <el-col :span="8"><p class="spanFont">移动电话:</p></el-col>
-              <el-col :span="16">
-                <el-form-item label-width="0" prop="mobile_phone">
-                  <el-input v-model="modernCompany.mobile_phone"></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8"><p class="spanFont">身份证号:</p></el-col>
-              <el-col :span="16">
-                <el-form-item label-width="0" prop="identity">
-                  <el-input v-model="modernCompany.identity"></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-          </el-col>
-        </el-row>
+            <el-input v-model="modernCompany.mobile_phone"></el-input>
+          </el-form-item>
+          <el-form-item
+            label="身份证号:"
+            prop="identity"
+            style="border-right: none"
+          >
+            <el-input v-model="modernCompany.identity"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col
+          :span="4"
+          style="
+            height: 63px;
+            border-bottom: 2px solid #ccc;
+            border-top: 1px solid #ccc;
+          "
+        ></el-col>
       </el-row>
 
       <el-row style="width: 100%; height: 120px" class="rowLayout">
@@ -98,7 +85,7 @@
 
     <el-form
       :model="modernCompany"
-      ref="ruleForm"
+      ref="ruleFormPerson"
       label-width="150px"
       :rules="rules"
       :disabled="isDisabledData"
@@ -207,9 +194,9 @@ import { ModernUnitEmpForm } from "../../../utils/validator";
 export default {
   data() {
     return {
-      numOne: [],
-      numTwo: [],
-      numThree: [],
+      //numOne: [],
+      //numTwo: [],
+      //numThree: [],
       // sum1: [],
       // sum2: [],
       // sum3: [],
@@ -221,9 +208,9 @@ export default {
     modernCompany: {
       get() {
         //12/12/124/
-        this.Modern.ModernData.modernCompany["num_1"] = this.numOne.join("/");
-        this.Modern.ModernData.modernCompany["num_2"] = this.numTwo.join("/");
-        this.Modern.ModernData.modernCompany["num_3"] = this.numThree.join("/");
+        //this.Modern.ModernData.modernCompany["num_1"] = this.numOne.join("/");
+        //this.Modern.ModernData.modernCompany["num_2"] = this.numTwo.join("/");
+        //this.Modern.ModernData.modernCompany["num_3"] = this.numThree.join("/");
         return this.Modern.ModernData.modernCompany;
       },
       set(val) {
