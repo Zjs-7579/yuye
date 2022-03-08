@@ -203,9 +203,6 @@ export default {
     isAccept: {
       get() {
         let list = [];
-        //console.log(this.Agricul.AgriculData.agriculturalSupport[0].accept)
-        // this.Agricul.AgriculData.agriculturalSupport[0].creator =
-        //   this.Total.userName;
         for (let item of this.HighTech.HighTechData.techSupportList) {
           if (item.accept == "") {
             list.push(false);
@@ -214,12 +211,6 @@ export default {
           }
         }
         console.log(list);
-        // if(this.Agricul.AgriculData.agriculturalSupport.accept){
-        //   return true
-        // }else{
-        //   return false
-        // }
-        //return this.Agricul.AgriculData.agriculturalSupport.accept;
         return list;
       },
       set(val) {

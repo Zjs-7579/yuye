@@ -62,7 +62,9 @@
       <div id="ProjectContent"><ProjectContent></ProjectContent></div>
       <div id="ProjectInvest"><ProjectInvest></ProjectInvest></div>
       <div id="SummarizeInfo"><SummarizeInfo></SummarizeInfo></div>
-      <div id="UploadFiles"><UploadFiles></UploadFiles></div>
+      <div id="UploadFiles">
+        <UploadFiles></UploadFiles>
+      </div>
       <div id="AuditInfo" v-if="this.$route.name == 'UserDetail'">
         <AuditInfo></AuditInfo>
       </div>
