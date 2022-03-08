@@ -21,6 +21,7 @@
       >
       <a
         href="#HoldInfo"
+        v-if="isHoldInfo"
         @click="handleColorText('HoldInfo')"
         :class="colorText == 'HoldInfo' ? 'colorText' : ''"
         >国家、省、市财政近三年全部支持情况</a
@@ -44,7 +45,7 @@
       <div id="UnitInfo"><UnitInfo></UnitInfo></div>
       <div id="InancialInfo"><InancialInfo></InancialInfo></div>
       <div id="PersonInfo"><PersonInfo></PersonInfo></div>
-      <div id="HoldInfo"><HoldInfo></HoldInfo></div>
+      <div id="HoldInfo" v-if="isHoldInfo"><HoldInfo></HoldInfo></div>
       <div id="CountableInfo"><CountableInfo></CountableInfo></div>
       <div id="UploadFiles"><UploadFiles></UploadFiles></div>
       <!-- <UploadFilesList></UploadFilesList> -->
@@ -54,10 +55,7 @@
       </div>
     </div>
 
-    <div
-      class="allBtn"
-      :style="{ display: this.Agricul.isDetailsContent ? 'none' : 'block' }"
-    >
+    <div class="allBtn" v-if="this.$route.name == 'AriculCreateInfo'">
       <el-button type="primary" @click="SubmitData">提交</el-button>
     </div>
   </div>
@@ -95,6 +93,9 @@ export default {
       set(val) {
         this.isDetailsContent = val;
       },
+    },
+    isHoldInfo() {
+      return this.Agricul.isHoldInfo;
     },
   },
   components: {
@@ -150,6 +151,7 @@ export default {
     },
   },
   mounted() {
+    this.$store.commit("Agricul_IsDisabledData", true);
     //agriculClearData(this.Agricul)
     //console.log(this.Agricul)
     console.log(this.$route);

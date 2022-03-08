@@ -173,11 +173,17 @@ export default {
     text-align: left !important;
 }
 .el-icon-close, .el-icon-close-tip{
-    
+
     line-height: 40px;
 }
 .el-upload-list__item-name{
     font-size: 25px;
-    
+
+} */
+/* .bg-purple span {
+  width: 100px;
+  word-break: break-all;
+  overflow: auto;
+  white-space: normal;
 } */
 </style>

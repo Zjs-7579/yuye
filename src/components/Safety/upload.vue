@@ -18,8 +18,13 @@
       :file-list="fileList"
       accept=".png, .jpg, .jpeg, .pdf"
     >
-      <el-button type="primary" round>上传</el-button>
-      <!-- <span slot="tip" class="text">dsadsada</span> -->
+      <el-button
+        :type="isDisabledData ? 'info' : 'primary'"
+        round
+        :plain="isDisabledData"
+        :disabled="isDisabledData"
+        >上传</el-button
+      >
       <div slot="tip" class="el-upload__tip"></div>
     </el-upload>
   </div>
@@ -36,6 +41,9 @@ export default {
       fileList: this.dataFiles,
       formData: {},
     };
+  },
+  mounted() {
+    console.log(this.grayButton, "gray");
   },
   computed: {
     ...mapState(["Safety"]),

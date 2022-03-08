@@ -189,7 +189,6 @@ export default {
 .PanInimical .el-input__inner {
   width: 80%;
   border: none;
-  font-size: 18px;
 }
 .PanInimical .rowColor .el-input__inner {
   background-color: rgb(235, 231, 231);

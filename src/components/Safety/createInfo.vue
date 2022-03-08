@@ -147,6 +147,7 @@ export default {
     },
   },
   mounted() {
+    this.$store.commit("Safety_IsDisabledData", false);
     if (this.$route.query.id == undefined) {
       safetyClearData(this.Safety);
       userTaskid().then((res) => {

@@ -207,7 +207,7 @@
         ></el-input>
       </el-form-item>
     </el-form>
-    <div class="handle">
+    <div class="handle" :style="{ display: isDisabledData ? 'none' : 'block' }">
       <!-- :style="{ display: isDisabledData || !isHold ? 'none' : 'block' }"  -->
       <el-button type="primary" @click="handleAddHtml">添加一条</el-button>
       <el-button @click="handleDeleteHtml">删除一条</el-button>

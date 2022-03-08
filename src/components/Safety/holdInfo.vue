@@ -13,7 +13,7 @@
         inactive-text="否"
       >
       </el-switch> -->
-      <el-radio-group v-model="isHold">
+      <el-radio-group v-model="isHold" @change="handleRadio">
         <el-radio :label="true">是</el-radio>
         <el-radio :label="false">否</el-radio>
       </el-radio-group>
@@ -199,6 +199,18 @@ export default {
     },
   },
   methods: {
+    handleRadio(e) {
+      console.log(">>>>>>>>>>", e);
+      this.$store.commit("Safety_IsHoldInfo", e);
+      if (e) {
+        this.handleAddHtml();
+        let len = this.safetySupport.length;
+        this.safetySupport.splice(0, len - 1);
+
+        // console.log(this.safetySupport);
+      }
+      //this.isHold = e;
+    },
     handleAddHtml() {
       let str = {
         task_id: this.Safety.userTaskId,

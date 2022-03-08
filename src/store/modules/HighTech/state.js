@@ -2,6 +2,7 @@ export default {
   userName: "", //姓名
   userTaskId: "", //task_id
   isDisabledData: false, //判断用户查看是否可写
+  isHoldInfo: true,
   //isCountableUpload: true,//判断贷款中的下载附件是否显示
   //isDetailsContent: true,//判断detailsInfo的锚点是否显示
   //用户上传的附件

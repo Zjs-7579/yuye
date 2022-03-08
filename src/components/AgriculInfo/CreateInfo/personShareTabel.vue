@@ -126,7 +126,6 @@ export default {
 .AgTabel .el-input__inner {
   width: 80%;
   border: none;
-  font-size: 18px;
 }
 
 .AgTabel .titleRow .el-col {

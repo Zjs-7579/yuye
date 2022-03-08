@@ -3,7 +3,7 @@
     <ApplyInfo></ApplyInfo>
     <StatisticalInfo></StatisticalInfo>
     <UploadFiles></UploadFiles>
-    <div class="allBtn">
+    <div class="allBtn" v-if="this.$route.name == 'FishingCreateInfo'">
       <el-button type="primary" @click="SubmitData">提交</el-button>
     </div>
   </div>
@@ -62,7 +62,7 @@ export default {
   mounted() {
     //agriculClearData(this.Agricul)
     //console.log(this.Agricul)
-    //console.log(this.$router.query.id)
+    console.log(this.$route.name);
     if (!this.$router.query.id) {
       this.$store.commit("Fishing_ClearAllData");
     }

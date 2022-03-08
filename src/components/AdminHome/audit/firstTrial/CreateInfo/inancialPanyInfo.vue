@@ -148,7 +148,6 @@ export default {
 .Moinancial .el-input__inner {
   width: 80%;
   border: none;
-  font-size: 18px;
 }
 .Moinancial .rowColor .el-input__inner {
   background-color: rgb(235, 231, 231);

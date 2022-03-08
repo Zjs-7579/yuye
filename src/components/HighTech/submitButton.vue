@@ -157,8 +157,9 @@ export default {
     },
     visibleSubmit() {
       console.log(this.HighTech.HighTechData);
+      this.$store.commit("HighTech_IsDisabledData", true);
       this.visibleSubmitContent = true;
-      //this.$store.commit("Modern_IsDisabledDataOpen");
+
       //this.$store.commit("Modern_IsDetailsContentClose");
       //this.$store.commit("Agricul_IsCountableUploadClose");
       //this.$store.commit("Agricul_IsDetailsContentClose");
@@ -167,7 +168,7 @@ export default {
       this.$confirm("是否退出提交？")
         .then(() => {
           done();
-          //this.$store.commit("Modern_IsDisabledDataClose");
+          this.$store.commit("HighTech_IsDisabledData", false);
           //this.$store.commit("Modern_IsDetailsContentClose");
         })
         .catch(() => {});

@@ -79,6 +79,7 @@ export default {
     ...mapState(["Safety"]),
     safetyEquipment: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.Safety.SafetyData.safetyEquipment[0].task_id =
           this.Safety.userTaskId;
         //this.Safety.safetyEquipment[0].creator = this.Safety.userName

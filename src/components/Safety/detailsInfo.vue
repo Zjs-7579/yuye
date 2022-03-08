@@ -62,7 +62,9 @@
       <div id="ProjectContent"><ProjectContent></ProjectContent></div>
       <div id="ProjectInvest"><ProjectInvest></ProjectInvest></div>
       <div id="SummarizeInfo"><SummarizeInfo></SummarizeInfo></div>
-      <div id="UploadFiles"><UploadFiles></UploadFiles></div>
+      <div id="UploadFiles">
+        <UploadFiles></UploadFiles>
+      </div>
       <div id="AuditInfo" v-if="this.$route.name == 'UserDetail'">
         <AuditInfo></AuditInfo>
       </div>
@@ -135,7 +137,7 @@ export default {
               type: "success",
               message: "表单提交成功!",
             }),
-            this.$store.commit("Safety_IsDisabledDataClose"),
+            this.$store.commit("Safety_IsDisabledData", false),
 
             setTimeout(
               this.$router.push({
@@ -154,6 +156,8 @@ export default {
     },
   },
   mounted() {
+    this.$store.commit("Safety_IsDisabledData", true);
+    //this.$store.commit("Safety_IsDisabledDataOpen"),
     //console.log(this.Agricul)
     // console.log(this.$router.query.id);
     // if (!this.$router.query.id) {

@@ -2,13 +2,22 @@ export default {
   // PersonShareholder_deleteHtml(state, len){
   //     state.HighTechData.agriculturalShareholder.splice(len-1, 1);
   // }
-  HighTech_IsDisabledDataClose(state) {
+  HighTech_IsDisabledData(state, bool) {
     //console.log(state)
-    state.isDisabledData = false;
+    state.isDisabledData = bool;
   },
-  HighTech_IsDisabledDataOpen(state) {
+  // HighTech_IsDisabledDataClose(state) {
+  //   //console.log(state)
+  //   state.isDisabledData = false;
+  // },
+  // HighTech_IsDisabledDataOpen(state) {
+  //   //console.log(state)
+  //   state.isDisabledData = true;
+  // },
+
+  HighTech_IsHoldInfo(state, bool) {
     //console.log(state)
-    state.isDisabledData = true;
+    state.isHoldInfo = bool;
   },
 
   // HighTech_IsCountableUploadClose(state){
@@ -19,15 +28,18 @@ export default {
   //     //console.log(state)
   //     state.isCountableUpload = true
   // },
-
-  HighTech_IsDetailsContentOpen(state) {
+  HighTech_IsDetailsContent(state, bool) {
     //console.log(state)
-    state.isDetailsContent = true;
+    state.isDetailsContent = bool;
   },
-  HighTech_IsDetailsContentClose(state) {
-    //console.log(state)
-    state.isDetailsContent = false;
-  },
+  // HighTech_IsDetailsContentOpen(state) {
+  //   //console.log(state)
+  //   state.isDetailsContent = true;
+  // },
+  // HighTech_IsDetailsContentClose(state) {
+  //   //console.log(state)
+  //   state.isDetailsContent = false;
+  // },
 
   HighTech_UserName(state, res) {
     state.userName = res.user_name;
