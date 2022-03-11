@@ -151,7 +151,7 @@ export const HoldInfoValidator = {
     { required: true, message: "请输入项目实施年限", trigger: "blur" },
   ],
   accept: [
-    { required: true, message: "请输入完成验收及时间", trigger: "blur" },
+    { required: true, message: "请选择完成验收及时间", trigger: "blur" },
   ],
   //reasons: [{ required: true, message: "未完成验收原因（已完成不填）：", trigger: "blur" }],
 };

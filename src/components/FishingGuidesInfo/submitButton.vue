@@ -87,7 +87,7 @@ export default {
   props: ["activeName"],
   data() {
     return {
-      UnitInfoBool: false,
+      statue: 200,
       ApplyInfoBool: false,
       StatisticalInfoBool: false,
       TableBool: false,
@@ -110,7 +110,13 @@ export default {
     handleActionNext() {
       this.validationDataTab(this.activeName);
       if (this[this.activeName + "Bool"]) {
-        this.handlePreserveInfo();
+        createInfoApplyData(this.Fishing.OceanDeclaration)
+          .then(() => {
+            this.statue = 200;
+          })
+          .catch(() => {
+            this.statue = 0;
+          });
         let idx = this.activeList.indexOf(this.activeName);
         let name = this.activeList[idx + 1];
         this.$emit("handleActionNameText", name);
@@ -129,9 +135,12 @@ export default {
     //验证
     validationDataTab(activeName) {
       if (activeName == "ApplyInfo") {
-        //console.log(this.$parent.$refs.ApplyInfo)
+        this.ApplyInfoBool = true;
+        //console.log(this.$parent.$refs.ApplyInfo);
         this.$parent.$refs.ApplyInfo.$refs.unitOcean.validate((e) => {
-          this.UnitInfoBool = e;
+          if (!e) {
+            this.ApplyInfoBool = e;
+          }
         });
 
         if (
@@ -140,21 +149,27 @@ export default {
         ) {
           this.$parent.$refs.ApplyInfo.$refs.BuildFishing.$refs.buildForm.validate(
             (e) => {
-              this.ApplyInfoBool = e;
+              if (!e) {
+                this.ApplyInfoBool = e;
+              }
             }
           );
         }
         if (this.declare_name == "购买远洋渔船") {
           this.$parent.$refs.ApplyInfo.$refs.BuyFishing.$refs.buyForm.validate(
             (e) => {
-              this.ApplyInfoBool = e;
+              if (!e) {
+                this.ApplyInfoBool = e;
+              }
             }
           );
         }
         if (this.declare_name == "境外渔业资源使用费") {
           this.$parent.$refs.ApplyInfo.$refs.OutsideFishing.$refs.outsideForm.validate(
             (e) => {
-              this.ApplyInfoBool = e;
+              if (!e) {
+                this.ApplyInfoBool = e;
+              }
             }
           );
         }
@@ -164,7 +179,9 @@ export default {
         ) {
           this.$parent.$refs.ApplyInfo.$refs.CatchFishing.$refs.catchForm.validate(
             (e) => {
-              this.ApplyInfoBool = e;
+              if (!e) {
+                this.ApplyInfoBool = e;
+              }
             }
           );
         }
@@ -174,7 +191,9 @@ export default {
         ) {
           this.$parent.$refs.ApplyInfo.$refs.BaseFishing.$refs.baseForm.validate(
             (e) => {
-              this.ApplyInfoBool = e;
+              if (!e) {
+                this.ApplyInfoBool = e;
+              }
             }
           );
         }
@@ -266,10 +285,6 @@ export default {
           }
         }
       }
-
-      if (activeName == "UploadFiles") {
-        console.log(" UploadFiles");
-      }
     },
     //提示
     promptMessage(bool, text) {
@@ -307,13 +322,13 @@ export default {
       this.$confirm("是否退出提交？")
         .then(() => {
           done();
-          this.$store.commit("Fishing_IsDisabledDataClose");
+          this.$store.commit("Fishing_IsDisabledData", false);
         })
         .catch(() => {});
     },
     visibleSubmit() {
       this.visibleSubmitContent = true;
-      this.$store.commit("Fishing_IsDisabledDataOpen");
+      this.$store.commit("Fishing_IsDisabledData", true);
     },
     downFile() {
       this.handlePreserveInfo();

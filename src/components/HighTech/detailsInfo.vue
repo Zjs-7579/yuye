@@ -1,6 +1,6 @@
 <template>
   <div class="DataContent">
-    <div class="nav-tabs" :style="{ display: isDetailsContent }">
+    <div class="nav-tabs" v-if="isDetailsContent">
       <a
         href="#UnitInfo"
         @click="handleColorText('UnitInfo')"
@@ -110,13 +110,7 @@
         >上传附件</a
       >
     </div>
-    <div
-      :style="{
-        display: this.HighTech.isDetailsContent
-          ? 'none'
-          : 'width: 100%; height: 55px',
-      }"
-    ></div>
+    <div v-if="isDetailsContent" style="width: 100%; height: 55px"></div>
 
     <div class="AllDataTable">
       <div id="UnitInfo"><UnitInfo /></div>
@@ -200,11 +194,7 @@ export default {
     ...mapState(["HighTech"]),
     isDetailsContent: {
       get() {
-        if (this.HighTech.isDetailsContent) {
-          return "block";
-        } else {
-          return "none";
-        }
+        return this.HighTech.isDetailsContent;
       },
       set(val) {
         this.isDetailsContent = val;

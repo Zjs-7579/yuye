@@ -49,7 +49,7 @@
               >
             </el-dropdown-menu>
           </el-dropdown>
-          <span>{{ this.$store.state.Modern.userName }}</span>
+          <span>{{ this.$store.state.Modern.userName || UserName }}</span>
         </el-header>
         <router-view></router-view>
       </el-container>
@@ -65,6 +65,11 @@ export default {
       routerDataList: "",
       breadList: [],
     };
+  },
+  computed: {
+    UserName() {
+      return window.localStorage.getItem("name");
+    },
   },
   methods: {
     isHome(route) {

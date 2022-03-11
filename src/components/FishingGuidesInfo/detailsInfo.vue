@@ -3,7 +3,7 @@
     <ApplyInfo></ApplyInfo>
     <StatisticalInfo></StatisticalInfo>
     <UploadFiles></UploadFiles>
-    <div class="allBtn" v-if="this.$route.name == 'FishingCreateInfo'">
+    <div class="allBtn" v-if="this.$route.name == 'SelectFishingGuides'">
       <el-button type="primary" @click="SubmitData">提交</el-button>
     </div>
   </div>
@@ -41,7 +41,7 @@ export default {
               type: "success",
               message: "表单提交成功!",
             }),
-            this.$store.commit("Fishing_IsDisabledDataClose"),
+            this.$store.commit("Fishing_IsDisabledData", false),
 
             setTimeout(
               this.$router.push({
@@ -60,12 +60,16 @@ export default {
     },
   },
   mounted() {
+    this.$store.commit("Fishing_IsDisabledData", true);
     //agriculClearData(this.Agricul)
     //console.log(this.Agricul)
-    console.log(this.$route.name);
-    if (!this.$router.query.id) {
-      this.$store.commit("Fishing_ClearAllData");
-    }
+    console.log(this.$route);
+    //agriculClearData(this.Agricul)
+    //console.log(this.Agricul)
+    //console.log(this.$route.name);
+    // if (!this.$router.query.id) {
+    //   this.$store.commit("Fishing_ClearAllData");
+    // }
   },
 };
 </script>

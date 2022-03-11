@@ -18,7 +18,9 @@
       :file-list="fileList"
       accept=".png, .jpg, .jpeg, .pdf"
     >
-      <el-button type="primary" round>上传</el-button>
+      <el-button type="primary" round :disabled="isDisabledData"
+        >上传</el-button
+      >
       <!-- <span slot="tip" class="text">dsadsada</span> -->
       <div slot="tip" class="el-upload__tip"></div>
     </el-upload>

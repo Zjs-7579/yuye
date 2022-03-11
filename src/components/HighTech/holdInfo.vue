@@ -293,6 +293,10 @@ export default {
 </script>
 
 <style>
+.MoHold .el-form-item__error {
+  position: absolute;
+  top: 80%;
+}
 .MoHold {
   width: 100%;
   height: 75vh;

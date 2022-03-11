@@ -151,17 +151,26 @@ export default {
         this.UnitInfoBool = true;
         this.$parent.$refs.SafetyUnitInfoValidate.$refs.unitForm.validate(
           (e) => {
-            this.UnitInfoBool = e;
+            if (!e) {
+              this.UnitInfoBool = e;
+            }
+            //console.log("*****************", e);
           }
         );
         this.$parent.$refs.SafetyUnitInfoValidate.$refs.unitNotEmployedForm.$refs.ruleForm1.validate(
           (e) => {
-            this.UnitInfoBool = e;
+            if (!e) {
+              this.UnitInfoBool = e;
+            }
+            //console.log("*****************", e);
           }
         );
         this.$parent.$refs.SafetyUnitInfoValidate.$refs.unitNotEmployedForm.$refs.ruleForm2.validate(
           (e) => {
-            this.UnitInfoBool = e;
+            if (!e) {
+              this.UnitInfoBool = e;
+            }
+            //console.log("*****************", e);
           }
         );
 
@@ -246,13 +255,22 @@ export default {
         }
       }
       if (activeName == "SummarizeInfo") {
-        for (let item in this.Safety.SafetyData.safetyAbstract) {
-          if (this.Safety.SafetyData.safetyAbstract[item] == "") {
-            this.SummarizeInfoBool = false;
-            break;
+        this.SummarizeInfoBool = true;
+        //console.log(this.$parent.$refs.SafetySummarizeInfoValidate);
+        this.$parent.$refs.SafetySummarizeInfoValidate.$refs.SummarizeFormBase.validate(
+          (e) => {
+            if (!e) {
+              this.SummarizeInfoBool = e;
+            }
           }
-          this.SummarizeInfoBool = true;
-        }
+        );
+        this.$parent.$refs.SafetySummarizeInfoValidate.$refs.SummarizeForm.validate(
+          (e) => {
+            if (!e) {
+              this.SummarizeInfoBool = e;
+            }
+          }
+        );
       }
     },
 

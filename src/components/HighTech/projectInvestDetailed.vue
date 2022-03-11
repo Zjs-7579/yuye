@@ -58,7 +58,16 @@
         ></el-input>
       </el-col>
       <el-col :span="4">
+        <p
+          size="small"
+          style="text-align: center; cursor: pointer"
+          v-if="path.indexOf('detailInspect') > 0"
+          @click="handleLookDataClick(item)"
+        >
+          {{ item.file_name }}
+        </p>
         <el-upload
+          v-else
           class="upload-demo"
           action="#"
           :show-file-list="false"
@@ -66,14 +75,6 @@
           :http-request="upLoadInvestFiles"
         >
           <el-button
-            size="small"
-            v-if="path.indexOf('detailInspect') > 0"
-            @click="handleLookDataClick(item)"
-          >
-            {{ item.material_id }}
-          </el-button>
-          <el-button
-            v-if="path.indexOf('createInfo') > 0"
             size="small"
             type="primary"
             @click="handleInventDataClick(item)"

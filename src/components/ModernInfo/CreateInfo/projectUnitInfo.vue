@@ -26,6 +26,7 @@ export default {
     ...mapState(["Modern"]),
     basic_info: {
       get() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.Modern.ModernData.basic_info["task_id"] = this.Modern.userTaskId;
         //this.Modern.ModernData.basic_info.creator = this.Modern.userName
         return this.Modern.ModernData.basic_info;

@@ -3,7 +3,7 @@
     <p><span class="img"></span><span>相关政策</span></p>
     <ul>
       <li v-for="item in tableData" :key="item.id" @click="lookPDF(item)">
-        <span class="title">{{ item.title }}</span>
+        <span class="txt">{{ item.title }}</span>
       </li>
     </ul>
   </div>
@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style scoped>
-.title {
+.txt {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

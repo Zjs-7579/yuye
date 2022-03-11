@@ -58,7 +58,16 @@
         ></el-input>
       </el-col>
       <el-col :span="4">
+        <p
+          size="small"
+          style="text-align: center; cursor: pointer"
+          v-if="path.indexOf('detailInspect') > 0"
+          @click="handleLookDataClick(item)"
+        >
+          {{ item.file_name }}
+        </p>
         <el-upload
+          v-else
           class="upload-demo"
           action="#"
           :show-file-list="false"
@@ -66,14 +75,6 @@
           :http-request="upLoadInvestFiles"
         >
           <el-button
-            size="small"
-            v-if="path.indexOf('detailInspect') > 0"
-            @click="handleLookDataClick(item)"
-          >
-            {{ item.material_id }}
-          </el-button>
-          <el-button
-            v-if="path.indexOf('createInfo') > 0"
             size="small"
             type="primary"
             @click="handleInventDataClick(item)"
@@ -139,9 +140,9 @@ export default {
       get() {
         let sum = 0;
         for (let i of this.data) {
-          sum += i.amount * 1;
+          sum += i.amount * 10000;
         }
-        return sum;
+        return sum / 10000;
       },
       set(val) {
         this.total_amount = val;
@@ -151,9 +152,9 @@ export default {
       get() {
         let sum = 0;
         for (let i of this.data) {
-          sum += i.fixed_assets * 1;
+          sum += i.fixed_assets * 10000;
         }
-        return sum;
+        return sum / 10000;
       },
       set(val) {
         this.total_fixed_assets = val;
@@ -163,9 +164,9 @@ export default {
       get() {
         let sum = 0;
         for (let i of this.data) {
-          sum += i.other_assets * 1;
+          sum += i.other_assets * 10000;
         }
-        return sum;
+        return sum / 10000;
       },
       set(val) {
         this.total_other_assets = val;

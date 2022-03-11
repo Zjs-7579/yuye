@@ -7,7 +7,7 @@
             <img src="../../assets/login/渔业专项资金管理系统@2x.png" alt="" />
           </div>
           <div>
-            <span>{{ this.$store.state.Total.userName }}</span
+            <span>{{ this.$store.state.Total.userName || UserName }}</span
             ><span>|</span><span @click="leaveUser">退出</span>
           </div>
         </div>
@@ -60,6 +60,11 @@ export default {
       cardList: routerLogin,
     };
   },
+  computed: {
+    UserName() {
+      return window.localStorage.getItem("name");
+    },
+  },
   components: {
     ApplyTabel,
     PolicyTabel,
@@ -70,6 +75,8 @@ export default {
       //console.log(res)
       this.$store.commit("UserName", res.data.data);
       this.$store.commit("Agricul_UserName", res.data.data);
+      this.$store.commit("Safety_UserName", res.data.data);
+      this.$store.commit("HighTech_UserName", res.data.data);
       this.$store.commit("Modern_UserName", res.data.data);
       this.$store.commit("Fishing_UserName", res.data.data);
     });

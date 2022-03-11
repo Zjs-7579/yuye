@@ -188,25 +188,31 @@ export default {
         this.UnitInfoBool = true;
         this.$parent.$refs.HighTechUnitInfoValidate.$refs.unitForm.validate(
           (e) => {
-            this.UnitInfoBool = e;
+            if (!e) {
+              this.UnitInfoBool = e;
+            }
             //console.log("*****************", e);
           }
         );
         console.log(this.UnitInfoBool);
         this.$parent.$refs.HighTechUnitInfoValidate.$refs.HighTechUnitNotEmployed.$refs.ruleForm.validate(
           (e) => {
-            this.UnitInfoBool = e;
+            if (!e) {
+              this.UnitInfoBool = e;
+            }
             //console.log("*****************", e);
           }
         );
         console.log(this.UnitInfoBool);
         this.$parent.$refs.HighTechUnitInfoValidate.$refs.HighTechUnitNotEmployed.$refs.ruleFormPerson.validate(
           (e) => {
-            this.UnitInfoBool = e;
+            if (!e) {
+              this.UnitInfoBool = e;
+            }
             //console.log("*****************", e);
           }
         );
-        console.log(this.UnitInfoBool);
+        //console.log(this.UnitInfoBool);
         for (let item of this.HighTech.HighTechData.techShareholderList) {
           //console.log(item)
           for (let result in item) {
@@ -285,7 +291,9 @@ export default {
         // );
         this.$parent.$refs.HighTechTeamInfoValidate.$refs.teamForm.validate(
           (e) => {
-            this.TeamInfoBool = e;
+            if (!e) {
+              this.TeamInfoBool = e;
+            }
           }
         );
         for (let item of this.$parent.$refs.HighTechTeamInfoValidate.$refs
@@ -307,9 +315,9 @@ export default {
         //console.log(this.HoldInfoBool)
       }
       if (activeName == "ProjectContent") {
-        this.ProjectContentBool = true;
+        //this.ProjectContentBool = true;
 
-        console.log(this.$parent.$refs.HighTechProjectContentValidate);
+        //console.log(this.$parent.$refs.HighTechProjectContentValidate);
         this.$parent.$refs.HighTechProjectContentValidate.$refs.ProjectContent.validate(
           (e) => {
             this.ProjectContentBool = e;
@@ -378,18 +386,22 @@ export default {
 
       if (activeName == "SummarizeInfo") {
         this.SummarizeInfoBool = true;
-        console.log(
-          "@@@@@@@@",
-          this.$parent.$refs.HighTechSummarizeInfoValidate.$refs
-        );
+        // console.log(
+        //   "@@@@@@@@",
+        //   this.$parent.$refs.HighTechSummarizeInfoValidate.$refs
+        // );
         this.$parent.$refs.HighTechSummarizeInfoValidate.$refs.SummarizeFormBase.validate(
           (e) => {
-            this.SummarizeInfoBool = e;
+            if (!e) {
+              this.SummarizeInfoBool = e;
+            }
           }
         );
         this.$parent.$refs.HighTechSummarizeInfoValidate.$refs.SummarizeForm.validate(
           (e) => {
-            this.SummarizeInfoBool = e;
+            if (!e) {
+              this.SummarizeInfoBool = e;
+            }
           }
         );
       }
@@ -410,7 +422,7 @@ export default {
       }
 
       if (activeName == "ProjectBenefit") {
-        this.ProjectBenefitBool = true;
+        //this.ProjectBenefitBool = true;
         this.$parent.$refs.HighTechBenefitValidate.$refs.unitForm.validate(
           (e) => {
             this.ProjectBenefitBool = e;

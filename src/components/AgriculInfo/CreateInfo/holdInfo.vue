@@ -127,34 +127,7 @@
                 v-model="item.accept"
                 style="width: 60%"
               ></el-date-picker>
-              <!-- <el-date-picker
-              value-format="yyyy-MM"
-              type="month"
-              placeholder="选择验收时间"
-              v-model="item.accept"
-              style="width: 100%;"></el-date-picker> -->
-              <!-- <el-input
-                type="textarea"
-                resize="none"
-                rows="6"
-                v-model="item.accept"
-              ></el-input> -->
-              <!-- <el-popconfirm
-                confirm-button-text='好的'
-                cancel-button-text='不用了'
-                icon="el-icon-info"
-                icon-color="red"
-                title="这是一段内容确定删除吗？"
-              >
-              <el-date-picker slot="reference" type="date" placeholder="选择日期" v-model="item.accept" style="width: 100%;"></el-date-picker>
-              </el-popconfirm> -->
             </el-form-item>
-
-            <!-- <el-col :span="4" v-if="isAccept">
-            <el-form-item prop="accept" style="background-color: red">
-              <el-input type="text" v-model="item.accept"></el-input>
-            </el-form-item>
-          </el-col> -->
           </el-col>
           <el-col :span="8">
             <el-form-item label="未完成验收原因(已完成不填)：" prop="reasons">
@@ -190,12 +163,18 @@ export default {
     ...mapState(["Agricul"]),
     agriculturalSupport: {
       get() {
+        if (this.Agricul.userTaskId) {
+          // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+          this.Agricul.AgriculData.agriculturalSupport[0]["task_id"] =
+            this.Agricul.userTaskId;
+          return this.Agricul.AgriculData.agriculturalSupport;
+        } else {
+          return [];
+        }
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.Agricul.AgriculData.agriculturalSupport[0]["task_id"] =
-          this.Agricul.userTaskId;
+
         // this.Agricul.AgriculData.agriculturalSupport[0].creator =
         //   this.Total.userName;
-        return this.Agricul.AgriculData.agriculturalSupport;
       },
       set(val) {
         this.agriculturalSupport = val;
@@ -211,6 +190,7 @@ export default {
             list.push(true);
           }
         }
+
         console.log(list);
         return list;
       },
@@ -235,9 +215,26 @@ export default {
     //   },
     // },
   },
+  // mounted() {
+  //   //this.isAccept = [true, true, true];
+  //   this.$nextTick(() => {
+  //     let list = [];
+
+  //     if (this.Agricul.AgriculData.agriculturalSupport.length > 0) {
+  //       for (let item of this.Agricul.AgriculData.agriculturalSupport) {
+  //         if (item.accept == "") {
+  //           list.push(false);
+  //         } else {
+  //           list.push(true);
+  //         }
+  //       }
+  //     }
+  //     console.log(list);
+  //     this.isAccept = list;
+  //   });
+  // },
   methods: {
     handleRadio(e) {
-      console.log(">>>>>>>>>>", e);
       this.$store.commit("Agricul_IsHoldInfo", e);
       if (e) {
         //console.log(per)
@@ -283,11 +280,24 @@ export default {
       }
     },
     changeIndex(value, index, item) {
+      console.log(value, index, item);
       this.isAccept[index] = !value;
       if (!this.isAccept[index]) {
         item.accept = "";
       }
       this.$forceUpdate();
+      //console.log(this.$refs.holdForm);
+    },
+  },
+  watch: {
+    // isAccept(val) {
+    //   console.log("----------", val);
+    // },
+    isAccept: {
+      handler(val) {
+        console.log("---------", val);
+      },
+      deep: true,
     },
   },
 };

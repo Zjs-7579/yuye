@@ -129,9 +129,9 @@ export default {
       get() {
         let sum = 0;
         for (let item of this.oceanCostList) {
-          sum += item.outlds_fish_cost * 1;
+          sum += item.outlds_fish_cost * 10000;
         }
-        return sum;
+        return sum / 10000;
       },
       set(val) {
         this.alloutlds_fish_cost = val;
@@ -141,9 +141,9 @@ export default {
       get() {
         let sum = 0;
         for (let item of this.oceanCostList) {
-          sum += item.rmb * 1;
+          sum += item.rmb * 10000;
         }
-        return sum;
+        return sum / 10000;
       },
       set(val) {
         this.all_rmb = val;

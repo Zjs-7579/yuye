@@ -7,11 +7,11 @@ export default {
     state.userTaskId = res;
   },
 
-  Fishing_IsDisabledDataOpen(state) {
-    state.isDisabledData = true;
+  Fishing_IsDisabledData(state, bool) {
+    state.isDisabledData = bool;
   },
-  Fishing_IsDisabledDataClose(state) {
-    state.isDisabledData = false;
+  Fishing_IsDisabledDataClose(state, bool) {
+    state.isDisabledData = bool;
   },
 
   Fishing_ClearAllData(state) {

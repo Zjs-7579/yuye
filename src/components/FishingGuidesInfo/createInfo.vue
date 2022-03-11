@@ -91,6 +91,8 @@ export default {
     UploadFiles,
   },
   mounted() {
+    this.$store.commit("Agricul_IsDisabledData", false);
+
     if (this.$route.query.id == undefined) {
       FishingClearData(this.Fishing);
       userTaskid().then((res) => {
@@ -98,35 +100,6 @@ export default {
         this.$store.commit("Fishing_UserTaskId", res.data.data);
       });
     }
-    // (async () => {
-    //   //this.$store.commit("Agricul_IsDisabledDataClose");
-    //   //agriculClearData(this.Agricul);
-    //   if (this.$route.query.id != undefined) {
-    //     let status = await FiJudge(
-    //       {
-    //         task_id: this.$route.query.id,
-    //       },
-    //       this.$router,
-    //       this.$store
-    //     );
-    //     // console.log(
-    //     //   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
-    //     //   status,
-    //     //   this.$route.query.id
-    //     // );
-
-    //     if (status != 200) {
-    //       this.$message.warning("数据出错");
-    //     }
-    //     console.log(this.$route.query.id);
-    //   } else {
-    //     userTaskid().then((res) => {
-    //       //console.log(res)
-    //       this.$store.commit("Fishing_UserTaskId", res.data.data);
-    //     });
-    //   }
-    // })();
-    //
   },
 };
 </script>
@@ -146,13 +119,13 @@ export default {
 } */
 .fishingGuides .submitText {
   line-height: 40px;
-  flex: 10;
+  flex: 8;
 }
 .fishingGuides .submitText span {
   margin: 0 15px;
 }
 .fishingGuides .submitBtn {
-  flex: 4;
+  flex: 3;
 }
 .fishingGuides .fishingApply {
   overflow: none;

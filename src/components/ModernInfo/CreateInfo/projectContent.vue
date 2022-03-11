@@ -109,6 +109,10 @@ export default {
 </script>
 
 <style>
+.MoContentTitle .el-form-item__error {
+  position: absolute;
+  top: 101%;
+}
 .MoContentTitle {
   width: 100%;
   height: 75vh;

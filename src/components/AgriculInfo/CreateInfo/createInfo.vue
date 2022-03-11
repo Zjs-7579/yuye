@@ -157,7 +157,7 @@ export default {
 }
 .AgVessel .submitText {
   line-height: 40px;
-  flex: 10;
+  flex: 8;
 }
 .AgVessel .submitText span {
   margin: 0 15px;
@@ -171,8 +171,8 @@ export default {
   overflow-y: auto;
 }
 .AgVessel .DataContent .Agtabel,
-.AgVessel .DataContent .Agperson,
-.AgVessel .DataContent .Aghold,
+.AgVessel .DataContent .AgPerson,
+.AgVessel .DataContent .AgHold,
 .AgVessel .DataContent .AgCountable {
   height: auto;
   margin-bottom: 20px;

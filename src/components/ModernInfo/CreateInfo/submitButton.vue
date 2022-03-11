@@ -164,20 +164,26 @@ export default {
         this.UnitInfoBool = true;
         this.$parent.$refs.ModernUnitInfoValidate.$refs.unitForm.validate(
           (e) => {
-            this.UnitInfoBool = e;
-            console.log("*****************", e);
+            if (!e) {
+              this.UnitInfoBool = e;
+            }
+            //console.log("*****************", e);
           }
         );
         this.$parent.$refs.ModernUnitInfoValidate.$refs.ModernUnitNotEmployed.$refs.ruleForm.validate(
           (e) => {
-            this.UnitInfoBool = e;
+            if (!e) {
+              this.UnitInfoBool = e;
+            }
             //console.log("*****************", e);
           }
         );
         console.log(this.UnitInfoBool);
         this.$parent.$refs.ModernUnitInfoValidate.$refs.ModernUnitNotEmployed.$refs.ruleFormPerson.validate(
           (e) => {
-            this.UnitInfoBool = e;
+            if (!e) {
+              this.UnitInfoBool = e;
+            }
             //console.log("*****************", e);
           }
         );
@@ -241,12 +247,13 @@ export default {
       }
 
       if (activeName == "ProjectUnitInfo") {
+        this.ProjectUnitInfoBool = true;
+
         for (let item in this.Modern.ModernData.basic_info) {
           if (this.Modern.ModernData.basic_info[item] == "") {
             this.ProjectUnitInfoBool = false;
             break;
           }
-          this.ProjectUnitInfoBool = true;
         }
       }
 
@@ -275,9 +282,19 @@ export default {
 
       if (activeName == "SummarizeInfo") {
         this.SummarizeInfoBool = true;
+        //console.log(this.$parent.$refs.ModernSummarizeInfoValidate);
+        this.$parent.$refs.ModernSummarizeInfoValidate.$refs.SummarizeFormBase.validate(
+          (e) => {
+            if (!e) {
+              this.SummarizeInfoBool = e;
+            }
+          }
+        );
         this.$parent.$refs.ModernSummarizeInfoValidate.$refs.SummarizeForm.validate(
           (e) => {
-            this.SummarizeInfoBool = e;
+            if (!e) {
+              this.SummarizeInfoBool = e;
+            }
           }
         );
       }

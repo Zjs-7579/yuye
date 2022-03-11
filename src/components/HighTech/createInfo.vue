@@ -158,7 +158,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      isDataShow: false,
+      isDataShow: true,
       activeName: "UnitInfo",
     };
   },
@@ -267,7 +267,7 @@ export default {
 }
 .HighTech .submitText {
   line-height: 40px;
-  flex: 10;
+  flex: 8;
 }
 .HighTech .submitText span {
   margin: 0 15px;

@@ -211,9 +211,9 @@ export default {
       get() {
         let sum = 0;
         for (let item of this.oceanSituationList) {
-          sum += item.tol_investment * 1;
+          sum += item.tol_investment * 1000;
         }
-        return sum;
+        return sum / 1000;
       },
       set(val) {
         this.alltol_investment = val;
@@ -223,9 +223,9 @@ export default {
       get() {
         let sum = 0;
         for (let item of this.oceanSituationList) {
-          sum += item.state_funding * 1;
+          sum += item.state_funding * 1000;
         }
-        return sum;
+        return sum / 1000;
       },
       set(val) {
         this.allstate_funding = val;
@@ -235,9 +235,9 @@ export default {
       get() {
         let sum = 0;
         for (let item of this.oceanSituationList) {
-          sum += item.aped_funding * 1;
+          sum += item.aped_funding * 1000;
         }
-        return sum;
+        return sum / 1000;
       },
       set(val) {
         this.allaped_funding = val;
@@ -247,9 +247,9 @@ export default {
       get() {
         let sum = 0;
         for (let item of this.oceanSituationList) {
-          sum += item.funds_allocated * 1;
+          sum += item.funds_allocated * 1000;
         }
-        return sum;
+        return sum / 1000;
       },
       set(val) {
         this.allfunds_allocated = val;
@@ -259,9 +259,9 @@ export default {
       get() {
         let sum = 0;
         for (let item of this.oceanSituationList) {
-          sum += item.appropriate * 1;
+          sum += item.appropriate * 1000;
         }
-        return sum;
+        return sum / 1000;
       },
       set(val) {
         this.all_appropriate = val;

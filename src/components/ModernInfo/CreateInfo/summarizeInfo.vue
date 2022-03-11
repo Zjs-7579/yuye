@@ -3,7 +3,7 @@
     <div class="SummarizeBase">
       <el-form
         :model="modernAbstract"
-        ref="SummarizeForm"
+        ref="SummarizeFormBase"
         :disabled="isDisabledData"
         :rules="rules"
         label-width="250px"

@@ -195,6 +195,8 @@ export default {
       }
 
       if (activeName == "PersonInfo") {
+        this.PersonInfoBool = true;
+
         this.$parent.$refs.AgriculPersonInfoValidate.$refs.personForm.validate(
           (e) => {
             this.PersonInfoBool = e;
@@ -209,7 +211,6 @@ export default {
               this.PersonInfoBool = false;
               break;
             }
-            this.PersonInfoBool = true;
           }
         }
       }
@@ -219,7 +220,9 @@ export default {
         if (this.isHoldInfo) {
           for (let item of this.$parent.$refs.AgriculHoldInfoValidate.$refs
             .holdForm) {
+            console.log(item);
             item.validate((e) => {
+              console.log(e);
               if (!e) {
                 this.HoldInfoBool = e;
               }

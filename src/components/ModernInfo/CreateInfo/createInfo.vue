@@ -189,6 +189,10 @@ export default {
 </script>
 
 <style>
+.el-form-item__error {
+  position: absolute;
+  top: 80%;
+}
 .MoVessel .downText {
   outline: none;
 }
@@ -205,7 +209,7 @@ export default {
 }
 .MoVessel .submitText {
   line-height: 40px;
-  flex: 10;
+  flex: 8;
 }
 .MoVessel .submitText span {
   margin: 0 15px;

@@ -85,9 +85,9 @@ import { safetyClearData } from "../../utils/safety/safetyUpData";
 export default {
   data() {
     return {
-      isDataShow: false,
+      isDataShow: true,
       activeName: "UnitInfo",
-      lastActiveName: "",
+      //lastActiveName: "",
     };
   },
   beforeRouteEnter(to, from, next) {
@@ -142,11 +142,11 @@ export default {
       this.activeName = name;
     },
     handleClick(tab) {
-      if (this.lastActiveName) {
-        // console.log(this.lastActiveName, "-->", tab.name);
-        ("");
-      }
-      this.lastActiveName = tab.name;
+      // if (this.lastActiveName) {
+      //   // console.log(this.lastActiveName, "-->", tab.name);
+      // }
+      console.log(tab);
+      //this.lastActiveName = tab.name;
       // this.validationDataTab(tab.name);
       // this.index = tab.index
       // this.activeName = this.activeList[tab.index];
@@ -176,7 +176,7 @@ export default {
 }
 .submitText {
   line-height: 40px;
-  flex: 10;
+  flex: 8;
 }
 .submitText span {
   margin: 0 15px;
